@@ -199,3 +199,63 @@ button, a {
     break-inside: avoid;
   }
 }
+
+/* Leaflet UI Enhancements (UI/UX Pro Max) */
+.leaflet-popup-content-wrapper {
+  border-radius: 1rem !important;
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.15), 0 8px 10px -6px rgba(15, 23, 42, 0.1) !important;
+  border: 1px solid rgba(226, 232, 240, 0.8) !important;
+  padding: 6px !important;
+}
+
+.leaflet-popup-content {
+  margin: 6px 8px !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-popup-tip {
+  background: #ffffff !important;
+}
+
+.leaflet-container {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif !important;
+}
+
+.leaflet-pane {
+  z-index: 10 !important;
+}
+
+.leaflet-top, .leaflet-bottom {
+  z-index: 20 !important;
+}
+
+/* Marker Cluster Emerald Theme */
+.marker-cluster-small {
+  background-color: rgba(16, 185, 129, 0.4) !important;
+}
+.marker-cluster-small div {
+  background-color: rgba(5, 150, 105, 0.9) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-family: "Outfit", sans-serif !important;
+}
+
+.marker-cluster-medium {
+  background-color: rgba(16, 185, 129, 0.5) !important;
+}
+.marker-cluster-medium div {
+  background-color: rgba(4, 120, 87, 0.95) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-family: "Outfit", sans-serif !important;
+}
+
+.marker-cluster-large {
+  background-color: rgba(6, 78, 59, 0.6) !important;
+}
+.marker-cluster-large div {
+  background-color: rgba(6, 78, 59, 0.98) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  font-family: "Outfit", sans-serif !important;
+}

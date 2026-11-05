@@ -41,7 +41,12 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110502">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110503">
+
+  <!-- Leaflet.js Interactive Map & MarkerCluster -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin=""/>
 </head>
 <body class="antialiased text-slate-800 bg-slate-50 selection:bg-emerald-900 selection:text-emerald-100">
 
@@ -100,6 +105,8 @@
           <a href="#culture" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Culture" data-vi="Văn hóa">Văn hóa</a>
           <a href="#pagodas" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Shrines" data-vi="Cổ tự">Cổ tự</a>
           <a href="#health-service" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Medical" data-vi="Y tế">Y tế</a>
+          <a href="#interactive-map" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Map" data-vi="Bản đồ">Bản đồ</a>
+          <a href="#tour-calculator" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Plan & Cost" data-vi="Dự toán">Dự toán</a>
           <a href="#itinerary-builder" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Itineraries" data-vi="Lịch trình">Lịch trình</a>
         </nav>
 
@@ -149,6 +156,8 @@
       <a href="#culture" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Di sản Hát Then &amp; Lễ hội</a>
       <a href="#pagodas" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">3 Cổ tự &amp; Phép tắc</a>
       <a href="#health-service" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Mạng lưới Y tế</a>
+      <a href="#interactive-map" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Bản đồ điểm đến</a>
+      <a href="#tour-calculator" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Dự toán chi phí tour</a>
       <a href="#itinerary-builder" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Lịch trình tour</a>
     </div>
   </header>
@@ -958,6 +967,115 @@
       </div>
     </section>
 
+    <!-- CHAPTER 10b: INTERACTIVE DESTINATION MAP -->
+    <section id="interactive-map" class="scroll-mt-28">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold mb-2 block">10b • Bản Đồ Du Lịch</span>
+          <h2 class="text-2xl sm:text-3xl font-heading font-black text-slate-900 leading-tight" data-en="Interactive Destination Map" data-vi="Bản Đồ Điểm Đến Tương Tác">Bản Đồ Điểm Đến Tương Tác</h2>
+          <p class="text-slate-500 text-sm mt-1 font-light" data-en="Explore 11 prominent attractions with interactive markers, photos, and direct GPS navigation." data-vi="Khám phá 11 điểm đến tiêu biểu với đánh dấu trực quan, ảnh thực địa và dẫn đường GPS.">Khám phá 11 điểm đến tiêu biểu với đánh dấu trực quan, ảnh thực địa và dẫn đường GPS.</p>
+        </div>
+        <div class="flex gap-2 flex-wrap text-xs font-mono">
+          <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>Hồ &amp; Sông</span>
+          <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>Hang động</span>
+          <span class="px-2.5 py-1 rounded-full bg-cyan-100 text-cyan-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-cyan-500 inline-block"></span>Thác nước</span>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>Vùng chè</span>
+          <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>Đền, chùa &amp; Di tích</span>
+        </div>
+      </div>
+      <div id="tn-map" class="w-full rounded-3xl overflow-hidden border border-slate-200 shadow-xl" style="height: 520px; z-index: 0;"></div>
+    </section>
+
+    <!-- CHAPTER 10c: SMART TOUR COST CALCULATOR -->
+    <section id="tour-calculator" class="scroll-mt-28">
+      <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-950 rounded-3xl p-8 sm:p-10 text-white relative overflow-hidden border border-emerald-900/50 shadow-2xl">
+        <div class="relative z-10">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold mb-2 block">10c • Lên Kế Hoạch &amp; Ngân Sách</span>
+              <h2 class="text-2xl sm:text-3xl font-heading font-black text-white leading-tight" data-en="Smart Tour Cost Estimator" data-vi="Dự Toán Chi Phí Tour Thông Minh">Dự Toán Chi Phí Tour Thông Minh</h2>
+              <p class="text-slate-300 text-sm mt-1 font-light" data-en="Personalized budget planning with group discounts and one-click calendar export." data-vi="Lập ngân sách cá nhân hóa theo phong cách du lịch, chiết khấu nhóm và xuất lịch .ics tiện lợi.">Lập ngân sách cá nhân hóa theo phong cách du lịch, chiết khấu nhóm và xuất lịch .ics tiện lợi.</p>
+            </div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Đơn giá cập nhật 2026
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <!-- Selector: Số ngày -->
+            <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
+              <label class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2 block" data-en="Trip Duration" data-vi="Thời gian chuyến đi">Thời gian chuyến đi</label>
+              <select id="calc-days" onchange="updateCalculator()" class="w-full bg-slate-800 border border-slate-700 text-white text-sm font-semibold rounded-xl px-4 py-3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 transition">
+                <option value="1">1 Ngày (Day Trip - Tân Cương &amp; Núi Cốc)</option>
+                <option value="2" selected>2 Ngày / 1 Đêm (ATK &amp; Suối Cửa Tử)</option>
+                <option value="3">3 Ngày / 2 Đêm (Đại hành trình Ba Bể)</option>
+                <option value="5">5 Ngày / 4 Đêm (Khám phá toàn cảnh 92 xã)</option>
+              </select>
+            </div>
+
+            <!-- Selector: Số người -->
+            <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
+              <label class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2 block" data-en="Group Size" data-vi="Số lượng khách">Số lượng khách</label>
+              <select id="calc-people" onchange="updateCalculator()" class="w-full bg-slate-800 border border-slate-700 text-white text-sm font-semibold rounded-xl px-4 py-3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 transition">
+                <option value="1">1 người (Solo Traveler)</option>
+                <option value="2" selected>2 người (Cặp đôi / Bạn thân)</option>
+                <option value="4">4 người (Gia đình / Nhóm bạn - Giảm 10%)</option>
+                <option value="8">8+ người (Đoàn thể - Giảm 15-20%)</option>
+              </select>
+            </div>
+
+            <!-- Selector: Phong cách -->
+            <div class="bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
+              <label class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2 block" data-en="Travel Style" data-vi="Phong cách du lịch">Phong cách du lịch</label>
+              <select id="calc-style" onchange="updateCalculator()" class="w-full bg-slate-800 border border-slate-700 text-white text-sm font-semibold rounded-xl px-4 py-3 cursor-pointer focus:outline-none focus:ring-2 focus:ring-emerald-500 transition">
+                <option value="budget">Tiết kiệm (Homestay bản địa, xe máy)</option>
+                <option value="standard" selected>Tiêu chuẩn (Khách sạn 3*, xe riêng)</option>
+                <option value="premium">Cao cấp (Resort sinh thái, hướng dẫn viên riêng)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Cost Breakdown Card -->
+          <div class="bg-slate-900/90 rounded-2xl p-6 mb-6 border border-slate-800 shadow-inner">
+            <div class="flex items-center justify-between mb-4">
+              <h3 class="text-xs font-mono uppercase tracking-wider text-slate-400 font-bold">Bảng Phân Bổ Chi Phí Dự Kiến</h3>
+              <span class="text-[11px] text-slate-500 font-mono">Đã tính chiết khấu đoàn</span>
+            </div>
+            <div class="space-y-3.5" id="calc-breakdown">
+              <!-- Rendered via JS -->
+            </div>
+            <div class="border-t border-slate-800 mt-5 pt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-sm font-bold text-slate-200 font-mono uppercase tracking-wide">Tổng Chi Phí Trọn Gói Dự Kiến</span>
+                <p class="text-xs text-slate-400 font-light">Bao gồm xe, lưu trú, ăn uống 3 bữa, vé tham quan &amp; bảo hiểm du lịch</p>
+              </div>
+              <div class="text-left sm:text-right">
+                <div id="calc-total" class="text-3xl font-heading font-black text-emerald-400 leading-none">0 ₫</div>
+                <div id="calc-per-person" class="text-xs text-slate-400 font-mono mt-1"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3 font-mono text-xs">
+            <button onclick="exportCalcICS()" class="flex-1 py-3 px-5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+              <span data-en="Export Calendar (.ics)" data-vi="Xuất Lịch (.ics)">Xuất Lịch (.ics)</span>
+            </button>
+            <button onclick="printTourGuide()" class="flex-1 py-3 px-5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 border border-slate-700 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+              <span data-en="Print Pocket Guide (PDF)" data-vi="In Cẩm Nang (PDF)">In Cẩm Nang (PDF)</span>
+            </button>
+            <button onclick="shareCalcResult()" class="py-3 px-5 bg-slate-800 hover:bg-slate-700 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 border border-slate-700 cursor-pointer">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
+              <span>Chia Sẻ Dự Toán</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- CHAPTER 11: GOVERNMENT CITATIONS & DATA SOURCES -->
     <section class="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
       <div class="flex items-center gap-2 mb-3">
@@ -1088,7 +1206,11 @@
     </div>
   </footer>
 
+  <!-- Leaflet.js Interactive Map & MarkerCluster CDN -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
+
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110502"></script>
+  <script src="assets/js/app.js?v=2026110503"></script>
 </body>
 </html>

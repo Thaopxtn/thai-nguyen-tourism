@@ -491,6 +491,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
   setupAudioSynthesizer();
   setupScrollSpy();
+  initInteractiveMap();
+  updateCalculator();
 });
 
 // --- TRANSLATION / BILINGUAL ENGINE ---
@@ -515,6 +517,7 @@ function setLanguage(lang) {
   renderPagodas();
   renderHospitals();
   renderSavedPlacesList();
+  if (typeof updateCalculator === 'function') updateCalculator();
 
   const langBtn = document.getElementById('lang-toggle-btn');
   if (langBtn) {
@@ -1361,3 +1364,448 @@ window.closeSavedModal = closeSavedModal;
 window.copyToClipboard = copyToClipboard;
 window.resetFilters = resetFilters;
 window.printItinerary = printItinerary;
+
+
+// ============================================================
+// INTERACTIVE MAP (Leaflet.js + MarkerCluster)
+// ============================================================
+const MAP_POINTS = [
+  // Ba Be Cluster (North)
+  { id: 'babe-lake',          name: 'Hồ Ba Bể',           nameEn: 'Ba Be Lake',           lat: 22.3987, lng: 105.6368, cat: 'lake',      img: 'assets/images/babe-lake.jpg' },
+  { id: 'puong-cave',         name: 'Động Puông',          nameEn: 'Puong Cave',           lat: 22.3760, lng: 105.6295, cat: 'cave',      img: 'assets/images/puong-cave.jpg' },
+  { id: 'dau-dang-waterfall', name: 'Thác Đầu Đẳng',      nameEn: 'Dau Dang Waterfall',   lat: 22.3550, lng: 105.6150, cat: 'waterfall', img: 'assets/images/dau-dang-waterfall.jpg' },
+  { id: 'hua-ma-cave',        name: 'Động Hua Mạ',         nameEn: 'Hua Ma Cave',          lat: 22.4200, lng: 105.7000, cat: 'cave',      img: 'assets/images/hua-ma-cave.jpg' },
+  // Central-South Cluster
+  { id: 'tan-cuong-tea-hills',name: 'Đồi Chè Tân Cương',  nameEn: 'Tan Cuong Tea Hills',  lat: 21.6421, lng: 105.7533, cat: 'tea',       img: 'assets/images/tan-cuong-tea.jpg' },
+  { id: 'nui-coc-lake',       name: 'Hồ Núi Cốc',         nameEn: 'Nui Coc Lake',         lat: 21.7245, lng: 105.6612, cat: 'lake',      img: 'assets/images/nui-coc-lake.jpg' },
+  { id: 'hang-pagoda',        name: 'Chùa Hang',           nameEn: 'Hang Pagoda',          lat: 21.5940, lng: 105.8356, cat: 'temple',    img: 'assets/images/chua-hang.jpg' },
+  { id: 'duom-temple',        name: 'Đền Đuổm',            nameEn: 'Duom Temple',          lat: 21.8731, lng: 105.8012, cat: 'temple',    img: 'assets/images/den-duom.jpg' },
+  // Dai Tu - Dinh Hoa Cluster
+  { id: 'atk-dinh-hoa',       name: 'ATK Định Hóa',        nameEn: 'ATK Dinh Hoa',         lat: 21.9980, lng: 105.6042, cat: 'temple',    img: 'assets/images/atk-dinh-hoa.jpg' },
+  { id: 'cua-tu-stream',      name: 'Suối Cửa Tử',         nameEn: 'Cua Tu Stream',        lat: 21.8200, lng: 105.5800, cat: 'waterfall', img: 'assets/images/cua-tu-stream.jpg' },
+  { id: 'na-dang-waterfall',  name: 'Thác Na Đắng',        nameEn: 'Na Dang Waterfall',    lat: 22.0150, lng: 105.5600, cat: 'waterfall', img: 'assets/images/na-dang-waterfall.jpg' },
+];
+
+const CAT_COLORS = {
+  lake:      { bg: '#3b82f6', text: '#1e3a8a', label: 'Hồ & Sông', labelEn: 'Lake & River' },
+  cave:      { bg: '#8b5cf6', text: '#3b0764', label: 'Hang động', labelEn: 'Caves' },
+  waterfall: { bg: '#06b6d4', text: '#0c4a6e', label: 'Thác nước', labelEn: 'Waterfalls' },
+  tea:       { bg: '#10b981', text: '#064e3b', label: 'Vùng chè', labelEn: 'Tea Plantations' },
+  temple:    { bg: '#f59e0b', text: '#78350f', label: 'Đền, chùa & Di tích', labelEn: 'Temples & Heritage' },
+  trekking:  { bg: '#ef4444', text: '#7f1d1d', label: 'Trekking', labelEn: 'Trekking Trails' },
+};
+
+function makeMarkerIcon(cat) {
+  const c = CAT_COLORS[cat] || CAT_COLORS.temple;
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
+    <ellipse cx="16" cy="38" rx="6" ry="2.5" fill="rgba(0,0,0,0.2)"/>
+    <path d="M16 0C9.37 0 4 5.37 4 12c0 8 12 24 12 24S28 20 28 12C28 5.37 22.63 0 16 0z" fill="${c.bg}" stroke="#ffffff" stroke-width="2"/>
+    <circle cx="16" cy="13" r="6" fill="#ffffff" opacity="0.95"/>
+  </svg>`;
+  return L.divIcon({
+    html: svg,
+    className: '',
+    iconSize: [32, 40],
+    iconAnchor: [16, 40],
+    popupAnchor: [0, -38],
+  });
+}
+
+let tnMap = null;
+
+function initInteractiveMap() {
+  const mapEl = document.getElementById('tn-map');
+  if (!mapEl || !window.L) return;
+  if (tnMap) return;
+
+  tnMap = L.map('tn-map', {
+    center: [21.95, 105.68],
+    zoom: 9,
+    scrollWheelZoom: false,
+    attributionControl: true,
+  });
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
+  }).addTo(tnMap);
+
+  const clusters = (window.L && window.L.markerClusterGroup)
+    ? L.markerClusterGroup({
+        spiderfyOnMaxZoom: true,
+        showCoverageOnHover: false,
+        zoomToBoundsOnClick: true,
+        maxClusterRadius: 55,
+      })
+    : L.featureGroup();
+
+  MAP_POINTS.forEach(pt => {
+    const marker = L.marker([pt.lat, pt.lng], { icon: makeMarkerIcon(pt.cat), title: pt.name });
+    const catInfo = CAT_COLORS[pt.cat] || CAT_COLORS.temple;
+    const catLabel = state.lang === 'vi' ? catInfo.label : catInfo.labelEn;
+    const ptTitle = state.lang === 'vi' ? pt.name : pt.nameEn;
+    const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${pt.lat},${pt.lng}`;
+    const dest = DESTINATIONS.find(d => d.id === pt.id);
+
+    const descSnippet = dest
+      ? (state.lang === 'vi' ? dest.descVi : dest.descEn).substring(0, 95) + '...'
+      : '';
+
+    const popupHtml = `
+      <div style="font-family:'Plus Jakarta Sans',sans-serif;width:220px;padding:2px;">
+        <div style="border-radius:12px;overflow:hidden;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+          <img src="${pt.img}" alt="${ptTitle}" style="width:100%;height:110px;object-fit:cover;display:block;" onerror="this.style.display='none'">
+        </div>
+        <span style="display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;background:${catInfo.bg}20;color:${catInfo.bg};border:1px solid ${catInfo.bg}40;margin-bottom:5px;">${catLabel}</span>
+        <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px;line-height:1.25;">${ptTitle}</div>
+        ${descSnippet ? `<div style="font-size:11px;color:#64748b;line-height:1.45;margin-bottom:8px;">${descSnippet}</div>` : ''}
+        <div style="display:flex;gap:6px;margin-top:6px;">
+          ${dest ? `<button onclick="closeMapPopup();openDestinationModal('${pt.id}')" style="flex:1;padding:7px 8px;background:#065f46;color:#ffffff;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;">${state.lang==='vi'?'Chi tiết':'Details'}</button>` : ''}
+          <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" style="flex:1;padding:7px 8px;background:#0f172a;color:#ffffff;border-radius:8px;font-size:11px;font-weight:700;text-decoration:none;text-align:center;display:block;">${state.lang==='vi'?'Dẫn đường':'Navigate'}</a>
+        </div>
+      </div>
+    `;
+    marker.bindPopup(popupHtml, { maxWidth: 240, minWidth: 220 });
+    clusters.addLayer(marker);
+  });
+
+  tnMap.addLayer(clusters);
+
+  // Province Boundary Center Tag
+  L.marker([22.08, 105.7], {
+    icon: L.divIcon({
+      html: '<div style="background:rgba(6,95,70,0.9);color:#ffffff;border:1px solid #10b981;border-radius:999px;padding:3px 12px;font-size:10px;font-weight:800;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,0.15);letter-spacing:0.5px;">THÁI NGUYÊN · 8.375 KM²</div>',
+      className: '',
+      iconAnchor: [80, 12],
+    })
+  }).addTo(tnMap);
+
+  setTimeout(() => { if (tnMap) tnMap.invalidateSize(); }, 400);
+}
+
+function closeMapPopup() {
+  if (tnMap) tnMap.closePopup();
+}
+
+// ============================================================
+// SMART TOUR COST CALCULATOR
+// ============================================================
+const COST_TABLE = {
+  budget: {
+    perDay: { transport: 120000, food: 160000, activities: 90000, guide: 0 },
+    perNight: { accommodation: 250000 },
+    groupDiscount: { 1: 1.0, 2: 0.95, 4: 0.90, 8: 0.82 },
+  },
+  standard: {
+    perDay: { transport: 290000, food: 360000, activities: 190000, guide: 150000 },
+    perNight: { accommodation: 650000 },
+    groupDiscount: { 1: 1.0, 2: 0.92, 4: 0.85, 8: 0.78 },
+  },
+  premium: {
+    perDay: { transport: 650000, food: 850000, activities: 450000, guide: 450000 },
+    perNight: { accommodation: 1900000 },
+    groupDiscount: { 1: 1.0, 2: 0.90, 4: 0.80, 8: 0.72 },
+  },
+};
+
+function formatVND(n) {
+  if (n >= 1000000) {
+    const mil = n / 1000000;
+    return mil.toFixed(1).replace(/\.0$/, '') + ' triệu ₫';
+  }
+  return n.toLocaleString('vi-VN') + ' ₫';
+}
+
+function updateCalculator() {
+  const daysEl   = document.getElementById('calc-days');
+  const pplEl    = document.getElementById('calc-people');
+  const styleEl  = document.getElementById('calc-style');
+  if (!daysEl || !pplEl || !styleEl) return;
+
+  const days   = parseInt(daysEl.value || 2);
+  const people = parseInt(pplEl.value || 2);
+  const style  = styleEl.value || 'standard';
+
+  const tbl = COST_TABLE[style] || COST_TABLE.standard;
+  const nights = Math.max(0, days - 1);
+
+  const discountKeys = [1, 2, 4, 8];
+  const closestKey = discountKeys.reduce((prev, curr) =>
+    Math.abs(curr - people) < Math.abs(prev - people) ? curr : prev
+  );
+  const discount = tbl.groupDiscount[closestKey] || 1.0;
+
+  const transport     = Math.round(tbl.perDay.transport    * days   * people * discount);
+  const food          = Math.round(tbl.perDay.food         * days   * people * discount);
+  const activities    = Math.round(tbl.perDay.activities   * days   * people * discount);
+  const guide         = Math.round(tbl.perDay.guide        * days            * discount);
+  const accommodation = Math.round(tbl.perNight.accommodation * nights * Math.ceil(people / 2) * discount);
+  const total         = transport + accommodation + food + activities + guide;
+
+  const breakdown = document.getElementById('calc-breakdown');
+  if (breakdown) {
+    const isVi = state.lang === 'vi';
+    const rows = [
+      {
+        label: isVi ? 'Phương tiện di chuyển (xe đưa đón, xăng xe)' : 'Transportation (Transfers, Fuel)',
+        icon: 'M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10m14 0h2m-2 0H9m4 0a2 2 0 100-4 2 2 0 000 4z',
+        value: transport,
+        pct: total ? Math.round(transport / total * 100) : 0,
+        color: 'bg-blue-500',
+      },
+      {
+        label: isVi ? `Lưu trú (${nights} đêm - Khách sạn / Homestay)` : `Accommodation (${nights} nights)`,
+        icon: 'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
+        value: accommodation,
+        pct: total ? Math.round(accommodation / total * 100) : 0,
+        color: 'bg-purple-500',
+      },
+      {
+        label: isVi ? 'Ẩm thực & Thưởng trà (3 bữa/ngày)' : 'Dining & Tea Experiences (3 meals/day)',
+        icon: 'M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4',
+        value: food,
+        pct: total ? Math.round(food / total * 100) : 0,
+        color: 'bg-amber-500',
+      },
+      {
+        label: isVi ? 'Vé tham quan, du thuyền Ba Bể & trải nghiệm' : 'Attraction Tickets & Ba Be Boat Cruises',
+        icon: 'M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7',
+        value: activities,
+        pct: total ? Math.round(activities / total * 100) : 0,
+        color: 'bg-emerald-500',
+      },
+      {
+        label: isVi ? 'Hướng dẫn viên địa phương & Bảo hiểm du lịch' : 'Local Guide & Travel Insurance',
+        icon: 'M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z',
+        value: guide,
+        pct: total ? Math.round(guide / total * 100) : 0,
+        color: 'bg-rose-500',
+      },
+    ];
+
+    breakdown.innerHTML = rows.map(row => `
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-lg bg-slate-800 flex items-center justify-center shrink-0 border border-slate-700/60">
+          <svg class="w-3.5 h-3.5 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="${row.icon}"/></svg>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="flex justify-between items-center mb-1">
+            <span class="text-xs text-slate-300 font-medium truncate">${row.label}</span>
+            <span class="text-xs font-bold text-white ml-2 shrink-0 font-mono">${formatVND(row.value)}</span>
+          </div>
+          <div class="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+            <div class="${row.color} h-full rounded-full transition-all duration-700" style="width:${row.pct}%"></div>
+          </div>
+        </div>
+        <span class="text-[10px] text-slate-400 font-mono w-7 text-right shrink-0">${row.pct}%</span>
+      </div>
+    `).join('');
+  }
+
+  const totalEl = document.getElementById('calc-total');
+  const ppEl    = document.getElementById('calc-per-person');
+  if (totalEl) totalEl.textContent = formatVND(total);
+  if (ppEl) {
+    const isVi = state.lang === 'vi';
+    ppEl.textContent = people > 1
+      ? (isVi ? `(~${formatVND(Math.round(total / people))} / người)` : `(~${formatVND(Math.round(total / people))} / person)`)
+      : (isVi ? '(Giá trọn gói 1 khách)' : '(Solo package)');
+  }
+
+  window._lastCalcData = { days, people, style, total, transport, accommodation, food, activities, guide, nights };
+}
+
+function exportCalcICS() {
+  const data = window._lastCalcData;
+  if (!data) return;
+
+  const today = new Date();
+  const startDate = new Date(today);
+  startDate.setDate(today.getDate() + 14); // default 2 weeks ahead
+
+  function fmtICSDate(d) {
+    return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+
+  const events = [];
+  const itineraries = [
+    { title: 'Ngày 1: Đồi Chè Tân Cương & Khám Phá Cổ Tự', desc: 'Thưởng trà Tân Cương, chiêm bái Đền Đuổm, du thuyền Hồ Núi Cốc.' },
+    { title: 'Ngày 2: Kỳ Quan Hồ Ba Bể & Động Puông', desc: 'Du thuyền sông Năng, vòm karst động Puông, ghé thác Đầu Đẳng, nghỉ đêm bản Pác Ngòi.' },
+    { title: 'Ngày 3: Thánh Đường Hua Mạ & Thủ Đô Gió Ngàn ATK', desc: 'Thạch nhũ Hua Mạ, lán Tỉn Keo, di tích ATK Định Hóa và mua sắm đặc sản chè.' },
+    { title: 'Ngày 4: Trekking Suối Cửa Tử & Rừng Nguyên Sinh', desc: 'Khám phá thiên nhiên hoang sơ Đại Từ, ngâm suối nước trong vắt.' },
+    { title: 'Ngày 5: Khám Phá Làng Nghề & Trở Về', desc: 'Học sao chè truyền thống và khởi hành về Hà Nội.' },
+  ];
+
+  for (let i = 0; i < data.days; i++) {
+    const d = new Date(startDate);
+    d.setDate(startDate.getDate() + i);
+    d.setHours(8, 0, 0);
+
+    const nextD = new Date(d);
+    nextD.setHours(18, 0, 0);
+
+    const item = itineraries[i] || { title: `Ngày ${i + 1}: Khám Phá Thái Nguyên`, desc: 'Hành trình trải nghiệm văn hóa và cảnh quan thiên nhiên.' };
+
+    events.push(`BEGIN:VEVENT
+DTSTART:${fmtICSDate(d)}
+DTEND:${fmtICSDate(nextD)}
+SUMMARY:${item.title}
+DESCRIPTION:${item.desc} | Đoàn: ${data.people} khách | Dự toán: ${formatVND(data.total)}
+LOCATION:Thai Nguyen Province, Vietnam
+STATUS:CONFIRMED
+END:VEVENT`);
+  }
+
+  const icsContent = `BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Thai Nguyen Tourism Portal//Official 2026//VI
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Du Lịch Thái Nguyên (${data.days}N${data.nights}Đ)
+${events.join('\n')}
+END:VCALENDAR`;
+
+  const blob = new Blob([icsContent], { type: 'text/calendar;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `du-lich-thai-nguyen-${data.days}ngay-${data.people}nguoi.ics`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast(state.lang === 'vi' ? 'Đã xuất file lịch .ics thành công!' : 'Exported calendar .ics successfully!');
+}
+
+function printTourGuide() {
+  const data = window._lastCalcData;
+  const style = data ? data.style : 'standard';
+  const stylesVi = { budget: 'Tiết kiệm', standard: 'Tiêu chuẩn', premium: 'Cao cấp' };
+  const days = data ? data.days : 2;
+  const nights = data ? data.nights : 1;
+  const people = data ? data.people : 2;
+
+  const printWin = window.open('', '_blank');
+  if (!printWin) {
+    showToast(state.lang === 'vi' ? 'Trình duyệt chặn mở popup. Vui lòng cho phép popup.' : 'Popup was blocked by browser.');
+    return;
+  }
+
+  printWin.document.write(`<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cẩm Nang Du Lịch Thái Nguyên 2026</title>
+  <style>
+    body { font-family: 'Times New Roman', Georgia, serif; margin: 40px; color: #111; line-height: 1.6; }
+    .header { border-bottom: 3px double #065f46; padding-bottom: 12px; margin-bottom: 24px; text-align: center; }
+    h1 { color: #065f46; font-size: 24px; margin: 0 0 6px 0; text-transform: uppercase; letter-spacing: 1px; }
+    .sub { color: #555; font-size: 13px; font-style: italic; }
+    h2 { color: #064e3b; font-size: 16px; margin-top: 24px; border-bottom: 1px solid #cbd5e1; padding-bottom: 4px; }
+    .meta-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; font-size: 13px; margin-bottom: 20px; }
+    .cost-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 10px; }
+    .cost-table th, .cost-table td { padding: 8px 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
+    .cost-table th { background: #f1f5f9; font-weight: bold; }
+    .cost-table td:last-child { text-align: right; font-weight: bold; }
+    .total-row td { font-size: 15px; color: #065f46; font-weight: bold; border-top: 2px solid #065f46; border-bottom: 2px solid #065f46; }
+    .highlights { font-size: 13px; }
+    .highlights li { margin-bottom: 6px; }
+    .footer { margin-top: 36px; border-top: 1px solid #e2e8f0; padding-top: 12px; font-size: 11px; color: #64748b; text-align: center; }
+    @media print { body { margin: 20px; } }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Cẩm Nang &amp; Kế Hoạch Du Lịch Thái Nguyên</h1>
+    <div class="sub">Tỉnh Thái Nguyên Mới (Sau Sáp Nhập 2025) · Cổng Thông Tin Chính Thức 2026</div>
+  </div>
+
+  <div class="meta-box">
+    <strong>Thời gian:</strong> ${days} Ngày / ${nights} Đêm &nbsp;|&nbsp;
+    <strong>Đoàn:</strong> ${people} khách &nbsp;|&nbsp;
+    <strong>Phong cách:</strong> ${stylesVi[style] || 'Tiêu chuẩn'} &nbsp;|&nbsp;
+    <strong>Ngày lập:</strong> ${new Date().toLocaleDateString('vi-VN')}
+  </div>
+
+  <h2>1. Dự Toán Chi Phí Trọn Gói Dự Kiến</h2>
+  ${data ? `
+  <table class="cost-table">
+    <thead>
+      <tr>
+        <th>Hạng mục chi phí</th>
+        <th style="text-align:right;">Số tiền</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Phương tiện di chuyển (xe đón/tiễn, xăng xe)</td><td>${formatVND(data.transport)}</td></tr>
+      <tr><td>Lưu trú (${nights} đêm - Khách sạn / Homestay)</td><td>${formatVND(data.accommodation)}</td></tr>
+      <tr><td>Ẩm thực (3 bữa chính/ngày + đặc sản trà)</td><td>${formatVND(data.food)}</td></tr>
+      <tr><td>Vé tham quan, du thuyền Hồ Ba Bể & hoạt động</td><td>${formatVND(data.activities)}</td></tr>
+      <tr><td>Hướng dẫn viên địa phương & bảo hiểm</td><td>${formatVND(data.guide)}</td></tr>
+      <tr class="total-row"><td>TỔNG CỘNG DỰ TOÁN</td><td>${formatVND(data.total)}</td></tr>
+    </tbody>
+  </table>
+  <div style="font-size:12px;color:#64748b;margin-top:6px;text-align:right;">
+    Tương đương ~<strong>${formatVND(Math.round(data.total / people))}</strong> / người
+  </div>
+  ` : ''}
+
+  <h2>2. Điểm Đến Không Thể Bỏ Lỡ</h2>
+  <ul class="highlights">
+    <li><strong>Hồ Ba Bể:</strong> Top 20 hồ nước ngọt tự nhiên karst lớn nhất thế giới, khu Ramsar quốc tế.</li>
+    <li><strong>Động Puông:</strong> Hang sông ngầm dài 300m luồn qua lòng núi đá vôi hùng vĩ.</li>
+    <li><strong>Đồi chè Tân Cương:</strong> Đệ nhất danh trà Việt Nam với những nương chè mâm xôi uốn lượn.</li>
+    <li><strong>Đền Đuổm:</strong> Cổ tự nghìn năm thờ Dương Tự Minh, kiến trúc thuần Việt dưới chân núi Điểm Sơn.</li>
+    <li><strong>ATK Định Hóa:</strong> Di tích quốc gia đặc biệt Thủ đô Gió ngàn kháng chiến.</li>
+  </ul>
+
+  <h2>3. Liên Hệ Hỗ Trợ Khẩn Cấp</h2>
+  <p style="font-size:12px;margin:4px 0;">
+    Cấp cứu: <strong>115</strong> | Công an: <strong>113</strong> | PCCC: <strong>114</strong><br>
+    Bệnh viện Đa khoa TW Thái Nguyên: <strong>0208 3855 125</strong> | BV Đa khoa Bắc Kạn: <strong>0209 3870 115</strong>
+  </p>
+
+  <div class="footer">
+    Trích xuất từ Cổng Thông Tin Du Lịch Thái Nguyên (thainguyen.gov.vn) · Bản quyền 2026.
+  </div>
+</body>
+</html>`);
+
+  printWin.document.close();
+  printWin.focus();
+  setTimeout(() => {
+    printWin.print();
+  }, 400);
+}
+
+function shareCalcResult() {
+  const data = window._lastCalcData;
+  const isVi = state.lang === 'vi';
+  const text = data
+    ? (isVi
+        ? `Cẩm nang Du lịch Thái Nguyên (${data.days}N${data.nights}Đ - ${data.people} khách) - Dự toán: ${formatVND(data.total)} (~${formatVND(Math.round(data.total / data.people))}/người).
+Khám phá tại: https://thaopxtn.github.io/thai-nguyen-tourism/`
+        : `Thai Nguyen Travel Plan (${data.days}D${data.nights}N - ${data.people} pax) - Estimate: ${formatVND(data.total)}.
+Explore: https://thaopxtn.github.io/thai-nguyen-tourism/`)
+    : 'Khám phá du lịch Thái Nguyên 2026: https://thaopxtn.github.io/thai-nguyen-tourism/';
+
+  if (navigator.share) {
+    navigator.share({
+      title: 'Du Lịch Thái Nguyên 2026',
+      text: text,
+      url: 'https://thaopxtn.github.io/thai-nguyen-tourism/'
+    }).catch(() => {
+      copyToClipboard(text, isVi ? 'Đã sao chép liên kết chia sẻ!' : 'Copied share text!');
+    });
+  } else {
+    copyToClipboard(text, isVi ? 'Đã sao chép kế hoạch và dự toán vào clipboard!' : 'Copied plan & budget to clipboard!');
+  }
+}
+
+// Global window exposure
+window.initInteractiveMap = initInteractiveMap;
+window.closeMapPopup = closeMapPopup;
+window.updateCalculator = updateCalculator;
+window.exportCalcICS = exportCalcICS;
+window.printTourGuide = printTourGuide;
+window.shareCalcResult = shareCalcResult;
