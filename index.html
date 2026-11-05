@@ -6,6 +6,11 @@
   <title>Cẩm Nang Du Lịch Thái Nguyên | Official Travel Portal 2026</title>
   <meta name="description" content="Cổng thông tin du lịch chính thức tỉnh Thái Nguyên mới (sáp nhập Thái Nguyên và Bắc Kạn năm 2025). Khám phá hồ Ba Bể, đồi chè Tân Cương, động Puông, cổ tự và di sản văn hóa Tày - Nùng.">
 
+    <!-- Apple Typography Engine (SF Pro / Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -31,9 +36,10 @@
             }
           },
           fontFamily: {
-            heading: ['"Outfit"', 'system-ui', 'sans-serif'],
-            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            serif: ['"Playfair Display"', 'Georgia', 'serif']
+            heading: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro"', '"Inter"', 'system-ui', 'sans-serif'],
+            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro"', '"Inter"', 'system-ui', 'sans-serif'],
+            serif: ['"New York"', 'Georgia', 'serif'],
+            mono: ['"SF Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace']
           }
         }
       }
@@ -41,7 +47,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110506">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110507">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -1170,23 +1176,57 @@
       </div>
     </section>
 
-    <!-- CHAPTER 10b: INTERACTIVE DESTINATION MAP -->
+    <!-- CHAPTER 10b: REALISTIC SATELLITE & DESTINATION MAP -->
     <section id="interactive-map" class="scroll-mt-28">
-      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 mb-5">
         <div>
-          <span class="text-xs font-mono uppercase tracking-widest text-emerald-700 font-bold mb-2 block">10b • Bản Đồ Du Lịch</span>
-          <h2 class="text-2xl sm:text-3xl font-heading font-black text-slate-900 leading-tight" data-en="Interactive Destination Map" data-vi="Bản Đồ Điểm Đến Tương Tác">Bản Đồ Điểm Đến Tương Tác</h2>
-          <p class="text-slate-500 text-sm mt-1 font-light" data-en="Explore 11 prominent attractions with interactive markers, photos, and direct GPS navigation." data-vi="Khám phá 11 điểm đến tiêu biểu với đánh dấu trực quan, ảnh thực địa và dẫn đường GPS.">Khám phá 11 điểm đến tiêu biểu với đánh dấu trực quan, ảnh thực địa và dẫn đường GPS.</p>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-800 font-bold mb-1.5 block">10b • Không Gian Địa Lý Thực Tế</span>
+          <h2 class="text-2xl sm:text-3xl font-heading font-black text-slate-900 tracking-tight" data-en="Realistic Satellite &amp; Destination Map" data-vi="Bản Đồ Vệ Tinh Thực Tế &amp; Điểm Đến">Bản Đồ Vệ Tinh Thực Tế &amp; Điểm Đến</h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1 font-light" data-en="High-resolution satellite imagery revealing karst mountains, Ba Be Lake, and rolling tea hills." data-vi="Ảnh chụp vệ tinh độ phân giải cao thấy rõ non nước hồ Ba Bể, vách đá karst và những nương chè bát úp.">Ảnh chụp vệ tinh độ phân giải cao thấy rõ non nước hồ Ba Bể, vách đá karst và những nương chè bát úp.</p>
         </div>
-        <div class="flex gap-2 flex-wrap text-xs font-mono">
-          <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>Hồ &amp; Sông</span>
-          <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>Hang động</span>
-          <span class="px-2.5 py-1 rounded-full bg-cyan-100 text-cyan-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-cyan-500 inline-block"></span>Thác nước</span>
-          <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>Vùng chè</span>
-          <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-800 font-bold flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>Đền, chùa &amp; Di tích</span>
+
+        <!-- Apple Style Map Controls Bar -->
+        <div class="flex flex-wrap items-center gap-2">
+          
+          <!-- Layer Switcher Pills -->
+          <div class="inline-flex p-1 bg-slate-200/80 backdrop-blur-md rounded-2xl border border-slate-300/80 text-xs font-medium font-sans shadow-inner">
+            <button onclick="setMapLayer('satellite')" id="btn-layer-satellite" class="map-layer-btn active px-3.5 py-1.5 rounded-xl transition cursor-pointer font-semibold flex items-center gap-1.5">
+              <span>🛰️</span>
+              <span>Vệ Tinh</span>
+            </button>
+            <button onclick="setMapLayer('terrain')" id="btn-layer-terrain" class="map-layer-btn px-3.5 py-1.5 rounded-xl transition cursor-pointer font-semibold flex items-center gap-1.5">
+              <span>⛰️</span>
+              <span>Địa Hình</span>
+            </button>
+            <button onclick="setMapLayer('streets')" id="btn-layer-streets" class="map-layer-btn px-3.5 py-1.5 rounded-xl transition cursor-pointer font-semibold flex items-center gap-1.5">
+              <span>🗺️</span>
+              <span>Đường Phố</span>
+            </button>
+          </div>
+
+          <!-- Quick Action Buttons -->
+          <button onclick="locateUserPosition()" class="p-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 shadow-sm text-slate-700 transition cursor-pointer flex items-center gap-1.5 text-xs font-medium" title="Vị trí của tôi">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>
+            <span class="hidden sm:inline">Vị trí</span>
+          </button>
+
+          <button onclick="resetMapView()" class="p-2.5 rounded-2xl bg-white hover:bg-slate-50 border border-slate-200 shadow-sm text-slate-700 transition cursor-pointer text-xs font-medium" title="Toàn cảnh tỉnh Thái Nguyên">
+            <span>🔄 Toàn cảnh</span>
+          </button>
         </div>
       </div>
-      <div id="tn-map" class="w-full rounded-3xl overflow-hidden border border-slate-200 shadow-xl" style="height: 520px; z-index: 0;"></div>
+
+      <!-- Categories Indicator Legend -->
+      <div class="flex gap-2 flex-wrap text-[11px] font-mono mb-3">
+        <span class="px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-200 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-blue-500 inline-block"></span>Hồ &amp; Sông</span>
+        <span class="px-2.5 py-1 rounded-full bg-purple-50 text-purple-800 border border-purple-200 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-purple-500 inline-block"></span>Hang động Karst</span>
+        <span class="px-2.5 py-1 rounded-full bg-cyan-50 text-cyan-800 border border-cyan-200 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-cyan-500 inline-block"></span>Thác nước &amp; Suối</span>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500 inline-block"></span>Vùng chè</span>
+        <span class="px-2.5 py-1 rounded-full bg-amber-50 text-amber-800 border border-amber-200 font-bold flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500 inline-block"></span>Đền, chùa &amp; Di tích</span>
+      </div>
+
+      <!-- Map Display Canvas with Apple Squircle Border -->
+      <div id="tn-map" class="w-full rounded-3xl overflow-hidden border border-slate-300/80 shadow-2xl relative" style="height: 560px; z-index: 0;"></div>
     </section>
 
     <!-- CHAPTER 10c: SMART TOUR COST CALCULATOR -->
@@ -1399,6 +1439,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110506"></script>
+  <script src="assets/js/app.js?v=2026110507"></script>
 </body>
 </html>

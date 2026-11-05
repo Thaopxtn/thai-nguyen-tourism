@@ -295,3 +295,69 @@ button, a {
   text-decoration: line-through;
   color: #64748b;
 }
+
+/* ============================================================
+   APPLE DESIGN SYSTEM TYPOGRAPHY & MAP CONTROLS
+   Inspired by Apple Human Interface Guidelines & Apple Maps
+   ============================================================ */
+
+/* Global Apple Typography */
+body, input, textarea, select, button {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Inter", -system-ui, sans-serif !important;
+  letter-spacing: -0.011em !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  text-rendering: optimizeLegibility !important;
+}
+
+h1, h2, h3, h4, h5, h6, .font-heading {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Inter", -system-ui, sans-serif !important;
+  letter-spacing: -0.025em !important;
+  font-weight: 700 !important;
+}
+
+h1 {
+  letter-spacing: -0.038em !important;
+}
+
+/* Apple Maps Layer Controls */
+.map-layer-btn {
+  color: #6e6e73;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.map-layer-btn.active {
+  background-color: #ffffff !important;
+  color: #1d1d1f !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08) !important;
+}
+
+.map-layer-btn:hover:not(.active) {
+  color: #1d1d1f;
+}
+
+/* Apple Glassmorphic Map Popup */
+.leaflet-popup-content-wrapper {
+  border-radius: 20px !important;
+  backdrop-filter: blur(25px) !important;
+  -webkit-backdrop-filter: blur(25px) !important;
+  background: rgba(255, 255, 255, 0.96) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8) !important;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.25) !important;
+  padding: 4px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.96) !important;
+}
+
+/* Apple Style Travel Cards */
+.travel-card {
+  border-radius: 24px !important;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.travel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
+}

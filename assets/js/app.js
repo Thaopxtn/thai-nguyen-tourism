@@ -1400,17 +1400,23 @@ const CAT_COLORS = {
 
 function makeMarkerIcon(cat) {
   const c = CAT_COLORS[cat] || CAT_COLORS.temple;
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="40" viewBox="0 0 32 40">
-    <ellipse cx="16" cy="38" rx="6" ry="2.5" fill="rgba(0,0,0,0.2)"/>
-    <path d="M16 0C9.37 0 4 5.37 4 12c0 8 12 24 12 24S28 20 28 12C28 5.37 22.63 0 16 0z" fill="${c.bg}" stroke="#ffffff" stroke-width="2"/>
-    <circle cx="16" cy="13" r="6" fill="#ffffff" opacity="0.95"/>
+  // Apple Maps Style Pin with drop shadow and glossy center
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="36" height="46" viewBox="0 0 36 46">
+    <defs>
+      <filter id="applePinShadow" x="-30%" y="-20%" width="160%" height="160%">
+        <feDropShadow dx="0" dy="4" stdDeviation="3.5" flood-color="rgba(0,0,0,0.45)"/>
+      </filter>
+    </defs>
+    <path d="M18 0C8.06 0 0 8.06 0 18c0 13.5 18 28 18 28s18-14.5 18-28C36 8.06 27.94 0 18 0z" fill="${c.bg}" stroke="#ffffff" stroke-width="2.2" filter="url(#applePinShadow)"/>
+    <circle cx="18" cy="18" r="7.5" fill="#ffffff" opacity="0.98"/>
+    <circle cx="18" cy="18" r="4.2" fill="${c.bg}"/>
   </svg>`;
   return L.divIcon({
     html: svg,
     className: '',
-    iconSize: [32, 40],
-    iconAnchor: [16, 40],
-    popupAnchor: [0, -38],
+    iconSize: [36, 46],
+    iconAnchor: [18, 46],
+    popupAnchor: [0, -44],
   });
 }
 
@@ -1426,22 +1432,128 @@ function tryInitMap() {
   }
 }
 
+// Map Layers Storage
+let mapLayers = {
+  satellite: null,
+  satelliteLabels: null,
+  terrain: null,
+  streets: null
+};
+let currentMapLayer = 'satellite';
+let userLocationMarker = null;
+
+function setMapLayer(mode) {
+  if (!tnMap || !mapLayers.satellite) return;
+
+  // Remove active base layers
+  if (tnMap.hasLayer(mapLayers.satellite)) tnMap.removeLayer(mapLayers.satellite);
+  if (tnMap.hasLayer(mapLayers.satelliteLabels)) tnMap.removeLayer(mapLayers.satelliteLabels);
+  if (tnMap.hasLayer(mapLayers.terrain)) tnMap.removeLayer(mapLayers.terrain);
+  if (tnMap.hasLayer(mapLayers.streets)) tnMap.removeLayer(mapLayers.streets);
+
+  if (mode === 'satellite') {
+    mapLayers.satellite.addTo(tnMap);
+    mapLayers.satelliteLabels.addTo(tnMap);
+  } else if (mode === 'terrain') {
+    mapLayers.terrain.addTo(tnMap);
+  } else if (mode === 'streets') {
+    mapLayers.streets.addTo(tnMap);
+  }
+  currentMapLayer = mode;
+
+  // Update button active state
+  ['satellite', 'terrain', 'streets'].forEach(k => {
+    const btn = document.getElementById('btn-layer-' + k);
+    if (btn) {
+      if (k === mode) btn.classList.add('active');
+      else btn.classList.remove('active');
+    }
+  });
+
+  showToast(mode === 'satellite' ? 'Đang xem Bản đồ Vệ tinh thực tế' : (mode === 'terrain' ? 'Đang xem Bản đồ Địa hình thực địa' : 'Đang xem Bản đồ Đường phố'));
+}
+
+function locateUserPosition() {
+  if (!tnMap) return;
+
+  if (navigator.geolocation) {
+    showToast('Đang định vị vị trí GPS của bạn...');
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        const uLat = pos.coords.latitude;
+        const uLng = pos.coords.longitude;
+
+        if (userLocationMarker) tnMap.removeLayer(userLocationMarker);
+
+        // Apple Pulsing Blue Dot Marker
+        const userIcon = L.divIcon({
+          html: `<div style="position:relative;width:24px;height:24px;">
+            <div style="position:absolute;inset:0;background:rgba(0,113,227,0.3);border-radius:999px;animation:ping 1.5s cubic-bezier(0,0,0.2,1) infinite;"></div>
+            <div style="position:absolute;inset:3px;background:#0071e3;border:2.5px solid #ffffff;border-radius:999px;box-shadow:0 2px 6px rgba(0,0,0,0.4);"></div>
+          </div>`,
+          className: '',
+          iconSize: [24, 24],
+          iconAnchor: [12, 12]
+        });
+
+        userLocationMarker = L.marker([uLat, uLng], { icon: userIcon })
+          .bindPopup('<div style="font-weight:700;font-size:12px;color:#1d1d1f;padding:2px;">📍 Vị trí hiện tại của bạn</div>')
+          .addTo(tnMap);
+
+        // Fit view to include user and Thai Nguyen center
+        const bounds = L.latLngBounds([[uLat, uLng], [21.95, 105.68]]);
+        tnMap.fitBounds(bounds, { padding: [50, 50], maxZoom: 13 });
+        showToast('Đã định vị vị trí của bạn thành công!');
+      },
+      err => {
+        showToast('Không thể lấy GPS. Mặc định tính từ Thủ đô Hà Nội (~75 km tới Thái Nguyên).');
+        tnMap.flyTo([21.0285, 105.8542], 10);
+      },
+      { timeout: 7000 }
+    );
+  } else {
+    showToast('Trình duyệt không hỗ trợ Geolocation.');
+  }
+}
+
+function resetMapView() {
+  if (!tnMap) return;
+  tnMap.flyTo([21.95, 105.68], 9, { duration: 1.2 });
+}
+
 function initInteractiveMap() {
   const mapEl = document.getElementById('tn-map');
   if (!mapEl || !window.L) return;
   if (tnMap) return;
 
+  // Realistic Base Layers
+  mapLayers.satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: 'Tiles &copy; Esri &mdash; High-Resolution Satellite'
+  });
+
+  mapLayers.satelliteLabels = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19
+  });
+
+  mapLayers.terrain = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', {
+    maxZoom: 19,
+    attribution: 'Tiles &copy; Esri &mdash; Topographic Terrain'
+  });
+
+  mapLayers.streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; OpenStreetMap'
+  });
+
+  // Init map with REALISTIC SATELLITE as DEFAULT!
   tnMap = L.map('tn-map', {
     center: [21.95, 105.68],
     zoom: 9,
     scrollWheelZoom: false,
-    attributionControl: true,
+    attributionControl: false,
+    layers: [mapLayers.satellite, mapLayers.satelliteLabels]
   });
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
-  }).addTo(tnMap);
 
   const clusters = (window.L && window.L.markerClusterGroup)
     ? L.markerClusterGroup({
@@ -1464,38 +1576,41 @@ function initInteractiveMap() {
       ? (state.lang === 'vi' ? dest.descVi : dest.descEn).substring(0, 95) + '...'
       : '';
 
+    // Apple Style Glassmorphic Popup
     const popupHtml = `
-      <div style="font-family:'Plus Jakarta Sans',sans-serif;width:220px;padding:2px;">
-        <div style="border-radius:12px;overflow:hidden;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-          <img src="${pt.img}" alt="${ptTitle}" style="width:100%;height:110px;object-fit:cover;display:block;" onerror="this.style.display='none'">
+      <div style="font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Inter',sans-serif;width:230px;padding:3px;">
+        <div style="border-radius:14px;overflow:hidden;margin-bottom:8px;box-shadow:0 4px 12px rgba(0,0,0,0.15);">
+          <img src="${pt.img}" alt="${ptTitle}" style="width:100%;height:115px;object-fit:cover;display:block;" onerror="this.style.display='none'">
         </div>
-        <span style="display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:999px;background:${catInfo.bg}20;color:${catInfo.bg};border:1px solid ${catInfo.bg}40;margin-bottom:5px;">${catLabel}</span>
-        <div style="font-size:14px;font-weight:800;color:#0f172a;margin-bottom:4px;line-height:1.25;">${ptTitle}</div>
-        ${descSnippet ? `<div style="font-size:11px;color:#64748b;line-height:1.45;margin-bottom:8px;">${descSnippet}</div>` : ''}
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
+          <span style="display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:980px;background:${catInfo.bg}22;color:${catInfo.bg};letter-spacing:-0.01em;">${catLabel}</span>
+          <span style="font-size:10px;color:#86868b;font-family:monospace;">${pt.lat.toFixed(2)}°N</span>
+        </div>
+        <div style="font-size:15px;font-weight:800;color:#1d1d1f;letter-spacing:-0.02em;margin-bottom:4px;line-height:1.25;">${ptTitle}</div>
+        ${descSnippet ? `<div style="font-size:11.5px;color:#515154;line-height:1.45;margin-bottom:9px;font-weight:400;">${descSnippet}</div>` : ''}
         <div style="display:flex;gap:6px;margin-top:6px;">
-          ${dest ? `<button onclick="closeMapPopup();openDestinationModal('${pt.id}')" style="flex:1;padding:7px 8px;background:#065f46;color:#ffffff;border:none;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;">${state.lang==='vi'?'Chi tiết':'Details'}</button>` : ''}
-          <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" style="flex:1;padding:7px 8px;background:#0f172a;color:#ffffff;border-radius:8px;font-size:11px;font-weight:700;text-decoration:none;text-align:center;display:block;">${state.lang==='vi'?'Dẫn đường':'Navigate'}</a>
+          ${dest ? `<button onclick="closeMapPopup();openDestinationModal('${pt.id}')" style="flex:1;padding:8px 8px;background:#f5f5f7;color:#1d1d1f;border:1px solid #d2d2d7;border-radius:10px;font-size:11px;font-weight:700;cursor:pointer;transition:all 0.2s;">${state.lang==='vi'?'Chi tiết':'Details'}</button>` : ''}
+          <a href="${googleMapsUrl}" target="_blank" rel="noopener noreferrer" style="flex:1;padding:8px 8px;background:#0071e3;color:#ffffff;border-radius:10px;font-size:11px;font-weight:700;text-decoration:none;text-align:center;display:block;box-shadow:0 2px 6px rgba(0,113,227,0.3);transition:all 0.2s;">${state.lang==='vi'?'Dẫn đường':'Directions'}</a>
         </div>
       </div>
     `;
-    marker.bindPopup(popupHtml, { maxWidth: 240, minWidth: 220 });
+    marker.bindPopup(popupHtml, { maxWidth: 250, minWidth: 230 });
     clusters.addLayer(marker);
   });
 
   tnMap.addLayer(clusters);
 
-  // Province Boundary Center Tag
+  // Apple Pill Style Province Crest Badge
   L.marker([22.08, 105.7], {
     icon: L.divIcon({
-      html: '<div style="background:rgba(6,95,70,0.9);color:#ffffff;border:1px solid #10b981;border-radius:999px;padding:3px 12px;font-size:10px;font-weight:800;white-space:nowrap;box-shadow:0 4px 10px rgba(0,0,0,0.15);letter-spacing:0.5px;">THÁI NGUYÊN · 8.375 KM²</div>',
+      html: '<div style="background:rgba(29,29,31,0.85);backdrop-filter:blur(20px);color:#ffffff;border:1px solid rgba(255,255,255,0.25);border-radius:980px;padding:4px 14px;font-size:11px;font-weight:800;font-family:-apple-system,BlinkMacSystemFont,sans-serif;white-space:nowrap;box-shadow:0 8px 20px rgba(0,0,0,0.35);letter-spacing:0.5px;">THÁI NGUYÊN &bull; 8.375 KM²</div>',
       className: '',
-      iconAnchor: [80, 12],
+      iconAnchor: [85, 14],
     })
   }).addTo(tnMap);
 
   setTimeout(() => { if (tnMap) tnMap.invalidateSize(); }, 400);
 }
-
 function closeMapPopup() {
   if (tnMap) tnMap.closePopup();
 }
@@ -2034,3 +2149,7 @@ function updateBucketUI() {
 window.switchHeroScene = switchHeroScene;
 window.filterGallery = filterGallery;
 window.toggleBucketItem = toggleBucketItem;
+
+window.setMapLayer = setMapLayer;
+window.locateUserPosition = locateUserPosition;
+window.resetMapView = resetMapView;
