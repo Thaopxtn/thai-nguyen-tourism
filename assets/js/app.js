@@ -491,9 +491,10 @@ document.addEventListener('DOMContentLoaded', () => {
   setupEventListeners();
   setupAudioSynthesizer();
   setupScrollSpy();
-  initInteractiveMap();
+  tryInitMap();
   updateCalculator();
 });
+window.addEventListener('load', tryInitMap);
 
 // --- TRANSLATION / BILINGUAL ENGINE ---
 function setLanguage(lang) {
@@ -1412,6 +1413,16 @@ function makeMarkerIcon(cat) {
 }
 
 let tnMap = null;
+let mapRetries = 0;
+
+function tryInitMap() {
+  if (window.L) {
+    initInteractiveMap();
+  } else if (mapRetries < 30) {
+    mapRetries++;
+    setTimeout(tryInitMap, 250);
+  }
+}
 
 function initInteractiveMap() {
   const mapEl = document.getElementById('tn-map');
@@ -1804,6 +1815,7 @@ Explore: https://thaopxtn.github.io/thai-nguyen-tourism/`)
 
 // Global window exposure
 window.initInteractiveMap = initInteractiveMap;
+window.tryInitMap = tryInitMap;
 window.closeMapPopup = closeMapPopup;
 window.updateCalculator = updateCalculator;
 window.exportCalcICS = exportCalcICS;
