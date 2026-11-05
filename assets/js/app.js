@@ -493,6 +493,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupScrollSpy();
   tryInitMap();
   updateCalculator();
+  if (typeof initHeroCarousel === 'function') initHeroCarousel();
+  if (typeof initBucketList === 'function') initBucketList();
 });
 window.addEventListener('load', tryInitMap);
 
@@ -1849,3 +1851,186 @@ function closeImageLightbox() {
 
 window.openImageLightbox = openImageLightbox;
 window.closeImageLightbox = closeImageLightbox;
+
+// ============================================================
+// DYNAMIC HERO SCENE SWITCHER
+// ============================================================
+const HERO_SCENES = [
+  {
+    img: 'assets/images/hero-babe.jpg',
+    badge: 'Vườn Quốc Gia Ba Bể',
+    tag: 'Khu Ramsar Thế Giới No. 1938',
+    title: 'Non Nước Hồ Ba Bể',
+    desc: 'Viên ngọc bích phẳng lặng giữa rừng núi đá vôi karst nguyên sinh phía Bắc.',
+    loc: 'Hồ Ba Bể',
+    weather: '🌤️ 22°C • Tiết trời se mát'
+  },
+  {
+    img: 'assets/images/tan-cuong-tea.jpg',
+    badge: 'TP. Thái Nguyên',
+    tag: 'Đệ Nhất Danh Trà Đất Việt',
+    title: 'Nương Chè Bát Úp Tân Cương',
+    desc: 'Những thảm chè xanh mướt uốn lượn ngút ngàn, đượm hương cốm non sâu lắng.',
+    loc: 'Tân Cương',
+    weather: '☀️ 24°C • Nắng dịu trong lành'
+  },
+  {
+    img: 'assets/images/puong-cave.jpg',
+    badge: 'Khu Vực Ba Bể',
+    tag: 'Hang Karst Sông Ngầm',
+    title: 'Động Puông Kỳ Vĩ 300m',
+    desc: 'Vòm đá vôi sừng sững cao 30m luồn qua dãy núi Lũng Nham cùng dòng sông Năng.',
+    loc: 'Sông Năng',
+    weather: '☁️ 20°C • Không khí mát lạnh'
+  },
+  {
+    img: 'assets/images/cua-tu-stream.jpg',
+    badge: 'Huyện Đại Từ',
+    tag: 'Thiên Đường Trekking',
+    title: 'Hẻm Suối Cửa Tử Tam Đảo',
+    desc: 'Dòng nước trong vắt, 7 cửa ải đá dựng đứng và máng trượt đá tự nhiên ngoạn mục.',
+    loc: 'Đại Từ',
+    weather: '⛅ 23°C • Nước suối trong vắt'
+  }
+];
+
+let heroSceneIdx = 0;
+let heroTimer = null;
+
+function switchHeroScene(idx) {
+  heroSceneIdx = idx % HERO_SCENES.length;
+  const s = HERO_SCENES[heroSceneIdx];
+
+  const imgEl   = document.getElementById('hero-main-img');
+  const badgeEl = document.getElementById('hero-scene-badge');
+  const tagEl   = document.getElementById('hero-scene-tag');
+  const titleEl = document.getElementById('hero-scene-title');
+  const descEl  = document.getElementById('hero-scene-desc');
+  const locEl   = document.getElementById('hero-weather-loc');
+  const valEl   = document.getElementById('hero-weather-val');
+
+  if (imgEl) {
+    imgEl.style.opacity = '0.3';
+    setTimeout(() => {
+      imgEl.src = s.img;
+      imgEl.style.opacity = '1';
+    }, 150);
+  }
+
+  if (badgeEl) badgeEl.textContent = s.badge;
+  if (tagEl)   tagEl.textContent = s.tag;
+  if (titleEl) titleEl.textContent = s.title;
+  if (descEl)  descEl.textContent = s.desc;
+  if (locEl)   locEl.textContent = s.loc;
+  if (valEl)   valEl.textContent = s.weather;
+
+  document.querySelectorAll('.hero-thumb-btn').forEach(btn => {
+    const bIdx = parseInt(btn.getAttribute('data-idx'));
+    if (bIdx === heroSceneIdx) {
+      btn.classList.add('active', 'border-emerald-600');
+      btn.classList.remove('border-slate-200');
+    } else {
+      btn.classList.remove('active', 'border-emerald-600');
+      btn.classList.add('border-slate-200');
+    }
+  });
+}
+
+function initHeroCarousel() {
+  const container = document.getElementById('hero-carousel-container');
+  if (!container) return;
+
+  function start() {
+    if (heroTimer) clearInterval(heroTimer);
+    heroTimer = setInterval(() => {
+      switchHeroScene(heroSceneIdx + 1);
+    }, 5500);
+  }
+
+  container.addEventListener('mouseenter', () => {
+    if (heroTimer) clearInterval(heroTimer);
+  });
+  container.addEventListener('mouseleave', () => {
+    start();
+  });
+
+  start();
+}
+
+// ============================================================
+// GALLERY CATEGORY FILTER
+// ============================================================
+function filterGallery(cat) {
+  const items = document.querySelectorAll('.gallery-item');
+  items.forEach(item => {
+    const itemCat = item.getAttribute('data-gallery-cat');
+    if (cat === 'all' || itemCat === cat) {
+      item.classList.remove('hidden-item');
+    } else {
+      item.classList.add('hidden-item');
+    }
+  });
+
+  document.querySelectorAll('.gallery-tab-btn').forEach(btn => {
+    const onclickStr = btn.getAttribute('onclick') || '';
+    if (onclickStr.includes("'" + cat + "'")) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+}
+
+// ============================================================
+// MUST-DO BUCKET LIST CHECKLIST
+// ============================================================
+let bucketListState = JSON.parse(localStorage.getItem('tn_bucket_list') || '{}');
+
+function initBucketList() {
+  document.querySelectorAll('.bucket-checkbox').forEach(cb => {
+    const id = cb.getAttribute('data-id');
+    if (bucketListState[id]) {
+      cb.checked = true;
+    }
+  });
+  updateBucketUI();
+}
+
+function toggleBucketItem(id) {
+  const cb = document.querySelector(`.bucket-checkbox[data-id="${id}"]`);
+  if (!cb) return;
+
+  if (cb.checked) {
+    bucketListState[id] = true;
+    showToast('Đã thêm vào danh sách trải nghiệm của bạn!');
+  } else {
+    delete bucketListState[id];
+  }
+
+  localStorage.setItem('tn_bucket_list', JSON.stringify(bucketListState));
+  updateBucketUI();
+}
+
+function updateBucketUI() {
+  const total = 5;
+  const count = Object.keys(bucketListState).length;
+  const pct = Math.round((count / total) * 100);
+
+  const pctEl = document.getElementById('bucket-pct');
+  const barEl = document.getElementById('bucket-progress-bar');
+  const feedbackEl = document.getElementById('bucket-feedback');
+
+  if (pctEl) pctEl.textContent = pct + '%';
+  if (barEl) barEl.style.width = pct + '%';
+  if (feedbackEl) {
+    if (count === 0) feedbackEl.textContent = 'Đã chọn 0 / 5 trải nghiệm (Hãy chọn các điểm bạn muốn thử)';
+    else if (count < 3) feedbackEl.textContent = `Đã chọn ${count} / ${total} trải nghiệm — Khởi đầu tuyệt vời!`;
+    else if (count < 5) feedbackEl.textContent = `Đã chọn ${count} / ${total} trải nghiệm — Kế hoạch rất phong phú!`;
+    else feedbackEl.textContent = '🎉 100% Hoàn hảo! Bạn đã sẵn sàng cho chuyến đi tuyệt nhất năm 2026!';
+  }
+}
+
+// Global window assignments
+window.switchHeroScene = switchHeroScene;
+window.filterGallery = filterGallery;
+window.toggleBucketItem = toggleBucketItem;

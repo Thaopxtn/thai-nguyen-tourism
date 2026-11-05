@@ -41,7 +41,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110505">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110506">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -230,38 +230,56 @@
           </div>
         </div>
 
-        <!-- Right Hero Visual Showcase -->
-        <div class="lg:col-span-5 relative space-y-4">
-          <!-- Main Hero Image: Ba Be Lake -->
-          <div class="travel-card overflow-hidden p-2 group">
+        <!-- Right Hero Visual Showcase: Dynamic Interactive Switcher -->
+        <div class="lg:col-span-5 relative space-y-3" id="hero-carousel-container">
+          
+          <!-- Live Weather Pill -->
+          <div class="flex items-center justify-between px-3.5 py-2 bg-emerald-50 rounded-2xl border border-emerald-200/80 text-xs font-mono">
+            <span class="flex items-center gap-1.5 text-emerald-900 font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span id="hero-weather-loc">Ba Bể</span>
+            </span>
+            <span class="text-slate-600" id="hero-weather-val">🌤️ 22°C &bull; Tiết trời se mát</span>
+          </div>
+
+          <!-- Main Dynamic Slide Container -->
+          <div class="travel-card overflow-hidden p-2 group shadow-xl">
             <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden travel-photo-container">
-              <img src="assets/images/hero-babe.jpg" alt="Vườn Quốc gia Ba Bể" class="w-full h-full object-cover">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
+              <img id="hero-main-img" src="assets/images/hero-babe.jpg" alt="Thái Nguyên Danh Thắng" class="w-full h-full object-cover transition-all duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
               
-              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold text-slate-900 shadow-sm">
-                Vườn Quốc gia Ba Bể
+              <span id="hero-scene-badge" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold text-slate-900 shadow-sm font-mono">
+                Vườn Quốc Gia Ba Bể
               </span>
 
               <div class="absolute bottom-4 left-4 right-4 text-white">
-                <span class="text-[10px] text-amber-300 font-mono tracking-wider uppercase block font-semibold">Khu Ramsar Thế Giới No. 1938</span>
-                <h3 class="text-xl sm:text-2xl font-heading font-extrabold text-white mt-1">Non Nước Hồ Ba Bể</h3>
-                <p class="text-xs text-slate-200 mt-1 font-light line-clamp-2">Viên ngọc bích êm đềm giữa rừng núi đá vôi karst nguyên sinh phía Bắc Thái Nguyên.</p>
+                <span id="hero-scene-tag" class="text-[10px] text-amber-300 font-mono tracking-wider uppercase block font-semibold">Khu Ramsar Thế Giới</span>
+                <h3 id="hero-scene-title" class="text-xl sm:text-2xl font-heading font-extrabold text-white mt-1">Non Nước Hồ Ba Bể</h3>
+                <p id="hero-scene-desc" class="text-xs text-slate-200 mt-1 font-light line-clamp-2">Viên ngọc bích phẳng lặng giữa rừng núi đá vôi karst nguyên sinh phía Bắc.</p>
               </div>
             </div>
           </div>
 
-          <!-- Secondary Inset Card: Tan Cuong Tea -->
-          <div class="flex items-center gap-3.5 p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
-            <img src="assets/images/tan-cuong-tea.jpg" alt="Đồi chè Tân Cương" class="w-20 h-16 rounded-xl object-cover shrink-0">
-            <div class="text-xs">
-              <span class="text-[10px] font-mono text-emerald-800 uppercase font-bold">Thủ phủ Đệ Nhất Danh Trà</span>
-              <h4 class="font-heading font-bold text-slate-900 text-sm">Nương Chè Bát Úp Tân Cương</h4>
-              <p class="text-slate-500 font-light mt-0.5">&gt;22.268 ha nương chè tỏa hương cốm nồng nàn.</p>
-            </div>
+          <!-- 4 Scene Thumbnails Selector -->
+          <div class="grid grid-cols-4 gap-2 pt-1 font-mono text-[10px]">
+            <button onclick="switchHeroScene(0)" class="hero-thumb-btn active p-1.5 rounded-xl border border-emerald-600 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="0">
+              <img src="assets/images/babe-lake.jpg" alt="Ba Bể" class="w-full h-9 rounded-lg object-cover">
+              <span class="font-bold text-slate-800 truncate w-full">Hồ Ba Bể</span>
+            </button>
+            <button onclick="switchHeroScene(1)" class="hero-thumb-btn p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="1">
+              <img src="assets/images/tan-cuong-tea.jpg" alt="Tân Cương" class="w-full h-9 rounded-lg object-cover">
+              <span class="font-bold text-slate-800 truncate w-full">Đồi Chè</span>
+            </button>
+            <button onclick="switchHeroScene(2)" class="hero-thumb-btn p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="2">
+              <img src="assets/images/puong-cave.jpg" alt="Động Puông" class="w-full h-9 rounded-lg object-cover">
+              <span class="font-bold text-slate-800 truncate w-full">Động Puông</span>
+            </button>
+            <button onclick="switchHeroScene(3)" class="hero-thumb-btn p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="3">
+              <img src="assets/images/cua-tu-stream.jpg" alt="Suối Cửa Tử" class="w-full h-9 rounded-lg object-cover">
+              <span class="font-bold text-slate-800 truncate w-full">Cửa Tử</span>
+            </button>
           </div>
         </div>
-
-      </div>
 
     </div>
   </section>
@@ -694,23 +712,38 @@
       <div class="flex items-center gap-2 mb-2">
         <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 font-mono">06b • Thư Viện Ảnh Tuyệt Tác</span>
       </div>
-      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
         <div>
           <h2 class="text-3xl sm:text-4xl font-heading font-black text-slate-950" data-en="Visual Gallery: Gems of Thai Nguyen" data-vi="Góc Nhìn Khung Cảnh: Tuyệt Sắc Thái Nguyên">
             Góc Nhìn Khung Cảnh: Tuyệt Sắc Thái Nguyên
           </h2>
           <p class="text-slate-600 text-sm mt-1 max-w-2xl font-light">
-            Bộ sưu tập hình ảnh thực địa chất lượng cao ghi lại khoảnh khắc kỳ vĩ của sông núi, đồi chè, thác nước và nét đẹp đời sống thường nhật.
+            Khoảnh khắc thực địa ghi lại vẻ đẹp non nước mây trời, vùng chè bạt ngàn và nhịp sống thanh bình.
           </p>
         </div>
-        <span class="text-xs font-mono text-slate-400">Nhấp vào ảnh để phóng to &bull; Full HD</span>
+        
+        <!-- Filter Category Tabs -->
+        <div class="flex flex-wrap gap-1.5 font-mono text-xs">
+          <button onclick="filterGallery('all')" class="gallery-tab-btn active px-3.5 py-1.5 rounded-xl border border-slate-200 bg-slate-100 text-slate-800 font-semibold cursor-pointer transition">
+            Tất cả (8)
+          </button>
+          <button onclick="filterGallery('water')" class="gallery-tab-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-semibold cursor-pointer transition">
+            Hồ &amp; Hang động
+          </button>
+          <button onclick="filterGallery('nature')" class="gallery-tab-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-semibold cursor-pointer transition">
+            Đồi chè &amp; Thác suối
+          </button>
+          <button onclick="filterGallery('culture')" class="gallery-tab-btn px-3.5 py-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-slate-600 font-semibold cursor-pointer transition">
+            Bản làng &amp; Cổ tự
+          </button>
+        </div>
       </div>
 
       <!-- Modern Bento Photo Grid -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[220px]" id="gallery-grid">
         
-        <!-- Large Feature 1: Ba Be Lake (Col 1-2, Row 1-2) -->
-        <div onclick="openImageLightbox('assets/images/hero-babe.jpg', 'Hồ Ba Bể', 'Viên ngọc bích phẳng lặng giữa vách đá vôi karst ngàn mét')" class="col-span-2 row-span-2 rounded-3xl overflow-hidden relative cursor-pointer group shadow-md travel-photo-container">
+        <!-- Large Feature 1: Ba Be Lake -->
+        <div data-gallery-cat="water" onclick="openImageLightbox('assets/images/hero-babe.jpg', 'Hồ Ba Bể', 'Viên ngọc bích phẳng lặng giữa vách đá vôi karst ngàn mét')" class="gallery-item col-span-2 row-span-2 rounded-3xl overflow-hidden relative cursor-pointer group shadow-md travel-photo-container">
           <img src="assets/images/hero-babe.jpg" alt="Hồ Ba Bể" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-5 left-5 right-5 text-white">
@@ -721,7 +754,7 @@
         </div>
 
         <!-- Photo 2: Tan Cuong Tea -->
-        <div onclick="openImageLightbox('assets/images/tan-cuong-tea.jpg', 'Đồi Chè Tân Cương', 'Nương chè bát úp uốn lượn xanh mướt ngút ngàn')" class="col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
+        <div data-gallery-cat="nature" onclick="openImageLightbox('assets/images/tan-cuong-tea.jpg', 'Đồi Chè Tân Cương', 'Nương chè bát úp uốn lượn xanh mướt ngút ngàn')" class="gallery-item col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
           <img src="assets/images/tan-cuong-tea.jpg" alt="Đồi Chè Tân Cương" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -731,7 +764,7 @@
         </div>
 
         <!-- Photo 3: Puong Cave -->
-        <div onclick="openImageLightbox('assets/images/puong-cave.jpg', 'Động Puông', 'Đường hầm sông ngầm kỳ vĩ 300m xuyên lòng núi đá Lũng Nham')" class="col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
+        <div data-gallery-cat="water" onclick="openImageLightbox('assets/images/puong-cave.jpg', 'Động Puông', 'Đường hầm sông ngầm kỳ vĩ 300m xuyên lòng núi đá Lũng Nham')" class="gallery-item col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
           <img src="assets/images/puong-cave.jpg" alt="Động Puông" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -741,7 +774,7 @@
         </div>
 
         <!-- Photo 4: Cua Tu Stream -->
-        <div onclick="openImageLightbox('assets/images/cua-tu-stream.jpg', 'Suối Cửa Tử', 'Hẻm núi trekking sườn đông dãy Tam Đảo với 7 cửa ải hoang sơ')" class="col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
+        <div data-gallery-cat="nature" onclick="openImageLightbox('assets/images/cua-tu-stream.jpg', 'Suối Cửa Tử', 'Hẻm núi trekking sườn đông dãy Tam Đảo với 7 cửa ải hoang sơ')" class="gallery-item col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
           <img src="assets/images/cua-tu-stream.jpg" alt="Suối Cửa Tử" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -751,7 +784,7 @@
         </div>
 
         <!-- Photo 5: Dau Dang Waterfall -->
-        <div onclick="openImageLightbox('assets/images/dau-dang-waterfall.jpg', 'Thác Đầu Đẳng', 'Ghềnh thác sông Năng cuộn sóng bọt tuyết trắng giữa rừng già')" class="col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
+        <div data-gallery-cat="nature" onclick="openImageLightbox('assets/images/dau-dang-waterfall.jpg', 'Thác Đầu Đẳng', 'Ghềnh thác sông Năng cuộn sóng bọt tuyết trắng giữa rừng già')" class="gallery-item col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
           <img src="assets/images/dau-dang-waterfall.jpg" alt="Thác Đầu Đẳng" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -761,7 +794,7 @@
         </div>
 
         <!-- Photo 6: Hua Ma Cave -->
-        <div onclick="openImageLightbox('assets/images/hua-ma-cave.jpg', 'Động Hua Mạ', 'Thánh đường thạch nhũ lung linh giữa lưng chừng núi Lèo Pèn')" class="col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
+        <div data-gallery-cat="water" onclick="openImageLightbox('assets/images/hua-ma-cave.jpg', 'Động Hua Mạ', 'Thánh đường thạch nhũ lung linh giữa lưng chừng núi Lèo Pèn')" class="gallery-item col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
           <img src="assets/images/hua-ma-cave.jpg" alt="Động Hua Mạ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -771,7 +804,7 @@
         </div>
 
         <!-- Photo 7: Den Duom Temple -->
-        <div onclick="openImageLightbox('assets/images/den-duom.jpg', 'Đền Đuổm', 'Cổ tự ngàn năm thờ Dương Tự Minh dưới vách núi đá Điểm Sơn')" class="col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
+        <div data-gallery-cat="culture" onclick="openImageLightbox('assets/images/den-duom.jpg', 'Đền Đuổm', 'Cổ tự ngàn năm thờ Dương Tự Minh dưới vách núi đá Điểm Sơn')" class="gallery-item col-span-2 md:col-span-1 rounded-3xl overflow-hidden relative cursor-pointer group shadow-sm travel-photo-container">
           <img src="assets/images/den-duom.jpg" alt="Đền Đuổm" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-70 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-3 left-3 right-3 text-white">
@@ -780,8 +813,8 @@
           </div>
         </div>
 
-        <!-- Large Feature 8: Tay House & Culture (Col 1-2, Row 3-4) -->
-        <div onclick="openImageLightbox('assets/images/tay-stilt-house.jpg', 'Nhà Sàn Bản Pác Ngòi', 'Không gian sống mộc mạc đậm đà bản sắc văn hóa người Tày ven hồ')" class="col-span-2 rounded-3xl overflow-hidden relative cursor-pointer group shadow-md travel-photo-container">
+        <!-- Large Feature 8: Tay House & Culture -->
+        <div data-gallery-cat="culture" onclick="openImageLightbox('assets/images/tay-stilt-house.jpg', 'Nhà Sàn Bản Pác Ngòi', 'Không gian sống mộc mạc đậm đà bản sắc văn hóa người Tày ven hồ')" class="gallery-item col-span-2 rounded-3xl overflow-hidden relative cursor-pointer group shadow-md travel-photo-container">
           <img src="assets/images/tay-stilt-house.jpg" alt="Bản Pác Ngòi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
           <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-80 group-hover:opacity-95 transition-opacity"></div>
           <div class="absolute bottom-4 left-4 right-4 text-white">
@@ -973,6 +1006,76 @@
 
       <!-- Rendered Hospitals Grid via app.js -->
       <div id="hospitals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+        <!-- MUST-TRY BUCKET LIST INTERACTIVE CHECKLIST -->
+    <section id="bucket-list" class="p-8 sm:p-10 bg-white rounded-3xl border border-slate-200 shadow-md">
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-800 font-bold mb-1 block">Cẩm Nang Du Khách</span>
+          <h2 class="text-2xl sm:text-3xl font-heading font-black text-slate-950 leading-tight">5 Trải Nghiệm Vàng Nhất Định Phải Thử</h2>
+          <p class="text-slate-500 text-xs sm:text-sm mt-1 font-light">Đánh dấu những trải nghiệm bạn muốn thực hiện để đo lường mức độ sẵn sàng lên đường!</p>
+        </div>
+        <div class="flex items-center gap-2 bg-emerald-50 text-emerald-900 border border-emerald-200 px-4 py-2 rounded-2xl text-xs font-mono shrink-0">
+          <span>Tiến độ: </span>
+          <strong id="bucket-pct" class="text-emerald-700 text-sm">0%</strong>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="h-2 w-full bg-slate-100 rounded-full overflow-hidden mb-6">
+        <div id="bucket-progress-bar" class="h-full bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full transition-all duration-500" style="width: 0%"></div>
+      </div>
+
+      <!-- Checklist items -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-xs sm:text-sm font-medium" id="bucket-items-container">
+        <label class="flex items-start gap-3 p-4 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+          <input type="checkbox" onchange="toggleBucketItem(1)" class="bucket-checkbox mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer" data-id="1">
+          <div>
+            <div class="font-bold text-slate-900">Du thuyền kayak trên mặt nước hồ Ba Bể</div>
+            <p class="text-slate-500 text-xs font-light mt-0.5">Lướt êm đềm giữa vách đá karst và khám phá đảo Bà Góa huyền thoại.</p>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-4 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+          <input type="checkbox" onchange="toggleBucketItem(2)" class="bucket-checkbox mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer" data-id="2">
+          <div>
+            <div class="font-bold text-slate-900">Thưởng trà sớm Tân Cương giữa nương chè mâm xôi</div>
+            <p class="text-slate-500 text-xs font-light mt-0.5">Tự tay ngắt búp chè một tôm hai lá và nhấp ngụm trà đậm vị ngọt hậu.</p>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-4 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+          <input type="checkbox" onchange="toggleBucketItem(3)" class="bucket-checkbox mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer" data-id="3">
+          <div>
+            <div class="font-bold text-slate-900">Trượt máng đá tự nhiên hẻm suối Cửa Tử</div>
+            <p class="text-slate-500 text-xs font-light mt-0.5">Ngâm mình dưới dòng nước trong vắt và vượt 7 cửa ải đá sườn Tam Đảo.</p>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-4 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition">
+          <input type="checkbox" onchange="toggleBucketItem(4)" class="bucket-checkbox mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer" data-id="4">
+          <div>
+            <div class="font-bold text-slate-900">Nghỉ đêm nhà sàn Pác Ngòi &amp; nghe câu Then đàn Tính</div>
+            <p class="text-slate-500 text-xs font-light mt-0.5">Thưởng thức cá nướng thanh tre, cơm lam nứa bên bếp than ấm áp.</p>
+          </div>
+        </label>
+
+        <label class="flex items-start gap-3 p-4 bg-slate-50 hover:bg-emerald-50/50 rounded-2xl border border-slate-200/80 cursor-pointer transition md:col-span-2">
+          <input type="checkbox" onchange="toggleBucketItem(5)" class="bucket-checkbox mt-1 w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer" data-id="5">
+          <div>
+            <div class="font-bold text-slate-900">Chiêm bái Đền Đuổm ngàn năm cầu bình an</div>
+            <p class="text-slate-500 text-xs font-light mt-0.5">Không gian tôn nghiêm dưới tán cây cổ thụ chân núi Điểm Sơn linh thiêng.</p>
+          </div>
+        </label>
+      </div>
+
+      <div class="mt-6 pt-5 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+        <span class="text-slate-500" id="bucket-feedback">Đã chọn 0 / 5 trải nghiệm</span>
+        <a href="#tour-calculator" class="px-5 py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl transition flex items-center gap-1.5 shadow-sm">
+          <span>Dự toán chi phí tour &rarr;</span>
+        </a>
+      </div>
     </section>
 
     <!-- CHAPTER 10: CURATED TRAVEL ITINERARIES -->
@@ -1296,6 +1399,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110505"></script>
+  <script src="assets/js/app.js?v=2026110506"></script>
 </body>
 </html>
