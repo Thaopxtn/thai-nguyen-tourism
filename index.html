@@ -47,7 +47,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110507">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110508">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -59,94 +59,59 @@
   <!-- Top Reading Progress Indicator -->
   <div id="reading-progress"></div>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <aside class="bg-slate-950 text-slate-200 text-xs py-2.5 px-4 border-b border-emerald-950/60 shadow-sm">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
-      <div class="flex items-center gap-2.5">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 font-mono">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-          Cẩm Nang Du Lịch 2026
-        </span>
-        <span class="text-[11px] sm:text-xs text-slate-300"
-              data-en="Explore Thai Nguyen: Where Emerald Tea Terraces Meet The Jade Waters of Ba Be Lake."
-              data-vi="Khám phá Thái Nguyên: Nơi nương chè ngát hương gặp non nước hồ Ba Bể kỳ vĩ.">
-          Khám phá Thái Nguyên: Nơi nương chè ngát hương gặp non nước hồ Ba Bể kỳ vĩ.
-        </span>
-      </div>
-      <div class="flex items-center gap-4 text-[11px] text-slate-400 font-mono">
-        <a href="#gallery" class="text-emerald-400 hover:text-emerald-300 transition font-sans underline" data-en="Photo Gallery &rarr;" data-vi="Thư viện ảnh đẹp &rarr;">Thư viện ảnh đẹp &rarr;</a>
-        <a href="#interactive-map" class="text-amber-300 hover:text-amber-200 transition font-sans underline" data-en="Interactive Map &rarr;" data-vi="Bản đồ du lịch &rarr;">Bản đồ du lịch &rarr;</a>
-      </div>
-    </div>
-  </aside>
+  
 
-  <!-- STICKY MODERN HEADER & NAV -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+  <!-- APPLE-STYLE CLEAN MINIMALIST HEADER -->
+  <header class="sticky top-0 z-40 bg-white/85 backdrop-blur-xl border-b border-black/[0.06] transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-20">
+      <div class="flex items-center justify-between h-16 sm:h-18">
         
-        <!-- Brand Crest & Logo -->
-        <a href="#" class="flex items-center gap-3.5 group">
-          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-800 to-slate-900 flex items-center justify-center text-white shadow-md shadow-emerald-950/10 group-hover:scale-105 transition-transform duration-300">
-            <span class="font-heading font-black text-lg tracking-wider text-emerald-300">TN</span>
+        <!-- Clean Brand Logo: Strictly 1 Single Line -->
+        <a href="#" class="flex items-center gap-2.5 group shrink-0">
+          <div class="w-9 h-9 rounded-xl bg-slate-950 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+            <span class="font-heading font-black text-sm tracking-wider text-emerald-400">TN</span>
           </div>
-          <div>
-            <div class="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight leading-none">
-              DU LỊCH THÁI NGUYÊN
-            </div>
-            <p class="text-[11px] text-slate-500 font-medium tracking-wide mt-1 uppercase"
-               data-en="The Official Travel &amp; Heritage Portal"
-               data-vi="Cổng Thông Tin Di Sản &amp; Du Lịch Toàn Cảnh">
-              Cổng Thông Tin Di Sản &amp; Du Lịch Toàn Cảnh
-            </p>
-          </div>
+          <span class="font-heading font-black text-base sm:text-lg text-slate-900 tracking-tight whitespace-nowrap">
+            DU LỊCH THÁI NGUYÊN
+          </span>
         </a>
 
-        <!-- Desktop Navigation Bar -->
-        <nav class="hidden xl:flex items-center space-x-1 text-[13px] font-semibold text-slate-600">
-          <a href="#overview" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Overview" data-vi="Toàn cảnh">Toàn cảnh</a>
-          <a href="#geography-history" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Chronicle" data-vi="Biên niên sử">Biên niên sử</a>
-          <a href="#climate" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Seasons" data-vi="Bốn mùa">Bốn mùa</a>
-          <a href="#economy" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Tea &amp; Growth" data-vi="Kinh tế &amp; Trà">Kinh tế &amp; Trà</a>
-          <a href="#landscapes" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="9 Wonders" data-vi="9 Danh thắng">9 Danh thắng</a>
-          <a href="#gallery" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Gallery" data-vi="Thư viện ảnh">Thư viện ảnh</a>
-          <a href="#culture" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Culture" data-vi="Văn hóa">Văn hóa</a>
-          <a href="#pagodas" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Shrines" data-vi="Cổ tự">Cổ tự</a>
-          <a href="#health-service" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Medical" data-vi="Y tế">Y tế</a>
-          <a href="#interactive-map" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Map" data-vi="Bản đồ">Bản đồ</a>
-          <a href="#tour-calculator" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Plan & Cost" data-vi="Dự toán">Dự toán</a>
-          <a href="#itinerary-builder" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Itineraries" data-vi="Lịch trình">Lịch trình</a>
+        <!-- Desktop Navigation Bar: 5 Core Strategic Items (Spacious, Single Line, No Wrapping) -->
+        <nav class="hidden lg:flex items-center space-x-1 sm:space-x-2 text-[13px] font-semibold text-slate-600">
+          <a href="#landscapes" class="nav-link px-3.5 py-1.5 rounded-full hover:text-slate-950 hover:bg-black/[0.04] transition" data-en="Destinations" data-vi="Điểm Đến">Điểm Đến</a>
+          <a href="#gallery" class="nav-link px-3.5 py-1.5 rounded-full hover:text-slate-950 hover:bg-black/[0.04] transition" data-en="Photo Gallery" data-vi="Thư Viện Ảnh">Thư Viện Ảnh</a>
+          <a href="#interactive-map" class="nav-link px-3.5 py-1.5 rounded-full hover:text-slate-950 hover:bg-black/[0.04] transition" data-en="Satellite Map" data-vi="Bản Đồ Vệ Tinh">Bản Đồ Vệ Tinh</a>
+          <a href="#bucket-list" class="nav-link px-3.5 py-1.5 rounded-full hover:text-slate-950 hover:bg-black/[0.04] transition" data-en="Experiences" data-vi="Trải Nghiệm">Trải Nghiệm</a>
+          <a href="#tour-calculator" class="nav-link px-3.5 py-1.5 rounded-full hover:text-slate-950 hover:bg-black/[0.04] transition" data-en="Tour Planner" data-vi="Lên Kế Hoạch">Lên Kế Hoạch</a>
         </nav>
 
-        <!-- Right Hand Controls -->
-        <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Right Hand Controls: Apple Minimalist Style -->
+        <div class="flex items-center gap-2 shrink-0">
           
-          <!-- Ambient Soundscape Button -->
-          <button id="ambient-sound-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-xs transition" title="Âm thanh tự nhiên">
-            <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
-            <span id="sound-btn-label" class="hidden sm:inline">Âm thanh bản địa</span>
+          <!-- Compact Soundscape Button -->
+          <button id="ambient-sound-btn" class="w-9 h-9 rounded-full border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center transition shadow-2xs" title="Âm thanh tự nhiên">
+            <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+            <span id="sound-btn-label" class="sr-only">Âm thanh</span>
             <span id="sound-wave-bars" class="hidden sound-playing">
-              <span class="wave-bar"></span>
-              <span class="wave-bar"></span>
               <span class="wave-bar"></span>
               <span class="wave-bar"></span>
             </span>
           </button>
 
           <!-- Saved Places Wishlist Button -->
-          <button onclick="openSavedModal()" class="relative p-2.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs transition" title="Điểm đã lưu">
+          <button onclick="openSavedModal()" class="relative w-9 h-9 rounded-full border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center shadow-2xs transition" title="Điểm đã lưu">
             <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
             <span class="saved-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span>
           </button>
 
-          <!-- Language Switcher Toggle -->
-          <button id="lang-toggle-btn" class="flex items-center gap-1 p-1 border border-slate-200 bg-white rounded-xl shadow-xs text-xs font-semibold transition" title="Chuyển đổi ngôn ngữ">
-            <span class="text-xs text-slate-500 font-medium px-1.5">EN</span>
-            <span class="text-xs font-bold text-white bg-slate-900 px-2 py-0.5 rounded-lg">VI</span>
+          <!-- Language Switcher Toggle (Apple Segmented Style) -->
+          <button id="lang-toggle-btn" class="flex items-center p-0.5 border border-slate-200/90 bg-slate-100/80 rounded-full text-xs font-semibold transition" title="Chuyển đổi ngôn ngữ">
+            <span class="text-[11px] text-slate-500 font-medium px-2 py-0.5">EN</span>
+            <span class="text-[11px] font-bold text-white bg-slate-900 px-2.5 py-0.5 rounded-full shadow-xs">VI</span>
           </button>
 
           <!-- Mobile Hamburger Toggle -->
-          <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition" aria-label="Menu">
+          <button id="mobile-menu-btn" class="lg:hidden w-9 h-9 flex items-center justify-center rounded-xl text-slate-700 hover:bg-slate-100 transition" aria-label="Menu">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
           </button>
         </div>
@@ -154,20 +119,16 @@
     </div>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu-drawer" class="hidden xl:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1.5 shadow-xl text-sm font-semibold">
-      <a href="#overview" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Toàn cảnh</a>
-      <a href="#geography-history" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Biên niên sử 7 thời kỳ</a>
-      <a href="#climate" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Cẩm nang 4 mùa</a>
-      <a href="#population" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Dân tộc &amp; Bản sắc</a>
-      <a href="#economy" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Kinh tế &amp; Vùng chè</a>
-      <a href="#landscapes" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">9 Kỳ quan danh thắng</a>
-      <a href="#gallery" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100 font-bold text-emerald-800">Thư viện ảnh tuyệt tác</a>
-      <a href="#culture" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Di sản Hát Then &amp; Lễ hội</a>
-      <a href="#pagodas" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">3 Cổ tự &amp; Phép tắc</a>
-      <a href="#health-service" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Mạng lưới Y tế</a>
-      <a href="#interactive-map" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Bản đồ điểm đến</a>
-      <a href="#tour-calculator" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Dự toán chi phí tour</a>
-      <a href="#itinerary-builder" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Lịch trình tour</a>
+    <div id="mobile-menu-drawer" class="hidden lg:hidden border-t border-slate-100 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-1 shadow-2xl text-sm font-semibold">
+      <a href="#landscapes" class="block py-2.5 px-3 rounded-xl text-slate-800 hover:bg-slate-100">Điểm đến danh thắng</a>
+      <a href="#gallery" class="block py-2.5 px-3 rounded-xl text-emerald-800 hover:bg-emerald-50 font-bold">Thư viện ảnh tuyệt tác</a>
+      <a href="#interactive-map" class="block py-2.5 px-3 rounded-xl text-slate-800 hover:bg-slate-100">Bản đồ vệ tinh thực tế</a>
+      <a href="#bucket-list" class="block py-2.5 px-3 rounded-xl text-slate-800 hover:bg-slate-100">5 Trải nghiệm vàng</a>
+      <a href="#tour-calculator" class="block py-2.5 px-3 rounded-xl text-slate-800 hover:bg-slate-100">Dự toán chi phí tour</a>
+      <a href="#economy" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Văn hóa trà &amp; Ẩm thực</a>
+      <a href="#pagodas" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Cổ tự ngàn năm</a>
+      <a href="#overview" class="block py-2.5 px-3 rounded-xl text-slate-500 hover:bg-slate-100 text-xs">Toàn cảnh địa lý</a>
+      <a href="#geography-history" class="block py-2.5 px-3 rounded-xl text-slate-500 hover:bg-slate-100 text-xs">Biên niên sử văn hóa</a>
     </div>
   </header>
 
@@ -175,28 +136,20 @@
   <section class="relative pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-slate-200 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Top Meta Eyebrow -->
-      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-8 text-xs font-mono text-slate-500">
-        <span class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-          <span class="font-bold text-slate-800 font-sans">Cẩm Nang Du Lịch Thái Nguyên</span>
-        </span>
-        <span class="hidden sm:inline text-emerald-800 font-semibold">Hồ Ba Bể • Đồi Chè Tân Cương • ATK Định Hóa • Suối Cửa Tử</span>
-        <span class="text-amber-700 font-semibold font-sans">Điểm Đến Bốn Mùa 2026</span>
-      </div>
+      
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
         <!-- Left Hero Typography -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-900 rounded-full border border-emerald-200/80 text-xs font-bold">
-            <svg class="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-            <span data-en="Official Travel Portal 2026" data-vi="Cẩm Nang Du Lịch 2026">Cẩm Nang Du Lịch 2026</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50/80 text-emerald-900 rounded-full border border-emerald-200/60 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span data-en="Official Travel Guide 2026" data-vi="Cẩm Nang Du Lịch 2026">Cẩm Nang Du Lịch 2026</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-slate-950 tracking-tight leading-[1.12]">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-slate-900 tracking-tight leading-[1.16]">
             <span class="block" data-en="Where Ba Bể Waters" data-vi="Nơi Non Nước Ba Bể">Nơi Non Nước Ba Bể</span>
-            <span class="block font-serif italic text-emerald-800 font-normal mt-1" data-en="Meet The Emerald Tea Terraces" data-vi="Gặp Sắc Trà Xanh Tân Cương">Gặp Sắc Trà Xanh Tân Cương</span>
+            <span class="block text-emerald-700 mt-1.5" data-en="Meet The Emerald Tea Terraces" data-vi="Hòa Cùng Sắc Trà Tân Cương">Hòa Cùng Sắc Trà Tân Cương</span>
           </h1>
 
           <p class="text-slate-600 text-base sm:text-lg leading-relaxed font-light text-justify max-w-2xl"
@@ -1439,6 +1392,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110507"></script>
+  <script src="assets/js/app.js?v=2026110508"></script>
 </body>
 </html>
