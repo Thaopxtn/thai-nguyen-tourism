@@ -1,207 +1,190 @@
-/* Thai Nguyen Tourism - Bespoke Editorial & Cultural Heritage Stylesheet
-   Crafted with human design sensibilities: Warm paper tones, organic typography,
-   editorial magazine layouts, authentic Vietnamese heritage textures.
+/* Thai Nguyen Tourism - Professional UI/UX Design System
+   Inspired by leading global travel platforms (Airbnb, Lonely Planet, National Geographic Travel).
+   Clean typography, breathable white space, high contrast, zero clutter, accessible.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
-  --paper-bg: #fbf9f4;
-  --paper-warm: #f4eee2;
-  --paper-card: #ffffff;
-  --ink-primary: #191c1a;
-  --ink-secondary: #4a554d;
-  --ink-muted: #748076;
-  --tea-forest: #163824;
-  --tea-leaf: #235939;
-  --tea-accent: #2e7d4f;
-  --tea-tender: #d8f3dc;
-  --earth-terracotta: #9e3d24;
-  --earth-ochre: #b5832a;
-  --earth-sand: #ecdcc1;
-  --border-delicate: #e8e2d4;
-  --border-accent: #c4baa3;
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  
+  --primary-emerald: #064e3b;
+  --emerald-hover: #047857;
+  --emerald-light: #ecfdf5;
+  --accent-amber: #d97706;
+  --accent-warm: #f59e0b;
+  --surface-bg: #f8fafc;
+  --surface-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-subtle: #94a3b8;
+  --border-subtle: #e2e8f0;
+  --border-strong: #cbd5e1;
 }
 
 html {
   scroll-behavior: smooth;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-  background-color: var(--paper-bg);
-  color: var(--ink-primary);
+  font-family: var(--font-body);
+  background-color: var(--surface-bg);
+  color: var(--text-main);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-  background-color: var(--paper-bg);
-  color: var(--ink-primary);
+  background-color: var(--surface-bg);
+  color: var(--text-main);
   overflow-x: hidden;
-  background-image: radial-gradient(#e5dfcf 0.75px, transparent 0.75px);
-  background-size: 24px 24px;
 }
 
-/* Custom Editorial Scrollbar */
-::-webkit-scrollbar {
-  width: 9px;
-}
-::-webkit-scrollbar-track {
-  background: var(--paper-warm);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--tea-leaf);
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--tea-forest);
+/* Typography Utility Classes */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  letter-spacing: -0.02em;
 }
 
-/* Reading Progress Bar with Ochre-Tea Gradient */
+.font-serif-display {
+  font-family: var(--font-serif);
+}
+
+.font-travel-heading {
+  font-family: var(--font-heading);
+  letter-spacing: -0.025em;
+}
+
+/* Reading Progress Bar */
 #reading-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, var(--tea-leaf), var(--earth-ochre), var(--earth-terracotta));
+  background: linear-gradient(90deg, #059669, #d97706, #10b981);
   z-index: 100;
   transition: width 0.1s ease;
   width: 0%;
 }
 
-/* Typography Classes */
-.font-editorial {
-  font-family: 'Newsreader', 'Playfair Display', Georgia, serif;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
 }
 
-.font-display {
-  font-family: 'Playfair Display', Georgia, serif;
+/* Professional Card Styling (Airbnb & Travel Style) */
+.travel-card {
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  border-radius: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 20px 25px -5px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease;
 }
 
-.font-ancient {
-  font-family: 'Cinzel', serif;
-}
-
-/* Texture & Card Styles */
-.paper-card {
-  background-color: #ffffff;
-  border: 1px solid var(--border-delicate);
-  box-shadow: 0 4px 20px -2px rgba(35, 89, 57, 0.05), 0 2px 6px -1px rgba(0, 0, 0, 0.02);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.paper-card:hover {
+.travel-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 16px 32px -4px rgba(22, 56, 36, 0.09), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
-  border-color: var(--border-accent);
+  box-shadow: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.03);
+  border-color: #cbd5e1;
 }
 
-.paper-card-inset {
-  background-color: var(--paper-warm);
-  border: 1px solid var(--border-delicate);
-}
-
-/* Editorial Stamps & Wax Seals */
-.editorial-stamp {
+/* Interactive Pill Badges */
+.pill-badge {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.25rem 0.65rem;
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-radius: 4px;
-  border: 1px dashed var(--earth-ochre);
-  color: var(--earth-ochre);
-  background-color: rgba(181, 131, 42, 0.06);
-}
-
-.editorial-stamp-terracotta {
-  border-color: var(--earth-terracotta);
-  color: var(--earth-terracotta);
-  background-color: rgba(158, 61, 36, 0.06);
-}
-
-.editorial-stamp-forest {
-  border-color: var(--tea-accent);
-  color: var(--tea-forest);
-  background-color: rgba(46, 125, 79, 0.08);
-}
-
-/* Vintage Field Recorder / Sound Player */
-.recorder-box {
-  background: linear-gradient(145deg, #2b332b, #1b211b);
-  border: 1px solid #4a544a;
-  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes spinReel {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-.reel-spinning {
-  animation: spinReel 2.8s linear infinite;
-}
-
-/* Sound Wave Bars */
-@keyframes naturalWave {
-  0%, 100% { height: 4px; }
-  50% { height: 16px; }
-}
-
-.sound-playing .wave-bar:nth-child(1) { animation: naturalWave 0.7s ease-in-out infinite; }
-.sound-playing .wave-bar:nth-child(2) { animation: naturalWave 0.5s ease-in-out infinite 0.15s; }
-.sound-playing .wave-bar:nth-child(3) { animation: naturalWave 0.9s ease-in-out infinite 0.35s; }
-.sound-playing .wave-bar:nth-child(4) { animation: naturalWave 0.6s ease-in-out infinite 0.1s; }
-
-/* Filter Tabs (Earthy & Editorial) */
-.filter-btn {
-  background-color: transparent;
-  color: var(--ink-secondary);
-  border: 1px solid var(--border-delicate);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
   transition: all 0.2s ease;
 }
 
-.filter-btn:hover {
-  background-color: var(--paper-warm);
-  color: var(--ink-primary);
+/* Filter Pill Buttons */
+.filter-pill {
+  padding: 0.5rem 1.1rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  color: var(--text-muted);
+  background: #ffffff;
+  border: 1px solid var(--border-subtle);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
 }
 
-.filter-btn.active {
-  background-color: var(--tea-forest);
+.filter-pill:hover {
+  color: var(--text-main);
+  border-color: var(--text-muted);
+  background: #f8fafc;
+}
+
+.filter-pill.active {
+  background: #0f172a;
   color: #ffffff;
-  border-color: var(--tea-forest);
-  box-shadow: 0 4px 12px rgba(22, 56, 36, 0.2);
+  border-color: #0f172a;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
 }
 
-/* Season Tabs */
-.season-btn {
-  border: 1px solid transparent;
-  color: var(--ink-secondary);
-  transition: all 0.2s ease;
+/* Sound Wave Animation */
+@keyframes modernWave {
+  0%, 100% { height: 4px; }
+  50% { height: 14px; }
 }
 
-.season-btn.active {
-  background-color: #ffffff;
-  color: var(--tea-forest);
-  border-color: var(--tea-leaf);
-  box-shadow: 0 4px 12px rgba(35, 89, 57, 0.1);
+.wave-bar {
+  display: inline-block;
+  width: 2.5px;
+  background: #10b981;
+  border-radius: 2px;
+  margin: 0 1px;
 }
 
-/* Image Vignette & Contrast Overlays */
-.editorial-photo-wrap {
+.sound-playing .wave-bar:nth-child(1) { animation: modernWave 0.7s ease-in-out infinite; }
+.sound-playing .wave-bar:nth-child(2) { animation: modernWave 0.5s ease-in-out infinite 0.15s; }
+.sound-playing .wave-bar:nth-child(3) { animation: modernWave 0.9s ease-in-out infinite 0.35s; }
+.sound-playing .wave-bar:nth-child(4) { animation: modernWave 0.6s ease-in-out infinite 0.1s; }
+
+/* Image Photo Aspect Ratio & Hover Zoom */
+.travel-photo-container {
   position: relative;
   overflow: hidden;
-  background-color: #e5dfcf;
+  background: #e2e8f0;
 }
 
-.editorial-photo-wrap img {
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.6s ease;
+.travel-photo-container img {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.editorial-photo-wrap:hover img {
-  transform: scale(1.04);
+.travel-card:hover .travel-photo-container img {
+  transform: scale(1.05);
 }
 
-/* Print Overrides */
+/* Accessible Click Targets */
+button, a {
+  cursor: pointer;
+}
+
+/* Pre-delivery UI-UX Pro Max Checklist Standards */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles */
 @media print {
   header, footer, #reading-progress, .no-print, #destination-modal, #saved-modal {
     display: none !important;
@@ -210,9 +193,9 @@ body {
     background: #ffffff !important;
     color: #000000 !important;
   }
-  .paper-card {
+  .travel-card {
     box-shadow: none !important;
-    transform: none !important;
     border: 1px solid #ccc !important;
+    break-inside: avoid;
   }
 }

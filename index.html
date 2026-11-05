@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="vi" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thái Nguyên Tourism | The Official Cultural & Travel Compendium</title>
-  <meta name="description" content="Official cultural gazette and travel guide of the New Thai Nguyen Province (merged with Bac Kan since 2025). Discover Ba Be Lake, Tan Cuong tea hills, sacred pagodas, and authentic ethnic heritage.">
+  <title>Cẩm Nang Du Lịch Thái Nguyên | Official Travel Portal 2026</title>
+  <meta name="description" content="Cổng thông tin du lịch chính thức tỉnh Thái Nguyên mới (sáp nhập Thái Nguyên và Bắc Kạn năm 2025). Khám phá hồ Ba Bể, đồi chè Tân Cương, động Puông, cổ tự và di sản văn hóa Tày - Nùng.">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,119 +13,103 @@
       theme: {
         extend: {
           colors: {
-            tea: {
-              50: '#f2f8f4',
-              100: '#e1efe6',
-              200: '#c5dfd0',
-              300: '#9bc6b0',
-              400: '#6ba88a',
-              500: '#478c69',
-              600: '#347052',
-              700: '#2a5a43',
-              800: '#1b4332',
-              900: '#133326',
-              950: '#091c14',
+            brand: {
+              50: '#ecfdf5',
+              100: '#d1fae5',
+              200: '#a7f3d0',
+              500: '#10b981',
+              600: '#059669',
+              700: '#047857',
+              800: '#065f46',
+              900: '#064e3b',
+              950: '#022c22'
             },
-            parchment: {
-              50: '#faf7f2',
-              100: '#f4eee1',
-              200: '#e9ddc5',
-              300: '#dcc6a2',
-              400: '#cdac7e',
-              500: '#bf9460',
-            },
-            terracotta: {
-              500: '#c24b38',
-              600: '#a73a28',
-              700: '#8c2c1d',
-            },
-            ochre: {
-              400: '#d4a34b',
-              500: '#b88628',
-              600: '#946718',
+            amber: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706'
             }
           },
           fontFamily: {
+            heading: ['"Outfit"', 'system-ui', 'sans-serif'],
             sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
-            serif: ['"Playfair Display"', 'Georgia', 'serif'],
-            editorial: ['"Newsreader"', '"Playfair Display"', 'Georgia', 'serif'],
-            ancient: ['"Cinzel"', 'serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif']
           }
         }
       }
     }
   </script>
 
-  <!-- Custom Bespoke Styles -->
+  <!-- Modern Travel Portal Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="antialiased selection:bg-tea-800 selection:text-amber-200">
+<body class="antialiased text-slate-800 bg-slate-50 selection:bg-emerald-900 selection:text-emerald-100">
 
-  <!-- Reading Progress Bar -->
+  <!-- Top Reading Progress Indicator -->
   <div id="reading-progress"></div>
 
-  <!-- TOP GAZETTE MASTHEAD BANNER -->
-  <aside class="bg-tea-950 text-parchment-100 text-xs py-2 px-4 border-b border-tea-800">
+  <!-- ANNOUNCEMENT BANNER -->
+  <aside class="bg-slate-900 text-slate-200 text-xs py-2 px-4 border-b border-slate-800">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
       <div class="flex items-center gap-2.5">
-        <span class="editorial-stamp border-amber-400 text-amber-300 bg-black/30 text-[10px]">
-          Official Gazette 2026
+        <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+          Nghị quyết 202/2025/QH15
         </span>
-        <span class="font-serif text-[11px] sm:text-xs text-parchment-200"
-              data-en="National Assembly Resolution No. 202/2025/QH15: The New Thai Nguyen Province (8,375 km², 92 communes/wards)."
-              data-vi="Nghị quyết số 202/2025/QH15 của Quốc hội: Tỉnh Thái Nguyên Mới (8.375 km², 92 đơn vị cấp xã).">
-          National Assembly Resolution No. 202/2025/QH15: The New Thai Nguyen Province (8,375 km², 92 communes/wards).
+        <span class="text-[11px] sm:text-xs text-slate-300"
+              data-en="The New Thai Nguyen Province (Post-Merger): 8,375 km², 92 Communes &amp; Wards, 1.87M Residents."
+              data-vi="Tỉnh Thái Nguyên Mới (Sau sáp nhập): 8.375 km², 92 Xã &amp; Phường, 1,87 Triệu Dân.">
+          Tỉnh Thái Nguyên Mới (Sau sáp nhập): 8.375 km², 92 Xã &amp; Phường, 1,87 Triệu Dân.
         </span>
       </div>
-      <div class="flex items-center gap-4 text-[11px] text-parchment-300 font-mono">
-        <span class="hidden lg:inline" data-en="Target: 8 Million Visitors • 11% GRDP Growth" data-vi="Mục tiêu 2026: 8 triệu lượt khách • Tăng trưởng GRDP 11%">Target: 8 Million Visitors • 11% GRDP Growth</span>
-        <a href="#overview" class="underline hover:text-white transition font-sans" data-en="Review Treaty &rarr;" data-vi="Xem Địa chí &rarr;">Review Treaty &rarr;</a>
+      <div class="flex items-center gap-4 text-[11px] text-slate-400 font-mono">
+        <span class="hidden lg:inline" data-en="2026 Target: 8 Million Visitors • 11% GRDP Growth" data-vi="Mục tiêu 2026: 8 triệu lượt khách • Tăng trưởng GRDP 11%">Mục tiêu 2026: 8 triệu lượt khách • Tăng trưởng GRDP 11%</span>
+        <a href="#overview" class="text-emerald-400 hover:text-emerald-300 transition font-sans underline" data-en="Read Gazette &rarr;" data-vi="Xem Địa chí &rarr;">Xem Địa chí &rarr;</a>
       </div>
     </div>
   </aside>
 
-  <!-- EDITORIAL HEADER & NAVIGATION -->
-  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-stone-200/80 transition-all duration-300">
+  <!-- STICKY MODERN HEADER & NAV -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-20">
         
-        <!-- Brand Crest & Journal Title -->
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="w-11 h-11 rounded-xl bg-tea-900 border border-amber-700/40 flex items-center justify-center text-amber-300 shadow-md group-hover:scale-105 transition-transform duration-300">
-            <span class="font-ancient font-bold text-lg">TN</span>
+        <!-- Brand Crest & Logo -->
+        <a href="#" class="flex items-center gap-3.5 group">
+          <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-800 to-slate-900 flex items-center justify-center text-white shadow-md shadow-emerald-950/10 group-hover:scale-105 transition-transform duration-300">
+            <span class="font-heading font-black text-lg tracking-wider text-emerald-300">TN</span>
           </div>
           <div>
-            <div class="font-serif font-bold text-lg sm:text-xl text-slate-900 tracking-tight flex items-center gap-2">
-              <span>ĐỊA CHÍ & DU LỊCH THÁI NGUYÊN</span>
+            <div class="font-heading font-extrabold text-lg sm:text-xl text-slate-900 tracking-tight leading-none">
+              DU LỊCH THÁI NGUYÊN
             </div>
-            <p class="text-[10px] text-stone-500 uppercase tracking-widest font-mono"
-               data-en="The Cultural &amp; Travel Compendium"
-               data-vi="Cẩm Nang Di Sản &amp; Du Lịch Toàn Cảnh">
-              The Cultural &amp; Travel Compendium
+            <p class="text-[11px] text-slate-500 font-medium tracking-wide mt-1 uppercase"
+               data-en="The Official Travel &amp; Heritage Portal"
+               data-vi="Cổng Thông Tin Di Sản &amp; Du Lịch Toàn Cảnh">
+              Cổng Thông Tin Di Sản &amp; Du Lịch Toàn Cảnh
             </p>
           </div>
         </a>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden xl:flex items-center space-x-1 text-xs font-semibold uppercase tracking-wider text-stone-600">
-          <a href="#overview" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Overview" data-vi="Toàn cảnh">Overview</a>
-          <a href="#geography-history" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Chronicle" data-vi="Biên niên sử">Chronicle</a>
-          <a href="#climate" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Seasons" data-vi="Bốn mùa">Seasons</a>
-          <a href="#economy" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Tea &amp; Growth" data-vi="Kinh tế &amp; Trà">Tea &amp; Growth</a>
-          <a href="#landscapes" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Landscapes" data-vi="Danh thắng">Landscapes</a>
-          <a href="#culture" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Heritage" data-vi="Di sản">Heritage</a>
-          <a href="#pagodas" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Shrines" data-vi="Cổ tự">Shrines</a>
-          <a href="#health-service" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Medical" data-vi="Y tế">Medical</a>
-          <a href="#itinerary-builder" class="nav-link px-3 py-2 rounded-lg hover:text-tea-900 hover:bg-stone-100 transition" data-en="Itineraries" data-vi="Hành trình">Itineraries</a>
+        <!-- Desktop Navigation Bar -->
+        <nav class="hidden xl:flex items-center space-x-1 text-[13px] font-semibold text-slate-600">
+          <a href="#overview" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Overview" data-vi="Toàn cảnh">Toàn cảnh</a>
+          <a href="#geography-history" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Chronicle" data-vi="Biên niên sử">Biên niên sử</a>
+          <a href="#climate" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Seasons" data-vi="Bốn mùa">Bốn mùa</a>
+          <a href="#economy" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Tea &amp; Growth" data-vi="Kinh tế &amp; Trà">Kinh tế &amp; Trà</a>
+          <a href="#landscapes" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="9 Wonders" data-vi="9 Danh thắng">9 Danh thắng</a>
+          <a href="#culture" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Culture" data-vi="Văn hóa">Văn hóa</a>
+          <a href="#pagodas" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Shrines" data-vi="Cổ tự">Cổ tự</a>
+          <a href="#health-service" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Medical" data-vi="Y tế">Y tế</a>
+          <a href="#itinerary-builder" class="nav-link px-3 py-2 rounded-xl hover:text-slate-950 hover:bg-slate-100 transition" data-en="Itineraries" data-vi="Lịch trình">Lịch trình</a>
         </nav>
 
-        <!-- Right Controls -->
-        <div class="flex items-center gap-2">
+        <!-- Right Hand Controls -->
+        <div class="flex items-center gap-2 sm:gap-3">
           
-          <!-- Vintage Soundscape Player -->
-          <button id="ambient-sound-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-full recorder-box text-stone-200 text-xs font-mono transition" title="Acoustic Nature Soundscape">
-            <span id="recorder-reel" class="inline-block text-amber-400 text-xs">⚙</span>
-            <span id="sound-btn-label" class="hidden sm:inline">Field Soundscape</span>
+          <!-- Ambient Soundscape Button -->
+          <button id="ambient-sound-btn" class="flex items-center gap-2 px-3.5 py-2 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 text-xs font-semibold shadow-xs transition" title="Âm thanh tự nhiên">
+            <svg class="w-3.5 h-3.5 text-emerald-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+            <span id="sound-btn-label" class="hidden sm:inline">Âm thanh bản địa</span>
             <span id="sound-wave-bars" class="hidden sound-playing">
               <span class="wave-bar"></span>
               <span class="wave-bar"></span>
@@ -134,133 +118,133 @@
             </span>
           </button>
 
-          <!-- Saved Places Wishlist -->
-          <button onclick="openSavedModal()" class="relative p-2.5 rounded-full border border-stone-200 bg-white hover:bg-stone-50 text-slate-700 transition" title="Saved Spots">
-            <svg class="w-4 h-4 text-terracotta-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            <span class="saved-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-terracotta-600 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span>
+          <!-- Saved Places Wishlist Button -->
+          <button onclick="openSavedModal()" class="relative p-2.5 rounded-full border border-slate-200 bg-white hover:bg-slate-50 text-slate-700 shadow-xs transition" title="Điểm đã lưu">
+            <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <span class="saved-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span>
           </button>
 
-          <!-- Language Toggle (EN / VI) -->
-          <button id="lang-toggle-btn" class="flex items-center gap-1 p-1 border border-stone-200 bg-white rounded-xl shadow-2xs text-xs font-mono transition" title="Change Language">
-            <span class="text-xs font-bold text-emerald-900 bg-amber-200/80 px-2 py-0.5 rounded">EN</span>
-            <span class="text-xs text-slate-500 font-medium px-1">VI</span>
+          <!-- Language Switcher Toggle -->
+          <button id="lang-toggle-btn" class="flex items-center gap-1 p-1 border border-slate-200 bg-white rounded-xl shadow-xs text-xs font-semibold transition" title="Chuyển đổi ngôn ngữ">
+            <span class="text-xs text-slate-500 font-medium px-1.5">EN</span>
+            <span class="text-xs font-bold text-white bg-slate-900 px-2 py-0.5 rounded-lg">VI</span>
           </button>
 
-          <!-- Mobile Hamburger -->
-          <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-xl text-slate-700 hover:bg-stone-100 transition">
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-menu-btn" class="xl:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition" aria-label="Menu">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Mobile Drawer -->
-    <div id="mobile-menu-drawer" class="hidden xl:hidden border-t border-stone-200 bg-white px-4 py-4 space-y-2 shadow-xl text-xs font-semibold uppercase tracking-wider">
-      <a href="#overview" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Overview</a>
-      <a href="#geography-history" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Chronicle</a>
-      <a href="#climate" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Seasons</a>
-      <a href="#population" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Population</a>
-      <a href="#economy" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Tea &amp; Growth</a>
-      <a href="#landscapes" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Landscapes</a>
-      <a href="#culture" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Heritage</a>
-      <a href="#pagodas" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Shrines</a>
-      <a href="#health-service" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Medical</a>
-      <a href="#itinerary-builder" class="block py-2 px-3 rounded-lg text-slate-700 hover:bg-stone-100">Itineraries</a>
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu-drawer" class="hidden xl:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-1.5 shadow-xl text-sm font-semibold">
+      <a href="#overview" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Toàn cảnh</a>
+      <a href="#geography-history" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Biên niên sử 7 thời kỳ</a>
+      <a href="#climate" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Cẩm nang 4 mùa</a>
+      <a href="#population" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Dân tộc &amp; Bản sắc</a>
+      <a href="#economy" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Kinh tế &amp; Vùng chè</a>
+      <a href="#landscapes" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">9 Kỳ quan danh thắng</a>
+      <a href="#culture" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Di sản Hát Then &amp; Lễ hội</a>
+      <a href="#pagodas" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">3 Cổ tự &amp; Phép tắc</a>
+      <a href="#health-service" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Mạng lưới Y tế</a>
+      <a href="#itinerary-builder" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Lịch trình tour</a>
     </div>
   </header>
 
-  <!-- BESPOKE ASYMMETRICAL MAGAZINE HERO SECTION -->
-  <section class="relative pt-12 pb-16 lg:pt-16 lg:pb-24 border-b border-stone-200/80 overflow-hidden">
+  <!-- ==================== HERO SECTION (CLEAN & BREATHTAKING) ==================== -->
+  <section class="relative pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-slate-200 bg-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- Overline Masthead Ribbon -->
-      <div class="flex items-center justify-between border-b border-stone-200 pb-3 mb-8 text-[11px] font-mono text-stone-500 uppercase tracking-widest">
-        <span>Field Survey Edition • Thái Nguyên 2026</span>
-        <span class="hidden sm:inline">Coordinates: 21°35′N 105°50′E • Elevation: 223m</span>
-        <span>Verified Field Data</span>
+      <!-- Top Meta Eyebrow -->
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-8 text-xs font-mono text-slate-500">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span>Khảo cứu Thực địa: Thái Nguyên 2026</span>
+        </span>
+        <span class="hidden sm:inline">Tọa độ: 21°35′B 105°50′Đ • 92 đơn vị cấp xã</span>
+        <span class="text-emerald-700 font-semibold font-sans">Nghị quyết 202/2025/QH15</span>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
-        <!-- Left Editorial Typography Column -->
+        <!-- Left Hero Typography -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2">
-            <span class="editorial-stamp-forest">
-              Official Post-Merger Monograph
-            </span>
-            <span class="text-xs text-stone-500 font-mono hidden sm:inline">Ghi chép: Hương &amp; Thu</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 text-emerald-900 rounded-full border border-emerald-200/80 text-xs font-bold">
+            <svg class="w-3.5 h-3.5 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+            <span data-en="Official Tourism Monograph 2026" data-vi="Cẩm Nang Địa Chí &amp; Du Lịch 2026">Cẩm Nang Địa Chí &amp; Du Lịch 2026</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-slate-950 tracking-tight leading-[1.12]">
-            <span class="block" data-en="Where Ba Bể Waters" data-vi="Nơi Non Nước Ba Bể">Where Ba Bể Waters</span>
-            <span class="block italic font-editorial text-tea-800 font-normal mt-1" data-en="Meet The Emerald Tea Terraces" data-vi="Gặp Sắc Trà Xanh Tân Cương">Meet The Emerald Tea Terraces</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-slate-950 tracking-tight leading-[1.12]">
+            <span class="block" data-en="Where Ba Bể Waters" data-vi="Nơi Non Nước Ba Bể">Nơi Non Nước Ba Bể</span>
+            <span class="block font-serif italic text-emerald-800 font-normal mt-1" data-en="Meet The Emerald Tea Terraces" data-vi="Gặp Sắc Trà Xanh Tân Cương">Gặp Sắc Trà Xanh Tân Cương</span>
           </h1>
 
-          <p class="text-slate-700 text-sm sm:text-base leading-relaxed font-light text-justify max-w-2xl"
-             data-en="Following the historic unification of Thai Nguyen and Bac Kan on July 1, 2025, the new Thai Nguyen province spans 8,375 km² across 92 commune-level administrative units. This comprehensive field gazette documents the boundless synergy between the southern tea-growing heartland and the primeval karst wonders of Ba Be Lake."
-             data-vi="Kể từ dấu mốc lịch sử ngày 01/07/2025 hợp nhất hai tỉnh Thái Nguyên và Bắc Kạn, tỉnh Thái Nguyên mới mở rộng lên 8.375 km² với 92 đơn vị hành chính cấp xã. Hồ sơ địa chí này tổng hợp bức tranh cộng hưởng bất tận giữa thủ phủ chè Tân Cương trứ danh và kỳ quan sinh thái đầm lầy Ramsar hồ Ba Bể nguyên sơ.">
-            Following the historic unification of Thai Nguyen and Bac Kan on July 1, 2025, the new Thai Nguyen province spans 8,375 km² across 92 commune-level administrative units. This comprehensive field gazette documents the boundless synergy between the southern tea-growing heartland and the primeval karst wonders of Ba Be Lake.
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed font-light text-justify max-w-2xl"
+             data-en="Following the historic unification of Thai Nguyen and Bac Kan on July 1, 2025, the new Thai Nguyen province spans 8,375 km² across 92 commune-level administrative units. This official portal bridges the vibrant southern tea-growing heartland with northern Ba Be Lake's primeval limestone wonders."
+             data-vi="Kể từ mốc son sáp nhập ngày 01/07/2025, tỉnh Thái Nguyên mới mở rộng không gian phát triển lên 8.375 km² với 92 xã, phường. Cổng thông tin chính thức kết nối trọn vẹn sức sống của thủ phủ chè Tân Cương phía Nam với kỳ quan sinh thái hồ Ba Bể nguyên sơ phía Bắc.">
+            Kể từ mốc son sáp nhập ngày 01/07/2025, tỉnh Thái Nguyên mới mở rộng không gian phát triển lên 8.375 km² với 92 xã, phường. Cổng thông tin chính thức kết nối trọn vẹn sức sống của thủ phủ chè Tân Cương phía Nam với kỳ quan sinh thái hồ Ba Bể nguyên sơ phía Bắc.
           </p>
 
-          <!-- Real Field Data Ribbon -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 pb-2 border-y border-stone-200 text-xs font-mono">
-            <div>
-              <div class="text-slate-400 uppercase text-[10px]">Territory Area</div>
-              <div class="font-bold text-slate-900 text-sm mt-0.5">8,375 km²</div>
-            </div>
-            <div>
-              <div class="text-slate-400 uppercase text-[10px]">Permanent Pop.</div>
-              <div class="font-bold text-slate-900 text-sm mt-0.5">1.87 Million</div>
-            </div>
-            <div>
-              <div class="text-slate-400 uppercase text-[10px]">Tea Terraces</div>
-              <div class="font-bold text-tea-800 text-sm mt-0.5">22,268 ha</div>
-            </div>
-            <div>
-              <div class="text-slate-400 uppercase text-[10px]">2026 Target</div>
-              <div class="font-bold text-terracotta-600 text-sm mt-0.5">8M Visitors</div>
-            </div>
+          <!-- Modern Floating Search & Filter Input -->
+          <div class="p-2 bg-white rounded-2xl border border-slate-300 shadow-md shadow-slate-200/50 flex items-center gap-2 max-w-xl">
+            <svg class="w-5 h-5 text-slate-400 ml-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input type="text" id="search-input" placeholder="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa..." class="w-full py-2.5 px-1 text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+                   data-en="Search Ba Be Lake, Puong Cave, tea hills, temples..."
+                   data-vi="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa...">
+            <a href="#landscapes" class="px-5 py-2.5 bg-slate-900 hover:bg-emerald-900 text-white rounded-xl text-xs font-bold shrink-0 transition"
+               data-en="Explore &rarr;" data-vi="Khám phá &rarr;">Khám phá &rarr;</a>
           </div>
 
-          <!-- Archival Search Box -->
-          <div class="bg-white p-2 rounded-2xl border border-stone-200 shadow-sm flex items-center gap-2 max-w-xl">
-            <svg class="w-4 h-4 text-stone-400 ml-2.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <input type="text" id="search-input" placeholder="Search Ba Be, Puong Cave, Tan Cuong tea, temples..." class="w-full py-2 px-1 text-xs text-slate-800 placeholder-stone-400 focus:outline-none bg-transparent"
-                   data-en="Search Ba Be, Puong Cave, Tan Cuong tea, temples..."
-                   data-vi="Tìm hồ Ba Bể, động Puông, nương chè Tân Cương, đền chùa...">
-            <a href="#landscapes" class="px-4 py-2 bg-tea-800 hover:bg-tea-900 text-white rounded-xl text-xs font-semibold shrink-0 transition"
-               data-en="Browse &rarr;" data-vi="Khám phá &rarr;">Browse &rarr;</a>
+          <!-- Key Metrics Bar -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 text-xs font-mono">
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div class="text-slate-500 uppercase text-[10px]">Diện tích tự nhiên</div>
+              <div class="font-bold text-slate-950 text-base mt-0.5 font-heading">8.375 km²</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div class="text-slate-500 uppercase text-[10px]">Dân số thường trú</div>
+              <div class="font-bold text-slate-950 text-base mt-0.5 font-heading">1,87 Triệu</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div class="text-slate-500 uppercase text-[10px]">Thủ phủ chè</div>
+              <div class="font-bold text-emerald-800 text-base mt-0.5 font-heading">22.268 ha</div>
+            </div>
+            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
+              <div class="text-slate-500 uppercase text-[10px]">Mục tiêu 2026</div>
+              <div class="font-bold text-amber-600 text-base mt-0.5 font-heading">8M Du khách</div>
+            </div>
           </div>
-
         </div>
 
-        <!-- Right Curated Photo Collage (Actual Real-world Photos) -->
+        <!-- Right Hero Visual Showcase -->
         <div class="lg:col-span-5 relative space-y-4">
-          <!-- Main Hero Image: Real Ba Be Lake -->
-          <div class="paper-card rounded-3xl overflow-hidden p-2.5">
-            <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden editorial-photo-wrap">
-              <img src="assets/images/hero-babe.jpg" alt="Vườn Quốc gia Ba Bể thực tế" class="w-full h-full object-cover">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+          <!-- Main Hero Image: Ba Be Lake -->
+          <div class="travel-card overflow-hidden p-2 group">
+            <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden travel-photo-container">
+              <img src="assets/images/hero-babe.jpg" alt="Vườn Quốc gia Ba Bể" class="w-full h-full object-cover">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-transparent"></div>
               
-              <span class="absolute top-3 left-3 editorial-stamp bg-white/95 text-[10px] text-slate-900">
+              <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold text-slate-900 shadow-sm">
                 Ảnh thực tế: Vườn Quốc gia Ba Bể
               </span>
 
               <div class="absolute bottom-4 left-4 right-4 text-white">
-                <span class="text-[10px] text-amber-300 font-mono tracking-wider uppercase block">Ramsar Site No. 1938</span>
-                <h3 class="text-xl font-serif font-bold text-white mt-0.5">Non Nước Hồ Ba Bể</h3>
-                <p class="text-xs text-stone-200 mt-1 font-light line-clamp-2">Viên ngọc bích êm đềm giữa rừng núi đá vôi karst nguyên sinh phía Bắc Thái Nguyên.</p>
+                <span class="text-[10px] text-amber-300 font-mono tracking-wider uppercase block font-semibold">Khu Ramsar Thế Giới No. 1938</span>
+                <h3 class="text-xl sm:text-2xl font-heading font-extrabold text-white mt-1">Non Nước Hồ Ba Bể</h3>
+                <p class="text-xs text-slate-200 mt-1 font-light line-clamp-2">Viên ngọc bích êm đềm giữa rừng núi đá vôi karst nguyên sinh phía Bắc Thái Nguyên.</p>
               </div>
             </div>
           </div>
 
-          <!-- Secondary Inset Card: Real Tan Cuong Tea -->
-          <div class="hidden sm:flex items-center gap-3 p-3 bg-white rounded-2xl border border-stone-200 shadow-sm">
+          <!-- Secondary Inset Card: Tan Cuong Tea -->
+          <div class="flex items-center gap-3.5 p-3.5 bg-white rounded-2xl border border-slate-200 shadow-sm">
             <img src="assets/images/tan-cuong-tea.jpg" alt="Đồi chè Tân Cương" class="w-20 h-16 rounded-xl object-cover shrink-0">
             <div class="text-xs">
-              <span class="text-[10px] font-mono text-tea-800 uppercase font-semibold">Tân Cương Cradle</span>
-              <h4 class="font-serif font-bold text-slate-900">Đệ Nhất Danh Trà Đất Việt</h4>
-              <p class="text-[11px] text-slate-500 font-light mt-0.5">&gt;22.268 ha chè xanh sánh vàng màu mật ong.</p>
+              <span class="text-[10px] font-mono text-emerald-800 uppercase font-bold">Thủ phủ Đệ Nhất Danh Trà</span>
+              <h4 class="font-heading font-bold text-slate-900 text-sm">Nương Chè Bát Úp Tân Cương</h4>
+              <p class="text-slate-500 font-light mt-0.5">&gt;22.268 ha nương chè tỏa hương cốm nồng nàn.</p>
             </div>
           </div>
         </div>
@@ -270,134 +254,188 @@
     </div>
   </section>
 
-  <!-- EDITORIAL CONTRIBUTORS BAR -->
-  <section class="py-8 bg-parchment-100 border-b border-stone-200/80">
+  <!-- ==================== CROWN JEWELS SPOTLIGHT (VISUAL ANCHOR) ==================== -->
+  <section class="py-12 bg-slate-100/70 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <span class="text-[11px] font-mono uppercase tracking-widest text-stone-500 block">Editorial &amp; Research Team</span>
-          <h3 class="text-sm font-serif font-bold text-slate-900 mt-0.5" data-en="Compiled by Specialized Field Researchers:" data-vi="Hồ sơ được khảo cứu và biên soạn bởi nhóm tác giả:">
-            Compiled by Specialized Field Researchers:
-          </h3>
+          <span class="text-xs font-mono uppercase tracking-wider text-emerald-800 font-bold block mb-1">
+            Điểm Nhấn Trọng Tâm • Crown Jewels
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-heading font-extrabold text-slate-950">
+            Hai Biểu Tượng Danh Thắng Trác Tuyệt
+          </h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 max-w-md font-light">
+          Sự kết hợp hoàn mỹ giữa kỳ quan sinh thái đầm lầy Ramsar phía Bắc và vùng văn hóa trà truyền thống phía Nam.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Jewel 1: Ba Be Lake -->
+        <div class="travel-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative h-64 sm:h-72 overflow-hidden travel-photo-container">
+            <img src="assets/images/babe-lake.jpg" alt="Hồ Ba Bể thực tế" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-emerald-900/90 text-white text-[11px] font-bold backdrop-blur-sm shadow">
+                Top 20 Hồ Nước Ngọt Tự Nhiên Thế Giới
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <h3 class="text-2xl font-heading font-extrabold text-white">1. Hồ Ba Bể (Slam Pé)</h3>
+              <p class="text-xs text-slate-200 mt-1 font-light">Ba nhánh hồ Pé Lầm, Pé Lù, Pé Lèng trải rộng 500 ha mặt nước trong vắt.</p>
+            </div>
+          </div>
+          <div class="p-6 space-y-4 bg-white">
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">Ramsar No. 1938</span>
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">500 ha nước</span>
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">Thuyền độc mộc</span>
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">Bản Pác Ngòi</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed font-light">
+              Mặt hồ phẳng lặng tựa gương soi phản chiếu những vách núi đá vôi sừng sững và thảm rừng nguyên sinh nhiệt đới. Du khách có thể bơi thuyền kayak, ngắm cá Chép kình và khám phá đảo Bà Góa huyền thoại.
+            </p>
+            <div class="pt-2 flex items-center justify-between">
+              <button onclick="openDestinationModal('babe-lake')" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1">
+                <span>Xem chi tiết hồ Ba Bể</span> &rarr;
+              </button>
+              <button onclick="toggleSavePlace('babe-lake')" class="text-xs p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700">
+                ♥ Lưu điểm
+              </button>
+            </div>
+          </div>
         </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full md:w-auto text-xs">
-          <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-            <span class="font-bold text-tea-800 block">Hương</span>
-            <span class="text-[10px] text-slate-500">Địa lý, Lịch sử, Khí hậu, Dân số, Kinh tế</span>
+        <!-- Jewel 2: Tan Cuong Tea -->
+        <div class="travel-card overflow-hidden flex flex-col justify-between group">
+          <div class="relative h-64 sm:h-72 overflow-hidden travel-photo-container">
+            <img src="assets/images/tan-cuong-tea.jpg" alt="Đồi chè Tân Cương" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <div class="absolute top-4 left-4">
+              <span class="px-3 py-1 rounded-full bg-amber-600 text-white text-[11px] font-bold backdrop-blur-sm shadow">
+                Đệ Nhất Danh Trà Đất Việt
+              </span>
+            </div>
+            <div class="absolute bottom-4 left-4 right-4 text-white">
+              <h3 class="text-2xl font-heading font-extrabold text-white">2. Vùng Trà Tân Cương</h3>
+              <p class="text-xs text-slate-200 mt-1 font-light">Cái nôi của giống trà Móc Câu, Trà Tôm Nõn và Trà Đinh tiến vua danh bất hư truyền.</p>
+            </div>
           </div>
-          <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-            <span class="font-bold text-tea-800 block">Thu</span>
-            <span class="text-[10px] text-slate-500">9 Danh thắng, Văn hóa &amp; Lễ hội</span>
-          </div>
-          <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-            <span class="font-bold text-terracotta-600 block">Ánh</span>
-            <span class="text-[10px] text-slate-500">3 Cổ tự, Đền thiêng &amp; Phép tắc</span>
-          </div>
-          <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-            <span class="font-bold text-tea-800 block">Thủy</span>
-            <span class="text-[10px] text-slate-500">Mạng lưới Y tế &amp; Trạm cấp cứu</span>
+          <div class="p-6 space-y-4 bg-white">
+            <div class="flex flex-wrap gap-2 text-xs font-mono">
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">&gt;22.268 ha</span>
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">Chỉ dẫn địa lý</span>
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">16,8 nghìn tỷ VND</span>
+              <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-700">Sao chè thủ công</span>
+            </div>
+            <p class="text-xs text-slate-600 leading-relaxed font-light">
+              Nước trà sánh vàng như mật ong rừng, tiền chát dịu nhẹ và hậu ngọt sâu lắng kéo dài. Trải nghiệm hái chè cùng nghệ nhân lúc sáng sớm khi sương còn đọng trên búp non là nét đặc sắc không thể bỏ qua.
+            </p>
+            <div class="pt-2 flex items-center justify-between">
+              <button onclick="openDestinationModal('tan-cuong-tea-hills')" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1">
+                <span>Xem chi tiết vùng trà</span> &rarr;
+              </button>
+              <button onclick="toggleSavePlace('tan-cuong-tea-hills')" class="text-xs p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700">
+                ♥ Lưu điểm
+              </button>
+            </div>
           </div>
         </div>
+
       </div>
+
     </div>
   </section>
 
-  <!-- MAIN EDITORIAL CONTENT -->
+  <!-- ==================== MAIN CONTENT SECTIONS ==================== -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
 
-    <!-- SECTION 01: OVERVIEW & STRATEGIC GEOGRAPHY -->
+    <!-- CHAPTER 01: OVERVIEW & STRATEGIC GEOGRAPHY -->
     <section id="overview" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 01 • Ghi chép: Hương</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 01 • Khảo cứu: Hương</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mb-6" data-en="Overview of Thai Nguyen Province" data-vi="Toàn Cảnh Địa Lý Tỉnh Thái Nguyên Mới">
-        Overview of Thai Nguyen Province
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950 mb-6" data-en="Overview of Thai Nguyen Province" data-vi="Toàn Cảnh Địa Lý Tỉnh Thái Nguyên Mới">
+        Toàn Cảnh Địa Lý Tỉnh Thái Nguyên Mới
       </h2>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         
         <div class="lg:col-span-7 space-y-5 text-slate-700 leading-relaxed text-sm sm:text-base font-light">
           <p>
-            <strong class="font-semibold text-slate-900" data-en="Thai Nguyen" data-vi="Thái Nguyên">Thai Nguyen</strong> 
-            <span data-en="is a pivotal province in Vietnam's Northern Midlands and Mountainous Region. Since the historic administrative merger of Thai Nguyen and Bac Kan on July 1, 2025, the province has covered approximately 8,375 km² with a population of around 1.87 million."
-                  data-vi="là tỉnh trọng điểm tại vùng Trung du và Miền núi phía Bắc. Kể từ dấu mốc lịch sử sáp nhập tỉnh Thái Nguyên và tỉnh Bắc Kạn vào ngày 01/07/2025, tỉnh mới có diện tích tự nhiên khoảng 8.375 km² cùng quy mô dân số khoảng 1,87 triệu người.">
-              is a pivotal province in Vietnam's Northern Midlands and Mountainous Region. Since the historic administrative merger of Thai Nguyen and Bac Kan on July 1, 2025, the province has covered approximately 8,375 km² with a population of around 1.87 million.
-            </span>
+            <strong class="font-bold text-slate-950">Thái Nguyên</strong> là tỉnh có vị trí chiến lược đặc biệt quan trọng tại vùng Trung du và Miền núi phía Bắc. Kể từ ngày <strong>01/07/2025</strong>, theo Nghị quyết của Quốc hội, việc hợp nhất tỉnh Thái Nguyên và tỉnh Bắc Kạn đã kiến tạo nên một không gian địa lý - kinh tế mới với quy mô diện tích tự nhiên khoảng <strong>8.374,53 km²</strong> và dân số đạt trên <strong>1,87 triệu người</strong>.
           </p>
 
-          <p data-en="Known for its diverse limestone karst landscapes, rich multi-ethnic cultural heritage, and world-renowned tea culture, Thai Nguyen also serves as a premier industrial and educational hub in northern Vietnam. Its natural and historical attractions offer vast potential for eco-tourism, cultural tourism, and community-based homestay tourism."
-             data-vi="Nổi tiếng với địa hình karst đá vôi đa dạng, di sản văn hóa phong phú của các dân tộc và danh trà trứ danh, Thái Nguyên đồng thời là trung tâm công nghiệp, giáo dục đại học hàng đầu miền Bắc. Nguồn tài nguyên thiên nhiên và nhân văn trác tuyệt mở ra tiềm năng to lớn cho du lịch sinh thái, văn hóa và du lịch cộng đồng.">
-            Known for its diverse limestone karst landscapes, rich multi-ethnic cultural heritage, and world-renowned tea culture, Thai Nguyen also serves as a premier industrial and educational hub in northern Vietnam. Its natural and historical attractions offer vast potential for eco-tourism, cultural tourism, and community-based homestay tourism.
+          <p>
+            Tỉnh giữ vai trò là cửa ngõ giao thương kết nối Thủ đô Hà Nội và vùng đồng bằng sông Hồng với các tỉnh miền núi phía Bắc. Sự sáp nhập mang lại tiềm năng phát triển du lịch vượt bậc: kết hợp hạ tầng giao thông hiện đại và đô thị giáo dục - công nghiệp sôi động ở phía Nam với rừng nguyên sinh, núi đá vôi karst và hồ Ba Bể tráng lệ ở phía Bắc.
           </p>
 
-          <!-- Neighboring Borders Grid -->
-          <div class="paper-card p-6 rounded-2xl space-y-4">
+          <!-- Neighboring Borders -->
+          <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 font-mono flex items-center gap-2">
-              <span class="text-amber-600">✦</span>
-              <span data-en="Neighboring Territorial Borders" data-vi="Vị trí Cửa ngõ Tiếp giáp Địa giới">Neighboring Territorial Borders</span>
+              <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+              <span>Vị Trí Cửa Ngõ &amp; Tiếp Giáp Địa Giới</span>
             </h4>
-            <div class="grid grid-cols-2 gap-3 text-xs">
-              <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                <strong class="text-slate-900" data-en="North:" data-vi="Phía Bắc:">North:</strong>
-                <span class="text-slate-600 ml-1" data-en="Borders Cao Bang Province" data-vi="Giáp tỉnh Cao Bằng">Borders Cao Bang Province</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong class="text-slate-900">Phía Bắc:</strong>
+                <span class="text-slate-600 ml-1">Giáp tỉnh Cao Bằng</span>
               </div>
-              <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                <strong class="text-slate-900" data-en="East:" data-vi="Phía Đông:">East:</strong>
-                <span class="text-slate-600 ml-1" data-en="Borders Lang Son Province" data-vi="Giáp tỉnh Lạng Sơn">Borders Lang Son Province</span>
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong class="text-slate-900">Phía Đông:</strong>
+                <span class="text-slate-600 ml-1">Giáp tỉnh Lạng Sơn</span>
               </div>
-              <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                <strong class="text-slate-900" data-en="South:" data-vi="Phía Nam:">South:</strong>
-                <span class="text-slate-600 ml-1" data-en="Borders Phu Tho, Bac Ninh &amp; Hanoi" data-vi="Giáp Phú Thọ, Bắc Ninh &amp; Hà Nội">Borders Phu Tho, Bac Ninh &amp; Hanoi</span>
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong class="text-slate-900">Phía Nam:</strong>
+                <span class="text-slate-600 ml-1">Giáp Phú Thọ, Bắc Ninh &amp; Thủ đô Hà Nội</span>
               </div>
-              <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-                <strong class="text-slate-900" data-en="West:" data-vi="Phía Tây:">West:</strong>
-                <span class="text-slate-600 ml-1" data-en="Borders Tuyen Quang Province" data-vi="Giáp tỉnh Tuyên Quang">Borders Tuyen Quang Province</span>
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                <strong class="text-slate-900">Phía Tây:</strong>
+                <span class="text-slate-600 ml-1">Giáp tỉnh Tuyên Quang</span>
               </div>
             </div>
 
-            <div class="pt-2 text-xs text-slate-600 font-light border-t border-stone-100">
-              <strong class="text-slate-800" data-en="Major Transport Arteries:" data-vi="Hạ tầng Giao thông Kết nối:">Major Transport Arteries:</strong>
-              <span data-en=" National Highways 3, 1B, 37, 3B, 279, and the modern Hanoi - Thai Nguyen - Cho Moi Expressway."
-                    data-vi=" Quốc lộ 3, 1B, 37, 3B, 279 và tuyến Cao tốc Hà Nội - Thái Nguyên - Chợ Mới.">
-                National Highways 3, 1B, 37, 3B, 279, and the modern Hanoi - Thai Nguyen - Cho Moi Expressway.
-              </span>
+            <div class="pt-3 text-xs text-slate-600 font-light border-t border-slate-100">
+              <strong class="text-slate-900">Mạng lưới giao thông huyết mạch:</strong>
+              <span> Quốc lộ 3, Quốc lộ 1B, Quốc lộ 37, Quốc lộ 3B, Quốc lộ 279 và tuyến Cao tốc Hà Nội - Thái Nguyên - Chợ Mới.</span>
             </div>
           </div>
         </div>
 
         <!-- Right Territory Monograph Box -->
-        <div class="lg:col-span-5 bg-tea-950 text-white p-7 rounded-3xl shadow-lg relative overflow-hidden">
+        <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white p-7 rounded-3xl shadow-lg relative overflow-hidden">
           <div class="space-y-5">
             <div>
-              <span class="text-[10px] font-mono uppercase tracking-widest text-amber-300 font-semibold" data-en="Official Survey Ledger" data-vi="Địa giới Hành chính Mới">Official Survey Ledger</span>
-              <h3 class="text-2xl font-serif font-bold text-white mt-1" data-en="The New Thai Nguyen Territory" data-vi="Quy Mô Tỉnh Thái Nguyên Mới">The New Thai Nguyen Territory</h3>
-              <p class="text-xs text-parchment-200 font-light mt-1">Resolution No. 202/2025/QH15 of the National Assembly</p>
+              <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold block mb-1">Số Liệu Thống Kê Chính Thức</span>
+              <h3 class="text-2xl font-heading font-extrabold text-white">Quy Mô Tỉnh Thái Nguyên Mới</h3>
+              <p class="text-xs text-slate-300 font-light mt-1">Căn cứ Nghị quyết số 202/2025/QH15 của Quốc hội khóa XV</p>
             </div>
 
             <div class="space-y-2.5 text-xs">
-              <div class="flex items-center justify-between p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-                <span class="text-parchment-200" data-en="Total Land Area" data-vi="Tổng diện tích tự nhiên">Total Land Area</span>
-                <span class="font-bold text-amber-300 font-mono">8,374.53 km²</span>
+              <div class="flex items-center justify-between p-3.5 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
+                <span class="text-slate-200">Tổng diện tích tự nhiên:</span>
+                <span class="font-bold text-amber-300 font-mono text-sm">8.374,53 km²</span>
               </div>
-              <div class="flex items-center justify-between p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-                <span class="text-parchment-200" data-en="Commune Administrative Units" data-vi="Đơn vị hành chính cấp xã">Commune Administrative Units</span>
-                <span class="font-bold text-tea-200 font-mono" data-en="92 Units (77 Communes, 15 Wards)" data-vi="92 Đơn vị (77 Xã, 15 Phường)">92 Units (77 Communes, 15 Wards)</span>
+              <div class="flex items-center justify-between p-3.5 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
+                <span class="text-slate-200">Đơn vị hành chính cấp xã:</span>
+                <span class="font-bold text-emerald-200 font-mono text-sm">92 Đơn vị (77 Xã, 15 Phường)</span>
               </div>
-              <div class="flex items-center justify-between p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-                <span class="text-parchment-200" data-en="Permanent Residents" data-vi="Dân số thường trú (31/12/2025)">Permanent Residents</span>
-                <span class="font-bold text-teal-200 font-mono">1,869,446 people</span>
+              <div class="flex items-center justify-between p-3.5 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
+                <span class="text-slate-200">Dân số thường trú (31/12/2025):</span>
+                <span class="font-bold text-teal-200 font-mono text-sm">1.869.446 Người</span>
               </div>
-              <div class="flex items-center justify-between p-3 bg-white/10 rounded-xl backdrop-blur-sm">
-                <span class="text-parchment-200" data-en="Average Population Density" data-vi="Mật độ dân số bình quân">Average Population Density</span>
-                <span class="font-bold text-sky-200 font-mono">223 people / km²</span>
+              <div class="flex items-center justify-between p-3.5 bg-white/10 rounded-2xl backdrop-blur-sm border border-white/10">
+                <span class="text-slate-200">Mật độ dân số bình quân:</span>
+                <span class="font-bold text-sky-200 font-mono text-sm">223 người / km²</span>
               </div>
             </div>
 
-            <p class="text-xs text-parchment-200/90 leading-relaxed font-light pt-2 border-t border-white/10"
-               data-en="The merger harmoniously unites the industrial and academic powerhouses of the south with the virgin biodiversity, primeval forests, and Tay-Nung cultural wealth of Ba Be in the north."
-               data-vi="Sự sáp nhập kết hợp hài hòa giữa đô thị công nghiệp - đại học sôi động phía Nam với hệ sinh thái nguyên sinh, hồ Ba Bể và bản sắc văn hóa Tày - Nùng phong phú phía Bắc.">
-              The merger harmoniously unites the industrial and academic powerhouses of the south with the virgin biodiversity, primeval forests, and Tay-Nung cultural wealth of Ba Be in the north.
+            <p class="text-xs text-slate-300 leading-relaxed font-light pt-2 border-t border-white/10">
+              Sự cộng hưởng giữa thế mạnh công nghiệp, đại học phía Nam và tài nguyên sinh thái, rừng đặc dụng, văn hóa Tày - Nùng phía Bắc mở ra hành lang du lịch đa dạng, hấp dẫn bốn mùa.
             </p>
           </div>
         </div>
@@ -405,418 +443,319 @@
       </div>
     </section>
 
-    <!-- SECTION 02: HISTORICAL CHRONICLE (7 EPOCHS) -->
+    <!-- CHAPTER 02: HISTORICAL CHRONICLE (7 EPOCHS) -->
     <section id="geography-history" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 02 • Ghi chép: Hương</span>
-      </div>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mb-3" data-en="Historical Chronicle &amp; Seven Epochs" data-vi="Biên Niên Sử 7 Thời Kỳ Hình Thành">
-        Historical Chronicle &amp; Seven Epochs
-      </h2>
-      <p class="text-slate-600 text-sm max-w-3xl mb-10 font-light"
-         data-en="Tracing Thai Nguyen from the ancient Vu Dinh realm of the Hung Kings through feudal dynasties, the Safe Zone (ATK) resistance base, and the 2025 unification."
-         data-vi="Hành trình từ miền đất Vũ Định thời Hùng Vương qua các triều đại phong kiến, Thủ đô Gió ngàn ATK kháng chiến đến dấu mốc hợp nhất năm 2025.">
-        Tracing Thai Nguyen from the ancient Vu Dinh realm of the Hung Kings through feudal dynasties, the Safe Zone (ATK) resistance base, and the 2025 unification.
-      </p>
-
-      <!-- Archival Museum Timeline Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Epoch 1 -->
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp">BCE – 602 CE</span>
-              <span class="text-stone-400">Epoch I</span>
-            </div>
-            <h3 class="text-lg font-serif font-bold text-slate-900 mb-2" data-en="Ancient &amp; Early Periods" data-vi="Thời Cổ đại &amp; Khởi nguyên">Ancient &amp; Early Periods</h3>
-            <p class="text-slate-600 text-xs leading-relaxed font-light"
-               data-en="During the Hung Kings' era, the territory belonged to Vu Dinh, one of 15 administrative realms of the Van Lang state. Under the Au Lac and Early Ly Dynasties (544–602), it was part of the Van Xuan state founded by Ly Bi."
-               data-vi="Thời đại Hùng Vương, đất Thái Nguyên thuộc bộ Vũ Định - một trong 15 bộ của nhà nước Văn Lang. Thời Âu Lạc và Tiền Lý (544 – 602), vùng đất này thuộc nhà nước Vạn Xuân do Lý Bí sáng lập.">
-              During the Hung Kings' era, the territory belonged to Vu Dinh, one of 15 administrative realms of the Van Lang state. Under the Au Lac and Early Ly Dynasties (544–602), it was part of the Van Xuan state founded by Ly Bi.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] font-mono text-stone-400">Van Lang &rarr; Au Lac &rarr; Van Xuan</div>
-        </div>
-
-        <!-- Epoch 2 -->
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp">10th – 19th Century</span>
-              <span class="text-stone-400">Epoch II</span>
-            </div>
-            <h3 class="text-lg font-serif font-bold text-slate-900 mb-2" data-en="Feudal Dynasties" data-vi="Thời kỳ Phong kiến Độc lập">Feudal Dynasties</h3>
-            <p class="text-slate-600 text-xs leading-relaxed font-light"
-               data-en="Connected with Phu Luong Prefecture under the Ly Dynasty, playing a vital defense shield. The name 'Thai Nguyen' officially emerged in administrative records in 1397. In 1831–1832, Emperor Minh Mang formally established Thai Nguyen as an official province."
-               data-vi="Thời Lý gắn với phủ Phú Lương, giữ vị trí phên dậu hiểm yếu. Danh xưng 'Thái Nguyên' chính thức xuất hiện năm 1397. Đến cải cách hành chính triều Nguyễn (1831-1832) thời vua Minh Mạng, Thái Nguyên chính thức trở thành tỉnh.">
-              Connected with Phu Luong Prefecture under the Ly Dynasty, playing a vital defense shield. The name 'Thai Nguyen' officially emerged in administrative records in 1397. In 1831–1832, Emperor Minh Mang formally established Thai Nguyen as an official province.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] font-mono text-stone-400">Phu Luong (Ly) &rarr; 1397 &rarr; Minh Mang 1831</div>
-        </div>
-
-        <!-- Epoch 3 -->
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp-terracotta">Late 19th C – 1945</span>
-              <span class="text-stone-400">Epoch III</span>
-            </div>
-            <h3 class="text-lg font-serif font-bold text-slate-900 mb-2" data-en="French Colonial Period" data-vi="Thời kỳ Pháp thuộc">French Colonial Period</h3>
-            <p class="text-slate-600 text-xs leading-relaxed font-light"
-               data-en="Underwent administrative reorganizations: dissolved in 1891, re-established in 1892. On April 11, 1900, the French colonial administration officially created Bac Kan Province from northern Thai Nguyen territory."
-               data-vi="Trải qua biến động hành chính: bị giải thể năm 1891, tái lập năm 1892. Ngày 11/04/1900, chính quyền thực dân Pháp thành lập tỉnh Bắc Kạn từ phần lãnh thổ phía Bắc từng gắn liền với Thái Nguyên.">
-              Underwent administrative reorganizations: dissolved in 1891, re-established in 1892. On April 11, 1900, the French colonial administration officially created Bac Kan Province from northern Thai Nguyen territory.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] font-mono text-stone-400">1892 Re-establishment &rarr; 1900 Bac Kan carved</div>
-        </div>
-
-        <!-- Epoch 4 -->
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp">1945 – 1954</span>
-              <span class="text-stone-400">Epoch IV</span>
-            </div>
-            <h3 class="text-lg font-serif font-bold text-slate-900 mb-2" data-en="ATK Dinh Hoa Revolutionary Base" data-vi="Thủ Đô Gió Ngàn ATK Định Hóa">ATK Dinh Hoa Revolutionary Base</h3>
-            <p class="text-slate-600 text-xs leading-relaxed font-light"
-               data-en="Heart of the Viet Bac revolutionary base. Dinh Hoa served as the Safe Zone (ATK), where President Ho Chi Minh and central government leaders lived, worked, and directed the nation to victory in the resistance against the French."
-               data-vi="Trái tim của căn cứ địa kháng chiến Việt Bắc. Định Hóa trở thành An toàn khu (ATK) - nơi Chủ tịch Hồ Chí Minh và Trung ương Đảng đặt cơ quan đầu não chỉ đạo toàn diện cuộc kháng chiến chống Pháp thắng lợi.">
-              Heart of the Viet Bac revolutionary base. Dinh Hoa served as the Safe Zone (ATK), where President Ho Chi Minh and central government leaders lived, worked, and directed the nation to victory in the resistance against the French.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] font-mono text-stone-400">Safe Zone ATK &rarr; President Ho Chi Minh</div>
-        </div>
-
-        <!-- Epoch 5 & 6 -->
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp">1954 – 2025</span>
-              <span class="text-stone-400">Epoch V &amp; VI</span>
-            </div>
-            <h3 class="text-lg font-serif font-bold text-slate-900 mb-2" data-en="Bac Thai Era &amp; Separation" data-vi="Thời kỳ Bắc Thái &amp; Tái Lập">Bac Thai Era &amp; Separation</h3>
-            <p class="text-slate-600 text-xs leading-relaxed font-light"
-               data-en="Merged as Bac Thai Province from 1965 to 1996 with the iconic Thai Nguyen Iron and Steel Complex. Separated into Thai Nguyen and Bac Kan on Jan 1, 1997. Established Song Cong City in 2015 and Pho Yen City in 2022."
-               data-vi="Giai đoạn 1965 - 1996 mang tên tỉnh Bắc Thái cùng Khu Gang thép Thái Nguyên. Tách thành hai tỉnh ngày 01/01/1997. Tiếp đó thành lập TP. Sông Công năm 2015 và TP. Phổ Yên năm 2022.">
-              Merged as Bac Thai Province from 1965 to 1996 with the iconic Thai Nguyen Iron and Steel Complex. Separated into Thai Nguyen and Bac Kan on Jan 1, 1997. Established Song Cong City in 2015 and Pho Yen City in 2022.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-stone-100 text-[11px] font-mono text-stone-400">Bac Thai (1965-1996) &rarr; Song Cong &rarr; Pho Yen</div>
-        </div>
-
-        <!-- Epoch 7 -->
-        <div class="bg-tea-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-md">
-          <div>
-            <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp border-amber-400 text-amber-300">July 1, 2025 – Present</span>
-              <span class="text-tea-300">The New Era</span>
-            </div>
-            <h3 class="text-lg font-serif font-bold text-white mb-2" data-en="The New Thai Nguyen Province" data-vi="Tỉnh Thái Nguyên Mới Thống Nhất">The New Thai Nguyen Province</h3>
-            <p class="text-parchment-200 text-xs leading-relaxed font-light"
-               data-en="Under Resolution No. 202/2025/QH15, Thai Nguyen and Bac Kan provinces reunited, forming the new province with 92 commune-level units. Combining southern industrial strength with northern Ba Be ecotourism."
-               data-vi="Theo Nghị quyết số 202/2025/QH15 của Quốc hội, Thái Nguyên và Bắc Kạn tái hợp nhất, hình thành tỉnh mới với 92 xã, phường. Kết nối sức bật công nghiệp phía Nam với sinh thái Ba Bể phía Bắc.">
-              Under Resolution No. 202/2025/QH15, Thai Nguyen and Bac Kan provinces reunited, forming the new province with 92 commune-level units. Combining southern industrial strength with northern Ba Be ecotourism.
-            </p>
-          </div>
-          <div class="mt-4 pt-3 border-t border-tea-700 text-[11px] font-mono text-amber-300">Resolution 202/2025/QH15</div>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 03: CLIMATE & FOUR SEASONS -->
-    <section id="climate" class="scroll-mt-28">
-      <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 03 • Ghi chép: Hương</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 02 • Khảo cứu: Hương</span>
       </div>
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950" data-en="Climate &amp; Four Seasons Field Guide" data-vi="Khí Hậu &amp; Cẩm Nang Bốn Mùa Thực Địa">
-            Climate &amp; Four Seasons Field Guide
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950" data-en="Historical Chronicle &amp; Seven Epochs" data-vi="Biên Niên Sử 7 Thời Kỳ Hình Thành">
+            Biên Niên Sử 7 Thời Kỳ Hình Thành
           </h2>
-          <p class="text-slate-600 text-sm mt-1 font-light">Annual averages: 20–23°C temperature, 1,400–1,900 mm rainfall, 82–84% relative humidity.</p>
+          <p class="text-slate-600 text-sm mt-1 max-w-2xl font-light">
+            Nhấp chọn từng giai đoạn lịch sử bên dưới để khám phá hành trình từ bộ Vũ Định thời Hùng Vương đến mốc son hợp nhất năm 2025.
+          </p>
+        </div>
+      </div>
+
+      <!-- Interactive 7-Epoch Timeline Container -->
+      <div id="epoch-timeline-container"></div>
+    </section>
+
+    <!-- CHAPTER 03: CLIMATE & FOUR SEASONS FIELD GUIDE -->
+    <section id="climate" class="scroll-mt-28">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 03 • Khảo cứu: Hương</span>
+      </div>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950" data-en="Climate &amp; Four Seasons Field Guide" data-vi="Khí Hậu &amp; Cẩm Nang Bốn Mùa Thực Địa">
+            Khí Hậu &amp; Cẩm Nang Bốn Mùa Thực Địa
+          </h2>
+          <p class="text-slate-600 text-sm mt-1 font-light">Nhiệt độ bình quân 20–23°C, lượng mưa 1.400–1.900 mm, độ ẩm 82–84%.</p>
         </div>
 
-        <!-- Season Selector Tabs -->
-        <div class="flex items-center gap-1.5 p-1 bg-white rounded-2xl border border-stone-200 shadow-2xs overflow-x-auto text-xs font-mono">
-          <button class="season-btn active px-4 py-2 rounded-xl transition flex items-center gap-1.5" data-season="spring">
-            <span>🌸</span> <span>Spring</span>
+        <!-- Season Selector Buttons -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs font-semibold">
+          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-2" data-season="spring" onclick="renderSeasons('spring')">
+            <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <span>Mùa Xuân</span>
           </button>
-          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-1.5" data-season="summer">
-            <span>☀️</span> <span>Summer</span>
+          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-2" data-season="summer" onclick="renderSeasons('summer')">
+            <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <span>Mùa Hạ</span>
           </button>
-          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-1.5" data-season="autumn">
-            <span>🍂</span> <span>Autumn</span>
+          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-2" data-season="autumn" onclick="renderSeasons('autumn')">
+            <svg class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+            <span>Mùa Thu</span>
           </button>
-          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-1.5" data-season="winter">
-            <span>❄️</span> <span>Winter</span>
+          <button class="season-btn px-4 py-2 rounded-xl transition flex items-center gap-2" data-season="winter" onclick="renderSeasons('winter')">
+            <svg class="w-4 h-4 text-cyan-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07l14.14-14.14"></path></svg>
+            <span>Mùa Đông</span>
           </button>
         </div>
       </div>
 
+      <!-- Rendered Season Details via app.js -->
       <div id="season-details-container"></div>
     </section>
 
-    <!-- SECTION 04: POPULATION & ETHNIC COMMUNITIES -->
+    <!-- CHAPTER 04: POPULATION & ETHNIC COMMUNITIES -->
     <section id="population" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 04 • Ghi chép: Hương</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 04 • Khảo cứu: Hương</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mb-6" data-en="Population &amp; Rich Multi-Ethnic Tapestry" data-vi="Dân Số &amp; Bản Sắc Văn Hóa Đa Dân Tộc">
-        Population &amp; Rich Multi-Ethnic Tapestry
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950 mb-6" data-en="Population &amp; Rich Multi-Ethnic Tapestry" data-vi="Dân Số &amp; Bản Sắc Văn Hóa Đa Dân Tộc">
+        Dân Số &amp; Bản Sắc Văn Hóa Đa Dân Tộc
       </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
+        <div class="travel-card p-6 rounded-2xl flex flex-col justify-between bg-white">
           <div>
-            <span class="editorial-stamp text-[10px]">Demographic Census</span>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-3" data-en="1.87 Million Permanent Residents" data-vi="1,87 Triệu Cư Dân Thường Trú">1.87 Million Permanent Residents</h3>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4"
-               data-en="As of December 31, 2025, Thai Nguyen recorded 1,869,446 permanent residents with an average population density of 223 people/km² across 77 communes and 15 wards."
-               data-vi="Tính đến ngày 31/12/2025, Thái Nguyên có 1.869.446 cư dân thường trú, mật độ bình quân 223 người/km² trên địa bàn 77 xã và 15 phường.">
-              As of December 31, 2025, Thai Nguyen recorded 1,869,446 permanent residents with an average population density of 223 people/km² across 77 communes and 15 wards.
+            <span class="text-xs font-mono font-bold text-slate-500 uppercase">Quy Mô Dân Số</span>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3">1,87 Triệu Cư Dân Thường Trú</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
+              Tính đến ngày 31/12/2025, tỉnh ghi nhận 1.869.446 người, mật độ trung bình 223 người/km². Dân cư phân bố không đồng đều: tập trung đông đúc tại các đô thị công nghiệp, đại học phía Nam và thưa thoáng tại các bản làng vùng cao phía Bắc.
             </p>
           </div>
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200 text-xs text-slate-600 font-light">
-            💡 Dân cư tập trung đông ở các đô thị công nghiệp phía Nam; phía Bắc mật độ thưa thoáng với các bản làng tựa núi.
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs text-slate-600">
+            Mật độ: 223 người/km² • 77 xã &amp; 15 phường
           </div>
         </div>
 
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
+        <div class="travel-card p-6 rounded-2xl flex flex-col justify-between bg-white">
           <div>
-            <span class="editorial-stamp-terracotta text-[10px]">Ethnic Harmony</span>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-3" data-en="Seven Coexisting Communities" data-vi="Cộng Đồng 7 Dân Tộc Anh Em">Seven Coexisting Communities</h3>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4"
-               data-en="Home to Kinh, Tày, Nùng, Dao, Sán Dìu, Sán Chay, and H'Mông ethnic communities, preserving traditional stilt homes, brocade weaving, oral folklore, and ancient harvest rituals."
-               data-vi="Mái nhà chung của các dân tộc Kinh, Tày, Nùng, Dao, Sán Dìu, Sán Chay và H'Mông; lưu giữ trọn vẹn nếp nhà sàn, nghề dệt thổ cẩm, dân ca cổ truyền và nghi lễ xuống đồng.">
-              Home to Kinh, Tày, Nùng, Dao, Sán Dìu, Sán Chay, and H'Mông ethnic communities, preserving traditional stilt homes, brocade weaving, oral folklore, and ancient harvest rituals.
+            <span class="text-xs font-mono font-bold text-emerald-800 uppercase">Đa Dân Tộc</span>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3">Cộng Đồng 7 Dân Tộc Anh Em</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
+              Nơi hội tụ bản sắc của người Kinh, Tày, Nùng, Dao, Sán Dìu, Sán Chay và H'Mông. Mỗi dân tộc mang đến những phong tục đặc sắc, trang phục thổ cẩm rực rỡ và nếp sống hài hòa cùng thiên nhiên.
             </p>
           </div>
           <div class="flex flex-wrap gap-1.5 text-xs font-mono">
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">Tày</span>
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">Nùng</span>
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">Dao</span>
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">Sán Dìu</span>
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">Sán Chay</span>
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">H'Mông</span>
-            <span class="px-2.5 py-1 bg-stone-100 rounded-lg text-slate-800 font-semibold">Kinh</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">Tày</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">Nùng</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">Dao</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">Sán Dìu</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">Sán Chay</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">H'Mông</span>
+            <span class="px-2.5 py-1 bg-slate-100 rounded-lg text-slate-800 font-semibold">Kinh</span>
           </div>
         </div>
 
-        <div class="paper-card p-6 rounded-2xl flex flex-col justify-between">
+        <div class="travel-card p-6 rounded-2xl flex flex-col justify-between bg-white">
           <div>
-            <span class="editorial-stamp-forest text-[10px]">Community Tourism</span>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-3" data-en="Authentic Stilt Hamlet Stays" data-vi="Du Lịch Cộng Đồng Bản Địa">Authentic Stilt Hamlet Stays</h3>
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4"
-               data-en="Highland valleys offer immersive homestays in traditional Tay wooden stilt houses, tasting Com Lam cooked over fragrant fires, and listening to Then singing accompanied by the Tinh gourd lute."
-               data-vi="Các thung lũng miền núi mang đến trải nghiệm lưu trú nhà sàn gỗ Tày, thưởng thức cơm lam nướng than hồng, và thưởng thức tiếng hát Then hòa quyện cùng đàn Tính mộc mạc.">
-              Highland valleys offer immersive homestays in traditional Tay wooden stilt houses, tasting Com Lam cooked over fragrant fires, and listening to Then singing accompanied by the Tinh gourd lute.
+            <span class="text-xs font-mono font-bold text-amber-700 uppercase">Du Lịch Bản Địa</span>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3">Du Lịch Cộng Đồng &amp; Nhà Sàn</h3>
+            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
+              Các thung lũng nguyên sơ mở ra trải nghiệm homestay nhà sàn Tày truyền thống, nếm cơm lam nướng ống nứa, cá nướng Pa Pỉnh Tộp và lắng nghe điệu Then ngân vang bên bếp than hồng.
             </p>
           </div>
-          <div class="p-3 bg-tea-50 rounded-xl border border-tea-200 text-xs text-tea-900 font-mono">
-            🌿 Bản Pác Ngòi &amp; Bó Lù (Ba Bể), La Bằng (Đại Từ), ATK Định Hóa.
+          <div class="p-3 bg-emerald-50 rounded-xl border border-emerald-200 text-xs text-emerald-900 font-mono">
+            Bản Pác Ngòi &amp; Bó Lù (Ba Bể), La Bằng (Đại Từ), ATK Định Hóa.
           </div>
         </div>
 
       </div>
     </section>
 
-    <!-- SECTION 05: ECONOMY & FAMOUS TEA CAPITAL -->
+    <!-- CHAPTER 05: ECONOMY & FAMOUS TEA CAPITAL -->
     <section id="economy" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 05 • Ghi chép: Hương</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 05 • Khảo cứu: Hương</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mb-6" data-en="Economy, Sustainable Tourism &amp; Famous Tea" data-vi="Kinh Tế, Du Lịch Bền Vững &amp; Đệ Nhất Danh Trà">
-        Economy, Sustainable Tourism &amp; Famous Tea
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950 mb-6" data-en="Economy, Sustainable Tourism &amp; Famous Tea" data-vi="Kinh Tế, Du Lịch Bền Vững &amp; Đệ Nhất Danh Trà">
+        Kinh Tế, Du Lịch Bền Vững &amp; Đệ Nhất Danh Trà
       </h2>
 
-      <!-- Economic Structure Grid -->
+      <!-- Stat Metrics Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div class="paper-card p-5 rounded-2xl">
-          <div class="text-[10px] font-mono uppercase text-slate-500">2026 GRDP Target</div>
-          <div class="text-3xl font-serif font-bold text-tea-800 mt-2">11.0%</div>
+        <div class="travel-card p-6 rounded-2xl bg-white">
+          <div class="text-xs font-mono uppercase text-slate-500 font-bold">Mục tiêu GRDP 2026</div>
+          <div class="text-3xl font-heading font-black text-emerald-800 mt-2">11,0%</div>
           <p class="text-xs text-slate-600 mt-1 font-light">Tăng trưởng bền vững dựa trên công nghệ cao, dịch vụ và du lịch xanh.</p>
         </div>
-        <div class="paper-card p-5 rounded-2xl">
-          <div class="text-[10px] font-mono uppercase text-slate-500">Industry &amp; Construction</div>
-          <div class="text-3xl font-serif font-bold text-slate-900 mt-2">54.13%</div>
-          <p class="text-xs text-slate-600 mt-1 font-light">Công nghiệp chế biến, điện tử và bán dẫn dẫn dắt cơ cấu.</p>
+        <div class="travel-card p-6 rounded-2xl bg-white">
+          <div class="text-xs font-mono uppercase text-slate-500 font-bold">Công nghiệp - Xây dựng</div>
+          <div class="text-3xl font-heading font-black text-slate-900 mt-2">54,13%</div>
+          <p class="text-xs text-slate-600 mt-1 font-light">Điện tử, bán dẫn và chế biến chế tạo giữ vai trò trụ cột.</p>
         </div>
-        <div class="paper-card p-5 rounded-2xl">
-          <div class="text-[10px] font-mono uppercase text-slate-500">Services &amp; Tourism</div>
-          <div class="text-3xl font-serif font-bold text-tea-800 mt-2">31.73%</div>
+        <div class="travel-card p-6 rounded-2xl bg-white">
+          <div class="text-xs font-mono uppercase text-slate-500 font-bold">Dịch vụ &amp; Du lịch</div>
+          <div class="text-3xl font-heading font-black text-emerald-700 mt-2">31,73%</div>
           <p class="text-xs text-slate-600 mt-1 font-light">Mục tiêu đón 8 triệu lượt khách, doanh thu 11.000 tỷ đồng năm 2026.</p>
         </div>
-        <div class="paper-card p-5 rounded-2xl">
-          <div class="text-[10px] font-mono uppercase text-slate-500">Tea Product Value</div>
-          <div class="text-3xl font-serif font-bold text-terracotta-600 mt-2">&gt;16.8 T.VND</div>
-          <p class="text-xs text-slate-600 mt-1 font-light">22.268 ha diện tích chè toàn tỉnh, bảo hộ tài sản trí tuệ quốc tế.</p>
+        <div class="travel-card p-6 rounded-2xl bg-white">
+          <div class="text-xs font-mono uppercase text-slate-500 font-bold">Giá trị cây chè</div>
+          <div class="text-3xl font-heading font-black text-amber-600 mt-2">&gt;16,8 T.VND</div>
+          <p class="text-xs text-slate-600 mt-1 font-light">22.268 ha diện tích chè, chỉ dẫn địa lý bảo hộ quốc tế.</p>
         </div>
       </div>
 
-      <!-- Tea Capital Monograph Feature -->
-      <div class="bg-tea-950 text-white rounded-3xl p-8 lg:p-10 shadow-lg relative overflow-hidden">
+      <!-- Tea Feature Banner -->
+      <div class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white rounded-3xl p-8 lg:p-10 shadow-lg relative overflow-hidden">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div class="lg:col-span-7 space-y-4">
-            <span class="editorial-stamp border-amber-400 text-amber-300">Intangible Cultural Heritage</span>
-            <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white">
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              Di Sản Văn Hóa Phi Vật Thể Quốc Gia
+            </span>
+            <h3 class="text-2xl sm:text-3xl font-heading font-extrabold text-white">
               Thái Nguyên: "Đệ Nhất Danh Trà" Đất Việt
             </h3>
-            <p class="text-xs sm:text-sm text-parchment-200 leading-relaxed font-light">
-              Cây chè không đơn thuần là một nông sản mà là linh hồn và bản sắc trường tồn của vùng đất Thái Nguyên. Năm 2026, với hơn 22.268 ha chè, tỉnh đẩy mạnh kết hợp sản xuất chè với du lịch trải nghiệm: thăm nương chè mâm xôi, mục sở thị nghệ thuật sao chè thủ công trên chảo gang và tham gia các lớp học thưởng trà cung đình.
+            <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">
+              Cây chè không chỉ là nông sản mũi nhọn mà còn là linh hồn của đất và người Thái Nguyên. Năm 2026, tỉnh mở rộng các tour du lịch sinh thái nông nghiệp: trải nghiệm hái chè cùng nghệ nhân, chiêm ngưỡng nghệ thuật sao chè bằng chảo gang thủ công và thưởng trà tiến vua giữa không gian nương chè mâm xôi bạt ngàn.
             </p>
 
             <div class="pt-2">
-              <h5 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-2">5 Vùng Trà Nổi Tiếng Đã Được Định Danh:</h5>
+              <h5 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-2 font-bold">5 Vùng Trà Nổi Tiếng Đã Được Định Danh:</h5>
               <div class="flex flex-wrap gap-2 text-xs font-mono">
-                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">🌿 Tân Cương (Cradle of Famous Tea)</span>
-                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">🌿 La Bằng (Tam Đảo foothills)</span>
-                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">🌿 Trại Cài (Đồng Hỷ)</span>
-                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">🌿 Khe Cốc (Tức Tranh)</span>
-                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">🌿 Bằng Phúc (Highland Tea)</span>
+                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">Tân Cương (Đệ Nhất Danh Trà)</span>
+                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">La Bằng (Dưới chân Tam Đảo)</span>
+                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">Trại Cài (Đồng Hỷ)</span>
+                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">Khe Cốc (Tức Tranh)</span>
+                <span class="px-3 py-1 bg-white/10 rounded-full border border-white/15">Bằng Phúc (Trà Shan Tuyết cổ)</span>
               </div>
             </div>
           </div>
 
           <div class="lg:col-span-5 bg-white/10 p-6 rounded-2xl backdrop-blur-md border border-white/10 text-xs space-y-3 font-mono">
             <h4 class="font-bold text-amber-300 uppercase tracking-wider">Cơ Cấu Kinh Tế Năm 2026</h4>
-            <div class="space-y-2 text-[11px]">
+            <div class="space-y-2.5 text-[11px]">
               <div>
                 <div class="flex justify-between mb-1">
-                  <span>Industry &amp; Construction</span>
-                  <span class="font-bold text-amber-300">54.13%</span>
+                  <span>Công nghiệp &amp; Xây dựng</span>
+                  <span class="font-bold text-amber-300">54,13%</span>
                 </div>
-                <div class="w-full h-1.5 rounded-full bg-white/20"><div class="h-full bg-amber-400 rounded-full" style="width: 54.13%"></div></div>
+                <div class="w-full h-2 rounded-full bg-white/20"><div class="h-full bg-amber-400 rounded-full" style="width: 54.13%"></div></div>
               </div>
               <div>
                 <div class="flex justify-between mb-1">
-                  <span>Services &amp; Tourism</span>
-                  <span class="font-bold text-teal-300">31.73%</span>
+                  <span>Dịch vụ &amp; Du lịch</span>
+                  <span class="font-bold text-teal-300">31,73%</span>
                 </div>
-                <div class="w-full h-1.5 rounded-full bg-white/20"><div class="h-full bg-teal-400 rounded-full" style="width: 31.73%"></div></div>
+                <div class="w-full h-2 rounded-full bg-white/20"><div class="h-full bg-teal-400 rounded-full" style="width: 31.73%"></div></div>
               </div>
               <div>
                 <div class="flex justify-between mb-1">
-                  <span>Agriculture, Forestry &amp; Fisheries</span>
-                  <span class="font-bold text-emerald-300">10.32%</span>
+                  <span>Nông, Lâm nghiệp &amp; Thủy sản</span>
+                  <span class="font-bold text-emerald-300">10,32%</span>
                 </div>
-                <div class="w-full h-1.5 rounded-full bg-white/20"><div class="h-full bg-emerald-400 rounded-full" style="width: 10.32%"></div></div>
+                <div class="w-full h-2 rounded-full bg-white/20"><div class="h-full bg-emerald-400 rounded-full" style="width: 10.32%"></div></div>
               </div>
               <div>
                 <div class="flex justify-between mb-1">
-                  <span>Product Taxes less Subsidies</span>
-                  <span class="font-bold text-sky-300">3.82%</span>
+                  <span>Thuế sản phẩm trừ trợ cấp</span>
+                  <span class="font-bold text-sky-300">3,82%</span>
                 </div>
-                <div class="w-full h-1.5 rounded-full bg-white/20"><div class="h-full bg-sky-400 rounded-full" style="width: 3.82%"></div></div>
+                <div class="w-full h-2 rounded-full bg-white/20"><div class="h-full bg-sky-400 rounded-full" style="width: 3.82%"></div></div>
               </div>
             </div>
-            <p class="text-[10px] text-stone-300 pt-2 border-t border-white/10 font-sans italic">Nguồn: thainguyen.gov.vn</p>
+            <p class="text-[10px] text-slate-400 pt-2 border-t border-white/10 font-sans italic">Nguồn dữ liệu: Cổng TTĐT thainguyen.gov.vn</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SECTION 06: BEAUTY-SPOTS & WONDER LANDSCAPES -->
+    <!-- CHAPTER 06: 9 WONDER LANDSCAPES -->
     <section id="landscapes" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 06 • Ghi chép: Thu</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 06 • Khảo cứu: Thu</span>
       </div>
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950" data-en="Beauty-Spots &amp; Enchanted Landscapes" data-vi="9 Danh Thắng Kỳ Quan Tuyệt Tác Đại Ngàn">
-            Beauty-Spots &amp; Enchanted Landscapes
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950" data-en="Beauty-Spots &amp; Enchanted Landscapes" data-vi="9 Danh Thắng Kỳ Quan Tuyệt Tác Đại Ngàn">
+            9 Danh Thắng Kỳ Quan Tuyệt Tác Đại Ngàn
           </h2>
-          <p class="text-slate-600 text-sm mt-1 font-light">Tất cả hình ảnh hiển thị là ảnh chụp thực tế tại các danh lam thắng cảnh thuộc tỉnh Thái Nguyên và vùng Ba Bể.</p>
+          <p class="text-slate-600 text-sm mt-1 font-light">Tất cả hình ảnh hiển thị là ảnh chụp thực tế tại các danh lam thắng cảnh thuộc tỉnh Thái Nguyên và vùng hồ Ba Bể.</p>
         </div>
 
-        <!-- Filter Category Tabs -->
-        <div class="flex items-center gap-1.5 p-1 bg-white rounded-2xl border border-stone-200 shadow-2xs overflow-x-auto text-xs font-mono">
-          <button class="filter-btn active px-3.5 py-2 rounded-xl transition" data-filter="all">All (09)</button>
-          <button class="filter-btn px-3.5 py-2 rounded-xl transition" data-filter="lake">Lakes</button>
-          <button class="filter-btn px-3.5 py-2 rounded-xl transition" data-filter="cave">Caves</button>
-          <button class="filter-btn px-3.5 py-2 rounded-xl transition" data-filter="waterfall">Falls</button>
-          <button class="filter-btn px-3.5 py-2 rounded-xl transition" data-filter="tea">Tea Hills</button>
-          <button class="filter-btn px-3.5 py-2 rounded-xl transition" data-filter="trekking">Trekking</button>
+        <!-- Category Filter Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-1 text-xs">
+          <button class="filter-pill active" data-filter="all">Tất cả (09)</button>
+          <button class="filter-pill" data-filter="lake">Hồ nước (02)</button>
+          <button class="filter-pill" data-filter="cave">Hang động (03)</button>
+          <button class="filter-pill" data-filter="waterfall">Thác nước (02)</button>
+          <button class="filter-pill" data-filter="tea">Nương chè (01)</button>
+          <button class="filter-pill" data-filter="trekking">Trekking (01)</button>
         </div>
       </div>
 
-      <!-- Bento Grid Rendered via app.js -->
+      <!-- Rendered Destinations Grid via app.js -->
       <div id="destinations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
 
-    <!-- SECTION 07: CUSTOMS, CULTURE AND FESTIVALS -->
+    <!-- CHAPTER 07: CUSTOMS, CULTURE AND FESTIVALS -->
     <section id="culture" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 07 • Ghi chép: Thu</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 07 • Khảo cứu: Thu</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mb-6" data-en="Customs, Culture &amp; Traditional Festivals" data-vi="Phong Tục, Di Sản Dân Ca &amp; Lễ Hội Truyền Thống">
-        Customs, Culture &amp; Traditional Festivals
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950 mb-6" data-en="Customs, Culture &amp; Traditional Festivals" data-vi="Phong Tục, Di Sản Dân Ca &amp; Lễ Hội Truyền Thống">
+        Phong Tục, Di Sản Dân Ca &amp; Lễ Hội Truyền Thống
       </h2>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-10">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-10">
         
-        <div class="paper-card p-6 rounded-3xl flex flex-col justify-between">
+        <div class="travel-card p-6 rounded-3xl flex flex-col justify-between bg-white">
           <div>
-            <div class="h-44 rounded-2xl overflow-hidden mb-4 editorial-photo-wrap">
+            <div class="h-48 rounded-2xl overflow-hidden mb-4 travel-photo-container">
               <img src="assets/images/tay-stilt-house.jpg" alt="Nhà sàn người Tày Ba Bể" class="w-full h-full object-cover">
             </div>
-            <span class="editorial-stamp-forest text-[10px]">Living Heritage</span>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-2">1. Phong Tục &amp; Nếp Nhà Sàn</h3>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-100 text-emerald-900 font-mono">Di Sản Sống</span>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-2">1. Phong Tục &amp; Nếp Nhà Sàn</h3>
             <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
-              Phong tục các dân tộc Tày, Nùng, Dao, Mông, Sán Dìu gắn bó keo sơn với gia đình, dòng tộc và cội nguồn tổ tiên. Tại các thung lũng rẻo cao, nhân dân vẫn giữ trọn nếp nhà sàn gỗ cổ truyền, trang phục thêu thổ cẩm và các món ẩm thực nướng ống nứa trứ danh.
+              Người Tày, Nùng, Dao gìn giữ nếp nhà sàn gỗ cổ truyền tựa lưng vào núi đá vôi. Mỗi nếp nhà là không gian sinh hoạt văn hóa với bếp lửa hồng ấm áp, nghệ thuật dệt thổ cẩm tinh xảo và các món ẩm thực nướng ống nứa trứ danh.
             </p>
           </div>
-          <div class="text-[11px] font-mono text-tea-800 bg-tea-50 p-2.5 rounded-xl border border-tea-200">
-            ✓ Di sản sống bảo tồn trong mô hình du lịch cộng đồng
+          <div class="text-[11px] font-mono text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+            Bảo tồn nguyên bản tại Bản Pác Ngòi &amp; Bó Lù
           </div>
         </div>
 
-        <div class="paper-card p-6 rounded-3xl flex flex-col justify-between">
+        <div class="travel-card p-6 rounded-3xl flex flex-col justify-between bg-white">
           <div>
-            <div class="h-44 rounded-2xl overflow-hidden mb-4 bg-stone-100 flex items-center justify-center p-3">
+            <div class="h-48 rounded-2xl overflow-hidden mb-4 bg-slate-100 flex items-center justify-center p-3">
               <img src="assets/images/dan-tinh.jpg" alt="Đàn Tính Hát Then" class="max-h-full object-contain">
             </div>
-            <span class="editorial-stamp-terracotta text-[10px]">UNESCO Heritage</span>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-2">2. Hát Then &amp; Dân Ca Cổ Truyền</h3>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-100 text-amber-900 font-mono">UNESCO Công Nhận</span>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-2">2. Hát Then &amp; Đàn Tính</h3>
             <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
-              Sau sáp nhập, âm hưởng núi rừng hòa quyện cùng làn điệu trung du. Di sản Hát Then đàn Tính của người Tày - Nùng ngân vang cùng điệu Sli, Lượn, Phong Slư, Páo Dung của người Dao, Soòng Cô của người Sán Dìu và điệu múa Bát rộn rã.
+              Di sản văn hóa phi vật thể đại diện của nhân loại được UNESCO vinh danh. Tiếng đàn Tính từ bầu bầu mộc mạc hòa cùng câu hát Then mượt mà như lời tâm tình với tổ tiên, kết hợp điệu múa Bát rộn ràng trong các dịp hội làng.
             </p>
           </div>
-          <div class="text-[11px] font-mono text-amber-900 bg-amber-50 p-2.5 rounded-xl border border-amber-200">
-            🎶 Di sản Văn hóa Phi vật thể đại diện nhân loại (UNESCO)
+          <div class="text-[11px] font-mono text-amber-900 bg-amber-50 p-3 rounded-xl border border-amber-200">
+            Di sản Văn hóa Phi vật thể Nhân loại (UNESCO)
           </div>
         </div>
 
-        <div class="paper-card p-6 rounded-3xl flex flex-col justify-between">
+        <div class="travel-card p-6 rounded-3xl flex flex-col justify-between bg-white">
           <div>
-            <div class="h-44 rounded-2xl overflow-hidden mb-4 editorial-photo-wrap">
-              <img src="assets/images/atk-dinh-hoa.jpg" alt="Khu di tích ATK Định Hóa" class="w-full h-full object-cover">
+            <div class="h-48 rounded-2xl overflow-hidden mb-4 travel-photo-container">
+              <img src="assets/images/atk-dinh-hoa.jpg" alt="Di tích ATK Định Hóa" class="w-full h-full object-cover">
             </div>
-            <span class="editorial-stamp text-[10px]">Highland Rituals</span>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mt-2 mb-2">3. Lễ Hội Xuống Đồng &amp; Đền Đuổm</h3>
+            <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-100 text-rose-900 font-mono">Hội Mùa Xuân</span>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-2">3. Lễ Hội Xuống Đồng &amp; Về Nguồn</h3>
             <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
-              Mùa xuân tưng bừng với Hội Lồng Tồng (Xuống đồng) của người Tày - Nùng cầu mưa thuận gió hòa, thi ném còn may mắn; Lễ hội Đền Đuổm tôn vinh Đức Thánh Dương Tự Minh; Lễ hội Núi Văn - Núi Võ và Lễ hội Hích đậm chất sử thi.
+              Mỗi độ xuân về, Hội Lồng Tồng (Xuống đồng) rộn rã với nghi lễ cầu mùa, thi ném còn, đẩy gậy. Du khách kết hợp hành hương Đền Đuổm tôn vinh Dương Tự Minh và về nguồn Thủ đô Gió ngàn ATK Định Hóa lịch sử.
             </p>
           </div>
-          <div class="text-[11px] font-mono text-tea-900 bg-stone-100 p-2.5 rounded-xl border border-stone-200">
-            🎯 Nghi lễ tịch điền, ném còn, đẩy gậy, kéo co truyền thống
+          <div class="text-[11px] font-mono text-slate-800 bg-slate-100 p-3 rounded-xl border border-slate-200">
+            Nghi thức tịch điền, ném còn, đua thuyền độc mộc
           </div>
         </div>
 
       </div>
 
       <!-- Mega-Event Spotlight -->
-      <div class="bg-gradient-to-r from-tea-950 via-tea-900 to-stone-900 text-white rounded-3xl p-8 border border-tea-800 shadow-md">
+      <div class="bg-gradient-to-r from-emerald-950 via-slate-900 to-emerald-950 text-white rounded-3xl p-8 border border-emerald-800/80 shadow-md">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
           <div class="space-y-2">
-            <span class="editorial-stamp border-amber-400 text-amber-300">Featured Mega-Event</span>
-            <h3 class="text-2xl font-serif font-bold">Lễ Hội Thái Nguyên – Hương Sắc Danh Trà Năm 2025</h3>
-            <p class="text-xs sm:text-sm text-parchment-200 max-w-3xl leading-relaxed font-light">
-              Bản hòa ca giữa nghệ thuật trà, văn hóa dân gian và du lịch. Lễ hội giới thiệu tinh hoa 5 vùng trà nổi danh: Tân Cương, La Bằng, Trại Cài, Khe Cốc và Bằng Phúc, kết nối du khách thập phương với nhịp sống và đôi bàn tay tài hoa của người trồng chè.
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              Sự Kiện Văn Hóa Trọng Điểm
+            </span>
+            <h3 class="text-2xl font-heading font-extrabold text-white">Lễ Hội Thái Nguyên – Hương Sắc Danh Trà Năm 2025</h3>
+            <p class="text-xs sm:text-sm text-slate-300 max-w-3xl leading-relaxed font-light">
+              Bản hòa ca giữa nghệ thuật thưởng trà, âm nhạc dân tộc và quảng bá điểm đến. Giới thiệu tinh hoa 5 vùng trà trứ danh cùng các triển lãm nông nghiệp công nghệ cao và hội chợ di sản văn hóa.
             </p>
           </div>
           <a href="#pagodas" class="shrink-0 px-5 py-2.5 bg-amber-400 hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-xl transition font-mono">
@@ -826,58 +765,62 @@
       </div>
     </section>
 
-    <!-- SECTION 08: SACRED PAGODAS & TEMPLES -->
+    <!-- CHAPTER 08: SACRED PAGODAS & HISTORIC SHRINES -->
     <section id="pagodas" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 08 • Khảo cứu: Ánh</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 08 • Khảo cứu: Ánh</span>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950 mb-3" data-en="Sacred Pagodas &amp; Historic Shrines" data-vi="Cổ Tự Thiêng Liêng &amp; Đền Miếu Ngàn Năm">
-        Sacred Pagodas &amp; Historic Shrines
+      <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950 mb-3" data-en="Sacred Pagodas &amp; Historic Shrines" data-vi="Cổ Tự Thiêng Liêng &amp; Đền Miếu Ngàn Năm">
+        Cổ Tự Thiêng Liêng &amp; Đền Miếu Ngàn Năm
       </h2>
       <p class="text-slate-600 max-w-3xl text-sm leading-relaxed mb-8 font-light">
         Khảo cứu chi tiết ba di tích tâm linh tiêu biểu của Thái Nguyên với hình ảnh thực tế, huyền tích lịch sử và quy chuẩn ứng xử nơi tôn nghiêm.
       </p>
 
-      <!-- Pagodas List via app.js -->
+      <!-- Pagodas Grid via app.js -->
       <div id="pagodas-grid" class="space-y-8"></div>
 
-      <!-- Sacred Etiquette Guide -->
-      <div class="mt-12 bg-parchment-100 p-6 sm:p-8 rounded-3xl border border-stone-300">
-        <div class="flex items-center gap-3 mb-4">
-          <div class="w-9 h-9 rounded-xl bg-amber-400 text-slate-950 flex items-center justify-center font-bold">
-            🙏
+      <!-- Sacred Etiquette Guide (With Clean SVG Icons) -->
+      <div class="mt-12 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200 shadow-sm">
+        <div class="flex items-center gap-3 mb-6">
+          <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center font-bold">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
           </div>
           <div>
-            <h3 class="text-base font-serif font-bold text-slate-900">Quy Chuẩn Ứng Xử &amp; Phép Tắc Chiêm Bái Chốn Thiền Môn</h3>
-            <p class="text-xs text-stone-600 font-light">Những lưu ý quan trọng do tác giả Ánh đúc kết giúp chuyến hành hương tôn kính và an lạc.</p>
+            <h3 class="text-base sm:text-lg font-heading font-extrabold text-slate-900">Quy Chuẩn Ứng Xử &amp; Phép Tắc Chiêm Bái Chốn Thiền Môn</h3>
+            <p class="text-xs text-slate-500 font-light">Những lưu ý quan trọng do tác giả Ánh đúc kết giúp chuyến hành hương tôn kính và an lạc.</p>
           </div>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs font-light">
-          <div class="bg-white p-4 rounded-xl border border-stone-200">
-            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 font-sans">
-              <span>👕</span> <span>Trang Phục Kín Đáo</span>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-2 font-sans text-xs">
+              <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              <span>Trang Phục Kín Đáo</span>
             </h4>
             <p class="text-slate-600 leading-relaxed">Mặc áo có tay, quần hoặc váy dài quá đầu gối. Tháo mũ nón, kính râm trước khi bước vào điện thờ.</p>
           </div>
 
-          <div class="bg-white p-4 rounded-xl border border-stone-200">
-            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 font-sans">
-              <span>🚪</span> <span>Cửa Vào Cửa Ra</span>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-2 font-sans text-xs">
+              <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              <span>Cửa Vào Cửa Ra</span>
             </h4>
             <p class="text-slate-600 leading-relaxed">Vào cửa bên phải (cửa Giác quan), ra cửa bên trái (cửa Giải thoát). Tuyệt đối không dẫm chân lên bậu cửa.</p>
           </div>
 
-          <div class="bg-white p-4 rounded-xl border border-stone-200">
-            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 font-sans">
-              <span>🍎</span> <span>Lễ Phẩm Thanh Tịnh</span>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-2 font-sans text-xs">
+              <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+              <span>Lễ Phẩm Thanh Tịnh</span>
             </h4>
             <p class="text-slate-600 leading-relaxed">Chỉ dâng đồ lễ chay (hoa tươi, trái chín, hương thơm, oản). Tuyệt đối không mang đồ mặn vào điện Tam Bảo.</p>
           </div>
 
-          <div class="bg-white p-4 rounded-xl border border-stone-200">
-            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-1.5 font-sans">
-              <span>🤫</span> <span>Giữ Thanh Tịnh</span>
+          <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200/80">
+            <h4 class="font-bold text-slate-900 mb-1 flex items-center gap-2 font-sans text-xs">
+              <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+              <span>Giữ Thanh Tịnh</span>
             </h4>
             <p class="text-slate-600 leading-relaxed">Đi nhẹ, nói khẽ, đặt tiền giọt dầu vào hòm công đức; không xoa tay, đặt tiền lên thân tượng Phật.</p>
           </div>
@@ -885,72 +828,73 @@
       </div>
     </section>
 
-    <!-- SECTION 09: HEALTH & MEDICAL SERVICES -->
+    <!-- CHAPTER 09: HEALTHCARE & EMERGENCY SERVICES -->
     <section id="health-service" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 09 • Khảo sát: Thủy</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 09 • Khảo sát: Thủy</span>
       </div>
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950" data-en="Healthcare &amp; Emergency Safety" data-vi="Mạng Lưới Y Tế &amp; An Toàn Du Khách">
-            Healthcare &amp; Emergency Safety
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950" data-en="Healthcare &amp; Emergency Safety" data-vi="Mạng Lưới Y Tế &amp; An Toàn Du Khách">
+            Mạng Lưới Y Tế &amp; An Toàn Du Khách
           </h2>
           <p class="text-slate-600 text-sm mt-1 font-light">Mạng lưới bệnh viện tuyến trung ương và trạm y tế cơ sở đảm bảo cấp cứu 24/7 cho du khách.</p>
         </div>
 
-        <div class="flex items-center gap-2 text-xs font-mono bg-red-50 text-red-700 border border-red-200 px-3 py-2 rounded-xl">
-          <svg class="w-4 h-4 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+        <div class="flex items-center gap-2 text-xs font-mono bg-rose-50 text-rose-700 border border-rose-200 px-3.5 py-2 rounded-xl font-bold">
+          <svg class="w-4 h-4 text-rose-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
           <span>Đường dây nóng Cấp cứu: 115</span>
         </div>
       </div>
 
-      <!-- Digital Health Note -->
-      <div class="bg-tea-950 text-white p-6 rounded-2xl mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- Telehealth Banner -->
+      <div class="bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white p-6 rounded-2xl mb-8 flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <div class="text-[10px] font-mono uppercase tracking-wider text-amber-300">Chuyển Đổi Số Y Tế</div>
-          <h4 class="text-base font-serif font-bold mt-1">Hồ Sơ Sức Khỏe VNeID &amp; Telehealth "Bác Sĩ Cho Mọi Nhà"</h4>
-          <p class="text-xs text-parchment-200 mt-1 max-w-3xl leading-relaxed font-light">
+          <div class="text-[10px] font-mono uppercase tracking-wider text-amber-300 font-bold">Chuyển Đổi Số Y Tế</div>
+          <h4 class="text-base font-heading font-extrabold mt-1">Hồ Sơ Sức Khỏe VNeID &amp; Telehealth "Bác Sĩ Cho Mọi Nhà"</h4>
+          <p class="text-xs text-slate-300 mt-1 max-w-3xl leading-relaxed font-light">
             Thái Nguyên tiên phong ứng dụng hồ sơ sức khỏe điện tử tích hợp ứng dụng VNeID, chẩn đoán AI và phần mềm khám chữa bệnh từ xa kết nối trạm y tế xã với các chuyên gia đầu ngành.
           </p>
         </div>
         <div class="shrink-0 flex items-center gap-2 font-mono text-xs">
-          <span class="px-2.5 py-1 bg-white/10 rounded-lg">AI Diagnoses</span>
-          <span class="px-2.5 py-1 bg-tea-700 rounded-lg">VNeID Synced</span>
+          <span class="px-3 py-1 bg-white/10 rounded-lg">AI Diagnoses</span>
+          <span class="px-3 py-1 bg-emerald-700 rounded-lg font-bold">VNeID Synced</span>
         </div>
       </div>
 
+      <!-- Rendered Hospitals Grid via app.js -->
       <div id="hospitals-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
-    <!-- SECTION 10: CURATED ITINERARIES -->
+    <!-- CHAPTER 10: CURATED TRAVEL ITINERARIES -->
     <section id="itinerary-builder" class="scroll-mt-28">
       <div class="flex items-center gap-2 mb-2">
-        <span class="editorial-stamp">Chapter 10 • Lịch trình Mẫu</span>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200 text-slate-800 font-mono">Phần 10 • Lịch trình Mẫu</span>
       </div>
       <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
         <div>
-          <h2 class="text-3xl sm:text-4xl font-serif font-bold text-slate-950" data-en="Curated Travel Itineraries" data-vi="Lịch Trình Trải Nghiệm Khám Phá Thực Địa">
-            Curated Travel Itineraries
+          <h2 class="text-3xl sm:text-4xl font-heading font-extrabold text-slate-950" data-en="Curated Travel Itineraries" data-vi="Lịch Trình Trải Nghiệm Khám Phá Thực Địa">
+            Lịch Trình Trải Nghiệm Khám Phá Thực Địa
           </h2>
           <p class="text-slate-600 text-sm mt-1 font-light">3 tour mẫu được tối ưu hóa theo cung đường giao thông thực tế của tỉnh mới.</p>
         </div>
 
-        <button onclick="printItinerary()" class="shrink-0 px-4 py-2 border border-stone-300 hover:bg-stone-50 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2 no-print shadow-2xs font-mono">
+        <button onclick="printItinerary()" class="shrink-0 px-4 py-2.5 border border-slate-300 hover:bg-slate-50 text-slate-700 text-xs font-semibold rounded-xl transition flex items-center gap-2 no-print shadow-xs font-mono">
           <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
-          <span>In / Xuất PDF Lịch trình</span>
+          <span>In / Xuất Bản PDF Tour</span>
         </button>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         
-        <!-- 1-Day -->
-        <div class="paper-card p-6 rounded-3xl flex flex-col justify-between">
+        <!-- 1-Day Tour -->
+        <div class="travel-card p-6 rounded-3xl flex flex-col justify-between bg-white">
           <div>
             <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp">1 Ngày</span>
-              <span class="text-stone-400">Văn hóa &amp; Hương trà</span>
+              <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-800 font-bold">1 Ngày</span>
+              <span class="text-slate-400">Văn hóa &amp; Hương trà</span>
             </div>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mb-2">Hương Trà &amp; Phố Núi</h3>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mb-2">Hương Trà &amp; Phố Núi</h3>
             <p class="text-slate-600 text-xs leading-relaxed font-light mb-4">
               Khởi hành từ Hà Nội (70km). Sáng ngắm bình minh nương chè Tân Cương, thưởng trà sao suốt. Chiều chiêm bái Chùa Phù Liễn, Chùa Hang và ngắm hoàng hôn trên hồ Núi Cốc.
             </p>
@@ -961,20 +905,20 @@
               <div><strong>16:30</strong> Du thuyền hoàng hôn Hồ Núi Cốc</div>
             </div>
           </div>
-          <button onclick="toggleSavePlace('tan-cuong-tea-hills'); toggleSavePlace('nui-coc-lake');" class="mt-6 w-full py-2 bg-stone-100 hover:bg-stone-200 text-slate-700 text-xs font-semibold rounded-xl transition font-mono">
+          <button onclick="toggleSavePlace('tan-cuong-tea-hills'); toggleSavePlace('nui-coc-lake');" class="mt-6 w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition font-mono">
             + Lưu điểm tour 1 ngày
           </button>
         </div>
 
-        <!-- 2-Day -->
-        <div class="paper-card p-6 rounded-3xl flex flex-col justify-between border-tea-600 shadow-md relative overflow-hidden">
-          <div class="absolute top-0 right-0 bg-tea-800 text-amber-200 text-[10px] font-mono px-3 py-1 rounded-bl-xl uppercase">Được yêu thích</div>
+        <!-- 2-Day Tour -->
+        <div class="travel-card p-6 rounded-3xl flex flex-col justify-between bg-white border-emerald-600/80 shadow-md relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-emerald-800 text-white text-[10px] font-mono px-3 py-1 rounded-bl-xl uppercase font-bold">Phổ Biến Nhất</div>
           <div>
             <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp-forest">2 Ngày / 1 Đêm</span>
-              <span class="text-stone-400">Về Nguồn &amp; Khám phá</span>
+              <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-900 font-bold">2 Ngày / 1 Đêm</span>
+              <span class="text-slate-400">Về Nguồn &amp; Khám phá</span>
             </div>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mb-2">Về Nguồn ATK &amp; Suối Cửa Tử</h3>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mb-2">Về Nguồn ATK &amp; Suối Cửa Tử</h3>
             <p class="text-slate-600 text-xs leading-relaxed font-light mb-4">
               Ngày 1: Chiêm bái Đền Đuổm dưới chân núi Điểm Sơn, trekking vượt thác suối Cửa Tử. Ngày 2: Về nguồn Thủ đô Gió ngàn ATK Định Hóa, thăm lán Tỉn Keo, thưởng thức trám đen.
             </p>
@@ -984,19 +928,19 @@
               <div><strong>Ngày 2:</strong> ATK Định Hóa &rarr; Lán Tỉn Keo</div>
             </div>
           </div>
-          <button onclick="toggleSavePlace('duom-temple'); toggleSavePlace('cua-tu-stream');" class="mt-6 w-full py-2 bg-tea-800 hover:bg-tea-900 text-white text-xs font-semibold rounded-xl transition font-mono shadow-sm">
+          <button onclick="toggleSavePlace('duom-temple'); toggleSavePlace('cua-tu-stream');" class="mt-6 w-full py-2.5 bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold rounded-xl transition font-mono shadow-sm">
             + Lưu điểm tour 2 ngày
           </button>
         </div>
 
-        <!-- 3-Day -->
-        <div class="paper-card p-6 rounded-3xl flex flex-col justify-between">
+        <!-- 3-Day Tour -->
+        <div class="travel-card p-6 rounded-3xl flex flex-col justify-between bg-white">
           <div>
             <div class="flex items-center justify-between mb-3 text-xs font-mono">
-              <span class="editorial-stamp-terracotta">3 Ngày / 2 Đêm</span>
-              <span class="text-stone-400">Đại Hành Trình</span>
+              <span class="px-2.5 py-1 rounded-full bg-amber-100 text-amber-900 font-bold">3 Ngày / 2 Đêm</span>
+              <span class="text-slate-400">Đại Hành Trình</span>
             </div>
-            <h3 class="text-xl font-serif font-bold text-slate-900 mb-2">Từ Nương Chè Đến Hồ Ba Bể</h3>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mb-2">Từ Nương Chè Đến Hồ Ba Bể</h3>
             <p class="text-slate-600 text-xs leading-relaxed font-light mb-4">
               Cung đường trọn vẹn khám phá toàn cảnh tỉnh mới. Ngày 1: Đồi chè Tân Cương &amp; Đền Đuổm. Ngày 2: Du thuyền hồ Ba Bể, xuyên động Puông, ghé thác Đầu Đẳng. Ngày 3: Thạch nhũ động Hua Mạ &amp; Bản Pác Ngòi.
             </p>
@@ -1006,7 +950,7 @@
               <div><strong>Ngày 3:</strong> Động Hua Mạ &rarr; Bản Pác Ngòi &rarr; Hà Nội</div>
             </div>
           </div>
-          <button onclick="toggleSavePlace('babe-lake'); toggleSavePlace('puong-cave'); toggleSavePlace('hua-ma-cave');" class="mt-6 w-full py-2 bg-stone-100 hover:bg-stone-200 text-slate-700 text-xs font-semibold rounded-xl transition font-mono">
+          <button onclick="toggleSavePlace('babe-lake'); toggleSavePlace('puong-cave'); toggleSavePlace('hua-ma-cave');" class="mt-6 w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition font-mono">
             + Lưu điểm tour 3 ngày
           </button>
         </div>
@@ -1014,60 +958,62 @@
       </div>
     </section>
 
-    <!-- SECTION 11: GOVERNMENT CITATIONS -->
-    <section class="p-8 bg-parchment-100 rounded-3xl border border-stone-300">
+    <!-- CHAPTER 11: GOVERNMENT CITATIONS & DATA SOURCES -->
+    <section class="p-8 bg-white rounded-3xl border border-slate-200 shadow-sm">
       <div class="flex items-center gap-2 mb-3">
-        <span class="editorial-stamp font-mono">Official State Archives</span>
-        <h3 class="text-base font-serif font-bold text-slate-900">Nguồn Tài Liệu &amp; Căn Cứ Pháp Lý Chính Thức</h3>
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-800 font-mono">Căn Cứ Pháp Lý &amp; Cổng TTĐT</span>
+        <h3 class="text-base font-heading font-bold text-slate-900">Nguồn Tài Liệu Trích Xuất Chính Thức</h3>
       </div>
       <p class="text-xs text-slate-600 mb-6 font-light">
-        Toàn bộ số liệu diện tích, định hướng phát triển kinh tế xã hội và tư liệu lịch sử được trích xuất nguyên bản từ các cổng thông tin điện tử của cơ quan nhà nước:
+        Toàn bộ số liệu diện tích, định hướng phát triển kinh tế xã hội và tư liệu lịch sử được trích xuất từ các cổng thông tin điện tử của cơ quan nhà nước:
       </p>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs font-mono">
-        <a href="https://thainguyen.gov.vn/gioi-thieu-ve-tiem-nang/gioi-thieu-ve-tinh-thai-nguyen-279923" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-xl border border-stone-200 hover:border-tea-600 transition flex items-center justify-between">
+        <a href="https://thainguyen.gov.vn/gioi-thieu-ve-tiem-nang/gioi-thieu-ve-tinh-thai-nguyen-279923" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 hover:border-emerald-500 transition flex items-center justify-between">
           <span class="truncate">Giới thiệu tỉnh Thái Nguyên (thainguyen.gov.vn)</span>
-          <span class="text-stone-400 ml-1">&rarr;</span>
+          <span class="text-slate-400 ml-1">&rarr;</span>
         </a>
-        <a href="https://thainguyen.gov.vn/dieu-kien-tu-nhien/dieu-kien-tu-nhien-xa-hoi-tinh-thai-nguyen-291164" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-xl border border-stone-200 hover:border-tea-600 transition flex items-center justify-between">
+        <a href="https://thainguyen.gov.vn/dieu-kien-tu-nhien/dieu-kien-tu-nhien-xa-hoi-tinh-thai-nguyen-291164" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 hover:border-emerald-500 transition flex items-center justify-between">
           <span class="truncate">Điều kiện tự nhiên, xã hội tỉnh</span>
-          <span class="text-stone-400 ml-1">&rarr;</span>
+          <span class="text-slate-400 ml-1">&rarr;</span>
         </a>
-        <a href="https://congbao.chinhphu.vn/van-ban/nghi-quyet-so-202-2025-qh15-45050/56708.htm" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-xl border border-stone-200 hover:border-tea-600 transition flex items-center justify-between">
+        <a href="https://congbao.chinhphu.vn/van-ban/nghi-quyet-so-202-2025-qh15-45050/56708.htm" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 hover:border-emerald-500 transition flex items-center justify-between">
           <span class="truncate">Nghị quyết 202/2025/QH15 Quốc hội</span>
-          <span class="text-stone-400 ml-1">&rarr;</span>
+          <span class="text-slate-400 ml-1">&rarr;</span>
         </a>
-        <a href="https://thainguyen.gov.vn/tin-ve-tra/nam-2026-thai-nguyen-phan-dau-tong-gia-tri-san-pham-tu-cay-che-dat-tren-16-8-nghin-ty-dong-293116" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-xl border border-stone-200 hover:border-tea-600 transition flex items-center justify-between">
+        <a href="https://thainguyen.gov.vn/tin-ve-tra/nam-2026-thai-nguyen-phan-dau-tong-gia-tri-san-pham-tu-cay-che-dat-tren-16-8-nghin-ty-dong-293116" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 hover:border-emerald-500 transition flex items-center justify-between">
           <span class="truncate">Giá trị cây chè trên 16,8 nghìn tỷ</span>
-          <span class="text-stone-400 ml-1">&rarr;</span>
+          <span class="text-slate-400 ml-1">&rarr;</span>
         </a>
-        <a href="https://thainguyen.gov.vn/chinh-sach-moi/thai-nguyen-phan-dau-tang-truong-kinh-te-11-nam-2026-249613" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-xl border border-stone-200 hover:border-tea-600 transition flex items-center justify-between">
+        <a href="https://thainguyen.gov.vn/chinh-sach-moi/thai-nguyen-phan-dau-tang-truong-kinh-te-11-nam-2026-249613" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 hover:border-emerald-500 transition flex items-center justify-between">
           <span class="truncate">Tăng trưởng kinh tế 11% năm 2026</span>
-          <span class="text-stone-400 ml-1">&rarr;</span>
+          <span class="text-slate-400 ml-1">&rarr;</span>
         </a>
-        <a href="https://thainguyen.gov.vn/thuong-hieu-tra/bao-ho-tai-san-tri-tue-nang-tam-gia-tri-che-thai-nguyen-295482" target="_blank" rel="noopener noreferrer" class="p-3 bg-white rounded-xl border border-stone-200 hover:border-tea-600 transition flex items-center justify-between">
+        <a href="https://thainguyen.gov.vn/thuong-hieu-tra/bao-ho-tai-san-tri-tue-nang-tam-gia-tri-che-thai-nguyen-295482" target="_blank" rel="noopener noreferrer" class="p-3 bg-slate-50 hover:bg-emerald-50 rounded-xl border border-slate-200 hover:border-emerald-500 transition flex items-center justify-between">
           <span class="truncate">Bảo hộ tài sản trí tuệ chè</span>
-          <span class="text-stone-400 ml-1">&rarr;</span>
+          <span class="text-slate-400 ml-1">&rarr;</span>
         </a>
       </div>
     </section>
 
   </main>
 
-  <!-- MODAL: DESTINATION VIEWER -->
-  <div id="destination-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-stone-200 animate-scaleUp" onclick="event.stopPropagation()">
+  <!-- ==================== MODALS & SYSTEM OVERLAYS ==================== -->
+  
+  <!-- MODAL: DESTINATION VIEWER LIGHTBOX -->
+  <div id="destination-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
       <div id="modal-content-container"></div>
     </div>
   </div>
 
-  <!-- MODAL: SAVED PLACES -->
-  <div id="saved-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-stone-200" onclick="event.stopPropagation()">
-      <div class="flex items-center justify-between pb-4 border-b border-stone-100">
+  <!-- MODAL: SAVED PLACES WISHLIST -->
+  <div id="saved-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl border border-slate-200" onclick="event.stopPropagation()">
+      <div class="flex items-center justify-between pb-4 border-b border-slate-100">
         <div class="flex items-center gap-2">
-          <span class="text-terracotta-600 font-bold">♥</span>
-          <h3 class="text-lg font-serif font-bold text-slate-900" data-en="Saved Destinations" data-vi="Hành Trình Đã Lưu">Saved Destinations</h3>
+          <svg class="w-5 h-5 text-rose-500" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"></path></svg>
+          <h3 class="text-lg font-heading font-extrabold text-slate-900" data-en="Saved Destinations" data-vi="Hành Trình Đã Lưu">Hành Trình Đã Lưu</h3>
         </div>
         <button onclick="closeSavedModal()" class="text-slate-400 hover:text-slate-600 p-1">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -1076,44 +1022,44 @@
 
       <div id="saved-places-container" class="py-4 space-y-2.5 max-h-[60vh] overflow-y-auto"></div>
 
-      <div class="pt-4 border-t border-stone-100 flex items-center justify-between gap-3 font-mono text-xs">
-        <button onclick="printItinerary()" class="flex-1 py-2.5 px-4 bg-tea-800 hover:bg-tea-900 text-white font-semibold rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
+      <div class="pt-4 border-t border-slate-100 flex items-center justify-between gap-3 font-mono text-xs">
+        <button onclick="printItinerary()" class="flex-1 py-2.5 px-4 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl transition flex items-center justify-center gap-1.5 shadow-sm">
           <span>In / Xuất Bản PDF</span>
         </button>
-        <button onclick="closeSavedModal()" class="py-2.5 px-4 bg-stone-100 hover:bg-stone-200 text-slate-700 font-semibold rounded-xl transition">Đóng</button>
+        <button onclick="closeSavedModal()" class="py-2.5 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-xl transition">Đóng</button>
       </div>
     </div>
   </div>
 
   <!-- FLOATING BACK TO TOP BUTTON -->
-  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 left-6 z-40 p-3 rounded-2xl bg-white shadow-xl border border-stone-200 text-slate-700 hover:text-tea-800 hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none no-print" title="Back to Top">
+  <button id="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="fixed bottom-6 left-6 z-40 p-3.5 rounded-2xl bg-white shadow-xl border border-slate-200 text-slate-700 hover:text-emerald-800 hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none no-print" title="Lên đầu trang">
     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path></svg>
   </button>
 
-  <!-- EDITORIAL FOOTER -->
-  <footer class="bg-tea-950 text-white pt-16 pb-12 border-t border-tea-800">
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
         
         <div class="md:col-span-2 space-y-4">
-          <div class="flex items-center gap-2">
-            <div class="w-8 h-8 rounded-lg bg-amber-400 text-slate-950 font-ancient font-bold flex items-center justify-center text-sm">
+          <div class="flex items-center gap-2.5">
+            <div class="w-9 h-9 rounded-xl bg-emerald-700 text-white font-heading font-black flex items-center justify-center text-sm shadow">
               TN
             </div>
-            <span class="font-serif font-bold text-lg text-white">ĐỊA CHÍ &amp; DU LỊCH THÁI NGUYÊN</span>
+            <span class="font-heading font-extrabold text-lg text-white">DU LỊCH &amp; ĐỊA CHÍ THÁI NGUYÊN</span>
           </div>
-          <p class="text-parchment-200 text-xs leading-relaxed max-w-md font-light">
-            Cổng thông tin địa chí và du lịch chính thức tôn vinh cảnh quan sinh thái, di tích An toàn khu (ATK) Định Hóa, di sản văn hóa phi vật thể và danh trà đệ nhất của tỉnh Thái Nguyên mới (2025 – 2026).
+          <p class="text-slate-300 text-xs leading-relaxed max-w-md font-light">
+            Cổng thông tin du lịch và địa chí chính thức tôn vinh cảnh quan sinh thái, di tích An toàn khu (ATK) Định Hóa, di sản văn hóa phi vật thể và danh trà đệ nhất của tỉnh Thái Nguyên mới (2025 – 2026).
           </p>
-          <div class="text-[11px] font-mono text-tea-300">
+          <div class="text-[11px] font-mono text-emerald-400">
             Khảo cứu &amp; Biên soạn: Hương, Thu, Ánh, Thủy.
           </div>
         </div>
 
         <div>
-          <h4 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-4">Danh Mục Khám Phá</h4>
-          <ul class="space-y-2 text-xs text-parchment-200 font-light">
-            <li><a href="#overview" class="hover:text-white transition">Toàn cảnh Địa lý</a></li>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-4 font-bold">Danh Mục Khám Phá</h4>
+          <ul class="space-y-2 text-xs text-slate-300 font-light">
+            <li><a href="#overview" class="hover:text-white transition">Toàn cảnh Địa lý 8.375 km²</a></li>
             <li><a href="#geography-history" class="hover:text-white transition">Biên niên sử 7 thời kỳ</a></li>
             <li><a href="#landscapes" class="hover:text-white transition">Hồ Ba Bể &amp; Nương chè Tân Cương</a></li>
             <li><a href="#culture" class="hover:text-white transition">Hát Then &amp; Hội Lồng Tồng</a></li>
@@ -1122,20 +1068,20 @@
         </div>
 
         <div>
-          <h4 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-4">Hỗ Trợ &amp; Khẩn Cấp</h4>
-          <ul class="space-y-2 text-xs text-parchment-200 font-mono">
-            <li><span>Cấp cứu y tế: <strong>115</strong></span></li>
-            <li><span>Công an: <strong>113</strong></span></li>
-            <li><span>PCCC: <strong>114</strong></span></li>
-            <li><span>BV Đa khoa TW: <strong>0208 3855 125</strong></span></li>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-amber-300 mb-4 font-bold">Hỗ Trợ &amp; Khẩn Cấp</h4>
+          <ul class="space-y-2 text-xs text-slate-300 font-mono">
+            <li><span>Cấp cứu y tế: <strong class="text-white">115</strong></span></li>
+            <li><span>Công an: <strong class="text-white">113</strong></span></li>
+            <li><span>PCCC &amp; Cứu nạn: <strong class="text-white">114</strong></span></li>
+            <li><span>BV Đa khoa TW Thái Nguyên: <strong class="text-white">0208 3855 125</strong></span></li>
           </ul>
         </div>
 
       </div>
 
-      <div class="pt-8 border-t border-tea-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-tea-300">
+      <div class="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-slate-400">
         <div>
-          &copy; 2026 Địa chí &amp; Du lịch Thái Nguyên. Thiết kế theo chuẩn giao diện ấn phẩm văn hóa.
+          &copy; 2026 Du lịch Thái Nguyên. Thiết kế theo chuẩn giao diện du lịch quốc tế UI/UX Pro Max.
         </div>
         <div class="flex items-center gap-4">
           <a href="#overview" class="hover:text-white">Lên đầu trang &uarr;</a>
