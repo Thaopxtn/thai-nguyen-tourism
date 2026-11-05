@@ -253,14 +253,14 @@ const EPOCHS = [
   },
   {
     period: 'July 1, 2025 – Present',
-    titleEn: 'The New Thai Nguyen Province (Resolution 202/2025/QH15)',
-    titleVi: 'Tỉnh Thái Nguyên Mới Sau Sáp Nhập (NQ 202/2025/QH15)',
-    badgeEn: 'The New Era',
-    badgeVi: 'Kỷ Nguyên Mới',
-    descEn: 'Under Resolution No. 202/2025/QH15 of the National Assembly, Thai Nguyen and Bac Kan officially reunited on July 1, 2025 into the new Thai Nguyen Province with 8,375 km² and 92 commune-level units. Combining southern industrial might with northern Ba Be ecotourism.',
-    descVi: 'Theo Nghị quyết số 202/2025/QH15 của Quốc hội, Thái Nguyên và Bắc Kạn chính thức sáp nhập trở lại thành tỉnh Thái Nguyên mới từ ngày 01/07/2025 với 8.375 km² và 92 xã, phường. Kết hợp hoàn mỹ công nghiệp phía Nam với sinh thái Ba Bể phía Bắc.',
-    factsEn: ['8,375 km² Total Area', '92 Commune-Level Units', '8 Million Tourists Target in 2026'],
-    factsVi: ['Diện tích 8.375 km² (92 xã, phường)', 'Quy mô dân số 1,87 triệu người', 'Mục tiêu đón 8 triệu lượt khách năm 2026']
+    titleEn: 'A Unified Eco-Cultural Realm (2025 – Present)',
+    titleVi: 'Hội Tụ & Vươn Mình Cùng Non Nước',
+    badgeEn: 'The New Journey',
+    badgeVi: 'Hành Trình Mới',
+    descEn: 'The historic union bridges the vibrant tea-growing heartland of Tan Cuong with northern Ba Be Lake limestone karst wonders, forging a magnificent 8,375 km² tourism realm for ecotourism and heritage voyages.',
+    descVi: 'Sự hội tụ giữa đồi chè Tân Cương phía Nam và viên ngọc xanh hồ Ba Bể phía Bắc tạo nên một không gian du lịch sinh thái và văn hóa rộng lớn 8.375 km², mở ra cơ hội trải nghiệm phong phú cho du khách bốn mùa.',
+    factsEn: ['8,375 km² natural realm', 'Ba Be Lake to Tea Terraces', 'Preserving 7 ethnic cultures'],
+    factsVi: ['8.375 km² non nước kỳ vĩ', 'Từ nương chè đến hồ Ba Bể', 'Bảo tồn bản sắc 7 dân tộc']
   }
 ];
 
@@ -695,12 +695,12 @@ function renderEpochTimeline(selectedIndex) {
         </div>
         <p class="text-xs text-slate-600 leading-relaxed">
           ${selectedIndex === 6 
-            ? 'Nghị quyết số 202/2025/QH15 mở ra diện mạo mới cho tỉnh Thái Nguyên với 8.375 km², kết hợp hoàn hảo đô thị công nghiệp phía Nam và sinh thái Ba Bể phía Bắc.' 
-            : 'Vùng đất giàu truyền thống yêu nước, căn cứ địa cách mạng trung kiên bảo vệ độc lập dân tộc qua các thời kỳ.'}
+            ? 'Không gian du lịch sinh thái và văn hóa rộng lớn 8.375 km², kết hợp hoàn hảo vùng chè Tân Cương phía Nam và non nước hồ Ba Bể nguyên sơ phía Bắc.' 
+            : 'Vùng đất giàu truyền thống lịch sử, căn cứ địa cách mạng trung kiên và di sản văn hóa hào hùng qua các thời kỳ.'}
         </p>
         <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-mono">
-          <span>Nguồn: thainguyen.gov.vn</span>
-          <span class="font-bold text-emerald-800">Cổng Thông Tin Tỉnh</span>
+          <span>Di Sản &amp; Điểm Đến</span>
+          <span class="font-bold text-emerald-800">Thái Nguyên 2026</span>
         </div>
       </div>
     </div>
@@ -1821,3 +1821,31 @@ window.updateCalculator = updateCalculator;
 window.exportCalcICS = exportCalcICS;
 window.printTourGuide = printTourGuide;
 window.shareCalcResult = shareCalcResult;
+
+// ============================================================
+// FULLSCREEN IMAGE LIGHTBOX
+// ============================================================
+function openImageLightbox(src, title, caption) {
+  const modal = document.getElementById('image-lightbox-modal');
+  const img = document.getElementById('lightbox-img');
+  const titleEl = document.getElementById('lightbox-title');
+  const capEl = document.getElementById('lightbox-caption');
+  if (!modal || !img) return;
+
+  img.src = src;
+  img.alt = title || 'Thai Nguyen Photo';
+  if (titleEl) titleEl.textContent = title || '';
+  if (capEl) capEl.textContent = caption || '';
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImageLightbox() {
+  const modal = document.getElementById('image-lightbox-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+window.openImageLightbox = openImageLightbox;
+window.closeImageLightbox = closeImageLightbox;
