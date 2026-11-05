@@ -36,7 +36,6 @@ const DESTINATIONS = [
     highlightsVi: ['Du thuyền lướt sóng ngắm non nước', 'Bản nhà sàn Pác Ngòi mộc mạc', 'Gò Bà Góa & Đền An Mạ linh thiêng'],
     idealSeasonEn: 'May – November',
     idealSeasonVi: 'Tháng 5 – 11',
-    author: 'Thu'
   },
   {
     id: 'tan-cuong-tea-hills',
@@ -55,7 +54,6 @@ const DESTINATIONS = [
     highlightsVi: ['Nương chè bát úp mâm xôi ngút ngàn', 'Nghệ thuật sao suốt thủ công', 'Thưởng trà & nghệ thuật trà đạo'],
     idealSeasonEn: 'Year-round (Best: Spring & Autumn)',
     idealSeasonVi: 'Bốn mùa (Đẹp nhất: Xuân & Thu)',
-    author: 'Thu'
   },
   {
     id: 'puong-cave',
@@ -74,7 +72,6 @@ const DESTINATIONS = [
     highlightsVi: ['Du thuyền luồn qua hang núi 300m', 'Vòm thạch nhũ đá vôi đồ sộ', 'Quần thể dơi tự nhiên trên vòm đá'],
     idealSeasonEn: 'Year-round',
     idealSeasonVi: 'Quanh năm',
-    author: 'Thu'
   },
   {
     id: 'dau-dang-waterfall',
@@ -93,7 +90,6 @@ const DESTINATIONS = [
     highlightsVi: ['Dãy ghềnh đá dài 500m tung bọt trắng', 'Đường mòn xuyên rừng nguyên sinh', 'Môi trường sống của cá chiên quý hiếm'],
     idealSeasonEn: 'May – October',
     idealSeasonVi: 'Tháng 5 – 10',
-    author: 'Thu'
   },
   {
     id: 'hua-ma-cave',
@@ -112,7 +108,6 @@ const DESTINATIONS = [
     highlightsVi: ['Vòm hang sâu 700m rộng mênh mông', 'Thạch nhũ hình tòa sen tự nhiên', 'Nhiệt độ trong hang mát rượi 18°C'],
     idealSeasonEn: 'Year-round (Always dry)',
     idealSeasonVi: 'Bốn mùa (Lòng hang luôn khô ráo)',
-    author: 'Thu'
   },
   {
     id: 'phuong-hoang-moga',
@@ -131,7 +126,6 @@ const DESTINATIONS = [
     highlightsVi: ['Nhũ đá hình chim Phượng Hoàng', 'Bể bơi tự nhiên mát lạnh 16-18°C', 'Leo 1.200 bậc đá ngắm thung lũng'],
     idealSeasonEn: 'May – October',
     idealSeasonVi: 'Tháng 5 – 10',
-    author: 'Thu'
   },
   {
     id: 'cua-tu-stream',
@@ -150,7 +144,6 @@ const DESTINATIONS = [
     highlightsVi: ['7 cửa ải trekking thử thách', 'Máng trượt đá nước mài tự nhiên', 'Vũng bơi sâu ngọc bích giữa rừng già'],
     idealSeasonEn: 'May – September',
     idealSeasonVi: 'Tháng 5 – 9',
-    author: 'Thu'
   },
   {
     id: 'nui-coc-lake',
@@ -169,7 +162,6 @@ const DESTINATIONS = [
     highlightsVi: ['89 hòn đảo xanh biếc giữa lòng hồ', 'Huyền thoại tình yêu Chàng Cốc Nàng Công', 'Du thuyền thưởng ngoạn hoàng hôn'],
     idealSeasonEn: 'Spring, Summer & Autumn',
     idealSeasonVi: 'Mùa xuân, hè & thu',
-    author: 'Thu'
   },
   {
     id: 'na-dang-waterfall',
@@ -188,7 +180,6 @@ const DESTINATIONS = [
     highlightsVi: ['Dòng thác đổ tầng mềm mại trên vách đá', 'Không gian hoang sơ tĩnh lặng tuyệt đối', 'Điểm dã ngoại, chụp ảnh thiên nhiên'],
     idealSeasonEn: 'Summer & Autumn',
     idealSeasonVi: 'Mùa hè & Mùa thu',
-    author: 'Thu'
   }
 ];
 
@@ -294,7 +285,6 @@ const PAGODAS = [
     tipsVi: 'Thứ tự hành lễ từ thấp lên cao: Đền Hạ → Đền Trung → leo bậc đá lên Đền Thượng. Nên mang giày thể thao êm ái.',
     souvenirsEn: 'Phu Luong tea, Tan Cuong tea, black olives (trám đen), bamboo sticky rice (Cơm Lam), Tay brocade.',
     souvenirsVi: 'Trà Phú Lương, chè Tân Cương, trám đen Hà Châu, măng khô, cơm lam, vải thổ cẩm Tày - Nùng.',
-    author: 'Ánh'
   },
   {
     id: 'chua-hang',
@@ -315,7 +305,6 @@ const PAGODAS = [
     tipsVi: 'Nền hang đá có thể ẩm ướt, nên đi giày chống trượt. Thắp hương tại lư hương lớn ngoài sân để giữ không khí trong lành.',
     souvenirsEn: 'Tân Cương green tea, traditional Bánh Chưng Bờ Đậu, Cơm Lam, lucky bracelets.',
     souvenirsVi: 'Trà Tân Cương, Bánh chưng Bờ Đậu trứ danh, cơm lam ống nứa, chuỗi vòng may mắn.',
-    author: 'Ánh'
   },
   {
     id: 'phu-lien-pagoda',
@@ -336,7 +325,6 @@ const PAGODAS = [
     tipsVi: 'Trang phục lịch sự kín đáo, che vai và dài quá gối. Vào cửa bên phải, ra cửa bên trái. Không dẫm lên bậu cửa.',
     souvenirsEn: 'Premium Tan Cuong tea gift boxes, bodhi bead bracelets, Buddhist lucky amulets.',
     souvenirsVi: 'Hộp trà Tân Cương biếu tặng cao cấp, chuỗi tràng hạt bồ đề, bùa bình an.',
-    author: 'Ánh'
   }
 ];
 
@@ -353,7 +341,6 @@ const HOSPITALS = [
     address: '479 Luong Ngoc Quyen, Phan Dinh Phung Ward, Thai Nguyen City',
     phone: '0208 3855 125',
     emergency: '115 / 0208 3855 125',
-    author: 'Thủy'
   },
   {
     id: 'bv-a-tn',
@@ -366,7 +353,6 @@ const HOSPITALS = [
     address: 'Quang Trung Street, Thinh Dan Ward, Thai Nguyen City',
     phone: '0208 3846 112',
     emergency: '0208 3846 112',
-    author: 'Thủy'
   },
   {
     id: 'bv-pham-ngoc-thach',
@@ -379,7 +365,6 @@ const HOSPITALS = [
     address: 'Phan Dinh Phung Ward, Thai Nguyen City',
     phone: '0208 3856 211',
     emergency: '0208 3856 211',
-    author: 'Thủy'
   },
   {
     id: 'dinh-hoa-hospital',
@@ -392,7 +377,6 @@ const HOSPITALS = [
     address: 'Cho Chu Town, Dinh Hoa District',
     phone: '0208 3878 223',
     emergency: '0208 3878 223',
-    author: 'Thủy'
   },
   {
     id: 'nui-coc-medical',
@@ -405,7 +389,6 @@ const HOSPITALS = [
     address: 'Phuc Triu Commune (City) & An Khanh Commune (Dai Tu)',
     phone: '0208 3825 119',
     emergency: '0208 3825 119',
-    author: 'Thủy'
   }
 ];
 
@@ -712,8 +695,8 @@ function renderEpochTimeline(selectedIndex) {
             : 'Vùng đất giàu truyền thống yêu nước, căn cứ địa cách mạng trung kiên bảo vệ độc lập dân tộc qua các thời kỳ.'}
         </p>
         <div class="pt-2 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-mono">
-          <span>Tài liệu: thainguyen.gov.vn</span>
-          <span class="font-bold text-emerald-800">Biên tập: Hương</span>
+          <span>Nguồn: thainguyen.gov.vn</span>
+          <span class="font-bold text-emerald-800">Cổng Thông Tin Tỉnh</span>
         </div>
       </div>
     </div>
@@ -747,9 +730,9 @@ function renderSeasons(seasonKey) {
         <div>
           <div class="flex items-center justify-between mb-4">
             <span class="px-3 py-1 bg-emerald-500/20 text-emerald-300 text-xs font-bold rounded-full border border-emerald-500/30">
-              ${state.lang === 'vi' ? 'Khí tượng Thực địa' : 'Field Meteorology'}
+              ${state.lang === 'vi' ? 'Đặc điểm Thời tiết' : 'Weather Guide'}
             </span>
-            <span class="text-xs text-slate-400 font-mono">2026 Survey</span>
+            <span class="text-xs text-slate-400 font-mono">Thái Nguyên</span>
           </div>
 
           <h4 class="text-2xl font-bold font-travel-heading text-white tracking-tight">${name}</h4>
@@ -882,17 +865,17 @@ function renderPagodas() {
             </div>
 
             <div class="bg-amber-50 p-3 rounded-xl border border-amber-200 text-xs text-amber-950 mb-3">
-              <strong>🎉 ${state.lang === 'en' ? 'Festival Date:' : 'Lễ hội chính:'}</strong> ${festival}
+              <strong>${state.lang === 'en' ? 'Festival Date:' : 'Lễ hội chính:'}</strong> ${festival}
             </div>
 
             <div class="text-xs text-slate-600">
-              <strong class="text-slate-900">💡 ${state.lang === 'en' ? 'Visitor Note:' : 'Lưu ý khi viếng:'}</strong> ${tips}
+              <strong class="text-slate-900">${state.lang === 'en' ? 'Visitor Note:' : 'Lưu ý khi viếng:'}</strong> ${tips}
             </div>
           </div>
 
           <div class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
             <div class="text-slate-600">
-              <strong class="text-slate-900">🎁 ${state.lang === 'en' ? 'Souvenirs:' : 'Quà lưu niệm:'}</strong> ${souvenirs}
+              <strong class="text-slate-900">${state.lang === 'en' ? 'Souvenirs:' : 'Quà lưu niệm:'}</strong> ${souvenirs}
             </div>
             <button onclick="toggleSavePlace('${item.id}', event)" class="shrink-0 px-4 py-2 border border-slate-300 text-slate-800 hover:bg-slate-50 rounded-xl transition font-semibold">
               ${state.savedPlaces.some(p => p.id === item.id)
@@ -992,7 +975,7 @@ function openDestinationModal(id) {
     <div class="p-6 md:p-8 space-y-6">
       <div>
         <h4 class="text-xs font-bold uppercase tracking-wider text-emerald-800 mb-2">
-          ${state.lang === 'en' ? 'Overview & Experience' : 'Tổng quan & Trải nghiệm thực tế'}
+          ${state.lang === 'en' ? 'Overview & Highlights' : 'Tổng quan & Trải nghiệm'}
         </h4>
         <p class="text-slate-700 text-sm md:text-base leading-relaxed font-normal">${desc}</p>
       </div>
