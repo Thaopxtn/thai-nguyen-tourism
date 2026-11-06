@@ -47,7 +47,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110603">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110604">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -212,7 +212,11 @@
 
           <!-- Main Dynamic Slide Container -->
           <div class="travel-card overflow-hidden p-2 group shadow-xl">
-            <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden travel-photo-container">
+            <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden travel-photo-container film-grain-overlay">
+              <button onclick="openCinemaModal()" class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-900/80 hover:bg-emerald-950 text-emerald-400 hover:text-white backdrop-blur-md text-[10px] font-bold shadow-sm font-mono border border-emerald-500/30 flex items-center gap-1.5 transition cursor-pointer z-20" title="Mở rạp chiếu phim 4K">
+                <span>▶</span>
+                <span>Thước Phim 4K</span>
+              </button>
               <img id="hero-main-img" src="assets/images/hero-babe.jpg" alt="Thái Nguyên Danh Thắng" class="w-full h-full object-cover transition-all duration-700">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
               
@@ -417,6 +421,58 @@
       <!-- Rendered Destinations Grid via app.js -->
       <div id="destinations-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
     </section>
+
+    <!-- ==================== MOTIONSITES INTERACTIVE TIME-LAPSE CURTAIN ==================== -->
+    <div class="space-y-4">
+      <div class="flex items-center gap-2">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 font-mono">Trải Nghiệm Độc Bản • Time-Lapse Curtain</span>
+      </div>
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-heading font-black text-slate-950">
+            Kỳ Quan Chuyển Sắc: Sương Mai &amp; Hoàng Hôn
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-600 font-light mt-1">
+            Di chuyển chuột hoặc vuốt chạm để khám phá sự biến ảo kỳ diệu giữa buổi sớm tinh khôi và ánh tà rực rỡ.
+          </p>
+        </div>
+      </div>
+
+      <!-- Draggable Split Screen Curtain Container -->
+      <div class="relative w-full h-80 sm:h-[440px] rounded-3xl overflow-hidden select-none cursor-ew-resize travel-card shadow-2xl border border-slate-300/80 film-grain-overlay" id="timelapse-container">
+        <!-- Layer 1: Golden Sunset / Warm Glow -->
+        <img src="assets/images/tan-cuong-tea.jpg" alt="Hoàng hôn Tân Cương" class="absolute inset-0 w-full h-full object-cover filter brightness-95 saturate-125" id="timelapse-img-bg">
+        <div class="absolute top-5 right-5 px-3.5 py-1.5 rounded-full bg-amber-950/80 backdrop-blur-md text-amber-300 border border-amber-500/30 font-mono text-xs font-bold shadow-lg flex items-center gap-1.5 z-10">
+          <span>🌇</span>
+          <span>Hoàng Hôn Nắng Vàng</span>
+        </div>
+
+        <!-- Layer 2: Emerald Dawn / Morning Mist (Clipped Layer) -->
+        <div class="absolute inset-0 overflow-hidden" id="timelapse-clip-layer" style="width: 50%;">
+          <img src="assets/images/hero-babe.jpg" alt="Bình minh Hồ Ba Bể" class="absolute inset-0 w-full h-full object-cover max-w-none filter brightness-105" id="timelapse-img-left">
+          <div class="absolute top-5 left-5 px-3.5 py-1.5 rounded-full bg-emerald-950/80 backdrop-blur-md text-emerald-300 border border-emerald-500/30 font-mono text-xs font-bold shadow-lg flex items-center gap-1.5 z-10">
+            <span>🌅</span>
+            <span>Bình Minh Sương Sớm</span>
+          </div>
+        </div>
+
+        <!-- Divider Line & Circular Glass Drag Handle -->
+        <div class="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_12px_rgba(255,255,255,0.9)] cursor-ew-resize z-20 pointer-events-none" id="timelapse-handle" style="left: 50%;">
+          <div class="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-white/95 backdrop-blur-xl border-2 border-emerald-600 shadow-2xl flex items-center justify-center text-slate-900 pointer-events-auto cursor-ew-resize hover:scale-110 active:scale-95 transition-transform">
+            <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 9l-4 3 4 3m8-6l4 3-4 3"/></svg>
+          </div>
+        </div>
+
+        <!-- Floating Bottom Glass Badge -->
+        <div class="absolute bottom-5 left-5 right-5 p-3.5 rounded-2xl bg-slate-950/80 backdrop-blur-md border border-white/10 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-2 pointer-events-none z-10">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="text-xs font-bold text-white font-mono">Hồ Ba Bể &bull; Sương Mai vs Nắng Hoàng Hôn Tân Cương</span>
+          </div>
+          <span class="text-[11px] text-slate-300 font-mono">◀ Kéo sang hai bên để so sánh ▶</span>
+        </div>
+      </div>
+    </div>
 
     <!-- CHAPTER 06b: VISUAL PHOTO GALLERY & BENTO MOSAIC -->
     <section id="gallery" class="scroll-mt-28">
@@ -1356,6 +1412,61 @@
     </div>
   </div>
 
+  <!-- MODAL: CINEMATIC 4K THEATER MODE -->
+  <div id="cinema-modal" class="hidden fixed inset-0 z-50 bg-black/95 backdrop-blur-2xl flex items-center justify-center p-4 sm:p-8" onclick="closeCinemaModal()">
+    <div class="relative max-w-5xl w-full" onclick="event.stopPropagation()">
+      <!-- Ambient Backlight Glow -->
+      <div id="cinema-ambient-glow" class="absolute -inset-4 bg-emerald-600/20 rounded-3xl blur-3xl -z-10 animate-pulse-slow"></div>
+
+      <!-- Theater Header Bar -->
+      <div class="flex items-center justify-between pb-3 text-white border-b border-white/10 mb-4">
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-[10px] font-mono font-bold uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Cinematic Theater 4K
+          </span>
+          <h3 id="cinema-title" class="text-sm sm:text-base font-heading font-extrabold text-white">Non Nước Hồ Ba Bể &bull; Toàn Cảnh Tự Nhiên</h3>
+        </div>
+        <button onclick="closeCinemaModal()" class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer" title="Đóng">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Main Screen with Film Grain & Animated Scene -->
+      <div class="relative aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/15 bg-slate-950 travel-photo-container film-grain-overlay">
+        <img id="cinema-screen-img" src="assets/images/hero-babe.jpg" alt="Cinematic Thai Nguyen" class="w-full h-full object-cover transition-all duration-1000">
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-85"></div>
+        
+        <!-- Subtitles / Cinematic Narrative Quote -->
+        <div class="absolute bottom-6 left-6 right-6 text-center">
+          <p id="cinema-caption" class="text-xs sm:text-sm text-slate-200 font-light italic bg-slate-950/75 backdrop-blur-md py-2.5 px-6 rounded-full inline-block border border-white/15 shadow-xl">
+            "Giữa thung lũng đá vôi ngàn mét, mặt nước ngọc bích phẳng lặng như một tấm gương soi cả bầu trời Đông Bắc."
+          </p>
+        </div>
+      </div>
+
+      <!-- Chapter Selectors & Audio Controls Bar -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-3 font-mono text-[11px]">
+        <button onclick="switchCinemaScene(0)" class="cinema-nav-btn active p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-emerald-500/80 transition flex items-center gap-2 cursor-pointer" data-cidx="0">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span class="truncate">01. Hồ Ba Bể</span>
+        </button>
+        <button onclick="switchCinemaScene(1)" class="cinema-nav-btn p-2.5 rounded-xl bg-white/5 hover:bg-white/15 text-slate-400 border border-white/10 transition flex items-center gap-2 cursor-pointer" data-cidx="1">
+          <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+          <span class="truncate">02. Đồi Chè Tân Cương</span>
+        </button>
+        <button onclick="switchCinemaScene(2)" class="cinema-nav-btn p-2.5 rounded-xl bg-white/5 hover:bg-white/15 text-slate-400 border border-white/10 transition flex items-center gap-2 cursor-pointer" data-cidx="2">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span class="truncate">03. Động Puông</span>
+        </button>
+        <button onclick="switchCinemaScene(3)" class="cinema-nav-btn p-2.5 rounded-xl bg-white/5 hover:bg-white/15 text-slate-400 border border-white/10 transition flex items-center gap-2 cursor-pointer" data-cidx="3">
+          <span class="w-2 h-2 rounded-full bg-purple-400"></span>
+          <span class="truncate">04. Suối Cửa Tử</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- SLIDE-OVER DRAWER: SAVED PLACES WISHLIST -->
   <div id="saved-modal" class="hidden fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-xs transition-opacity duration-300" onclick="closeSavedModal()">
     <div class="fixed inset-y-0 right-0 max-w-md w-full bg-white shadow-2xl border-l border-slate-200 flex flex-col justify-between transform transition-transform duration-300 translate-x-full" id="saved-drawer-panel" onclick="event.stopPropagation()">
@@ -1478,6 +1589,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110603"></script>
+  <script src="assets/js/app.js?v=2026110604"></script>
 </body>
 </html>

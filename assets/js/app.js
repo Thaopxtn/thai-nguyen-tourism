@@ -500,6 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initLiveSearch === 'function') initLiveSearch();
   if (typeof initSpotlightCards === 'function') initSpotlightCards();
   if (typeof init3DCardTilt === 'function') init3DCardTilt();
+  if (typeof initTimeLapseCurtain === 'function') initTimeLapseCurtain();
 });
 window.addEventListener('load', tryInitMap);
 
@@ -2061,7 +2062,7 @@ const HERO_SCENES = [
 let heroSceneIdx = 0;
 let heroTimer = null;
 
-function switchHeroScene(idx) {
+function switchHeroScene(idx, event) {
   heroSceneIdx = idx % HERO_SCENES.length;
   const s = HERO_SCENES[heroSceneIdx];
 
@@ -2074,14 +2075,26 @@ function switchHeroScene(idx) {
   const valEl   = document.getElementById('hero-weather-val');
 
   if (imgEl) {
-    imgEl.classList.remove('ken-burns-active');
-    imgEl.style.opacity = '0.25';
+    let clickX = 50;
+    let clickY = 50;
+    if (event && event.clientX && event.clientY) {
+      const rect = imgEl.getBoundingClientRect();
+      if (rect.width > 0 && rect.height > 0) {
+        clickX = Math.max(0, Math.min(100, Math.round(((event.clientX - rect.left) / rect.width) * 100)));
+        clickY = Math.max(0, Math.min(100, Math.round(((event.clientY - rect.top) / rect.height) * 100)));
+      }
+    }
+    imgEl.style.setProperty('--click-x', `${clickX}%`);
+    imgEl.style.setProperty('--click-y', `${clickY}%`);
+
+    imgEl.classList.remove('liquid-iris-active', 'ken-burns-active');
+    imgEl.style.opacity = '0.35';
     setTimeout(() => {
       imgEl.src = s.img;
       void imgEl.offsetWidth;
       imgEl.style.opacity = '1';
-      imgEl.classList.add('ken-burns-active');
-    }, 130);
+      imgEl.classList.add('liquid-iris-active');
+    }, 110);
   }
 
   if (badgeEl) badgeEl.textContent = s.badge;
@@ -2515,3 +2528,160 @@ function init3DCardTilt() {
 
 window.initSpotlightCards = initSpotlightCards;
 window.init3DCardTilt = init3DCardTilt;
+
+// ============================================================
+// INTERACTIVE TIME-LAPSE SPLIT-SCREEN CURTAIN (Sương Mai & Hoàng Hôn)
+// ============================================================
+function initTimeLapseCurtain() {
+  const container = document.getElementById('timelapse-container');
+  const clipLayer = document.getElementById('timelapse-clip-layer');
+  const leftImg = document.getElementById('timelapse-img-left');
+  const handle = document.getElementById('timelapse-handle');
+  if (!container || !clipLayer || !leftImg || !handle) return;
+
+  function syncWidth() {
+    leftImg.style.width = container.offsetWidth + 'px';
+  }
+  syncWidth();
+  window.addEventListener('resize', syncWidth);
+
+  let isDragging = false;
+
+  function setPosition(clientX) {
+    const rect = container.getBoundingClientRect();
+    const x = clientX - rect.left;
+    let pct = (x / rect.width) * 100;
+    pct = Math.max(3, Math.min(97, pct));
+    clipLayer.style.width = pct + '%';
+    handle.style.left = pct + '%';
+  }
+
+  container.addEventListener('mousedown', e => {
+    isDragging = true;
+    setPosition(e.clientX);
+  });
+  window.addEventListener('mousemove', e => {
+    if (isDragging) {
+      setPosition(e.clientX);
+    }
+  });
+  window.addEventListener('mouseup', () => {
+    isDragging = false;
+  });
+
+  // Touch support
+  container.addEventListener('touchstart', e => {
+    if (e.touches.length > 0) {
+      isDragging = true;
+      setPosition(e.touches[0].clientX);
+    }
+  }, { passive: true });
+  window.addEventListener('touchmove', e => {
+    if (isDragging && e.touches.length > 0) {
+      setPosition(e.touches[0].clientX);
+    }
+  }, { passive: true });
+  window.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+
+  // Hover auto glide when mouse moves across container
+  container.addEventListener('mousemove', e => {
+    if (!isDragging) {
+      setPosition(e.clientX);
+    }
+  });
+}
+
+// ============================================================
+// CINEMATIC 4K THEATER MODE
+// ============================================================
+const CINEMA_SCENES = [
+  {
+    title: 'Hồ Ba Bể • Viên Ngọc Bích Giữa Đại Ngàn',
+    img: 'assets/images/hero-babe.jpg',
+    glow: 'rgba(16, 185, 129, 0.3)',
+    quote: '"Giữa thung lũng đá vôi ngàn mét, mặt nước ngọc bích phẳng lặng như một tấm gương soi cả bầu trời Đông Bắc."'
+  },
+  {
+    title: 'Đồi Chè Tân Cương • Sắc Xanh Nương Bát Úp',
+    img: 'assets/images/tan-cuong-tea.jpg',
+    glow: 'rgba(217, 119, 6, 0.3)',
+    quote: '"Từng búp chè một tôm hai lá đón sương sớm, thơm lừng hương cốm non đượm sâu vị ngọt hậu đất trời."'
+  },
+  {
+    title: 'Động Puông • Hang Sông Ngầm Karst 300m',
+    img: 'assets/images/puong-cave.jpg',
+    glow: 'rgba(6, 182, 212, 0.3)',
+    quote: '"Dòng sông Năng cuồn cuộn chảy xuyên lòng núi Lũng Nham, vòm hang đá vôi sừng sững cao 30m kỳ vĩ."'
+  },
+  {
+    title: 'Suối Cửa Tử • 7 Cửa Ải Thác Đổ Tam Đảo',
+    img: 'assets/images/cua-tu-stream.jpg',
+    glow: 'rgba(168, 85, 247, 0.3)',
+    quote: '"Dòng nước trong vắt luồn qua vách đá dựng đứng, nơi thiên nhiên ban tặng những máng trượt đá tự nhiên kỳ thú."'
+  }
+];
+
+let cinemaIdx = 0;
+
+function openCinemaModal() {
+  const modal = document.getElementById('cinema-modal');
+  if (!modal) return;
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  switchCinemaScene(heroSceneIdx || 0);
+
+  if (typeof startAudioSynthesizer === 'function' && !state.soundPlaying) {
+    startAudioSynthesizer();
+  }
+}
+
+function closeCinemaModal() {
+  const modal = document.getElementById('cinema-modal');
+  if (!modal) return;
+  modal.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function switchCinemaScene(idx) {
+  cinemaIdx = idx % CINEMA_SCENES.length;
+  const s = CINEMA_SCENES[cinemaIdx];
+
+  const titleEl = document.getElementById('cinema-title');
+  const imgEl   = document.getElementById('cinema-screen-img');
+  const glowEl  = document.getElementById('cinema-ambient-glow');
+  const capEl   = document.getElementById('cinema-caption');
+
+  if (titleEl) titleEl.textContent = s.title;
+  if (glowEl) glowEl.style.backgroundColor = s.glow;
+  if (capEl) capEl.textContent = s.quote;
+
+  if (imgEl) {
+    imgEl.style.opacity = '0.3';
+    setTimeout(() => {
+      imgEl.src = s.img;
+      void imgEl.offsetWidth;
+      imgEl.style.opacity = '1';
+      imgEl.classList.remove('liquid-iris-active');
+      void imgEl.offsetWidth;
+      imgEl.classList.add('liquid-iris-active');
+    }, 110);
+  }
+
+  document.querySelectorAll('.cinema-nav-btn').forEach(btn => {
+    const bIdx = parseInt(btn.getAttribute('data-cidx'));
+    if (bIdx === cinemaIdx) {
+      btn.classList.add('active', 'border-emerald-500/80', 'bg-white/15', 'text-white');
+      btn.classList.remove('border-white/10', 'bg-white/5', 'text-slate-400');
+    } else {
+      btn.classList.remove('active', 'border-emerald-500/80', 'bg-white/15', 'text-white');
+      btn.classList.add('border-white/10', 'bg-white/5', 'text-slate-400');
+    }
+  });
+}
+
+window.initTimeLapseCurtain = initTimeLapseCurtain;
+window.openCinemaModal = openCinemaModal;
+window.closeCinemaModal = closeCinemaModal;
+window.switchCinemaScene = switchCinemaScene;
