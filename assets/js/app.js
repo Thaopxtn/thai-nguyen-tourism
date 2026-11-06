@@ -180,6 +180,63 @@ const DESTINATIONS = [
     highlightsVi: ['Dòng thác đổ tầng mềm mại trên vách đá', 'Không gian hoang sơ tĩnh lặng tuyệt đối', 'Điểm dã ngoại, chụp ảnh thiên nhiên'],
     idealSeasonEn: 'Summer & Autumn',
     idealSeasonVi: 'Mùa hè & Mùa thu',
+  },
+  {
+    id: 'atk-dinh-hoa',
+    category: 'heritage',
+    isLandscape: false,
+    nameEn: 'ATK Dinh Hoa Revolutionary Sanctuary',
+    nameVi: 'Khu Di Tích Quốc Gia Đặc Biệt ATK Định Hóa',
+    tagEn: 'Capital of Resistance',
+    tagVi: 'Thủ Đô Gió Ngàn Kháng Chiến',
+    districtEn: 'Dinh Hoa District',
+    districtVi: 'Huyện Định Hóa',
+    image: 'assets/images/atk-dinh-hoa.jpg',
+    featured: false,
+    descEn: 'The legendary headquarters of the Central Party Committee and President Ho Chi Minh during the 1947–1954 resistance war. A cradle of modern Vietnamese history preserved amidst peaceful bamboo hills and Tay stilt villages.',
+    descVi: 'Di tích Quốc gia đặc biệt quy mô 128 điểm di tích, nơi Chủ tịch Hồ Chí Minh và Trung ương Đảng đặt cơ quan đầu não chỉ đạo cuộc kháng chiến chống Pháp, quyết định mở màn Chiến dịch Điện Biên Phủ lịch sử.',
+    highlightsEn: ['Tin Keo historic bamboo hut & bunker', 'Museum of Resistance Relics', 'Authentic Tay ethnic village culture'],
+    highlightsVi: ['Lán Tỉn Keo - Nơi họp Bộ Chính trị mở chiến dịch Điện Biên Phủ', 'Nhà tưởng niệm Bác Hồ trên đỉnh đèo De', 'Không gian văn hóa Tày bản địa nguyên sơ'],
+    idealSeasonEn: 'Year-round (Best: Autumn & Spring)',
+    idealSeasonVi: 'Quanh năm (Đẹp nhất: Mùa Thu & Xuân)',
+  },
+  {
+    id: 'duom-temple',
+    category: 'heritage',
+    isLandscape: false,
+    nameEn: 'Duom Temple (Duong Tu Minh Shrine)',
+    nameVi: 'Đền Đuổm (Đức Thánh Dương Tự Minh)',
+    tagEn: 'Sacred Mountain Shrine',
+    tagVi: 'Cổ Tự Dưới Chân Núi Điểm Sơn',
+    districtEn: 'Phu Luong District',
+    districtVi: 'Huyện Phú Lương',
+    image: 'assets/images/den-duom.jpg',
+    featured: false,
+    descEn: 'A sacred national historic site dedicated to national hero Duong Tu Minh, located beneath the majestic Diem Son mountain peak. Celebrated for its annual Long Tong festival and ancient sacred architecture.',
+    descVi: 'Di tích lịch sử danh thắng cấp quốc gia khởi dựng từ năm 1180 triều Lý, phụng thờ Đức Thánh Đuổm Dương Tự Minh tựa lưng vào vách đá dựng đứng của núi Điểm Sơn.',
+    highlightsEn: ['Ancient mountain shrine architecture', 'Honoring hero Duong Tu Minh', 'Lively Long Tong spring festival'],
+    highlightsVi: ['Kiến trúc đền cổ tựa vách núi Điểm Sơn', 'Tôn vinh danh tướng Dương Tự Minh', 'Lễ hội Đền Đuổm mùng 6 tháng Giêng âm lịch'],
+    idealSeasonEn: 'Lunar January – March',
+    idealSeasonVi: 'Tháng Giêng – Tháng 3 Âm lịch',
+  },
+  {
+    id: 'chua-hang',
+    category: 'heritage',
+    isLandscape: false,
+    nameEn: 'Hang Pagoda (Kim Son Tu)',
+    nameVi: 'Chùa Hang (Kim Sơn Tự)',
+    tagEn: 'Ancient Grotto Sanctuary',
+    tagVi: 'Cổ Tự Trong Lòng Núi Long Cổ',
+    districtEn: 'Thai Nguyen City',
+    districtVi: 'TP. Thái Nguyên',
+    image: 'assets/images/chua-hang-real.jpg',
+    featured: false,
+    descEn: 'A centuries-old Buddhist sanctuary carved directly into a natural limestone grotto of Long Co mountain. Peaceful incense mists gently waft among ancient stone altars and thousand-year stalactites.',
+    descVi: 'Di tích thắng cảnh quốc gia Kim Sơn Tự với ba gian chùa chính ngự trọn vẹn trong lòng động đá vôi tự nhiên nghìn năm tuổi của dãy núi Long Cổ, gắn liền với huyền tích Phật bà linh thiêng.',
+    highlightsEn: ['Natural subterranean cave pagoda', 'Centuries-old stone Buddha altars', 'Annual spring Lantern festival'],
+    highlightsVi: ['Không gian cổ tự trong hang đá tự nhiên', 'Bàn thờ Phật bằng đá cổ kính', 'Lễ hội chùa Hang mùa xuân 19-21 tháng Giêng'],
+    idealSeasonEn: 'Spring & Autumn (Lunar Jan–Mar)',
+    idealSeasonVi: 'Mùa Xuân & Thu (Tháng Giêng – Ba)',
   }
 ];
 
@@ -593,7 +650,8 @@ function renderDestinations() {
 
   const searchQuery = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
 
-  const filtered = DESTINATIONS.filter(item => {
+  const landscapeItems = DESTINATIONS.filter(item => item.isLandscape !== false);
+  const filtered = landscapeItems.filter(item => {
     const matchesCategory = state.activeFilter === 'all' || item.category === state.activeFilter;
     const name = state.lang === 'vi' ? item.nameVi : item.nameEn;
     const desc = state.lang === 'vi' ? item.descVi : item.descEn;
@@ -1477,9 +1535,10 @@ const MAP_POINTS = [
   // Central-South Cluster
   { id: 'tan-cuong-tea-hills',name: 'Đồi Chè Tân Cương',  nameEn: 'Tan Cuong Tea Hills',  lat: 21.6421, lng: 105.7533, cat: 'tea',       img: 'assets/images/tan-cuong-tea.jpg' },
   { id: 'nui-coc-lake',       name: 'Hồ Núi Cốc',         nameEn: 'Nui Coc Lake',         lat: 21.7245, lng: 105.6612, cat: 'lake',      img: 'assets/images/nui-coc-lake.jpg' },
-  { id: 'phuong-hoang-moga',  name: 'Hang Phượng Hoàng & Mỏ Gà', nameEn: 'Phuong Hoang Cave & Mo Ga', lat: 21.7850, lng: 105.6200, cat: 'cave', img: 'assets/images/mo-ga-cave.jpg' },
-  { id: 'hang-pagoda',        name: 'Chùa Hang',           nameEn: 'Hang Pagoda',          lat: 21.5940, lng: 105.8356, cat: 'temple',    img: 'assets/images/chua-hang.jpg' },
+  { id: 'phuong-hoang-moga',  name: 'Hang Phượng Hoàng & Mỏ Gà', nameEn: 'Phuong Hoang Cave & Mo Ga', lat: 21.7850, lng: 105.6200, cat: 'cave', img: 'assets/images/phuong-hoang-moga.jpg' },
+  { id: 'chua-hang',          name: 'Chùa Hang (Kim Sơn Tự)', nameEn: 'Chua Hang (Kim Son Cave)', lat: 21.5940, lng: 105.8356, cat: 'temple', img: 'assets/images/chua-hang-real.jpg' },
   { id: 'duom-temple',        name: 'Đền Đuổm',            nameEn: 'Duom Temple',          lat: 21.8731, lng: 105.8012, cat: 'temple',    img: 'assets/images/den-duom.jpg' },
+  { id: 'phu-lien-pagoda',    name: 'Chùa Phù Liễn',       nameEn: 'Phu Lien Pagoda',      lat: 21.5942, lng: 105.8431, cat: 'temple',    img: 'assets/images/chua-phu-lien.jpg' },
   // Dai Tu - Dinh Hoa Cluster
   { id: 'atk-dinh-hoa',       name: 'ATK Định Hóa',        nameEn: 'ATK Dinh Hoa',         lat: 21.9980, lng: 105.6042, cat: 'temple',    img: 'assets/images/atk-dinh-hoa.jpg' },
   { id: 'cua-tu-stream',      name: 'Suối Cửa Tử',         nameEn: 'Cua Tu Stream',        lat: 21.8200, lng: 105.5800, cat: 'waterfall', img: 'assets/images/cua-tu-stream.jpg' },
@@ -1730,7 +1789,15 @@ function viewOnMap(destId) {
     initInteractiveMap();
   }
 
-  const pt = MAP_POINTS.find(p => p.id === destId);
+  const aliasMap = {
+    'hang-pagoda': 'chua-hang',
+    'chua-hang': 'chua-hang',
+    'babe': 'babe-lake',
+    'tan-cuong': 'tan-cuong-tea-hills',
+    'atk': 'atk-dinh-hoa'
+  };
+  const lookupId = aliasMap[destId] || destId;
+  const pt = MAP_POINTS.find(p => p.id === lookupId || p.id === destId);
   if (!pt) {
     console.warn('Destination point not found on map:', destId);
     return;
@@ -2319,9 +2386,10 @@ function toggleBucketItem(id) {
 
   if (cb.checked) {
     bucketListState[id] = true;
-    showToast('Đã thêm vào danh sách trải nghiệm của bạn!');
+    showToast(state.lang === 'en' ? 'Added to your bucket list!' : 'Đã thêm vào danh sách trải nghiệm của bạn!');
   } else {
     delete bucketListState[id];
+    showToast(state.lang === 'en' ? 'Removed from bucket list' : 'Đã bỏ chọn khỏi danh sách trải nghiệm');
   }
 
   localStorage.setItem('tn_bucket_list', JSON.stringify(bucketListState));
@@ -2332,6 +2400,7 @@ function updateBucketUI() {
   const total = 5;
   const count = Object.keys(bucketListState).length;
   const pct = Math.round((count / total) * 100);
+  const isEn = state.lang === 'en';
 
   const pctEl = document.getElementById('bucket-pct');
   const barEl = document.getElementById('bucket-progress-bar');
@@ -2340,10 +2409,15 @@ function updateBucketUI() {
   if (pctEl) pctEl.textContent = pct + '%';
   if (barEl) barEl.style.width = pct + '%';
   if (feedbackEl) {
-    if (count === 0) feedbackEl.textContent = 'Đã chọn 0 / 5 trải nghiệm (Hãy chọn các điểm bạn muốn thử)';
-    else if (count < 3) feedbackEl.textContent = `Đã chọn ${count} / ${total} trải nghiệm — Khởi đầu tuyệt vời!`;
-    else if (count < 5) feedbackEl.textContent = `Đã chọn ${count} / ${total} trải nghiệm — Kế hoạch rất phong phú!`;
-    else feedbackEl.textContent = '🎉 100% Hoàn hảo! Bạn đã sẵn sàng cho chuyến đi tuyệt nhất năm 2026!';
+    if (count === 0) {
+      feedbackEl.textContent = isEn ? 'Selected 0 / 5 experiences (Choose the activities you want to try)' : 'Đã chọn 0 / 5 trải nghiệm (Hãy chọn các điểm bạn muốn thử)';
+    } else if (count < 3) {
+      feedbackEl.textContent = isEn ? `Selected ${count} / ${total} experiences — Great start!` : `Đã chọn ${count} / ${total} trải nghiệm — Khởi đầu tuyệt vời!`;
+    } else if (count < 5) {
+      feedbackEl.textContent = isEn ? `Selected ${count} / ${total} experiences — Wonderful itinerary!` : `Đã chọn ${count} / ${total} trải nghiệm — Kế hoạch rất phong phú!`;
+    } else {
+      feedbackEl.textContent = isEn ? '🎉 100% Perfect! You are fully set for an unforgettable 2026 adventure!' : '🎉 100% Hoàn hảo! Bạn đã sẵn sàng cho chuyến đi tuyệt nhất năm 2026!';
+    }
   }
 }
 
@@ -2954,3 +3028,37 @@ function submitSupportForm(event) {
 window.openSupportModal = openSupportModal;
 window.closeSupportModal = closeSupportModal;
 window.submitSupportForm = submitSupportForm;
+
+// Global Keyboard Accessibility (Escape to close all open modals)
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' || e.key === 'Esc') {
+    if (typeof closeDestinationModal === 'function') closeDestinationModal();
+    if (typeof closeImageLightbox === 'function') closeImageLightbox();
+    if (typeof closeSavedModal === 'function') closeSavedModal();
+    if (typeof closeSupportModal === 'function') closeSupportModal();
+    if (typeof closeCinemaModal === 'function') closeCinemaModal();
+    const drawer = document.getElementById('mobile-menu-drawer');
+    if (drawer && !drawer.classList.contains('hidden')) {
+      drawer.classList.add('hidden');
+    }
+  }
+});
+
+// Back-to-Top Floating Button Controller
+function initBackToTop() {
+  const btn = document.getElementById('btn-back-to-top');
+  if (!btn) return;
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 450) {
+      btn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+      btn.classList.add('opacity-100', 'translate-y-0');
+    } else {
+      btn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+      btn.classList.remove('opacity-100', 'translate-y-0');
+    }
+  }, { passive: true });
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+document.addEventListener('DOMContentLoaded', initBackToTop);
