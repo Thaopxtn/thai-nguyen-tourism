@@ -521,3 +521,25 @@ button:active:not(:disabled), a.btn-action:active {
     transform: none !important;
   }
 }
+
+/* 12. Floating Navigation & Fullscreen Map Styles */
+#floating-quick-nav {
+  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+:fullscreen #interactive-map, :-webkit-full-screen #interactive-map {
+  background: #0f172a !important;
+  padding: 1.5rem !important;
+  overflow: hidden !important;
+  height: 100vh !important;
+  border-radius: 0 !important;
+}
+
+:fullscreen #interactive-map #tn-map, :-webkit-full-screen #interactive-map #tn-map {
+  height: calc(100vh - 130px) !important;
+  border-radius: 1.25rem !important;
+}
+
+#search-dropdown {
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.05);
+}

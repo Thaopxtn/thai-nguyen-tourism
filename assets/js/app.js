@@ -497,6 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initBucketList === 'function') initBucketList();
   if (typeof initScrollReveal === 'function') initScrollReveal();
   if (typeof initNumberCounters === 'function') initNumberCounters();
+  if (typeof initLiveSearch === 'function') initLiveSearch();
 });
 window.addEventListener('load', tryInitMap);
 
@@ -1078,6 +1079,12 @@ function renderSavedBadge() {
 function renderSavedPlacesList() {
   const container = document.getElementById('saved-places-container');
   if (!container) return;
+  const subEl = document.getElementById('saved-drawer-subtitle');
+  if (subEl) {
+    subEl.textContent = state.lang === 'vi'
+      ? `${state.savedPlaces.length} điểm đến được chọn`
+      : `${state.savedPlaces.length} destinations chosen`;
+  }
 
   if (state.savedPlaces.length === 0) {
     container.innerHTML = `
@@ -1111,19 +1118,40 @@ function renderSavedPlacesList() {
 
 function openSavedModal() {
   const modal = document.getElementById('saved-modal');
-  if (modal) {
-    renderSavedPlacesList();
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
+  const panel = document.getElementById('saved-drawer-panel');
+  if (!modal) return;
+  renderSavedPlacesList();
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  if (panel) {
+    requestAnimationFrame(() => {
+      panel.classList.remove('translate-x-full');
+      panel.classList.add('translate-x-0');
+    });
   }
 }
 
 function closeSavedModal() {
   const modal = document.getElementById('saved-modal');
-  if (modal) {
+  const panel = document.getElementById('saved-drawer-panel');
+  if (!modal) return;
+  if (panel) {
+    panel.classList.remove('translate-x-0');
+    panel.classList.add('translate-x-full');
+  }
+  setTimeout(() => {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
-  }
+  }, 260);
+}
+
+function clearAllSavedPlaces() {
+  if (!state.savedPlaces.length) return;
+  state.savedPlaces = [];
+  localStorage.setItem('tn_saved_places', JSON.stringify([]));
+  renderSavedPlacesList();
+  renderSavedBadge();
+  showToast(state.lang === 'en' ? 'Cleared all saved spots' : 'Đã xóa toàn bộ điểm đã lưu');
 }
 
 // --- ACOUSTIC NATURE SOUNDSCAPE SYNTHESIZER ---
@@ -1275,15 +1303,19 @@ function setupEventListeners() {
     const bar = document.getElementById('reading-progress');
     if (bar) bar.style.width = scrolled + '%';
 
-    const topBtn = document.getElementById('back-to-top');
-    if (topBtn) {
-      if (winScroll > 400) {
-        topBtn.classList.remove('opacity-0', 'pointer-events-none');
-        topBtn.classList.add('opacity-100');
+    const quickNav = document.getElementById('floating-quick-nav');
+    const circleProgress = document.getElementById('scroll-progress-circle');
+    if (quickNav) {
+      if (winScroll > 320) {
+        quickNav.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
+        quickNav.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
       } else {
-        topBtn.classList.add('opacity-0', 'pointer-events-none');
-        topBtn.classList.remove('opacity-100');
+        quickNav.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
+        quickNav.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
       }
+    }
+    if (circleProgress) {
+      circleProgress.setAttribute('stroke-dasharray', `${Math.round(scrolled)}, 100`);
     }
   });
 
@@ -2280,3 +2312,150 @@ function animateCounter(el) {
 
 window.initScrollReveal = initScrollReveal;
 window.initNumberCounters = initNumberCounters;
+
+// ============================================================
+// LIVE SEARCH FLYOUT DROPDOWN (Bilingual & Diacritic-Insensitive)
+// ============================================================
+function removeDiacritics(str) {
+  return (str || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D').toLowerCase();
+}
+
+function initLiveSearch() {
+  const input = document.getElementById('search-input');
+  const dropdown = document.getElementById('search-dropdown');
+  if (!input || !dropdown) return;
+
+  function performSearch() {
+    const rawQ = input.value.trim();
+    if (!rawQ || rawQ.length < 2) {
+      dropdown.classList.add('hidden');
+      dropdown.innerHTML = '';
+      return;
+    }
+
+    const q = rawQ.toLowerCase();
+    const qNorm = removeDiacritics(q);
+
+    const matchedDest = (typeof DESTINATIONS !== 'undefined' ? DESTINATIONS : []).filter(d => {
+      const hayVi = (d.nameVi + ' ' + d.tagVi + ' ' + d.districtVi).toLowerCase();
+      const hayEn = (d.nameEn + ' ' + d.tagEn + ' ' + d.districtEn).toLowerCase();
+      const hayNorm = removeDiacritics(hayVi);
+      return hayVi.includes(q) || hayEn.includes(q) || hayNorm.includes(qNorm);
+    });
+
+    const matchedPagodas = (typeof PAGODAS !== 'undefined' ? PAGODAS : []).filter(p => {
+      const hayVi = (p.nameVi + ' ' + p.districtVi).toLowerCase();
+      const hayEn = (p.nameEn + ' ' + p.districtEn).toLowerCase();
+      const hayNorm = removeDiacritics(hayVi);
+      return hayVi.includes(q) || hayEn.includes(q) || hayNorm.includes(qNorm);
+    });
+
+    const allMatches = [
+      ...matchedDest.map(d => ({
+        id: d.id,
+        name: state.lang === 'vi' ? d.nameVi : d.nameEn,
+        tag: state.lang === 'vi' ? d.tagVi : d.tagEn,
+        image: d.image
+      })),
+      ...matchedPagodas.map(p => ({
+        id: p.id,
+        name: state.lang === 'vi' ? p.nameVi : p.nameEn,
+        tag: state.lang === 'vi' ? p.tagVi : p.tagEn,
+        image: p.image
+      }))
+    ].slice(0, 5);
+
+    if (allMatches.length === 0) {
+      dropdown.innerHTML = `
+        <div class="p-3.5 text-center text-xs text-slate-500 font-sans">
+          ${state.lang === 'en' ? 'No quick matches. Click "Explore" for all.' : 'Không có gợi ý nhanh. Bấm "Khám phá" để xem toàn bộ.'}
+        </div>
+      `;
+      dropdown.classList.remove('hidden');
+      return;
+    }
+
+    dropdown.innerHTML = allMatches.map(m => `
+      <div onclick="openDestinationModal('${m.id}'); document.getElementById('search-dropdown').classList.add('hidden');" 
+           class="p-3 hover:bg-emerald-50/80 cursor-pointer flex items-center justify-between gap-3 transition">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <img src="${m.image}" alt="${m.name}" class="w-10 h-10 rounded-xl object-cover shrink-0 shadow-2xs">
+          <div class="truncate">
+            <div class="text-xs font-bold text-slate-900 truncate">${m.name}</div>
+            <div class="text-[10px] text-emerald-800 font-mono truncate">${m.tag}</div>
+          </div>
+        </div>
+        <span class="text-xs font-bold text-slate-400 group-hover:text-emerald-700 font-mono shrink-0">&rarr;</span>
+      </div>
+    `).join('') + `
+      <div class="p-2.5 bg-slate-50/90 text-center border-t border-slate-100">
+        <a href="#landscapes" onclick="document.getElementById('search-dropdown').classList.add('hidden');" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 transition">
+          ${state.lang === 'en' ? 'View all destinations in catalog &darr;' : 'Xem tất cả điểm đến trong danh mục &darr;'}
+        </a>
+      </div>
+    `;
+
+    dropdown.classList.remove('hidden');
+  }
+
+  input.addEventListener('input', performSearch);
+  input.addEventListener('focus', () => {
+    if (input.value.trim().length >= 2) performSearch();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target) && e.target !== input) {
+      dropdown.classList.add('hidden');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      dropdown.classList.add('hidden');
+    }
+  });
+}
+
+// ============================================================
+// MAP FULLSCREEN CONTROLLER
+// ============================================================
+function toggleMapFullscreen() {
+  const mapSec = document.getElementById('interactive-map');
+  if (!mapSec) return;
+  if (!document.fullscreenElement) {
+    if (mapSec.requestFullscreen) {
+      mapSec.requestFullscreen();
+    } else if (mapSec.webkitRequestFullscreen) {
+      mapSec.webkitRequestFullscreen();
+    }
+  } else {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    }
+  }
+}
+
+document.addEventListener('fullscreenchange', handleMapFullscreenResize);
+document.addEventListener('webkitfullscreenchange', handleMapFullscreenResize);
+
+function handleMapFullscreenResize() {
+  const mapEl = document.getElementById('tn-map');
+  const btn = document.getElementById('btn-map-fullscreen');
+  if (document.fullscreenElement) {
+    if (mapEl) mapEl.style.height = 'calc(100vh - 130px)';
+    if (btn) btn.innerHTML = '<span>❌</span><span class="hidden sm:inline">Thu nhỏ</span>';
+  } else {
+    if (mapEl) mapEl.style.height = '560px';
+    if (btn) btn.innerHTML = '<svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"/></svg><span class="hidden sm:inline">Toàn màn hình</span>';
+  }
+  if (typeof tnMap !== 'undefined' && tnMap) {
+    setTimeout(() => tnMap.invalidateSize(), 300);
+  }
+}
+
+// Global window assignments
+window.initLiveSearch = initLiveSearch;
+window.toggleMapFullscreen = toggleMapFullscreen;
+window.clearAllSavedPlaces = clearAllSavedPlaces;
+window.openSavedModal = openSavedModal;
+window.closeSavedModal = closeSavedModal;
