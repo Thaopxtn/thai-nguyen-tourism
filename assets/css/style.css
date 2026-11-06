@@ -361,3 +361,163 @@ h1 {
   transform: translateY(-4px);
   box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.08), 0 10px 15px -5px rgba(0, 0, 0, 0.04);
 }
+
+/* ============================================================
+   ADVANCED MOTION & ANIMATION SYSTEM (APPLE & MODERN LUXURY)
+   Smooth 60fps hardware-accelerated transitions & micro-interactions
+   ============================================================ */
+
+/* 1. Shimmer Reading Progress Bar */
+#reading-progress {
+  background: linear-gradient(90deg, #059669, #10b981, #d97706, #059669);
+  background-size: 200% 100%;
+  animation: shimmerGradient 3s linear infinite;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+@keyframes shimmerGradient {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* 2. Scroll-Driven Reveal System */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* 3. Floating Micro-Interactions */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 4.5s ease-in-out infinite;
+}
+
+/* 4. Ken Burns Slide In for Hero Scene */
+@keyframes kenBurnsZoom {
+  0% {
+    transform: scale(1.06);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.0);
+    opacity: 1;
+  }
+}
+
+.ken-burns-active {
+  animation: kenBurnsZoom 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 5. Apple Spring Modal Lightbox */
+@keyframes appleModalPop {
+  0% {
+    opacity: 0;
+    transform: scale(0.93) translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.apple-modal-content {
+  animation: appleModalPop 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 6. Apple Button Interactive Bounce & Shadow Glow */
+button:active:not(:disabled), a.btn-action:active {
+  transform: scale(0.97) !important;
+  transition: transform 0.1s ease;
+}
+
+.btn-glow {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-glow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px -5px rgba(5, 150, 105, 0.4), 0 8px 10px -6px rgba(5, 150, 105, 0.2);
+}
+
+/* 7. Enhanced Card Hover Elevation */
+.travel-card {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease !important;
+}
+
+.travel-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 22px 35px -10px rgba(15, 23, 42, 0.12),
+              0 10px 15px -5px rgba(15, 23, 42, 0.05) !important;
+  border-color: rgba(16, 185, 129, 0.4) !important;
+}
+
+/* 8. Bento Photo Grid Hover Zoom & Shimmer */
+.gallery-item {
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item img {
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-item:hover img {
+  transform: scale(1.07);
+}
+
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.25);
+}
+
+/* 9. Live Weather Pill Breathe Glow */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+  }
+}
+
+.weather-pill-pulse {
+  animation: pulseGlow 2.5s infinite;
+}
+
+/* 10. Staggered Cascading Animation Delays */
+.stagger-1 { transition-delay: 60ms; }
+.stagger-2 { transition-delay: 120ms; }
+.stagger-3 { transition-delay: 180ms; }
+.stagger-4 { transition-delay: 240ms; }
+
+/* 11. Respect Reduced Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

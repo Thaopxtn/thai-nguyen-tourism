@@ -47,7 +47,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110508">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110601">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -164,7 +164,7 @@
             <input type="text" id="search-input" placeholder="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa..." class="w-full py-2.5 px-1 text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
                    data-en="Search Ba Be Lake, Puong Cave, tea hills, temples..."
                    data-vi="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa...">
-            <a href="#landscapes" class="px-5 py-2.5 bg-slate-900 hover:bg-emerald-900 text-white rounded-xl text-xs font-bold shrink-0 transition"
+            <a href="#landscapes" class="px-5 py-2.5 bg-slate-900 hover:bg-emerald-900 text-white rounded-xl text-xs font-bold shrink-0 transition btn-glow"
                data-en="Explore &rarr;" data-vi="Khám phá &rarr;">Khám phá &rarr;</a>
           </div>
 
@@ -172,7 +172,7 @@
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 text-xs font-mono">
             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
               <div class="text-slate-500 uppercase text-[10px]">Không gian thiên nhiên</div>
-              <div class="font-bold text-emerald-800 text-base mt-0.5 font-heading">8.375 km²</div>
+              <div class="font-bold text-emerald-800 text-base mt-0.5 font-heading stat-counter" data-target="8375" data-thousand="true" data-suffix=" km²">8.375 km²</div>
             </div>
             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
               <div class="text-slate-500 uppercase text-[10px]">Kỳ quan biểu tượng</div>
@@ -184,7 +184,7 @@
             </div>
             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
               <div class="text-slate-500 uppercase text-[10px]">Khoảng cách từ Hà Nội</div>
-              <div class="font-bold text-amber-600 text-base mt-0.5 font-heading">~1 Giờ Xe</div>
+              <div class="font-bold text-amber-600 text-base mt-0.5 font-heading stat-counter" data-target="60" data-prefix="~" data-suffix=" Phút Xe">~60 Phút Xe</div>
             </div>
           </div>
         </div>
@@ -193,7 +193,7 @@
         <div class="lg:col-span-5 relative space-y-3" id="hero-carousel-container">
           
           <!-- Live Weather Pill -->
-          <div class="flex items-center justify-between px-3.5 py-2 bg-emerald-50 rounded-2xl border border-emerald-200/80 text-xs font-mono">
+          <div class="flex items-center justify-between px-3.5 py-2 bg-emerald-50 rounded-2xl border border-emerald-200/80 text-xs font-mono weather-pill-pulse">
             <span class="flex items-center gap-1.5 text-emerald-900 font-bold">
               <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
               <span id="hero-weather-loc">Ba Bể</span>
@@ -207,7 +207,7 @@
               <img id="hero-main-img" src="assets/images/hero-babe.jpg" alt="Thái Nguyên Danh Thắng" class="w-full h-full object-cover transition-all duration-700">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
               
-              <span id="hero-scene-badge" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold text-slate-900 shadow-sm font-mono">
+              <span id="hero-scene-badge" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold text-slate-900 shadow-sm font-mono animate-float-slow">
                 Vườn Quốc Gia Ba Bể
               </span>
 
@@ -496,7 +496,7 @@
         <div class="travel-card p-6 rounded-2xl flex flex-col justify-between bg-white">
           <div>
             <span class="text-xs font-mono font-bold text-slate-500 uppercase">Quy Mô Dân Số</span>
-            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3">1,87 Triệu Cư Dân Thường Trú</h3>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3 stat-counter" data-target="1.87" data-decimals="2" data-suffix=" Triệu Cư Dân Thường Trú">1,87 Triệu Cư Dân Thường Trú</h3>
             <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
               Tính đến ngày 31/12/2025, tỉnh ghi nhận 1.869.446 người, mật độ trung bình 223 người/km². Dân cư phân bố không đồng đều: tập trung đông đúc tại các đô thị công nghiệp, đại học phía Nam và thưa thoáng tại các bản làng vùng cao phía Bắc.
             </p>
@@ -509,7 +509,7 @@
         <div class="travel-card p-6 rounded-2xl flex flex-col justify-between bg-white">
           <div>
             <span class="text-xs font-mono font-bold text-emerald-800 uppercase">Đa Dân Tộc</span>
-            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3">Cộng Đồng 7 Dân Tộc Anh Em</h3>
+            <h3 class="text-xl font-heading font-extrabold text-slate-900 mt-2 mb-3 stat-counter" data-target="7" data-prefix="Cộng Đồng " data-suffix=" Dân Tộc Anh Em">Cộng Đồng 7 Dân Tộc Anh Em</h3>
             <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light mb-4">
               Nơi hội tụ bản sắc của người Kinh, Tày, Nùng, Dao, Sán Dìu, Sán Chay và H'Mông. Mỗi dân tộc mang đến những phong tục đặc sắc, trang phục thổ cẩm rực rỡ và nếp sống hài hòa cùng thiên nhiên.
             </p>
@@ -1392,6 +1392,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110508"></script>
+  <script src="assets/js/app.js?v=2026110601"></script>
 </body>
 </html>

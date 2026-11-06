@@ -495,6 +495,8 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCalculator();
   if (typeof initHeroCarousel === 'function') initHeroCarousel();
   if (typeof initBucketList === 'function') initBucketList();
+  if (typeof initScrollReveal === 'function') initScrollReveal();
+  if (typeof initNumberCounters === 'function') initNumberCounters();
 });
 window.addEventListener('load', tryInitMap);
 
@@ -633,6 +635,7 @@ function renderDestinations() {
       </article>
     `;
   }).join('');
+  if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
 }
 
 // --- RENDER INTERACTIVE EPOCH TIMELINE (NO CLUTTER) ---
@@ -808,6 +811,7 @@ function renderSeasons(seasonKey) {
       </div>
     </div>
   `;
+  if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
 }
 
 // --- RENDER PAGODAS & TEMPLES (CLEAN TABBED DESIGN) ---
@@ -893,6 +897,7 @@ function renderPagodas() {
       </div>
     `;
   }).join('');
+  if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
 }
 
 // --- RENDER HOSPITALS DIRECTORY ---
@@ -1953,6 +1958,14 @@ function openImageLightbox(src, title, caption) {
   img.alt = title || 'Thai Nguyen Photo';
   if (titleEl) titleEl.textContent = title || '';
   if (capEl) capEl.textContent = caption || '';
+
+  const modalContainer = modal.querySelector('.relative.max-w-4xl') || modal.firstElementChild;
+  if (modalContainer) {
+    modalContainer.classList.remove('apple-modal-content');
+    void modalContainer.offsetWidth;
+    modalContainer.classList.add('apple-modal-content');
+  }
+
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 }
@@ -2025,11 +2038,14 @@ function switchHeroScene(idx) {
   const valEl   = document.getElementById('hero-weather-val');
 
   if (imgEl) {
-    imgEl.style.opacity = '0.3';
+    imgEl.classList.remove('ken-burns-active');
+    imgEl.style.opacity = '0.25';
     setTimeout(() => {
       imgEl.src = s.img;
+      void imgEl.offsetWidth;
       imgEl.style.opacity = '1';
-    }, 150);
+      imgEl.classList.add('ken-burns-active');
+    }, 130);
   }
 
   if (badgeEl) badgeEl.textContent = s.badge;
@@ -2042,10 +2058,10 @@ function switchHeroScene(idx) {
   document.querySelectorAll('.hero-thumb-btn').forEach(btn => {
     const bIdx = parseInt(btn.getAttribute('data-idx'));
     if (bIdx === heroSceneIdx) {
-      btn.classList.add('active', 'border-emerald-600');
+      btn.classList.add('active', 'border-emerald-600', 'scale-105');
       btn.classList.remove('border-slate-200');
     } else {
-      btn.classList.remove('active', 'border-emerald-600');
+      btn.classList.remove('active', 'border-emerald-600', 'scale-105');
       btn.classList.add('border-slate-200');
     }
   });
@@ -2054,6 +2070,8 @@ function switchHeroScene(idx) {
 function initHeroCarousel() {
   const container = document.getElementById('hero-carousel-container');
   if (!container) return;
+  const initImg = document.getElementById('hero-main-img');
+  if (initImg) initImg.classList.add('ken-burns-active');
 
   function start() {
     if (heroTimer) clearInterval(heroTimer);
@@ -2094,6 +2112,7 @@ function filterGallery(cat) {
       btn.classList.remove('active');
     }
   });
+  if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
 }
 
 // ============================================================
@@ -2153,3 +2172,111 @@ window.toggleBucketItem = toggleBucketItem;
 window.setMapLayer = setMapLayer;
 window.locateUserPosition = locateUserPosition;
 window.resetMapView = resetMapView;
+
+// ============================================================
+// APPLE-GRADE SCROLL REVEAL SYSTEM
+// ============================================================
+function initScrollReveal() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('section, .travel-card, .gallery-item, #bucket-list, #interactive-map, #tour-calculator').forEach(el => {
+      el.classList.add('is-revealed');
+    });
+    return;
+  }
+
+  const targets = document.querySelectorAll(
+    'section, .travel-card, .gallery-item, #bucket-list, #interactive-map, #tour-calculator, .weather-pill-pulse'
+  );
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.06,
+    rootMargin: '0px 0px -30px 0px'
+  });
+
+  targets.forEach(el => {
+    if (!el.classList.contains('reveal-on-scroll')) {
+      el.classList.add('reveal-on-scroll');
+      if (el.parentElement && el.parentElement.classList.contains('grid')) {
+        const siblingIdx = Array.from(el.parentElement.children).indexOf(el);
+        if (siblingIdx >= 0 && siblingIdx < 4) {
+          el.classList.add(`stagger-${(siblingIdx % 4) + 1}`);
+        }
+      }
+      observer.observe(el);
+    }
+  });
+}
+
+// ============================================================
+// APPLE NUMBER COUNTER ANIMATION (Smooth requestAnimationFrame)
+// ============================================================
+function initNumberCounters() {
+  const counters = document.querySelectorAll('.stat-counter');
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        obs.unobserve(el);
+        animateCounter(el);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  counters.forEach(c => observer.observe(c));
+}
+
+function animateCounter(el) {
+  const target = parseFloat(el.getAttribute('data-target') || '0');
+  const prefix = el.getAttribute('data-prefix') || '';
+  const suffix = el.getAttribute('data-suffix') || '';
+  const decimals = parseInt(el.getAttribute('data-decimals') || '0');
+  const isThousand = el.getAttribute('data-thousand') === 'true';
+  const duration = 1600;
+  const startTime = performance.now();
+
+  function update(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easeOut = 1 - Math.pow(1 - progress, 3);
+    const currentVal = target * easeOut;
+
+    let formatted = '';
+    if (isThousand) {
+      formatted = Math.round(currentVal).toLocaleString('vi-VN');
+    } else if (decimals > 0) {
+      formatted = currentVal.toFixed(decimals).replace('.', ',');
+    } else {
+      formatted = Math.round(currentVal).toString();
+    }
+
+    el.textContent = `${prefix}${formatted}${suffix}`;
+
+    if (progress < 1) {
+      requestAnimationFrame(update);
+    } else {
+      let finalStr = '';
+      if (isThousand) {
+        finalStr = Math.round(target).toLocaleString('vi-VN');
+      } else if (decimals > 0) {
+        finalStr = target.toFixed(decimals).replace('.', ',');
+      } else {
+        finalStr = Math.round(target).toString();
+      }
+      el.textContent = `${prefix}${finalStr}${suffix}`;
+    }
+  }
+
+  requestAnimationFrame(update);
+}
+
+window.initScrollReveal = initScrollReveal;
+window.initNumberCounters = initNumberCounters;
