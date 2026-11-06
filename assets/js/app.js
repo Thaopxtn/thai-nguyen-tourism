@@ -397,7 +397,8 @@ const SEASONS_DATA = {
     nameEn: 'Spring (Feb – Apr)',
     nameVi: 'Mùa Xuân (Tháng 2 – 4)',
     temp: '20 – 23°C',
-    rainfall: 'Light drizzle (Mưa xuân lất phất)',
+    rainfallVi: 'Mưa xuân lất phất',
+    rainfallEn: 'Light spring drizzle',
     humidity: '82 – 84%',
     descEn: 'Spring awakens the northern midlands with soft mist and refreshing breezes. Tender emerald tea shoots sprout across hillsides while centuries-old ethnic festivals resound across valley villages.',
     descVi: 'Mùa xuân tiết trời mát mẻ, mưa xuân lất phất đánh thức chồi non trên khắp các sườn đồi. Nương chè Tân Cương đâm chồi biếc non tơ, tiếng đàn Tính điệu Then rộn rã khắp các lễ hội xuống đồng.',
@@ -508,17 +509,53 @@ window.addEventListener('load', tryInitMap);
 function setLanguage(lang) {
   state.lang = lang;
   localStorage.setItem('tn_lang', lang);
+  document.documentElement.lang = lang;
 
+  // Translate all text elements with data-en & data-vi
   document.querySelectorAll('[data-en]').forEach(el => {
     const text = state.lang === 'vi' ? el.getAttribute('data-vi') : el.getAttribute('data-en');
     if (text) {
       if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
         el.placeholder = text;
+      } else if (el.tagName === 'OPTION') {
+        el.textContent = text;
       } else {
         el.innerHTML = text;
       }
     }
   });
+
+  // Translate elements with title attributes
+  document.querySelectorAll('[data-title-en]').forEach(el => {
+    const titleText = state.lang === 'vi' ? el.getAttribute('data-title-vi') : el.getAttribute('data-title-en');
+    if (titleText) el.setAttribute('title', titleText);
+  });
+
+  // Translate filter pills in #landscapes
+  const filterPillTranslations = {
+    'all': { vi: 'Tất cả (09)', en: 'All (09)' },
+    'lake': { vi: 'Hồ nước (02)', en: 'Lakes (02)' },
+    'cave': { vi: 'Hang động (03)', en: 'Caves (03)' },
+    'waterfall': { vi: 'Thác nước (02)', en: 'Waterfalls (02)' },
+    'tea': { vi: 'Nương chè (01)', en: 'Tea Terraces (01)' },
+    'trekking': { vi: 'Khám phá (01)', en: 'Trekking (01)' }
+  };
+  document.querySelectorAll('#landscapes .filter-pill').forEach(pill => {
+    const filterKey = pill.getAttribute('data-filter');
+    if (filterKey && filterPillTranslations[filterKey]) {
+      pill.textContent = state.lang === 'en' ? filterPillTranslations[filterKey].en : filterPillTranslations[filterKey].vi;
+    }
+  });
+
+  // Translate Hero active scene
+  if (typeof switchHeroScene === 'function' && typeof heroSceneIdx !== 'undefined') {
+    switchHeroScene(heroSceneIdx);
+  }
+
+  // Translate Cinema theater scene
+  if (typeof switchCinemaScene === 'function' && typeof cinemaSceneIdx !== 'undefined') {
+    switchCinemaScene(cinemaSceneIdx);
+  }
 
   renderDestinations();
   renderEpochTimeline(state.activeEpoch);
@@ -528,11 +565,12 @@ function setLanguage(lang) {
   renderSavedPlacesList();
   if (typeof updateCalculator === 'function') updateCalculator();
 
+  // Update language toggle button UI
   const langBtn = document.getElementById('lang-toggle-btn');
   if (langBtn) {
     langBtn.innerHTML = state.lang === 'en'
-      ? '<span class="text-xs font-bold text-white bg-slate-900 px-2 py-0.5 rounded">EN</span> <span class="text-xs text-slate-500 font-medium px-1">VI</span>'
-      : '<span class="text-xs text-slate-500 font-medium px-1">EN</span> <span class="text-xs font-bold text-white bg-slate-900 px-2 py-0.5 rounded">VI</span>';
+      ? '<span class="text-[11px] font-bold text-white bg-slate-900 px-2.5 py-0.5 rounded-full shadow-xs">EN</span><span class="text-[11px] text-slate-500 font-medium px-2 py-0.5">VI</span>'
+      : '<span class="text-[11px] text-slate-500 font-medium px-2 py-0.5">EN</span><span class="text-[11px] font-bold text-white bg-slate-900 px-2.5 py-0.5 rounded-full shadow-xs">VI</span>';
   }
 }
 
@@ -2023,39 +2061,63 @@ window.closeImageLightbox = closeImageLightbox;
 const HERO_SCENES = [
   {
     img: 'assets/images/hero-babe.jpg',
-    badge: 'Vườn Quốc Gia Ba Bể',
-    tag: 'Khu Ramsar Thế Giới No. 1938',
-    title: 'Non Nước Hồ Ba Bể',
-    desc: 'Viên ngọc bích phẳng lặng giữa rừng núi đá vôi karst nguyên sinh phía Bắc.',
-    loc: 'Hồ Ba Bể',
-    weather: '🌤️ 22°C • Tiết trời se mát'
+    badgeVi: 'Vườn Quốc Gia Ba Bể',
+    badgeEn: 'Ba Be National Park',
+    tagVi: 'Khu Bảo Tồn Ramsar Thế Giới Số 1938',
+    tagEn: 'UNESCO Ramsar Wetland Site No. 1938',
+    titleVi: 'Non Nước Hồ Ba Bể',
+    titleEn: 'Pristine Waters of Ba Be Lake',
+    descVi: 'Viên ngọc bích phẳng lặng giữa rừng núi đá vôi nguyên sinh phía Bắc.',
+    descEn: 'A tranquil emerald jewel nestled within primeval karst limestone rainforests.',
+    locVi: 'Hồ Ba Bể',
+    locEn: 'Ba Be Lake',
+    weatherVi: '🌤️ 22°C • Tiết trời se mát',
+    weatherEn: '🌤️ 22°C • Crisp & Mild Breeze'
   },
   {
     img: 'assets/images/tan-cuong-tea.jpg',
-    badge: 'TP. Thái Nguyên',
-    tag: 'Đệ Nhất Danh Trà Đất Việt',
-    title: 'Nương Chè Bát Úp Tân Cương',
-    desc: 'Những thảm chè xanh mướt uốn lượn ngút ngàn, đượm hương cốm non sâu lắng.',
-    loc: 'Tân Cương',
-    weather: '☀️ 24°C • Nắng dịu trong lành'
+    badgeVi: 'TP. Thái Nguyên',
+    badgeEn: 'Thai Nguyen City',
+    tagVi: 'Đệ Nhất Danh Trà Đất Việt',
+    tagEn: 'Premier Tea Capital of Vietnam',
+    titleVi: 'Nương Chè Bát Úp Tân Cương',
+    titleEn: 'Tan Cuong Rolling Tea Terraces',
+    descVi: 'Những thảm chè xanh mướt uốn lượn ngút ngàn, đượm hương cốm non sâu lắng.',
+    descEn: 'Vast emerald tea blankets undulating under sunlight, carrying a sweet floral aroma.',
+    locVi: 'Tân Cương',
+    locEn: 'Tan Cuong',
+    weatherVi: '☀️ 24°C • Nắng dịu trong lành',
+    weatherEn: '☀️ 24°C • Pleasant & Sunny'
   },
   {
     img: 'assets/images/puong-cave.jpg',
-    badge: 'Khu Vực Ba Bể',
-    tag: 'Hang Karst Sông Ngầm',
-    title: 'Động Puông Kỳ Vĩ 300m',
-    desc: 'Vòm đá vôi sừng sững cao 30m luồn qua dãy núi Lũng Nham cùng dòng sông Năng.',
-    loc: 'Sông Năng',
-    weather: '☁️ 20°C • Không khí mát lạnh'
+    badgeVi: 'Vườn Quốc Gia Ba Bể',
+    badgeEn: 'Ba Be National Park',
+    tagVi: 'Hang Karst Sông Ngầm Kỳ Vĩ',
+    tagEn: 'Subterranean Karst River Cave',
+    titleVi: 'Động Puông Xuyên Dãy Lũng Nham',
+    titleEn: 'Puong 300m Karst Cave Passage',
+    descVi: 'Vòm đá vôi sừng sững cao 30m luồn qua dãy núi Lũng Nham cùng dòng sông Năng.',
+    descEn: 'A towering 30-meter limestone arch cut through Lung Nham range by the Nang River.',
+    locVi: 'Sông Năng',
+    locEn: 'Nang River',
+    weatherVi: '☁️ 20°C • Không khí mát lành',
+    weatherEn: '☁️ 20°C • Refreshingly Cool'
   },
   {
     img: 'assets/images/cua-tu-stream.jpg',
-    badge: 'Huyện Đại Từ',
-    tag: 'Thiên Đường Trekking',
-    title: 'Hẻm Suối Cửa Tử Tam Đảo',
-    desc: 'Dòng nước trong vắt, 7 cửa ải đá dựng đứng và máng trượt đá tự nhiên ngoạn mục.',
-    loc: 'Đại Từ',
-    weather: '⛅ 23°C • Nước suối trong vắt'
+    badgeVi: 'Huyện Đại Từ',
+    badgeEn: 'Dai Tu District',
+    tagVi: 'Hẻm Núi Thám Hiểm Hoang Sơ',
+    tagEn: 'Wild Mountain Gorge & Cascades',
+    titleVi: 'Hẻm Suối Cửa Tử Tam Đảo',
+    titleEn: 'Cua Tu Canyon & Cascade',
+    descVi: 'Dòng nước trong vắt, 7 cửa ải đá dựng đứng và máng trượt đá tự nhiên ngoạn mục.',
+    descEn: 'Crystal-clear streams, seven rugged granite tiers, and thrilling natural slides.',
+    locVi: 'Đại Từ',
+    locEn: 'Dai Tu',
+    weatherVi: '⛅ 23°C • Nước suối trong vắt',
+    weatherEn: '⛅ 23°C • Crystal Clear Stream'
   }
 ];
 
@@ -2097,12 +2159,13 @@ function switchHeroScene(idx, event) {
     }, 110);
   }
 
-  if (badgeEl) badgeEl.textContent = s.badge;
-  if (tagEl)   tagEl.textContent = s.tag;
-  if (titleEl) titleEl.textContent = s.title;
-  if (descEl)  descEl.textContent = s.desc;
-  if (locEl)   locEl.textContent = s.loc;
-  if (valEl)   valEl.textContent = s.weather;
+  const isEn = state.lang === 'en';
+  if (badgeEl) badgeEl.textContent = isEn ? (s.badgeEn || s.badge) : (s.badgeVi || s.badge);
+  if (tagEl)   tagEl.textContent   = isEn ? (s.tagEn || s.tag) : (s.tagVi || s.tag);
+  if (titleEl) titleEl.textContent = isEn ? (s.titleEn || s.title) : (s.titleVi || s.title);
+  if (descEl)  descEl.textContent  = isEn ? (s.descEn || s.desc) : (s.descVi || s.desc);
+  if (locEl)   locEl.textContent   = isEn ? (s.locEn || s.loc) : (s.locVi || s.loc);
+  if (valEl)   valEl.textContent   = isEn ? (s.weatherEn || s.weather) : (s.weatherVi || s.weather);
 
   document.querySelectorAll('.hero-thumb-btn').forEach(btn => {
     const bIdx = parseInt(btn.getAttribute('data-idx'));
@@ -2598,28 +2661,36 @@ function initTimeLapseCurtain() {
 // ============================================================
 const CINEMA_SCENES = [
   {
-    title: 'Hồ Ba Bể • Viên Ngọc Bích Giữa Đại Ngàn',
+    titleVi: 'Hồ Ba Bể • Viên Ngọc Bích Giữa Đại Ngàn',
+    titleEn: 'Ba Be Lake • The Pristine Emerald Karst Jewel',
     img: 'assets/images/hero-babe.jpg',
     glow: 'rgba(16, 185, 129, 0.3)',
-    quote: '"Giữa thung lũng đá vôi ngàn mét, mặt nước ngọc bích phẳng lặng như một tấm gương soi cả bầu trời Đông Bắc."'
+    quoteVi: '"Giữa thung lũng đá vôi ngàn mét, mặt nước ngọc bích phẳng lặng như một tấm gương soi cả bầu trời Đông Bắc."',
+    quoteEn: '"Sheltered by towering thousand-meter karst karsts, the jade-green waters mirror the northeastern sky."'
   },
   {
-    title: 'Đồi Chè Tân Cương • Sắc Xanh Nương Bát Úp',
+    titleVi: 'Đồi Chè Tân Cương • Sắc Xanh Nương Bát Úp',
+    titleEn: 'Tan Cuong Tea Terraces • Rolling Emerald Blankets',
     img: 'assets/images/tan-cuong-tea.jpg',
     glow: 'rgba(217, 119, 6, 0.3)',
-    quote: '"Từng búp chè một tôm hai lá đón sương sớm, thơm lừng hương cốm non đượm sâu vị ngọt hậu đất trời."'
+    quoteVi: '"Từng búp chè một tôm hai lá đón sương sớm, thơm lừng hương cốm non đượm sâu vị ngọt hậu đất trời."',
+    quoteEn: '"Tender young tea shoots bathed in morning dew, exuding a sweet floral scent with a rich honeyed finish."'
   },
   {
-    title: 'Động Puông • Hang Sông Ngầm Karst 300m',
+    titleVi: 'Động Puông • Hang Sông Ngầm Karst 300m',
+    titleEn: 'Puong Cave • 300m Subterranean River Arch',
     img: 'assets/images/puong-cave.jpg',
     glow: 'rgba(6, 182, 212, 0.3)',
-    quote: '"Dòng sông Năng cuồn cuộn chảy xuyên lòng núi Lũng Nham, vòm hang đá vôi sừng sững cao 30m kỳ vĩ."'
+    quoteVi: '"Dòng sông Năng cuồn cuộn chảy xuyên lòng núi Lũng Nham, vòm hang đá vôi sừng sững cao 30m kỳ vĩ."',
+    quoteEn: '"The Nang River flows powerfully through the heart of Lung Nham mountain beneath a majestic 30-meter limestone arch."'
   },
   {
-    title: 'Suối Cửa Tử • 7 Cửa Ải Thác Đổ Tam Đảo',
+    titleVi: 'Suối Cửa Tử • 7 Cửa Ải Thác Đổ Tam Đảo',
+    titleEn: 'Cua Tu Stream • 7 Rugged Cascades of Tam Dao',
     img: 'assets/images/cua-tu-stream.jpg',
     glow: 'rgba(168, 85, 247, 0.3)',
-    quote: '"Dòng nước trong vắt luồn qua vách đá dựng đứng, nơi thiên nhiên ban tặng những máng trượt đá tự nhiên kỳ thú."'
+    quoteVi: '"Dòng nước trong vắt luồn qua vách đá dựng đứng, nơi thiên nhiên ban tặng những máng trượt đá tự nhiên kỳ thú."',
+    quoteEn: '"Crystal-clear mountain currents carve through vertical cliffs, creating spectacular natural granite waterslides."'
   }
 ];
 
@@ -2653,9 +2724,10 @@ function switchCinemaScene(idx) {
   const glowEl  = document.getElementById('cinema-ambient-glow');
   const capEl   = document.getElementById('cinema-caption');
 
-  if (titleEl) titleEl.textContent = s.title;
+  const isEn = state.lang === 'en';
+  if (titleEl) titleEl.textContent = isEn ? (s.titleEn || s.title) : (s.titleVi || s.title);
   if (glowEl) glowEl.style.backgroundColor = s.glow;
-  if (capEl) capEl.textContent = s.quote;
+  if (capEl) capEl.textContent = isEn ? (s.quoteEn || s.quote) : (s.quoteVi || s.quote);
 
   if (imgEl) {
     imgEl.style.opacity = '0.3';
