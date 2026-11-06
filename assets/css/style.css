@@ -967,3 +967,46 @@ button:active:not(:disabled), a.btn-action:active {
   border-color: #2e683b;
   box-shadow: 0 14px 30px -8px rgba(25, 50, 30, 0.16);
 }
+
+/* ========================================================
+   HERITAGE TRAVEL STAMPS, SEALS & DECORATIVE PATTERNS
+   ======================================================== */
+.heritage-stamp {
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.45));
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease, opacity 0.3s ease;
+  user-select: none;
+  pointer-events: none;
+}
+.group:hover .heritage-stamp-babe {
+  transform: rotate(0deg) scale(1.08);
+  filter: drop-shadow(0 10px 24px rgba(16, 185, 129, 0.45));
+}
+.group:hover .heritage-stamp-tea {
+  transform: rotate(0deg) scale(1.08);
+  filter: drop-shadow(0 10px 24px rgba(217, 119, 6, 0.45));
+}
+.group:hover .heritage-stamp-unesco {
+  transform: rotate(0deg) scale(1.08);
+  filter: drop-shadow(0 8px 20px rgba(16, 185, 129, 0.4));
+}
+.group:hover .heritage-stamp-atk {
+  transform: rotate(0deg) scale(1.08);
+  filter: drop-shadow(0 8px 20px rgba(225, 29, 72, 0.4));
+}
+
+.brocade-band {
+  background-image: url('../images/pattern-tay-brocade.svg');
+  background-repeat: repeat-x;
+  background-size: 140px 10px;
+  height: 10px;
+  width: 100%;
+}
+
+.philatelic-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+.philatelic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px -6px rgba(15, 41, 22, 0.16);
+}

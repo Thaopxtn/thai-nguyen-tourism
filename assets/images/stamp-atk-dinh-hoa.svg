@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <path id="circlePathTop3" d="M 30,100 A 70,70 0 0,1 170,100" />
+    <path id="circlePathBottom3" d="M 170,100 A 70,70 0 0,1 30,100" />
+    <linearGradient id="atkGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fed7aa"/>
+      <stop offset="50%" stop-color="#f59e0b"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="none" stroke="url(#atkGold)" stroke-width="2.5" stroke-dasharray="3,3"/>
+  <circle cx="100" cy="100" r="90" fill="#2c1810" stroke="url(#atkGold)" stroke-width="1.8"/>
+  <circle cx="100" cy="100" r="75" fill="#3b2014" stroke="url(#atkGold)" stroke-width="1.2"/>
+
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="10" font-weight="800" fill="url(#atkGold)" letter-spacing="2.8">
+    <textPath href="#circlePathTop3" startOffset="50%" text-anchor="middle">
+      THỦ ĐÔ KHÁNG CHIẾN 1947-1954
+    </textPath>
+  </text>
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="url(#atkGold)" letter-spacing="3.0">
+    <textPath href="#circlePathBottom3" startOffset="50%" text-anchor="middle">
+      ATK ĐỊNH HÓA &bull; THÁI NGUYÊN
+    </textPath>
+  </text>
+
+  <!-- Center: Golden Star & Hut Emblem -->
+  <g transform="translate(100, 100)">
+    <!-- Golden Star -->
+    <polygon points="0,-26 6,-11 22,-11 10,-2 14,14 0,4 -14,14 -10,-2 -22,-11 -6,-11" fill="url(#atkGold)"/>
+    <!-- Palm-leaf Stilt Hut Roof Line -->
+    <path d="M-28,14 L0,2 L28,14" fill="none" stroke="#fed7aa" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="-20" y1="14" x2="-20" y2="28" stroke="#fed7aa" stroke-width="1.8"/>
+    <line x1="20" y1="14" x2="20" y2="28" stroke="#fed7aa" stroke-width="1.8"/>
+    <line x1="0" y1="4" x2="0" y2="28" stroke="#fed7aa" stroke-width="1.8"/>
+    <line x1="-26" y1="28" x2="26" y2="28" stroke="#fed7aa" stroke-width="1.8"/>
+  </g>
+</svg>

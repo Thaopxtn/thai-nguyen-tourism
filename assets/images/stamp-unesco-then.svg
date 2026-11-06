@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <path id="circlePathTop4" d="M 30,100 A 70,70 0 0,1 170,100" />
+    <path id="circlePathBottom4" d="M 170,100 A 70,70 0 0,1 30,100" />
+    <linearGradient id="unescoGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0e7ff"/>
+      <stop offset="50%" stop-color="#818cf8"/>
+      <stop offset="100%" stop-color="#4f46e5"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="100" cy="100" r="96" fill="none" stroke="url(#unescoGold)" stroke-width="2.5" stroke-dasharray="4,2"/>
+  <circle cx="100" cy="100" r="90" fill="#13172e" stroke="url(#unescoGold)" stroke-width="1.8"/>
+  <circle cx="100" cy="100" r="75" fill="#1c2144" stroke="url(#unescoGold)" stroke-width="1.2"/>
+
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="800" fill="url(#unescoGold)" letter-spacing="2.6">
+    <textPath href="#circlePathTop4" startOffset="50%" text-anchor="middle">
+      UNESCO INTANGIBLE HERITAGE
+    </textPath>
+  </text>
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="9" font-weight="700" fill="url(#unescoGold)" letter-spacing="2.8">
+    <textPath href="#circlePathBottom4" startOffset="50%" text-anchor="middle">
+      HÁT THEN &bull; ĐÀN TÍNH TÀY NÙNG
+    </textPath>
+  </text>
+
+  <!-- Center: Dan Tinh Instrument Silhouette -->
+  <g transform="translate(100, 100)">
+    <!-- Gourd resonator (Bầu đàn) -->
+    <circle cx="0" cy="14" r="16" fill="#4338ca" stroke="url(#unescoGold)" stroke-width="1.8"/>
+    <circle cx="0" cy="14" r="11" fill="#312e81"/>
+    <circle cx="0" cy="14" r="3.5" fill="url(#unescoGold)"/>
+    
+    <!-- Long neck (Cần đàn) -->
+    <rect x="-2" y="-28" width="4" height="42" rx="1.5" fill="url(#unescoGold)"/>
+    <!-- Headstock & Pegs (Đầu đàn) -->
+    <polygon points="-5,-30 0,-35 5,-30" fill="url(#unescoGold)"/>
+    <line x1="-7" y1="-26" x2="7" y2="-26" stroke="url(#unescoGold)" stroke-width="1.5"/>
+    <line x1="-7" y1="-22" x2="7" y2="-22" stroke="url(#unescoGold)" stroke-width="1.5"/>
+    
+    <!-- Red/Gold Tassel (Dải lụa chùm tua) -->
+    <path d="M0,-35 C-8,-38 -12,-30 -16,-24" fill="none" stroke="#f43f5e" stroke-width="1.8"/>
+  </g>
+</svg>

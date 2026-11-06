@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <path id="circlePathTop2" d="M 30,100 A 70,70 0 0,1 170,100" />
+    <path id="circlePathBottom2" d="M 170,100 A 70,70 0 0,1 30,100" />
+    <linearGradient id="teaGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef3c7"/>
+      <stop offset="50%" stop-color="#d4af37"/>
+      <stop offset="100%" stop-color="#b45309"/>
+    </linearGradient>
+    <linearGradient id="teaGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#047857"/>
+      <stop offset="50%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#a7f3d0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Ring with Vintage Serrated Edge -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="url(#teaGold)" stroke-width="2.5" stroke-dasharray="4,2"/>
+  <circle cx="100" cy="100" r="90" fill="#1b2a1a" stroke="url(#teaGold)" stroke-width="1.8"/>
+  <circle cx="100" cy="100" r="75" fill="#243823" stroke="url(#teaGold)" stroke-width="1.2"/>
+
+  <!-- Curved Text Top & Bottom -->
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="10.5" font-weight="800" fill="url(#teaGold)" letter-spacing="2.6">
+    <textPath href="#circlePathTop2" startOffset="50%" text-anchor="middle">
+      ĐỆ NHẤT DANH TRÀ ĐẤT VIỆT
+    </textPath>
+  </text>
+  <text font-family="'Plus Jakarta Sans', sans-serif" font-size="9.5" font-weight="700" fill="url(#teaGold)" letter-spacing="3.0">
+    <textPath href="#circlePathBottom2" startOffset="50%" text-anchor="middle">
+      TÂN CƯƠNG &bull; THÁI NGUYÊN
+    </textPath>
+  </text>
+
+  <!-- Center Artwork: Golden Tea Buds & Morning Sun -->
+  <g transform="translate(100, 102)">
+    <!-- Terraced Hill Lines -->
+    <path d="M-36,20 C-15,10 15,30 36,18" fill="none" stroke="#4d7c0f" stroke-width="2"/>
+    <path d="M-32,26 C-10,18 18,34 34,25" fill="none" stroke="#65a30d" stroke-width="1.8"/>
+
+    <!-- Central Tea Shoot (1 Tôm 2 Lá) -->
+    <path d="M0,16 C-1,6 -5,-8 0,-24 C5,-8 1,6 0,16 Z" fill="url(#teaGreen)"/>
+    <!-- Left Leaf -->
+    <path d="M-1,3 C-8,-1 -16,-3 -20,-11 C-14,-14 -6,-9 -1,0 Z" fill="url(#teaGreen)"/>
+    <!-- Right Leaf -->
+    <path d="M1,6 C8,2 17,0 22,-8 C17,-12 8,-7 1,3 Z" fill="url(#teaGreen)"/>
+
+    <!-- Dewdrop Glow on Tip -->
+    <circle cx="0" cy="-25" r="3.2" fill="#fef08a"/>
+    <circle cx="0" cy="-25" r="5" fill="#fef08a" opacity="0.4"/>
+  </g>
+
+  <!-- Side Leaf Ornaments -->
+  <circle cx="28" cy="100" r="2.5" fill="url(#teaGold)"/>
+  <circle cx="172" cy="100" r="2.5" fill="url(#teaGold)"/>
+</svg>

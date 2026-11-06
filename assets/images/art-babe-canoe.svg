@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 280" width="500" height="280">
+  <defs>
+    <linearGradient id="lakeSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0a1d13"/>
+      <stop offset="70%" stop-color="#143922"/>
+      <stop offset="100%" stop-color="#1f5132"/>
+    </linearGradient>
+    <linearGradient id="lakeWater" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f3b28"/>
+      <stop offset="50%" stop-color="#09281b"/>
+      <stop offset="100%" stop-color="#04140d"/>
+    </linearGradient>
+    <linearGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fef08a" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#f59e0b" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="goldStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#fde047"/>
+      <stop offset="50%" stop-color="#ca8a04"/>
+      <stop offset="100%" stop-color="#eab308"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="500" height="170" fill="url(#lakeSky)"/>
+  <circle cx="340" cy="80" r="38" fill="url(#sunGlow)"/>
+  <circle cx="340" cy="80" r="22" fill="#fef9c3"/>
+
+  <!-- Distant Layer of Karst Peaks -->
+  <polygon points="30,170 110,65 180,170" fill="#133320" opacity="0.6"/>
+  <polygon points="150,170 240,40 330,170" fill="#163e26" opacity="0.7"/>
+  <polygon points="300,170 380,75 460,170" fill="#133320" opacity="0.6"/>
+
+  <!-- Fore Karst Peaks with Gold Edge Contours -->
+  <polygon points="-20,170 70,80 160,170" fill="#0f2b1a" stroke="url(#goldStroke)" stroke-width="1.2"/>
+  <polygon points="120,170 210,55 300,170" fill="#133821" stroke="url(#goldStroke)" stroke-width="1.5"/>
+  <polygon points="260,170 350,90 440,170" fill="#0f2b1a" stroke="url(#goldStroke)" stroke-width="1.2"/>
+  <polygon points="400,170 470,110 530,170" fill="#0b2014" stroke="url(#goldStroke)" stroke-width="1.2"/>
+
+  <!-- Water Surface -->
+  <rect y="170" width="500" height="110" fill="url(#lakeWater)"/>
+
+  <!-- Mountain Reflections on Water -->
+  <polygon points="120,170 210,230 300,170" fill="#163824" opacity="0.4"/>
+
+  <!-- Gold Water Ripples -->
+  <path d="M40,185 C140,180 260,190 460,185" stroke="url(#goldStroke)" stroke-width="0.8" fill="none" opacity="0.6"/>
+  <path d="M80,205 C180,200 320,210 420,205" stroke="url(#goldStroke)" stroke-width="0.8" fill="none" opacity="0.5"/>
+  <path d="M120,225 C200,220 300,230 380,225" stroke="url(#goldStroke)" stroke-width="0.6" fill="none" opacity="0.4"/>
+
+  <!-- Traditional Dugout Canoe with Paddler -->
+  <g transform="translate(190, 195)">
+    <!-- Boat -->
+    <path d="M0,8 C25,2 75,2 100,8 C80,15 20,15 0,8 Z" fill="#d4af37"/>
+    <!-- Paddler Silhouette with Conical Hat (Nón Lá) -->
+    <path d="M45,4 L55,-8 L65,4 Z" fill="#fef08a"/>
+    <ellipse cx="55" cy="4" rx="3.5" ry="5.5" fill="#1a3b22"/>
+    <line x1="56" y1="4" x2="68" y2="18" stroke="#fef08a" stroke-width="2"/>
+    <path d="M66,16 L72,24" stroke="#fef08a" stroke-width="3"/>
+  </g>
+</svg>
