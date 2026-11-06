@@ -1321,20 +1321,7 @@ function setupEventListeners() {
     const bar = document.getElementById('reading-progress');
     if (bar) bar.style.width = scrolled + '%';
 
-    const quickNav = document.getElementById('floating-quick-nav');
-    const circleProgress = document.getElementById('scroll-progress-circle');
-    if (quickNav) {
-      if (winScroll > 320) {
-        quickNav.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-6');
-        quickNav.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-      } else {
-        quickNav.classList.add('opacity-0', 'pointer-events-none', 'translate-y-6');
-        quickNav.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-      }
-    }
-    if (circleProgress) {
-      circleProgress.setAttribute('stroke-dasharray', `${Math.round(scrolled)}, 100`);
-    }
+
   });
 
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');

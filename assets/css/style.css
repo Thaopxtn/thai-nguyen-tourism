@@ -3,12 +3,13 @@
    Clean typography, breathable white space, high contrast, zero clutter, accessible.
 */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
-  --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Inter", -system-ui, sans-serif;
-  --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Inter", -system-ui, sans-serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Inter", -system-ui, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-serif: 'Newsreader', 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', Consolas, Menlo, monospace;
   
   /* Eco-Luxury Forest & Olive Palette (Inspired by Reference Design) */
   --primary-emerald: #243b27;
@@ -34,12 +35,16 @@ html {
   color: var(--text-main);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
 }
 
 body {
+  font-family: var(--font-body);
   background-color: var(--surface-bg);
   color: var(--text-main);
   overflow-x: hidden;
+  line-height: 1.625;
 }
 
 /* Typography Utility Classes */
@@ -221,7 +226,7 @@ button, a {
 }
 
 .leaflet-container {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif !important;
+  font-family: var(--font-body) !important;
 }
 
 .leaflet-pane {
@@ -240,7 +245,7 @@ button, a {
   background-color: rgba(5, 150, 105, 0.9) !important;
   color: #ffffff !important;
   font-weight: 800 !important;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif !important;
+  font-family: var(--font-heading) !important;
 }
 
 .marker-cluster-medium {
@@ -250,7 +255,7 @@ button, a {
   background-color: rgba(4, 120, 87, 0.95) !important;
   color: #ffffff !important;
   font-weight: 800 !important;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif !important;
+  font-family: var(--font-heading) !important;
 }
 
 .marker-cluster-large {
@@ -260,7 +265,7 @@ button, a {
   background-color: rgba(6, 78, 59, 0.98) !important;
   color: #ffffff !important;
   font-weight: 800 !important;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif !important;
+  font-family: var(--font-heading) !important;
 }
 
 /* Hero Scene Switcher Animations */
@@ -304,23 +309,28 @@ button, a {
    Inspired by Apple Human Interface Guidelines & Apple Maps
    ============================================================ */
 
-/* Global Apple Typography */
+/* Global Harmonized Typography (World-Class Standards) */
 body, input, textarea, select, button {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Inter", -system-ui, sans-serif !important;
-  letter-spacing: -0.011em !important;
+  font-family: var(--font-body) !important;
+  letter-spacing: -0.011em;
   -webkit-font-smoothing: antialiased !important;
   -moz-osx-font-smoothing: grayscale !important;
   text-rendering: optimizeLegibility !important;
 }
 
 h1, h2, h3, h4, h5, h6, .font-heading {
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Inter", -system-ui, sans-serif !important;
-  letter-spacing: -0.025em !important;
-  font-weight: 700 !important;
+  font-family: var(--font-heading) !important;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
 }
 
 h1 {
-  letter-spacing: -0.038em !important;
+  letter-spacing: -0.035em;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+  font-feature-settings: 'tnum' 1;
 }
 
 /* Apple Maps Layer Controls */
@@ -525,10 +535,7 @@ button:active:not(:disabled), a.btn-action:active {
   }
 }
 
-/* 12. Floating Navigation & Fullscreen Map Styles */
-#floating-quick-nav {
-  box-shadow: 0 16px 36px -6px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.15);
-}
+/* 12. Fullscreen Map Styles */
 
 :fullscreen #interactive-map, :-webkit-full-screen #interactive-map {
   background: #0f172a !important;
@@ -880,7 +887,8 @@ button:active:not(:disabled), a.btn-action:active {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: monospace;
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum' 1;
   font-weight: 800;
   font-size: 11px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);

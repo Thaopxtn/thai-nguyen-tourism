@@ -6,10 +6,10 @@
   <title>Cẩm Nang Du Lịch Thái Nguyên | Official Travel Portal 2026</title>
   <meta name="description" content="Cổng thông tin du lịch chính thức tỉnh Thái Nguyên mới (sáp nhập Thái Nguyên và Bắc Kạn năm 2025). Khám phá hồ Ba Bể, đồi chè Tân Cương, động Puông, cổ tự và di sản văn hóa Tày - Nùng.">
 
-    <!-- Apple Typography Engine (SF Pro / Inter) -->
+    <!-- International Standard Typography Suite: Plus Jakarta Sans (Headings & Display), Inter (Body & UI), JetBrains Mono (Badges & Metrics) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -36,10 +36,9 @@
             }
           },
           fontFamily: {
-            heading: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Display"', '"SF Pro"', '"Inter"', 'system-ui', 'sans-serif'],
-            sans: ['-apple-system', 'BlinkMacSystemFont', '"SF Pro Text"', '"SF Pro"', '"Inter"', 'system-ui', 'sans-serif'],
-            serif: ['"New York"', 'Georgia', 'serif'],
-            mono: ['"SF Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace']
+            heading: ['"Plus Jakarta Sans"', '"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            mono: ['"JetBrains Mono"', '"SF Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace']
           }
         }
       }
@@ -47,7 +46,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110605">
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110606">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -1533,35 +1532,7 @@
     </div>
   </div>
 
-  <!-- FLOATING QUICK NAVIGATION & PROGRESS BACK-TO-TOP PILL -->
-  <div id="floating-quick-nav" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-1.5 p-1.5 bg-slate-900/95 text-white backdrop-blur-xl border border-white/20 shadow-2xl rounded-full transition-all duration-500 opacity-0 pointer-events-none translate-y-6 no-print font-sans">
-    <a href="#landscapes" class="px-3 py-1.5 rounded-full hover:bg-white/15 text-xs font-semibold flex items-center gap-1 text-slate-200 hover:text-white transition">
-      <span>🏔️</span>
-      <span class="hidden sm:inline">Điểm Đến</span>
-    </a>
-    <a href="#interactive-map" class="px-3 py-1.5 rounded-full hover:bg-white/15 text-xs font-semibold flex items-center gap-1 text-slate-200 hover:text-white transition">
-      <span>🛰️</span>
-      <span class="hidden sm:inline">Bản Đồ</span>
-    </a>
-    <a href="#bucket-list" class="px-3 py-1.5 rounded-full hover:bg-white/15 text-xs font-semibold flex items-center gap-1 text-slate-200 hover:text-white transition">
-      <span>✨</span>
-      <span class="hidden sm:inline">Trải Nghiệm</span>
-    </a>
-    <a href="#tour-calculator" class="px-3 py-1.5 rounded-full hover:bg-white/15 text-xs font-semibold flex items-center gap-1 text-slate-200 hover:text-white transition">
-      <span>💰</span>
-      <span class="hidden sm:inline">Dự Toán</span>
-    </a>
-    <div class="w-px h-4 bg-white/20 mx-1"></div>
-    <button id="floating-back-to-top" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="relative w-8 h-8 rounded-full bg-white/10 hover:bg-white/25 flex items-center justify-center transition cursor-pointer shrink-0" title="Lên đầu trang">
-      <svg class="w-8 h-8 -rotate-90 absolute inset-0" viewBox="0 0 36 36">
-        <path class="text-white/20" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-        <path id="scroll-progress-circle" class="text-emerald-400" stroke-width="3" stroke-dasharray="0, 100" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-      </svg>
-      <svg class="w-3.5 h-3.5 text-white relative z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-    </button>
-  </div>
-
-  <!-- ==================== FOOTER ==================== -->
+<!-- ==================== FOOTER ==================== -->
   <footer class="bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
@@ -1618,6 +1589,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110605"></script>
+  <script src="assets/js/app.js?v=2026110606"></script>
 </body>
 </html>
