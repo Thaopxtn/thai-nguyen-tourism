@@ -679,10 +679,14 @@ function renderDestinations() {
           </div>
 
           <!-- Bottom Action Frame Plaque -->
-          <div class="p-4 pt-1 frame-depth-action">
-            <button onclick="openDestinationModal('${item.id}')" class="w-full py-2.5 px-4 bg-[#233522] hover:bg-[#344d32] text-white rounded-xl text-xs font-bold tracking-wide transition flex items-center justify-center gap-2 shadow-sm cursor-pointer group-hover:shadow-md">
+          <div class="p-4 pt-1 frame-depth-action flex items-center gap-2">
+            <button onclick="openDestinationModal('${item.id}')" class="flex-1 py-2.5 px-3 bg-[#233522] hover:bg-[#344d32] text-white rounded-xl text-xs font-bold tracking-wide transition flex items-center justify-center gap-1.5 shadow-sm cursor-pointer group-hover:shadow-md">
               <span>${state.lang === 'en' ? 'Explore 3D Artwork' : 'Chiêm Ngưỡng Chi Tiết'}</span>
               <svg class="w-3.5 h-3.5 text-[#d5a755] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
+            <button onclick="viewOnMap('${item.id}')" class="py-2.5 px-3 bg-[#f4f4ee] hover:bg-[#e4e7db] text-[#2c3e27] border border-[#d2dbcb] rounded-xl text-xs font-bold transition flex items-center justify-center gap-1 shadow-2xs cursor-pointer" title="${state.lang === 'en' ? 'View on Satellite Map' : 'Xem vị trí trên bản đồ'}">
+              <span>📍</span>
+              <span class="hidden sm:inline font-mono text-[11px]">${state.lang === 'en' ? 'Map' : 'Bản đồ'}</span>
             </button>
           </div>
         </article>
@@ -943,11 +947,17 @@ function renderPagodas() {
             <div class="text-slate-600">
               <strong class="text-slate-900">${state.lang === 'en' ? 'Souvenirs:' : 'Quà lưu niệm:'}</strong> ${souvenirs}
             </div>
-            <button onclick="toggleSavePlace('${item.id}', event)" class="shrink-0 px-4 py-2 border border-slate-300 text-slate-800 hover:bg-slate-50 rounded-xl transition font-semibold">
-              ${state.savedPlaces.some(p => p.id === item.id)
-                ? (state.lang === 'en' ? '✓ Saved' : '✓ Đã lưu')
-                : (state.lang === 'en' ? '+ Bookmark' : '+ Lưu vào hành trình')}
-            </button>
+            <div class="flex items-center gap-2">
+              <button onclick="viewOnMap('${item.id}')" class="shrink-0 px-3 py-2 border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 rounded-xl transition font-semibold flex items-center gap-1 cursor-pointer shadow-2xs" title="${state.lang === 'en' ? 'View on Map' : 'Xem trên bản đồ'}">
+                <span>📍</span>
+                <span>${state.lang === 'en' ? 'Map' : 'Bản đồ'}</span>
+              </button>
+              <button onclick="toggleSavePlace('${item.id}', event)" class="shrink-0 px-4 py-2 border border-slate-300 text-slate-800 hover:bg-slate-50 rounded-xl transition font-semibold cursor-pointer">
+                ${state.savedPlaces.some(p => p.id === item.id)
+                  ? (state.lang === 'en' ? '✓ Saved' : '✓ Đã lưu')
+                  : (state.lang === 'en' ? '+ Bookmark' : '+ Lưu vào hành trình')}
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1067,12 +1077,18 @@ function openDestinationModal(id) {
       </div>
 
       <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-        <button onclick="toggleSavePlace('${item.id}'); openDestinationModal('${item.id}');" class="w-full sm:w-auto px-5 py-2.5 rounded-xl border ${isSaved ? 'border-red-300 bg-red-50 text-red-700' : 'border-slate-300 text-slate-700 hover:bg-slate-50'} text-xs font-semibold flex items-center justify-center gap-2 transition">
-          <svg class="w-4 h-4 ${isSaved ? 'fill-red-500' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-          <span>${isSaved ? (state.lang === 'en' ? 'Remove from Saved' : 'Bỏ lưu khỏi danh sách') : (state.lang === 'en' ? 'Save Destination' : 'Lưu điểm đến này')}</span>
-        </button>
+        <div class="flex items-center gap-2 w-full sm:w-auto">
+          <button onclick="viewOnMap('${item.id}')" class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer shadow-2xs" title="${state.lang === 'en' ? 'View on Satellite Map' : 'Xem vị trí trên bản đồ'}">
+            <span>📍</span>
+            <span>${state.lang === 'en' ? 'View on Map' : 'Xem trên bản đồ'}</span>
+          </button>
+          <button onclick="toggleSavePlace('${item.id}'); openDestinationModal('${item.id}');" class="flex-1 sm:flex-initial px-4 py-2.5 rounded-xl border ${isSaved ? 'border-red-300 bg-red-50 text-red-700' : 'border-slate-300 text-slate-700 hover:bg-slate-50'} text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer">
+            <svg class="w-4 h-4 ${isSaved ? 'fill-red-500' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            <span>${isSaved ? (state.lang === 'en' ? 'Saved' : 'Đã lưu') : (state.lang === 'en' ? 'Save' : 'Lưu')}</span>
+          </button>
+        </div>
 
-        <a href="#itinerary-builder" onclick="closeDestinationModal()" class="w-full sm:w-auto px-6 py-2.5 bg-slate-900 hover:bg-emerald-800 text-white rounded-xl text-xs font-semibold transition text-center shadow-sm">
+        <a href="#itinerary-builder" onclick="closeDestinationModal()" class="w-full sm:w-auto px-5 py-2.5 bg-slate-900 hover:bg-emerald-800 text-white rounded-xl text-xs font-semibold transition text-center shadow-sm">
           ${state.lang === 'en' ? 'View in Tour Itineraries' : 'Xem trong lịch trình tour'}
         </a>
       </div>
@@ -1461,6 +1477,7 @@ const MAP_POINTS = [
   // Central-South Cluster
   { id: 'tan-cuong-tea-hills',name: 'Đồi Chè Tân Cương',  nameEn: 'Tan Cuong Tea Hills',  lat: 21.6421, lng: 105.7533, cat: 'tea',       img: 'assets/images/tan-cuong-tea.jpg' },
   { id: 'nui-coc-lake',       name: 'Hồ Núi Cốc',         nameEn: 'Nui Coc Lake',         lat: 21.7245, lng: 105.6612, cat: 'lake',      img: 'assets/images/nui-coc-lake.jpg' },
+  { id: 'phuong-hoang-moga',  name: 'Hang Phượng Hoàng & Mỏ Gà', nameEn: 'Phuong Hoang Cave & Mo Ga', lat: 21.7850, lng: 105.6200, cat: 'cave', img: 'assets/images/mo-ga-cave.jpg' },
   { id: 'hang-pagoda',        name: 'Chùa Hang',           nameEn: 'Hang Pagoda',          lat: 21.5940, lng: 105.8356, cat: 'temple',    img: 'assets/images/chua-hang.jpg' },
   { id: 'duom-temple',        name: 'Đền Đuổm',            nameEn: 'Duom Temple',          lat: 21.8731, lng: 105.8012, cat: 'temple',    img: 'assets/images/den-duom.jpg' },
   // Dai Tu - Dinh Hoa Cluster
@@ -1502,6 +1519,8 @@ function makeMarkerIcon(cat) {
 
 let tnMap = null;
 let mapRetries = 0;
+let mapMarkers = {};
+let mapClusters = null;
 
 function tryInitMap() {
   if (window.L) {
@@ -1675,9 +1694,11 @@ function initInteractiveMap() {
       </div>
     `;
     marker.bindPopup(popupHtml, { maxWidth: 250, minWidth: 230 });
+    mapMarkers[pt.id] = marker;
     clusters.addLayer(marker);
   });
 
+  mapClusters = clusters;
   tnMap.addLayer(clusters);
 
   // Apple Pill Style Province Crest Badge
@@ -1694,6 +1715,56 @@ function initInteractiveMap() {
 function closeMapPopup() {
   if (tnMap) tnMap.closePopup();
 }
+
+// Navigate and highlight destination on interactive map
+function viewOnMap(destId) {
+  if (typeof closeDestinationModal === 'function') closeDestinationModal();
+  if (tnMap) tnMap.closePopup();
+
+  const mapSection = document.getElementById('interactive-map');
+  if (mapSection) {
+    mapSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  if (!tnMap && typeof initInteractiveMap === 'function') {
+    initInteractiveMap();
+  }
+
+  const pt = MAP_POINTS.find(p => p.id === destId);
+  if (!pt) {
+    console.warn('Destination point not found on map:', destId);
+    return;
+  }
+
+  const destName = state.lang === 'vi' ? pt.name : pt.nameEn;
+  showToast(state.lang === 'vi' ? `Đang định vị trên bản đồ: ${destName}` : `Locating on map: ${destName}`);
+
+  setTimeout(() => {
+    if (!tnMap) return;
+    tnMap.invalidateSize();
+    const marker = mapMarkers[pt.id];
+
+    try {
+      tnMap.flyTo([pt.lat, pt.lng], 13.5, { duration: 0.9 });
+    } catch (e) {
+      tnMap.setView([pt.lat, pt.lng], 13.5);
+    }
+
+    setTimeout(() => {
+      if (!tnMap) return;
+      tnMap.setView([pt.lat, pt.lng], 13.5);
+      if (marker) {
+        if (mapClusters && typeof mapClusters.zoomToShowLayer === 'function' && mapClusters.hasLayer(marker)) {
+          mapClusters.zoomToShowLayer(marker, () => {
+            marker.openPopup();
+          });
+        }
+        marker.openPopup();
+      }
+    }, 500);
+  }, 350);
+}
+window.viewOnMap = viewOnMap;
 
 // ============================================================
 // SMART TOUR COST CALCULATOR
@@ -2818,3 +2889,68 @@ function init3DFrameCards() {
 }
 
 window.init3DFrameCards = init3DFrameCards;
+
+
+// ============================================================
+// 24/7 VISITOR SUPPORT HUB
+// ============================================================
+function openSupportModal() {
+  const modal = document.getElementById('support-modal');
+  const panel = document.getElementById('support-drawer-panel');
+  if (!modal) return;
+
+  modal.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  if (panel) {
+    setTimeout(() => {
+      panel.classList.remove('translate-x-full');
+      panel.classList.add('translate-x-0');
+    }, 20);
+  }
+}
+
+function closeSupportModal() {
+  const modal = document.getElementById('support-modal');
+  const panel = document.getElementById('support-drawer-panel');
+  if (!modal) return;
+
+  if (panel) {
+    panel.classList.remove('translate-x-0');
+    panel.classList.add('translate-x-full');
+  }
+  setTimeout(() => {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }, 280);
+}
+
+function submitSupportForm(event) {
+  if (event) event.preventDefault();
+  const nameInput = document.getElementById('support-input-name');
+  const phoneInput = document.getElementById('support-input-phone');
+  const msgInput = document.getElementById('support-input-msg');
+
+  const name = nameInput ? nameInput.value.trim() : '';
+  const phone = phoneInput ? phoneInput.value.trim() : '';
+
+  if (!name || !phone) {
+    showToast(state.lang === 'vi' ? 'Vui lòng nhập Họ tên và Số điện thoại!' : 'Please enter your Full Name and Phone number!');
+    return;
+  }
+
+  showToast(state.lang === 'vi'
+    ? `Cảm ơn ${name}! Tổng đài Du lịch Thái Nguyên đã nhận thông tin và sẽ gọi lại trong 10 phút.`
+    : `Thank you ${name}! Our Thai Nguyen Tourism Support team will call you back within 10 minutes.`);
+
+  if (nameInput) nameInput.value = '';
+  if (phoneInput) phoneInput.value = '';
+  if (msgInput) msgInput.value = '';
+
+  setTimeout(() => {
+    closeSupportModal();
+  }, 1600);
+}
+
+window.openSupportModal = openSupportModal;
+window.closeSupportModal = closeSupportModal;
+window.submitSupportForm = submitSupportForm;

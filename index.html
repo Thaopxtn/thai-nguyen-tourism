@@ -48,6 +48,16 @@
   <!-- Modern Travel Portal Stylesheet -->
   <link rel="stylesheet" href="assets/css/style.css?v=2026110607">
 
+  <!-- FLOATING SUPPORT BUTTON (24/7 LUXURY BADGE) -->
+  <button id="btn-floating-support" onclick="openSupportModal()" class="fixed bottom-6 right-6 z-40 bg-[#1e3423] hover:bg-[#2b4c33] text-white border border-[#487351]/50 rounded-full pl-3.5 pr-4 py-2.5 shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-300 hover:scale-105 group cursor-pointer" title="Trung tâm hỗ trợ du khách 24/7" data-title-vi="Trung tâm hỗ trợ du khách 24/7" data-title-en="24/7 Visitor Support Center">
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+    </span>
+    <svg class="w-4 h-4 text-emerald-300 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+    <span class="text-xs font-bold font-sans tracking-wide text-white" data-en="Support 24/7" data-vi="Hỗ Trợ 24/7">Hỗ Trợ 24/7</span>
+  </button>
+
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css"/>
@@ -98,9 +108,14 @@
           </button>
 
           <!-- Saved Places Wishlist Button -->
-          <button onclick="openSavedModal()" class="relative w-9 h-9 rounded-full border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center shadow-2xs transition" title="Điểm đã lưu">
+          <button onclick="openSavedModal()" class="relative w-9 h-9 rounded-full border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center shadow-2xs transition" title="Điểm đã lưu" data-title-vi="Điểm đã lưu" data-title-en="Saved Places">
             <svg class="w-4 h-4 text-rose-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
             <span class="saved-count-badge hidden absolute -top-1 -right-1 w-4 h-4 bg-rose-600 text-white text-[9px] font-bold rounded-full flex items-center justify-center">0</span>
+          </button>
+
+          <!-- Support 24/7 Button -->
+          <button onclick="openSupportModal()" class="w-9 h-9 rounded-full border border-slate-200/90 bg-white hover:bg-slate-50 text-slate-700 flex items-center justify-center shadow-2xs transition cursor-pointer" title="Trung tâm hỗ trợ du khách 24/7" data-title-vi="Trung tâm hỗ trợ du khách 24/7" data-title-en="24/7 Visitor Support Center">
+            <svg class="w-4 h-4 text-emerald-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
           </button>
 
           <!-- Language Switcher Toggle (Apple Segmented Style) -->
@@ -128,6 +143,13 @@
       <a href="#pagodas" class="block py-2.5 px-3 rounded-xl text-slate-700 hover:bg-slate-100">Cổ tự ngàn năm</a>
       <a href="#overview" class="block py-2.5 px-3 rounded-xl text-slate-500 hover:bg-slate-100 text-xs">Toàn cảnh địa lý</a>
       <a href="#geography-history" class="block py-2.5 px-3 rounded-xl text-slate-500 hover:bg-slate-100 text-xs">Biên niên sử văn hóa</a>
+      <button onclick="openSupportModal(); document.getElementById('mobile-menu-drawer')?.classList.add('hidden');" class="w-full text-left py-2.5 px-3 rounded-xl text-emerald-900 bg-emerald-50/70 hover:bg-emerald-100 flex items-center justify-between font-bold cursor-pointer">
+        <span class="flex items-center gap-2">
+          <span>🎧</span>
+          <span data-en="Visitor Support 24/7" data-vi="Hỗ trợ du khách 24/7">Hỗ trợ du khách 24/7</span>
+        </span>
+        <span class="text-[10px] bg-emerald-600 text-white px-2 py-0.5 rounded-full font-mono">24/7</span>
+      </button>
     </div>
   </header>
 
@@ -367,13 +389,19 @@
             <p class="text-xs text-slate-600 leading-relaxed font-light" data-en="A mirror-like lake reflecting towering limestone karsts and primeval rainforests. Visitors glide on traditional kayaks, observe indigenous carp, and explore legendary Widow Island." data-vi="Mặt hồ phẳng lặng tựa gương soi phản chiếu những vách núi đá vôi sừng sững và thảm rừng nguyên sinh nhiệt đới. Du khách có thể bơi thuyền kayak, ngắm cá Chép kình và khám phá đảo Bà Góa huyền thoại.">
               Mặt hồ phẳng lặng tựa gương soi phản chiếu những vách núi đá vôi sừng sững và thảm rừng nguyên sinh nhiệt đới. Du khách có thể bơi thuyền kayak, ngắm cá Chép kình và khám phá đảo Bà Góa huyền thoại.
             </p>
-            <div class="pt-2 flex items-center justify-between">
-              <button onclick="openDestinationModal('babe-lake')" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1">
+            <div class="pt-2 flex items-center justify-between gap-2">
+              <button onclick="openDestinationModal('babe-lake')" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1 cursor-pointer">
                 <span data-en="Explore Ba Be Lake &rarr;" data-vi="Xem chi tiết hồ Ba Bể &rarr;">Xem chi tiết hồ Ba Bể &rarr;</span>
               </button>
-              <button onclick="toggleSavePlace('babe-lake')" class="text-xs p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700" data-en="♥ Save Place" data-vi="♥ Lưu điểm">
-                ♥ Lưu điểm
-              </button>
+              <div class="flex items-center gap-1.5">
+                <button onclick="viewOnMap('babe-lake')" class="text-xs py-1.5 px-2.5 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-semibold flex items-center gap-1 cursor-pointer transition shadow-2xs" title="Xem vị trí trên bản đồ">
+                  <span>📍</span>
+                  <span data-en="Map" data-vi="Bản đồ">Bản đồ</span>
+                </button>
+                <button onclick="toggleSavePlace('babe-lake')" class="text-xs p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 cursor-pointer" data-en="♥ Save Place" data-vi="♥ Lưu điểm">
+                  ♥ Lưu điểm
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -403,13 +431,19 @@
             <p class="text-xs text-slate-600 leading-relaxed font-light" data-en="Bright amber tea liquor glistening like wild honey, boasting a delicate astringency and profound lasting sweetness. Hand-picking morning dew-kissed tea buds alongside master artisans is an unforgettable encounter." data-vi="Nước trà sánh vàng như mật ong rừng, tiền chát dịu nhẹ và hậu ngọt sâu lắng kéo dài. Trải nghiệm hái chè cùng nghệ nhân lúc sáng sớm khi sương còn đọng trên búp non là nét đặc sắc không thể bỏ qua.">
               Nước trà sánh vàng như mật ong rừng, tiền chát dịu nhẹ và hậu ngọt sâu lắng kéo dài. Trải nghiệm hái chè cùng nghệ nhân lúc sáng sớm khi sương còn đọng trên búp non là nét đặc sắc không thể bỏ qua.
             </p>
-            <div class="pt-2 flex items-center justify-between">
-              <button onclick="openDestinationModal('tan-cuong-tea-hills')" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1">
+            <div class="pt-2 flex items-center justify-between gap-2">
+              <button onclick="openDestinationModal('tan-cuong-tea-hills')" class="text-xs font-bold text-emerald-800 hover:text-emerald-900 flex items-center gap-1 cursor-pointer">
                 <span data-en="Explore Tea Terraces &rarr;" data-vi="Xem chi tiết vùng trà &rarr;">Xem chi tiết vùng trà &rarr;</span>
               </button>
-              <button onclick="toggleSavePlace('tan-cuong-tea-hills')" class="text-xs p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700" data-en="♥ Save Place" data-vi="♥ Lưu điểm">
-                ♥ Lưu điểm
-              </button>
+              <div class="flex items-center gap-1.5">
+                <button onclick="viewOnMap('tan-cuong-tea-hills')" class="text-xs py-1.5 px-2.5 rounded-xl border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 font-semibold flex items-center gap-1 cursor-pointer transition shadow-2xs" title="Xem vị trí trên bản đồ">
+                  <span>📍</span>
+                  <span data-en="Map" data-vi="Bản đồ">Bản đồ</span>
+                </button>
+                <button onclick="toggleSavePlace('tan-cuong-tea-hills')" class="text-xs p-2 rounded-xl border border-slate-200 hover:bg-slate-50 text-slate-700 cursor-pointer" data-en="♥ Save Place" data-vi="♥ Lưu điểm">
+                  ♥ Lưu điểm
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1532,6 +1566,202 @@
     </div>
   </div>
 
+  <!-- SLIDE-OVER DRAWER: 24/7 VISITOR SUPPORT HUB -->
+  <div id="support-modal" class="hidden fixed inset-0 z-50 overflow-hidden bg-slate-950/60 backdrop-blur-xs transition-opacity duration-300" onclick="closeSupportModal()">
+    <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-2xl border-l border-slate-200 flex flex-col justify-between transform transition-transform duration-300 translate-x-full" id="support-drawer-panel" onclick="event.stopPropagation()">
+      
+      <!-- Drawer Header -->
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-emerald-900 to-slate-900 text-white">
+        <div class="flex items-center gap-3">
+          <div class="relative w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center text-emerald-300 shadow-inner">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+            <span class="absolute -top-1 -right-1 flex h-3 w-3">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+            </span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h3 class="text-base font-heading font-extrabold text-white" data-en="24/7 Visitor Support Center" data-vi="Trung Tâm Hỗ Trợ Du Khách 24/7">Trung Tâm Hỗ Trợ Du Khách 24/7</h3>
+              <span class="text-[10px] bg-emerald-500/30 text-emerald-300 border border-emerald-400/30 px-2 py-0.5 rounded-full font-mono font-bold">ONLINE</span>
+            </div>
+            <p class="text-[11px] text-slate-300 font-light mt-0.5" data-en="Emergency hotlines & instant travel guidance in Thai Nguyen" data-vi="Trực ban thông tin du lịch, cứu hộ & giải đáp thắc mắc Thái Nguyên">Trực ban thông tin du lịch, cứu hộ & giải đáp thắc mắc Thái Nguyên</p>
+          </div>
+        </div>
+        <button onclick="closeSupportModal()" class="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition cursor-pointer" title="Đóng">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Drawer Content (Scrollable) -->
+      <div class="flex-1 p-6 space-y-6 overflow-y-auto">
+        
+        <!-- Section 1: Emergency & Tourism Direct Dial Hotlines -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <h4 class="text-xs font-mono uppercase tracking-wider text-emerald-900 font-bold flex items-center gap-1.5" data-en="Direct Hotlines (Tap to Call)" data-vi="Đường Dây Nóng Khẩn Cấp (Chạm gọi)">
+              <span>📞</span>
+              <span>Đường Dây Nóng Khẩn Cấp (Chạm gọi)</span>
+            </h4>
+            <span class="text-[10px] text-slate-500 font-mono">Túc trực 24/7</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            <a href="tel:02083855688" class="p-3 bg-emerald-50/70 hover:bg-emerald-100/80 rounded-2xl border border-emerald-200/80 transition flex items-center justify-between group">
+              <div>
+                <div class="text-[11px] text-emerald-900 font-medium" data-en="Tourism Hotline" data-vi="Tổng Đài Du Lịch TN">Tổng Đài Du Lịch TN</div>
+                <div class="text-sm font-bold text-emerald-950 font-mono">0208 3855 688</div>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-emerald-700 text-white flex items-center justify-center text-xs group-hover:scale-110 transition-transform">📞</span>
+            </a>
+
+            <a href="tel:115" class="p-3 bg-rose-50/70 hover:bg-rose-100/80 rounded-2xl border border-rose-200/80 transition flex items-center justify-between group">
+              <div>
+                <div class="text-[11px] text-rose-900 font-medium" data-en="Medical Emergency" data-vi="Cấp Cứu Y Tế Toàn Tỉnh">Cấp Cứu Y Tế Toàn Tỉnh</div>
+                <div class="text-sm font-bold text-rose-950 font-mono">115 / 0208 3855 125</div>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs group-hover:scale-110 transition-transform">🚑</span>
+            </a>
+
+            <a href="tel:113" class="p-3 bg-blue-50/70 hover:bg-blue-100/80 rounded-2xl border border-blue-200/80 transition flex items-center justify-between group">
+              <div>
+                <div class="text-[11px] text-blue-900 font-medium" data-en="Police Security" data-vi="An Ninh & Trật Tự Du Khách">An Ninh & Trật Tự Du Khách</div>
+                <div class="text-sm font-bold text-blue-950 font-mono">113</div>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-blue-700 text-white flex items-center justify-center text-xs group-hover:scale-110 transition-transform">🛡️</span>
+            </a>
+
+            <a href="tel:114" class="p-3 bg-amber-50/70 hover:bg-amber-100/80 rounded-2xl border border-amber-200/80 transition flex items-center justify-between group">
+              <div>
+                <div class="text-[11px] text-amber-900 font-medium" data-en="Fire & Rescue" data-vi="Cứu Hộ Suối Thác & Rừng">Cứu Hộ Suối Thác & Rừng</div>
+                <div class="text-sm font-bold text-amber-950 font-mono">114</div>
+              </div>
+              <span class="w-7 h-7 rounded-full bg-amber-600 text-white flex items-center justify-center text-xs group-hover:scale-110 transition-transform">🛟</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Section 2: Instant Chat & Messaging Channels -->
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-900 font-bold mb-3 flex items-center gap-1.5" data-en="Direct Message Channels" data-vi="Kênh Trò Chuyện Trực Tuyến">
+            <span>💬</span>
+            <span>Kênh Trò Chuyện Trực Tuyến</span>
+          </h4>
+
+          <div class="grid grid-cols-3 gap-2">
+            <a href="https://zalo.me" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl border border-blue-200 bg-blue-50/50 hover:bg-blue-100/60 transition flex flex-col items-center justify-center text-center gap-1 group">
+              <span class="text-xl group-hover:scale-110 transition-transform">💬</span>
+              <span class="text-xs font-bold text-blue-900">Zalo Chat</span>
+              <span class="text-[10px] text-blue-700" data-en="Instant reply" data-vi="Phản hồi ngay">Phản hồi ngay</span>
+            </a>
+
+            <a href="https://m.me" target="_blank" rel="noopener noreferrer" class="p-3 rounded-2xl border border-indigo-200 bg-indigo-50/50 hover:bg-indigo-100/60 transition flex flex-col items-center justify-center text-center gap-1 group">
+              <span class="text-xl group-hover:scale-110 transition-transform">⚡</span>
+              <span class="text-xs font-bold text-indigo-900">Messenger</span>
+              <span class="text-[10px] text-indigo-700" data-en="Facebook page" data-vi="Fanpage hỗ trợ">Fanpage hỗ trợ</span>
+            </a>
+
+            <a href="mailto:dulich.thainguyen@gov.vn" class="p-3 rounded-2xl border border-emerald-200 bg-emerald-50/50 hover:bg-emerald-100/60 transition flex flex-col items-center justify-center text-center gap-1 group">
+              <span class="text-xl group-hover:scale-110 transition-transform">✉️</span>
+              <span class="text-xs font-bold text-emerald-900">Email</span>
+              <span class="text-[10px] text-emerald-700 truncate w-full" data-en="gov.vn" data-vi="gov.vn">gov.vn</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Section 3: Fast Support Inquiry Form -->
+        <div class="bg-slate-50/90 rounded-2xl p-4 sm:p-5 border border-slate-200/80">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-900 font-bold mb-1 flex items-center gap-1.5" data-en="Request Fast Callback" data-vi="Gửi Yêu Cầu Tư Vấn Nhanh">
+            <span>📝</span>
+            <span>Gửi Yêu Cầu Tư Vấn Nhanh</span>
+          </h4>
+          <p class="text-[11px] text-slate-500 font-light mb-3" data-en="Leave your contact info and our Thai Nguyen tourism specialist will contact you in minutes." data-vi="Để lại số điện thoại, chuyên viên Cổng du lịch sẽ chủ động gọi điện tư vấn miễn phí.">Để lại số điện thoại, chuyên viên Cổng du lịch sẽ chủ động gọi điện tư vấn miễn phí.</p>
+
+          <form onsubmit="submitSupportForm(event)" class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-1" data-en="Full Name *" data-vi="Họ và tên *">Họ và tên *</label>
+                <input type="text" id="support-input-name" required placeholder="Ví dụ: Nguyễn Văn A" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-700" data-en="Your Full Name" data-vi="Ví dụ: Nguyễn Văn A">
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-slate-700 mb-1" data-en="Phone / Zalo *" data-vi="Số điện thoại / Zalo *">Số điện thoại / Zalo *</label>
+                <input type="tel" id="support-input-phone" required placeholder="Ví dụ: 0912 345 678" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-700" data-en="Your Phone Number" data-vi="Ví dụ: 0912 345 678">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1" data-en="Destination of Interest" data-vi="Điểm đến bạn quan tâm">Điểm đến bạn quan tâm</label>
+              <select id="support-select-dest" class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-700 text-slate-800">
+                <option value="babe-lake" data-en="Ba Be Lake (National Park)" data-vi="Hồ Ba Bể (Vườn Quốc Gia)">Hồ Ba Bể (Vườn Quốc Gia)</option>
+                <option value="tan-cuong" data-en="Tan Cuong Emerald Tea Terraces" data-vi="Đồi Chè Tân Cương (Đệ Nhất Danh Trà)">Đồi Chè Tân Cương (Đệ Nhất Danh Trà)</option>
+                <option value="cua-tu" data-en="Cua Tu Stream Trekking Adventure" data-vi="Suối Cửa Tử (Trekking & Thác nước)">Suối Cửa Tử (Trekking & Thác nước)</option>
+                <option value="nui-coc" data-en="Nui Coc Lake Resort" data-vi="Khu du lịch Hồ Núi Cốc">Khu du lịch Hồ Núi Cốc</option>
+                <option value="phuong-hoang" data-en="Phuong Hoang Cave & Mo Ga Stream" data-vi="Hang Phượng Hoàng & Suối Mỏ Gà">Hang Phượng Hoàng & Suối Mỏ Gà</option>
+                <option value="atk-dinh-hoa" data-en="ATK Dinh Hoa Revolutionary Sanctuary" data-vi="Khu Di tích Quốc gia đặc biệt ATK Định Hóa">Khu Di tích Quốc gia đặc biệt ATK Định Hóa</option>
+                <option value="other" data-en="Custom Itinerary / Group Tour" data-vi="Lịch trình riêng / Tour đoàn đông người">Lịch trình riêng / Tour đoàn đông người</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-700 mb-1" data-en="Message / Assistance Details" data-vi="Nội dung cần hỗ trợ">Nội dung cần hỗ trợ</label>
+              <textarea id="support-input-msg" rows="2" placeholder="Ví dụ: Tôi muốn hỏi giá thuê thuyền kayak hồ Ba Bể và đặt homestay Pác Ngòi..." class="w-full px-3 py-2 text-xs bg-white border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-700 resize-none" data-en="e.g. Inquiring about kayak rental and homestay in Ba Be..." data-vi="Ví dụ: Tôi muốn hỏi giá thuê thuyền kayak hồ Ba Bể và đặt homestay Pác Ngòi..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-2.5 px-4 bg-emerald-800 hover:bg-emerald-900 text-white rounded-xl text-xs font-bold transition flex items-center justify-center gap-2 shadow-sm cursor-pointer">
+              <svg class="w-4 h-4 text-emerald-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path></svg>
+              <span data-en="Send Request (Free 100%)" data-vi="Gửi Yêu Cầu Hỗ Trợ (Miễn Phí 100%)">Gửi Yêu Cầu Hỗ Trợ (Miễn Phí 100%)</span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Section 4: Quick FAQs Accordion -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-mono uppercase tracking-wider text-slate-900 font-bold mb-2 flex items-center gap-1.5" data-en="Quick FAQs" data-vi="Câu Hỏi Thường Gặp Nhanh">
+            <span>💡</span>
+            <span>Câu Hỏi Thường Gặp Nhanh</span>
+          </h4>
+
+          <details class="group bg-slate-50 p-3 rounded-xl border border-slate-200/80 text-xs">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between">
+              <span data-en="How to travel from Hanoi to Ba Be Lake?" data-vi="Di chuyển từ Hà Nội lên Hồ Ba Bể bằng phương tiện gì?">Di chuyển từ Hà Nội lên Hồ Ba Bể bằng phương tiện gì?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-600 font-light leading-relaxed pl-1" data-en="You can take high-quality Limousines from My Dinh or Giap Bat (~4.5 hours along Hanoi - Thai Nguyen - Cho Moi Expressway). Alternatively, private car rental offers the most flexible scenic drive." data-vi="Du khách có thể bắt xe Limousine chất lượng cao từ bến xe Mỹ Đình hoặc Giáp Bát (thời gian khoảng 4,5 giờ qua cao tốc Hà Nội - Thái Nguyên - Chợ Mới), hoặc thuê xe ô tô tự lái để chủ động ngắm cảnh.">Du khách có thể bắt xe Limousine chất lượng cao từ bến xe Mỹ Đình hoặc Giáp Bát (thời gian khoảng 4,5 giờ qua cao tốc Hà Nội - Thái Nguyên - Chợ Mới), hoặc thuê xe ô tô tự lái để chủ động ngắm cảnh.</p>
+          </details>
+
+          <details class="group bg-slate-50 p-3 rounded-xl border border-slate-200/80 text-xs">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between">
+              <span data-en="Best season for visiting Tan Cuong Tea Hills?" data-vi="Thời điểm nào đẹp nhất để tham quan Đồi chè Tân Cương?">Thời điểm nào đẹp nhất để tham quan Đồi chè Tân Cương?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-600 font-light leading-relaxed pl-1" data-en="From March to October is the main harvest season when terraces are vibrantly green. Early morning (05:30 - 07:30) is the golden hour for dewdrops and morning photography." data-vi="Từ tháng 3 đến tháng 10 hàng năm là mùa thu hoạch chính, đồi chè xanh mướt bát ngát. Khung giờ vàng để chụp ảnh và trải nghiệm hái chè là từ 05h30 đến 07h30 sáng khi sương sớm còn đọng trên búp non.">Từ tháng 3 đến tháng 10 hàng năm là mùa thu hoạch chính, đồi chè xanh mướt bát ngát. Khung giờ vàng để chụp ảnh và trải nghiệm hái chè là từ 05h30 đến 07h30 sáng khi sương sớm còn đọng trên búp non.</p>
+          </details>
+
+          <details class="group bg-slate-50 p-3 rounded-xl border border-slate-200/80 text-xs">
+            <summary class="font-bold text-slate-900 cursor-pointer list-none flex items-center justify-between">
+              <span data-en="Safety precautions for Cua Tu trekking?" data-vi="Lưu ý an toàn khi đi trekking Suối Cửa Tử?">Lưu ý an toàn khi đi trekking Suối Cửa Tử?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▼</span>
+            </summary>
+            <p class="mt-2 text-slate-600 font-light leading-relaxed pl-1" data-en="Always wear a life jacket, water-gripping trekking shoes, and hire a local Tay/Nung guide. Avoid trekking during torrential rains or sudden flood alerts." data-vi="Bắt buộc trang bị áo phao, giày lội suối có độ bám cao và nên có người bản địa dẫn đường (porter). Tuyệt đối không đi vào những ngày mưa to để phòng tránh lũ ống, lũ quét bất ngờ.">Bắt buộc trang bị áo phao, giày lội suối có độ bám cao và nên có người bản địa dẫn đường (porter). Tuyệt đối không đi vào những ngày mưa to để phòng tránh lũ ống, lũ quét bất ngờ.</p>
+          </details>
+        </div>
+
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50/80 flex items-center justify-between gap-3 font-mono text-xs">
+        <a href="tel:02083855688" class="flex-1 py-3 px-4 bg-emerald-800 hover:bg-emerald-900 text-white font-bold rounded-xl transition flex items-center justify-center gap-2 shadow-sm text-center">
+          <span>📞</span>
+          <span data-en="Call 0208 3855 688" data-vi="Gọi 0208 3855 688">Gọi 0208 3855 688</span>
+        </a>
+        <button onclick="closeSupportModal()" class="py-3 px-4 bg-white hover:bg-slate-100 text-slate-700 font-semibold rounded-xl border border-slate-200 transition cursor-pointer text-center">
+          <span data-en="Close" data-vi="Đóng">Đóng</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 <!-- ==================== FOOTER ==================== -->
   <footer class="bg-gradient-to-br from-slate-950 via-emerald-950 to-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -1568,6 +1798,7 @@
             <li><span data-en="Police Hotline: <strong class='text-white'>113</strong>" data-vi="Công an: <strong class='text-white'>113</strong>">Công an: <strong class="text-white">113</strong></span></li>
             <li><span data-en="Fire &amp; Rescue: <strong class='text-white'>114</strong>" data-vi="PCCC &amp; Cứu nạn: <strong class='text-white'>114</strong>">PCCC &amp; Cứu nạn: <strong class="text-white">114</strong></span></li>
             <li><span data-en="Central General Hospital: <strong class='text-white'>0208 3855 125</strong>" data-vi="BV Đa khoa TW Thái Nguyên: <strong class='text-white'>0208 3855 125</strong>">BV Đa khoa TW Thái Nguyên: <strong class="text-white">0208 3855 125</strong></span></li>
+            <li class="pt-2"><button onclick="openSupportModal()" class="text-emerald-400 hover:text-emerald-300 font-bold underline cursor-pointer text-left flex items-center gap-1.5" data-en="&rarr; Open 24/7 Support Center" data-vi="&rarr; Mở Trung Tâm Hỗ Trợ 24/7"><span>🎧</span><span>&rarr; Mở Trung Tâm Hỗ Trợ 24/7</span></button></li>
           </ul>
         </div>
 
@@ -1589,6 +1820,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110607"></script>
+  <script src="assets/js/app.js?v=2026110608"></script>
 </body>
 </html>
