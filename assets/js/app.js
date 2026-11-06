@@ -6,7 +6,7 @@
 
 // --- GLOBAL APPLICATION STATE ---
 const state = {
-  lang: localStorage.getItem('tn_lang') || 'en',
+  lang: localStorage.getItem('tn_lang') || 'vi',
   activeFilter: 'all',
   activeSeason: 'spring',
   activeEpoch: 6, // 0-indexed, default to Epoch 7 (New Thai Nguyen 2025)
@@ -581,66 +581,79 @@ function renderDestinations() {
     return;
   }
 
-  container.innerHTML = filtered.map(item => {
+  container.innerHTML = filtered.map((item, idx) => {
     const name = state.lang === 'vi' ? item.nameVi : item.nameEn;
     const tag = state.lang === 'vi' ? item.tagVi : item.tagEn;
     const desc = state.lang === 'vi' ? item.descVi : item.descEn;
     const district = state.lang === 'vi' ? item.districtVi : item.districtEn;
     const season = state.lang === 'vi' ? item.idealSeasonVi : item.idealSeasonEn;
     const isSaved = state.savedPlaces.some(p => p.id === item.id);
+    const indexStr = String(idx + 1).padStart(2, '0');
 
     return `
-      <article class="travel-card flex flex-col justify-between group overflow-hidden">
-        <div>
-          <!-- Clean Photo Aspect Container -->
-          <div class="travel-photo-container aspect-[16/10] relative">
-            <img src="${item.image}" alt="${name}" class="w-full h-full object-cover">
-            
-            <span class="absolute top-3 left-3 bg-white/95 backdrop-blur-sm text-slate-900 text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
-              ${tag}
-            </span>
+      <div class="frame-3d-wrapper">
+        <article class="frame-3d-card flex flex-col justify-between group">
+          <div>
+            <!-- 3D Beveled Picture Frame Window -->
+            <div class="frame-photo-window relative">
+              <!-- Frame Glass Sheen Reflection -->
+              <div class="frame-glass-sheen"></div>
+              
+              <!-- Museum Gallery Number Tag in Brass/Gold -->
+              <span class="frame-museum-index font-mono" title="Tác phẩm ${indexStr}">${indexStr}</span>
 
-            <button onclick="toggleSavePlace('${item.id}', event)" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-slate-700 hover:text-red-500 transition shadow-sm" title="Save Place">
-              <svg class="w-4 h-4 ${isSaved ? 'text-red-500 fill-red-500' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-              </svg>
+              <!-- Floating Tag Pill -->
+              <span class="frame-depth-badge absolute top-3 left-3 bg-[#1e3321]/90 backdrop-blur-md text-[#e8eddf] border border-white/20 text-[10px] font-bold px-2.5 py-1 rounded-full shadow-md font-mono">
+                ${tag}
+              </span>
+
+              <!-- Floating Bookmark Button -->
+              <button onclick="toggleSavePlace('${item.id}', event)" class="frame-depth-badge absolute bottom-3 right-3 w-8 h-8 rounded-full bg-slate-900/80 backdrop-blur-md border border-white/20 flex items-center justify-center text-white/90 hover:text-red-400 transition shadow-md z-20 cursor-pointer" title="Lưu tác phẩm">
+                <svg class="w-4 h-4 ${isSaved ? 'text-red-500 fill-red-500' : ''}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+              </button>
+
+              <!-- Image with 3D Depth Zoom -->
+              <img src="${item.image}" alt="${name}" loading="lazy">
+            </div>
+
+            <!-- 3D Exhibition Plaque -->
+            <div class="p-4 pt-4 frame-depth-plaque space-y-2.5">
+              <div class="flex items-center justify-between text-xs">
+                <span class="flex items-center gap-1.5 font-semibold text-[#4a6038]">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
+                  <span>${district}</span>
+                </span>
+                <span class="text-[11px] font-mono text-slate-500 bg-[#f4f4ee] px-2 py-0.5 rounded-md border border-[#e4e7db]">
+                  ${season}
+                </span>
+              </div>
+
+              <h3 class="text-lg font-heading font-extrabold text-[#141f16] group-hover:text-[#2d472c] transition tracking-tight line-clamp-1">
+                ${name}
+              </h3>
+
+              <p class="text-slate-600 text-xs leading-relaxed line-clamp-2 font-light">
+                ${desc}
+              </p>
+            </div>
+          </div>
+
+          <!-- Bottom Action Frame Plaque -->
+          <div class="p-4 pt-1 frame-depth-action">
+            <button onclick="openDestinationModal('${item.id}')" class="w-full py-2.5 px-4 bg-[#233522] hover:bg-[#344d32] text-white rounded-xl text-xs font-bold tracking-wide transition flex items-center justify-center gap-2 shadow-sm cursor-pointer group-hover:shadow-md">
+              <span>${state.lang === 'en' ? 'Explore 3D Artwork' : 'Chiêm Ngưỡng Chi Tiết'}</span>
+              <svg class="w-3.5 h-3.5 text-[#d5a755] group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
           </div>
-
-          <!-- Body Content -->
-          <div class="p-5">
-            <div class="flex items-center gap-1.5 text-xs text-emerald-800 font-semibold mb-1">
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-              <span>${district}</span>
-            </div>
-
-            <h3 class="text-xl font-travel-heading font-bold text-slate-900 group-hover:text-emerald-800 transition tracking-tight mb-2">
-              ${name}
-            </h3>
-
-            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed line-clamp-2 font-normal mb-4">
-              ${desc}
-            </p>
-
-            <div class="flex items-center gap-2 text-xs text-slate-500 bg-slate-50 px-3 py-2 rounded-xl border border-slate-100">
-              <svg class="w-3.5 h-3.5 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-              <span><strong>${state.lang === 'en' ? 'Best Season:' : 'Mùa lý tưởng:'}</strong> ${season}</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Footer Action -->
-        <div class="p-5 pt-0">
-          <button onclick="openDestinationModal('${item.id}')" class="w-full py-2.5 px-4 bg-slate-900 hover:bg-emerald-800 text-white rounded-xl text-xs font-semibold tracking-wide transition flex items-center justify-center gap-1.5 shadow-sm">
-            <span>${state.lang === 'en' ? 'View Guide & Details' : 'Xem chi tiết & Hướng dẫn'}</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-          </button>
-        </div>
-      </article>
+        </article>
+      </div>
     `;
   }).join('');
   if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
   if (typeof initSpotlightCards === 'function') setTimeout(initSpotlightCards, 50);
+  if (typeof init3DFrameCards === 'function') setTimeout(init3DFrameCards, 60);
 }
 
 // --- RENDER INTERACTIVE EPOCH TIMELINE (NO CLUTTER) ---
@@ -2710,3 +2723,39 @@ function toggleHeroVideo() {
 }
 
 window.toggleHeroVideo = toggleHeroVideo;
+
+// ============================================================
+// 3D PICTURE FRAMES ENGINE (9 KỲ QUAN ĐẠI NGÀN)
+// ============================================================
+function init3DFrameCards() {
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const wrappers = document.querySelectorAll('.frame-3d-wrapper');
+  wrappers.forEach(wrap => {
+    const card = wrap.querySelector('.frame-3d-card');
+    if (!card) return;
+    if (wrap.dataset.frame3dBound) return;
+    wrap.dataset.frame3dBound = 'true';
+
+    wrap.addEventListener('mousemove', e => {
+      const rect = wrap.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Calculate realistic 3D tilt
+      const rotateX = ((y - centerY) / centerY) * -10.5;
+      const rotateY = ((x - centerX) / centerX) * 10.5;
+
+      card.style.transform = `perspective(1200px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+      card.style.setProperty('--mouse-x', `${x}px`);
+      card.style.setProperty('--mouse-y', `${y}px`);
+    });
+
+    wrap.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+    });
+  });
+}
+
+window.init3DFrameCards = init3DFrameCards;

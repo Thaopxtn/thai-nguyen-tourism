@@ -775,3 +775,115 @@ button:active:not(:disabled), a.btn-action:active {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.22);
 }
+
+/* ============================================================
+   3D ART GALLERY PICTURE FRAMES SYSTEM (9 KỲ QUAN ĐẠI NGÀN)
+   ============================================================ */
+.frame-3d-wrapper {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.frame-3d-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1.5rem;
+  padding: 10px;
+  border: 1px solid rgba(229, 232, 220, 0.9);
+  box-shadow: 
+    0 8px 20px -4px rgba(28, 45, 25, 0.08),
+    0 16px 32px -10px rgba(28, 45, 25, 0.12),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
+}
+
+.frame-3d-card:hover {
+  box-shadow: 
+    0 24px 48px -12px rgba(20, 38, 20, 0.26),
+    0 12px 24px -6px rgba(20, 38, 20, 0.14),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.95);
+}
+
+/* Internal Photo Window (Picture Matt Board) */
+.frame-photo-window {
+  position: relative;
+  border-radius: 1.15rem;
+  overflow: hidden;
+  background: #141f16;
+  aspect-ratio: 16 / 11;
+  box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.35), 0 3px 8px rgba(0, 0, 0, 0.08);
+  transform: translateZ(22px);
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+}
+
+.frame-photo-window img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+  will-change: transform;
+}
+
+.frame-3d-card:hover .frame-photo-window img {
+  transform: scale(1.08) translateZ(10px);
+}
+
+/* Glass Sheen Reflection Layer */
+.frame-glass-sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    130deg,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.08) 35%,
+    transparent 55%,
+    rgba(255, 255, 255, 0.15) 100%
+  );
+  pointer-events: none;
+  border-radius: inherit;
+  z-index: 15;
+  mix-blend-mode: overlay;
+  transition: opacity 0.3s ease;
+}
+
+/* Floating 3D Depth Elements */
+.frame-depth-badge {
+  transform: translateZ(42px);
+  transition: transform 0.35s ease;
+}
+
+.frame-depth-plaque {
+  transform: translateZ(28px);
+  transition: transform 0.35s ease;
+}
+
+.frame-depth-action {
+  transform: translateZ(32px);
+  transition: transform 0.35s ease;
+}
+
+/* Museum Number Tag in Brass/Gold */
+.frame-museum-index {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 9999px;
+  background: rgba(20, 31, 22, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(213, 167, 85, 0.55);
+  color: #d5a755;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-weight: 800;
+  font-size: 11px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 20;
+  transform: translateZ(45px);
+}
