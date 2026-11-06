@@ -2685,3 +2685,28 @@ window.initTimeLapseCurtain = initTimeLapseCurtain;
 window.openCinemaModal = openCinemaModal;
 window.closeCinemaModal = closeCinemaModal;
 window.switchCinemaScene = switchCinemaScene;
+
+// ============================================================
+// CINEMATIC BACKGROUND VIDEO CONTROLLER
+// ============================================================
+function toggleHeroVideo() {
+  const video = document.getElementById('hero-bg-video');
+  const icon = document.getElementById('video-status-icon');
+  const text = document.getElementById('video-status-text');
+  if (!video) return;
+
+  if (video.paused) {
+    video.play().then(() => {
+      if (icon) icon.textContent = '⏸️';
+      if (text) text.textContent = 'Tạm dừng video';
+      showToast('Đang phát video nền thiên nhiên');
+    }).catch(err => console.warn(err));
+  } else {
+    video.pause();
+    if (icon) icon.textContent = '▶️';
+    if (text) text.textContent = 'Phát video';
+    showToast('Đã tạm dừng video nền');
+  }
+}
+
+window.toggleHeroVideo = toggleHeroVideo;

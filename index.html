@@ -132,31 +132,39 @@
     </div>
   </header>
 
-  <!-- ==================== HERO SECTION (CLEAN & BREATHTAKING) ==================== -->
-  <section class="relative pt-12 pb-16 lg:pt-16 lg:pb-20 border-b border-slate-200 bg-white overflow-hidden">
-    <!-- MotionSites Atmospheric Glow Orbs -->
-    <div class="pointer-events-none absolute -top-32 left-1/4 w-96 h-96 bg-emerald-400/15 rounded-full blur-3xl -z-10 animate-pulse-slow"></div>
-    <div class="pointer-events-none absolute top-1/2 -right-16 w-80 h-80 bg-teal-400/15 rounded-full blur-3xl -z-10"></div>
-    <div class="pointer-events-none absolute -bottom-16 left-8 w-72 h-72 bg-amber-400/10 rounded-full blur-3xl -z-10"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      
+  <!-- ==================== HERO SECTION (CINEMATIC NATURE VIDEO BACKGROUND) ==================== -->
+  <section class="relative min-h-[82vh] lg:min-h-[88vh] flex items-center border-b border-black/10 overflow-hidden bg-slate-950 text-white">
+    <!-- HTML5 Looping Background Video -->
+    <div class="hero-video-container">
+      <video id="hero-bg-video" autoplay muted loop playsinline poster="assets/images/hero-babe.jpg">
+        <source src="assets/videos/hero-nature.mp4" type="video/mp4">
+      </video>
+      <!-- Cinematic Multi-stop Dark Gradient Overlay -->
+      <div class="hero-video-overlay"></div>
+    </div>
 
+    <!-- Video Play/Pause Toggle Control Button -->
+    <button onclick="toggleHeroVideo()" id="btn-toggle-video" class="absolute bottom-6 right-6 z-20 px-3.5 py-1.5 rounded-full bg-black/50 hover:bg-black/75 backdrop-blur-md border border-white/20 text-[11px] font-mono text-white/90 flex items-center gap-1.5 transition cursor-pointer" title="Tạm dừng / Phát video nền">
+      <span id="video-status-icon">⏸️</span>
+      <span id="video-status-text">Video Nền</span>
+    </button>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10 w-full">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
         
         <!-- Left Hero Typography -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50/80 text-emerald-900 rounded-full border border-emerald-200/60 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span data-en="Official Travel Guide 2026" data-vi="Cẩm Nang Du Lịch 2026">Cẩm Nang Du Lịch 2026</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-white/10 text-emerald-300 rounded-full border border-white/20 backdrop-blur-md text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span data-en="Eco-Heritage Travel Guide 2026" data-vi="Cẩm Nang Du Lịch Sinh Thái 2026">Cẩm Nang Du Lịch Sinh Thái 2026</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-slate-900 tracking-tight leading-[1.16]">
-            <span class="block" data-en="Where Ba Bể Waters" data-vi="Nơi Non Nước Ba Bể">Nơi Non Nước Ba Bể</span>
-            <span class="block text-shimmer-emerald mt-1.5" data-en="Meet The Emerald Tea Terraces" data-vi="Hòa Cùng Sắc Trà Tân Cương">Hòa Cùng Sắc Trà Tân Cương</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-[1.16]">
+            <span class="block drop-shadow-sm" data-en="Where Ba Bể Waters" data-vi="Nơi Non Nước Ba Bể">Nơi Non Nước Ba Bể</span>
+            <span class="block text-shimmer-emerald mt-1.5 drop-shadow-md" data-en="Meet The Emerald Tea Terraces" data-vi="Hòa Cùng Sắc Trà Tân Cương">Hòa Cùng Sắc Trà Tân Cương</span>
           </h1>
 
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed font-light text-justify max-w-2xl"
+          <p class="text-slate-200 text-base sm:text-lg leading-relaxed font-light text-justify max-w-2xl drop-shadow-sm"
              data-en="Discover a breathtaking realm bridging rolling emerald tea terraces of Tan Cuong with primeval karst waters of Ba Be Lake. Immerse in Tay - Nung ethnic cultures, ancient shrines, and unforgettable hiking adventures across 8,375 km²."
              data-vi="Hành trình kết nối trọn vẹn sức sống xanh mướt của đồi chè Tân Cương với làn nước ngọc bích hồ Ba Bể nguyên sơ. Nơi du khách hòa mình vào thiên nhiên kỳ vĩ, văn hóa bản địa Tày - Nùng nồng hậu và những cổ tự ngàn năm thanh tịnh.">
             Hành trình kết nối trọn vẹn sức sống xanh mướt của đồi chè Tân Cương với làn nước ngọc bích hồ Ba Bể nguyên sơ. Nơi du khách hòa mình vào thiên nhiên kỳ vĩ, văn hóa bản địa Tày - Nùng nồng hậu và những cổ tự ngàn năm thanh tịnh.
@@ -164,36 +172,36 @@
 
           <!-- Modern Floating Search & Filter Input with Live Dropdown -->
           <div class="relative max-w-xl">
-            <div class="p-2 bg-white rounded-2xl border border-slate-300 shadow-md shadow-slate-200/50 flex items-center gap-2">
-              <svg class="w-5 h-5 text-slate-400 ml-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-              <input type="text" id="search-input" placeholder="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa..." class="w-full py-2.5 px-1 text-sm text-slate-800 placeholder-slate-400 focus:outline-none bg-transparent"
+            <div class="p-2 bg-white/15 backdrop-blur-xl rounded-2xl border border-white/30 shadow-2xl flex items-center gap-2">
+              <svg class="w-5 h-5 text-white/70 ml-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              <input type="text" id="search-input" placeholder="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa..." class="w-full py-2.5 px-1 text-sm text-white placeholder-white/70 focus:outline-none bg-transparent"
                      data-en="Search Ba Be Lake, Puong Cave, tea hills, temples..."
                      data-vi="Tìm hồ Ba Bể, động Puông, nương chè, đền chùa..." autocomplete="off">
-              <a href="#landscapes" class="px-5 py-2.5 bg-slate-900 hover:bg-emerald-900 text-white rounded-xl text-xs font-bold shrink-0 transition btn-glow"
+              <a href="#landscapes" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl text-xs font-bold shrink-0 transition btn-glow shadow-lg shadow-emerald-950/40"
                  data-en="Explore &rarr;" data-vi="Khám phá &rarr;">Khám phá &rarr;</a>
             </div>
             <!-- Live Search Results Dropdown -->
-            <div id="search-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-slate-200/90 z-50 overflow-hidden divide-y divide-slate-100 font-sans">
+            <div id="search-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900/95 backdrop-blur-2xl rounded-2xl shadow-2xl border border-white/20 z-50 overflow-hidden divide-y divide-white/10 font-sans text-white">
             </div>
           </div>
 
-          <!-- Key Metrics Bar -->
+          <!-- Key Metrics Bar (Glassmorphic) -->
           <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3 text-xs font-mono">
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
-              <div class="text-slate-500 uppercase text-[10px]">Không gian thiên nhiên</div>
-              <div class="font-bold text-emerald-800 text-base mt-0.5 font-heading stat-counter" data-target="8375" data-thousand="true" data-suffix=" km²">8.375 km²</div>
+            <div class="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/15">
+              <div class="text-emerald-300 uppercase text-[10px]">Không gian thiên nhiên</div>
+              <div class="font-bold text-white text-base mt-0.5 font-heading stat-counter" data-target="8375" data-thousand="true" data-suffix=" km²">8.375 km²</div>
             </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
-              <div class="text-slate-500 uppercase text-[10px]">Kỳ quan biểu tượng</div>
-              <div class="font-bold text-slate-950 text-base mt-0.5 font-heading">Hồ Ba Bể</div>
+            <div class="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/15">
+              <div class="text-emerald-300 uppercase text-[10px]">Kỳ quan biểu tượng</div>
+              <div class="font-bold text-white text-base mt-0.5 font-heading">Hồ Ba Bể</div>
             </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
-              <div class="text-slate-500 uppercase text-[10px]">Đệ nhất danh trà</div>
-              <div class="font-bold text-emerald-700 text-base mt-0.5 font-heading">Tân Cương</div>
+            <div class="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/15">
+              <div class="text-emerald-300 uppercase text-[10px]">Đệ nhất danh trà</div>
+              <div class="font-bold text-white text-base mt-0.5 font-heading">Tân Cương</div>
             </div>
-            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80">
-              <div class="text-slate-500 uppercase text-[10px]">Khoảng cách từ Hà Nội</div>
-              <div class="font-bold text-amber-600 text-base mt-0.5 font-heading stat-counter" data-target="60" data-prefix="~" data-suffix=" Phút Xe">~60 Phút Xe</div>
+            <div class="p-3 bg-white/10 backdrop-blur-md rounded-xl border border-white/15">
+              <div class="text-emerald-300 uppercase text-[10px]">Khoảng cách từ Hà Nội</div>
+              <div class="font-bold text-amber-300 text-base mt-0.5 font-heading stat-counter" data-target="60" data-prefix="~" data-suffix=" Phút Xe">~60 Phút Xe</div>
             </div>
           </div>
         </div>
@@ -202,25 +210,21 @@
         <div class="lg:col-span-5 relative space-y-3" id="hero-carousel-container">
           
           <!-- Live Weather Pill -->
-          <div class="flex items-center justify-between px-3.5 py-2 bg-emerald-50 rounded-2xl border border-emerald-200/80 text-xs font-mono weather-pill-pulse">
-            <span class="flex items-center gap-1.5 text-emerald-900 font-bold">
-              <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <div class="flex items-center justify-between px-3.5 py-2 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 text-xs font-mono weather-pill-pulse">
+            <span class="flex items-center gap-1.5 text-emerald-300 font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
               <span id="hero-weather-loc">Ba Bể</span>
             </span>
-            <span class="text-slate-600" id="hero-weather-val">🌤️ 22°C &bull; Tiết trời se mát</span>
+            <span class="text-slate-300" id="hero-weather-val">🌤️ 22°C &bull; Tiết trời se mát</span>
           </div>
 
           <!-- Main Dynamic Slide Container -->
-          <div class="travel-card overflow-hidden p-2 group shadow-xl">
-            <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden travel-photo-container film-grain-overlay">
-              <button onclick="openCinemaModal()" class="absolute top-3 right-3 px-3 py-1 rounded-full bg-slate-900/80 hover:bg-emerald-950 text-emerald-400 hover:text-white backdrop-blur-md text-[10px] font-bold shadow-sm font-mono border border-emerald-500/30 flex items-center gap-1.5 transition cursor-pointer z-20" title="Mở rạp chiếu phim 4K">
-                <span>▶</span>
-                <span>Thước Phim 4K</span>
-              </button>
+          <div class="travel-card overflow-hidden p-2 group shadow-2xl bg-white/10 backdrop-blur-md border border-white/20">
+            <div class="relative h-72 sm:h-96 rounded-2xl overflow-hidden travel-photo-container">
               <img id="hero-main-img" src="assets/images/hero-babe.jpg" alt="Thái Nguyên Danh Thắng" class="w-full h-full object-cover transition-all duration-700">
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent"></div>
               
-              <span id="hero-scene-badge" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm text-[10px] font-bold text-slate-900 shadow-sm font-mono animate-float-slow">
+              <span id="hero-scene-badge" class="absolute top-3 left-3 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-[10px] font-bold text-emerald-300 border border-white/20 shadow-sm font-mono animate-float-slow">
                 Vườn Quốc Gia Ba Bể
               </span>
 
@@ -234,27 +238,52 @@
 
           <!-- 4 Scene Thumbnails Selector -->
           <div class="grid grid-cols-4 gap-2 pt-1 font-mono text-[10px]">
-            <button onclick="switchHeroScene(0)" class="hero-thumb-btn active p-1.5 rounded-xl border border-emerald-600 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="0">
+            <button onclick="switchHeroScene(0)" class="hero-thumb-btn active p-1.5 rounded-xl border border-emerald-500 bg-white/15 backdrop-blur-md hover:bg-white/25 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="0">
               <img src="assets/images/babe-lake.jpg" alt="Ba Bể" class="w-full h-9 rounded-lg object-cover">
-              <span class="font-bold text-slate-800 truncate w-full">Hồ Ba Bể</span>
+              <span class="font-bold text-white truncate w-full">Hồ Ba Bể</span>
             </button>
-            <button onclick="switchHeroScene(1)" class="hero-thumb-btn p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="1">
+            <button onclick="switchHeroScene(1)" class="hero-thumb-btn p-1.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/20 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="1">
               <img src="assets/images/tan-cuong-tea.jpg" alt="Tân Cương" class="w-full h-9 rounded-lg object-cover">
-              <span class="font-bold text-slate-800 truncate w-full">Đồi Chè</span>
+              <span class="font-bold text-white truncate w-full">Đồi Chè</span>
             </button>
-            <button onclick="switchHeroScene(2)" class="hero-thumb-btn p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="2">
+            <button onclick="switchHeroScene(2)" class="hero-thumb-btn p-1.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/20 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="2">
               <img src="assets/images/puong-cave.jpg" alt="Động Puông" class="w-full h-9 rounded-lg object-cover">
-              <span class="font-bold text-slate-800 truncate w-full">Động Puông</span>
+              <span class="font-bold text-white truncate w-full">Động Puông</span>
             </button>
-            <button onclick="switchHeroScene(3)" class="hero-thumb-btn p-1.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="3">
+            <button onclick="switchHeroScene(3)" class="hero-thumb-btn p-1.5 rounded-xl border border-white/20 bg-white/10 backdrop-blur-md hover:bg-white/20 transition flex flex-col items-center gap-1 text-center cursor-pointer" data-idx="3">
               <img src="assets/images/cua-tu-stream.jpg" alt="Suối Cửa Tử" class="w-full h-9 rounded-lg object-cover">
-              <span class="font-bold text-slate-800 truncate w-full">Cửa Tử</span>
+              <span class="font-bold text-white truncate w-full">Cửa Tử</span>
             </button>
           </div>
         </div>
 
+      </div>
     </div>
   </section>
+
+  <!-- ==================== ECO-NATURE OLIVE STAT BANNER (INSPIRED BY REFERENCE DESIGN) ==================== -->
+  <div class="bg-[#2B3C25] text-white border-y border-[#3E5236] py-6 sm:py-7 font-mono select-none">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 items-center text-center">
+        <div class="space-y-1">
+          <div class="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-[#E8EDDF] stat-counter" data-target="8375" data-thousand="true" data-suffix=" km²">8.375 km²</div>
+          <div class="text-[11px] uppercase tracking-wider text-[#A2B895] font-semibold">Miền Sinh Thái Rộng Lớn</div>
+        </div>
+        <div class="space-y-1 border-l border-[#3E5236] pl-4 sm:pl-0">
+          <div class="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-[#E8EDDF]">Top 20</div>
+          <div class="text-[11px] uppercase tracking-wider text-[#A2B895] font-semibold">Hồ Nước Ngọt Tự Nhiên Thế Giới</div>
+        </div>
+        <div class="space-y-1 border-l border-[#3E5236] pl-4 sm:pl-0">
+          <div class="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-[#E8EDDF]">>22.000 ha</div>
+          <div class="text-[11px] uppercase tracking-wider text-[#A2B895] font-semibold">Vùng Trà Di Sản Tân Cương</div>
+        </div>
+        <div class="space-y-1 border-l border-[#3E5236] pl-4 sm:pl-0">
+          <div class="text-2xl sm:text-3xl lg:text-4xl font-heading font-black text-[#E8EDDF] stat-counter" data-target="60" data-prefix="~" data-suffix=" Phút">~60 Phút</div>
+          <div class="text-[11px] uppercase tracking-wider text-[#A2B895] font-semibold">Cao Tốc Từ Thủ Đô Hà Nội</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- ==================== MOTIONSITES AI INFINITE MARQUEE TICKER ==================== -->
   <div class="border-y border-slate-200/80 bg-slate-50/90 backdrop-blur-md overflow-hidden py-3 font-mono text-xs select-none marquee-container no-print">

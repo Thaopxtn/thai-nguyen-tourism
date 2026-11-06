@@ -10,18 +10,21 @@
   --font-serif: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Inter", -system-ui, sans-serif;
   --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Inter", -system-ui, sans-serif;
   
-  --primary-emerald: #064e3b;
-  --emerald-hover: #047857;
-  --emerald-light: #ecfdf5;
-  --accent-amber: #d97706;
-  --accent-warm: #f59e0b;
-  --surface-bg: #f8fafc;
+  /* Eco-Luxury Forest & Olive Palette (Inspired by Reference Design) */
+  --primary-emerald: #243b27;
+  --emerald-hover: #355038;
+  --emerald-light: #f2f5ed;
+  --olive-deep: #2d3f27;
+  --olive-sage: #536944;
+  --accent-amber: #c48b28;
+  --accent-warm: #d5a755;
+  --surface-bg: #fbfbf7;
   --surface-card: #ffffff;
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-subtle: #94a3b8;
-  --border-subtle: #e2e8f0;
-  --border-strong: #cbd5e1;
+  --text-main: #141f16;
+  --text-muted: #4d5e4b;
+  --text-subtle: #889985;
+  --border-subtle: #e5e8dc;
+  --border-strong: #d0d5c4;
 }
 
 html {
@@ -729,4 +732,46 @@ button:active:not(:disabled), a.btn-action:active {
 @keyframes soundBounce {
   0% { transform: scaleY(0.3); }
   100% { transform: scaleY(1.2); }
+}
+
+/* ============================================================
+   CINEMATIC VIDEO BACKGROUND SYSTEM
+   ============================================================ */
+.hero-video-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#hero-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.04);
+  filter: brightness(0.85) contrast(1.06);
+  will-change: transform;
+}
+
+.hero-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 26, 17, 0.45) 0%,
+    rgba(15, 26, 17, 0.65) 50%,
+    rgba(15, 26, 17, 0.95) 100%
+  );
+  z-index: 1;
+}
+
+/* Eco-luxury glassmorphism on video */
+.glass-panel-nature {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
 }
