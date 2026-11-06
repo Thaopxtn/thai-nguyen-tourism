@@ -498,6 +498,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typeof initScrollReveal === 'function') initScrollReveal();
   if (typeof initNumberCounters === 'function') initNumberCounters();
   if (typeof initLiveSearch === 'function') initLiveSearch();
+  if (typeof initSpotlightCards === 'function') initSpotlightCards();
+  if (typeof init3DCardTilt === 'function') init3DCardTilt();
 });
 window.addEventListener('load', tryInitMap);
 
@@ -637,6 +639,7 @@ function renderDestinations() {
     `;
   }).join('');
   if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
+  if (typeof initSpotlightCards === 'function') setTimeout(initSpotlightCards, 50);
 }
 
 // --- RENDER INTERACTIVE EPOCH TIMELINE (NO CLUTTER) ---
@@ -899,6 +902,7 @@ function renderPagodas() {
     `;
   }).join('');
   if (typeof initScrollReveal === 'function') setTimeout(initScrollReveal, 40);
+  if (typeof initSpotlightCards === 'function') setTimeout(initSpotlightCards, 50);
 }
 
 // --- RENDER HOSPITALS DIRECTORY ---
@@ -2459,3 +2463,55 @@ window.toggleMapFullscreen = toggleMapFullscreen;
 window.clearAllSavedPlaces = clearAllSavedPlaces;
 window.openSavedModal = openSavedModal;
 window.closeSavedModal = closeSavedModal;
+
+// ============================================================
+// MOTIONSITES AI: CURSOR SPOTLIGHT & 3D PERSPECTIVE CARDS
+// ============================================================
+function initSpotlightCards() {
+  const cards = document.querySelectorAll('.spotlight-card, .travel-card');
+  cards.forEach(card => {
+    if (!card.classList.contains('spotlight-card')) {
+      card.classList.add('spotlight-card');
+    }
+    // Remove duplicate listeners if already attached
+    if (!card.dataset.spotlightBound) {
+      card.dataset.spotlightBound = 'true';
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.setProperty('--mouse-x', `-500px`);
+        card.style.setProperty('--mouse-y', `-500px`);
+      });
+    }
+  });
+}
+
+function init3DCardTilt() {
+  const tiltCards = document.querySelectorAll('.tilt-card-3d');
+  tiltCards.forEach(card => {
+    if (!card.dataset.tiltBound) {
+      card.dataset.tiltBound = 'true';
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5.5;
+        const rotateY = ((x - centerX) / centerX) * 5.5;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    }
+  });
+}
+
+window.initSpotlightCards = initSpotlightCards;
+window.init3DCardTilt = init3DCardTilt;
