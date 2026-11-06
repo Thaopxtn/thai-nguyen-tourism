@@ -6,10 +6,13 @@
   <title>Cẩm Nang Du Lịch Thái Nguyên | Official Travel Portal 2026</title>
   <meta name="description" content="Cổng thông tin du lịch chính thức tỉnh Thái Nguyên mới (sáp nhập Thái Nguyên và Bắc Kạn năm 2025). Khám phá hồ Ba Bể, đồi chè Tân Cương, động Puông, cổ tự và di sản văn hóa Tày - Nùng.">
 
-    <!-- International Standard Typography Suite: Plus Jakarta Sans (Headings & Display), Inter (Body & UI), JetBrains Mono (Badges & Metrics) -->
+    <!-- Favicon: Official Thai Nguyen Emblem SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' rx='13' fill='%23142d17'/%3E%3Ccircle cx='24' cy='12.5' r='3.2' fill='%23f59e0b'/%3E%3Cpath d='M10 29.5 L18 17 L24.5 25' fill='none' stroke='%2324532e' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M23.5 25 L29.5 18.5 L38 29.5' fill='none' stroke='%232e683b' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M24 26.5 C24 21.5 22 17 23.8 13 C25.8 17 26.8 21.5 24 26.5 Z' fill='%2334d399'/%3E%3Cpath d='M11 33 C15.5 31.2 19.5 34.5 24 33 C28.5 31.5 32.5 34.5 37 33' fill='none' stroke='%2338bdf8' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E">
+
+  <!-- International Standard Typography Suite: Plus Jakarta Sans (Headings), Playfair Display (Luxury Serif), Inter (Body), JetBrains Mono (Metrics) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..900;1,14..32,300..900&family=JetBrains+Mono:ital,wght@0,400..700;1,400..700&family=Playfair+Display:ital,wght@0,500..900;1,400..700&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -37,6 +40,7 @@
           },
           fontFamily: {
             heading: ['"Plus Jakarta Sans"', '"Inter"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
             sans: ['"Inter"', '"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'sans-serif'],
             mono: ['"JetBrains Mono"', '"SF Mono"', 'ui-monospace', 'Menlo', 'Consolas', 'monospace']
           }
@@ -46,17 +50,7 @@
   </script>
 
   <!-- Modern Travel Portal Stylesheet -->
-  <link rel="stylesheet" href="assets/css/style.css?v=2026110607">
-
-  <!-- FLOATING SUPPORT BUTTON (24/7 LUXURY BADGE) -->
-  <button id="btn-floating-support" onclick="openSupportModal()" class="fixed bottom-6 right-6 z-40 bg-[#1e3423] hover:bg-[#2b4c33] text-white border border-[#487351]/50 rounded-full pl-3.5 pr-4 py-2.5 shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-300 hover:scale-105 group cursor-pointer" title="Trung tâm hỗ trợ du khách 24/7" data-title-vi="Trung tâm hỗ trợ du khách 24/7" data-title-en="24/7 Visitor Support Center">
-    <span class="relative flex h-3 w-3">
-      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-    </span>
-    <svg class="w-4 h-4 text-emerald-300 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-    <span class="text-xs font-bold font-sans tracking-wide text-white" data-en="Support 24/7" data-vi="Hỗ Trợ 24/7">Hỗ Trợ 24/7</span>
-  </button>
+  <link rel="stylesheet" href="assets/css/style.css?v=2026110609">
 
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -75,14 +69,64 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16 sm:h-18">
         
-        <!-- Clean Brand Logo: Strictly 1 Single Line -->
-        <a href="#" class="flex items-center gap-2.5 group shrink-0">
-          <div class="w-9 h-9 rounded-xl bg-slate-950 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
-            <span class="font-heading font-black text-sm tracking-wider text-emerald-400">TN</span>
+        <!-- Luxury Brand Logo Lockup: Bespoke SVG Crest & Dual-tier Typography -->
+        <a href="#" class="flex items-center gap-2.5 sm:gap-3 group shrink-0 py-1">
+          <!-- Bespoke Thai Nguyen Vector Crest -->
+          <div class="brand-logo-crest w-10 h-10 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-10 h-10 filter drop-shadow-[0_2px_6px_rgba(20,40,25,0.3)]">
+              <defs>
+                <linearGradient id="tnBgGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#18361e"/>
+                  <stop offset="50%" stop-color="#0e2413"/>
+                  <stop offset="100%" stop-color="#07150a"/>
+                </linearGradient>
+                <linearGradient id="tnGoldGradH" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fef3c7"/>
+                  <stop offset="35%" stop-color="#d4af37"/>
+                  <stop offset="70%" stop-color="#e6ca65"/>
+                  <stop offset="100%" stop-color="#9a741e"/>
+                </linearGradient>
+                <linearGradient id="tnLeafGradH" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#10b981"/>
+                  <stop offset="60%" stop-color="#34d399"/>
+                  <stop offset="100%" stop-color="#fef08a"/>
+                </linearGradient>
+                <linearGradient id="tnWaterGradH" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
+                  <stop offset="50%" stop-color="#2dd4bf" stop-opacity="0.95"/>
+                  <stop offset="100%" stop-color="#34d399" stop-opacity="0.95"/>
+                </linearGradient>
+                <radialGradient id="tnSunGlowH" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#fffbeb"/>
+                  <stop offset="40%" stop-color="#f59e0b"/>
+                  <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+              <!-- Outer Crest Squircle -->
+              <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#tnBgGradH)" stroke="url(#tnGoldGradH)" stroke-width="1.4"/>
+              <rect x="4" y="4" width="40" height="40" rx="11" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="0.8"/>
+              <!-- Sun / Dewdrop -->
+              <circle cx="24" cy="12.5" r="3.2" fill="url(#tnGoldGradH)"/>
+              <circle cx="24" cy="12.5" r="5.5" fill="url(#tnSunGlowH)" opacity="0.7"/>
+              <!-- Karst Peaks -->
+              <path d="M10 29.5 L18 17 L24.5 25" fill="none" stroke="#24532e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M23.5 25 L29.5 18.5 L38 29.5" fill="none" stroke="#2e683b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              <!-- Emerging Tea Sprout -->
+              <path d="M24 26.5 C24 21.5 22 17 23.8 13 C25.8 17 26.8 21.5 24 26.5 Z" fill="url(#tnLeafGradH)"/>
+              <path d="M24.2 20.5 C25.8 18.5 28 18.3 29 16 C28 19.8 25.5 22 24.2 22.5 Z" fill="url(#tnLeafGradH)" opacity="0.92"/>
+              <!-- Ba Be Waters -->
+              <path d="M11 33 C15.5 31.2 19.5 34.5 24 33 C28.5 31.5 32.5 34.5 37 33" fill="none" stroke="url(#tnWaterGradH)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M14 36.5 C17.5 35.2 20.8 37.5 24 36.5 C27.2 35.5 30.5 37.5 34 36.5" fill="none" stroke="url(#tnWaterGradH)" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>
+            </svg>
           </div>
-          <span class="font-heading font-black text-base sm:text-lg text-slate-900 tracking-tight whitespace-nowrap" data-en="THAI NGUYEN TOURISM" data-vi="DU LỊCH THÁI NGUYÊN">
-            DU LỊCH THÁI NGUYÊN
-          </span>
+          <div class="flex flex-col">
+            <span class="font-heading font-black text-base sm:text-[17px] text-slate-900 tracking-tight leading-none group-hover:text-emerald-900 transition-colors" data-en="THAI NGUYEN" data-vi="THÁI NGUYÊN">
+              THÁI NGUYÊN
+            </span>
+            <span class="text-[9px] sm:text-[9.5px] font-mono tracking-[0.22em] uppercase text-emerald-800 font-bold mt-1 leading-none" data-en="HERITAGE &bull; ECO-TOURISM" data-vi="CỔNG DU LỊCH &amp; ĐỊA CHÍ">
+              CỔNG DU LỊCH &amp; ĐỊA CHÍ
+            </span>
+          </div>
         </a>
 
         <!-- Desktop Navigation Bar: 5 Core Strategic Items (Spacious, Single Line, No Wrapping) -->
@@ -180,9 +224,12 @@
             <span data-en="Eco-Heritage Travel Guide 2026" data-vi="Cẩm Nang Du Lịch Sinh Thái 2026">Cẩm Nang Du Lịch Sinh Thái 2026</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-[1.16]">
-            <span class="block drop-shadow-sm" data-en="Where Ba Bể Waters" data-vi="Nơi Non Nước Ba Bể">Nơi Non Nước Ba Bể</span>
-            <span class="block text-shimmer-emerald mt-1.5 drop-shadow-md" data-en="Meet The Emerald Tea Terraces" data-vi="Hòa Cùng Sắc Trà Tân Cương">Hòa Cùng Sắc Trà Tân Cương</span>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-heading font-black text-white tracking-tight leading-[1.14]">
+            <span class="block drop-shadow-sm" data-en="Where Ba Be Waters" data-vi="Nơi Non Nước Ba Bể">Nơi Non Nước Ba Bể</span>
+            <span class="block mt-1.5 drop-shadow-md">
+              <span class="font-display italic font-light text-emerald-200/95 text-[0.85em] mr-1" data-en="Meet The" data-vi="Giao Hòa Cùng">Giao Hòa Cùng</span>
+              <span class="text-shimmer-emerald font-black" data-en="Emerald Tea Terraces" data-vi="Sắc Trà Tân Cương">Sắc Trà Tân Cương</span>
+            </span>
           </h1>
 
           <p class="text-slate-200 text-base sm:text-lg leading-relaxed font-light text-justify max-w-2xl drop-shadow-sm"
@@ -344,6 +391,110 @@
     </div>
   </div>
 
+  <!-- ==================== SIGNATURE HIGHLIGHTS BAR (5 ĐIỂM NHẤN TINH HOA THÁI NGUYÊN) ==================== -->
+  <section class="relative -mt-6 sm:-mt-8 z-30 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white/95 backdrop-blur-2xl rounded-3xl p-5 sm:p-7 border border-[#d6decb] shadow-[0_15px_40px_-10px_rgba(25,45,28,0.12)]">
+      
+      <!-- Top Eyebrow & Live Tourism Metrics -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-4 border-b border-[#e7ebd9]">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 animate-pulse"></span>
+          <span class="text-xs font-mono font-bold uppercase tracking-[0.22em] text-[#243f26]" data-en="THE 5 CROWN HIGHLIGHTS &bull; THAI NGUYEN REALM 2026" data-vi="5 ĐIỂM NHẤN TINH HOA BIỂU TƯỢNG &bull; ĐẠI NGÀN THÁI NGUYÊN">5 ĐIỂM NHẤN TINH HOA BIỂU TƯỢNG &bull; ĐẠI NGÀN THÁI NGUYÊN</span>
+        </div>
+        <div class="flex items-center gap-3 text-[11px] font-mono text-slate-500">
+          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span><span data-en="8,375 km² Protected Biosphere" data-vi="8.375 km² Không Gian Sinh Thái">8.375 km² Không Gian Sinh Thái</span></span>
+          <span class="text-slate-300">|</span>
+          <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span><span data-en="100% Verified Coordinates" data-vi="Tọa Độ Chuẩn Xác 100%">Tọa Độ Chuẩn Xác 100%</span></span>
+        </div>
+      </div>
+
+      <!-- 5 Interactive Signature Pillars -->
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4">
+        
+        <!-- Pillar 1: Ba Be Karst Ramsar -->
+        <div onclick="viewOnMap('babe-lake')" class="pillar-highlight-card group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#f7f9f3] to-white border border-[#dde4d3] hover:border-emerald-600 hover:shadow-md transition cursor-pointer flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-emerald-800 font-bold bg-emerald-100/80 px-2 py-0.5 rounded-md">01</span>
+              <span class="text-lg group-hover:scale-110 transition-transform">🌊</span>
+            </div>
+            <h4 class="text-sm font-heading font-black text-slate-900 group-hover:text-emerald-800 transition line-clamp-1" data-en="Ba Be Lake" data-vi="Hồ Ba Bể">Hồ Ba Bể</h4>
+            <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 font-light" data-en="Ramsar Site No. 1938 &bull; Top 20 freshwater karst lakes globally" data-vi="Ramsar Thế giới số 1938 &bull; 500 ha nước ngọc bích nguyên sơ">Ramsar Thế giới số 1938 &bull; 500 ha nước ngọc bích nguyên sơ</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold text-emerald-700">
+            <span data-en="View on Map" data-vi="Xem Bản Đồ">Xem Bản Đồ</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Tan Cuong Tea Capital -->
+        <div onclick="viewOnMap('tan-cuong-tea-hills')" class="pillar-highlight-card group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#f7f9f3] to-white border border-[#dde4d3] hover:border-emerald-600 hover:shadow-md transition cursor-pointer flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-emerald-800 font-bold bg-emerald-100/80 px-2 py-0.5 rounded-md">02</span>
+              <span class="text-lg group-hover:scale-110 transition-transform">🍵</span>
+            </div>
+            <h4 class="text-sm font-heading font-black text-slate-900 group-hover:text-emerald-800 transition line-clamp-1" data-en="Tan Cuong Tea" data-vi="Vùng Trà Tân Cương">Vùng Trà Tân Cương</h4>
+            <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 font-light" data-en="Vietnam Premier Tea Capital &bull; >22,000 ha rolling green flushes" data-vi="Đệ nhất danh trà đất Việt &bull; >22.000 ha thảm trà hữu cơ">Đệ nhất danh trà đất Việt &bull; >22.000 ha thảm trà hữu cơ</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold text-emerald-700">
+            <span data-en="View on Map" data-vi="Xem Bản Đồ">Xem Bản Đồ</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Pillar 3: ATK Dinh Hoa Revolutionary Capital -->
+        <div onclick="viewOnMap('atk-dinh-hoa')" class="pillar-highlight-card group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#f7f9f3] to-white border border-[#dde4d3] hover:border-emerald-600 hover:shadow-md transition cursor-pointer flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-amber-900 font-bold bg-amber-100 px-2 py-0.5 rounded-md">03</span>
+              <span class="text-lg group-hover:scale-110 transition-transform">🏛️</span>
+            </div>
+            <h4 class="text-sm font-heading font-black text-slate-900 group-hover:text-amber-800 transition line-clamp-1" data-en="ATK Dinh Hoa" data-vi="ATK Định Hóa">ATK Định Hóa</h4>
+            <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 font-light" data-en="Special National Heritage &bull; 128 revolutionary historical shrines" data-vi="Di tích Quốc gia đặc biệt &bull; Thủ đô kháng chiến 128 di tích">Di tích Quốc gia đặc biệt &bull; Thủ đô kháng chiến 128 di tích</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold text-amber-800">
+            <span data-en="View on Map" data-vi="Xem Bản Đồ">Xem Bản Đồ</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Pillar 4: UNESCO Intangible Heritage -->
+        <a href="#culture" class="pillar-highlight-card group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#f7f9f3] to-white border border-[#dde4d3] hover:border-emerald-600 hover:shadow-md transition cursor-pointer flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-emerald-800 font-bold bg-emerald-100/80 px-2 py-0.5 rounded-md">04</span>
+              <span class="text-lg group-hover:scale-110 transition-transform">🪕</span>
+            </div>
+            <h4 class="text-sm font-heading font-black text-slate-900 group-hover:text-emerald-800 transition line-clamp-1" data-en="Then &amp; Dan Tinh" data-vi="Hát Then &amp; Đàn Tính">Hát Then &amp; Đàn Tính</h4>
+            <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 font-light" data-en="UNESCO Intangible Cultural Heritage of Humanity &bull; Tay &amp; Nung Soul" data-vi="Di sản phi vật thể nhân loại UNESCO &bull; Hồn thiêng Tày - Nùng">Di sản phi vật thể nhân loại UNESCO &bull; Hồn thiêng Tày - Nùng</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold text-emerald-700">
+            <span data-en="Explore Heritage" data-vi="Khám Phá Di Sản">Khám Phá Di Sản</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </a>
+
+        <!-- Pillar 5: Extreme Karst & Stream Trekking -->
+        <div onclick="viewOnMap('cua-tu-stream')" class="pillar-highlight-card col-span-2 sm:col-span-1 group p-3.5 sm:p-4 rounded-2xl bg-gradient-to-b from-[#f7f9f3] to-white border border-[#dde4d3] hover:border-emerald-600 hover:shadow-md transition cursor-pointer flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono text-cyan-900 font-bold bg-cyan-100 px-2 py-0.5 rounded-md">05</span>
+              <span class="text-lg group-hover:scale-110 transition-transform">🧗</span>
+            </div>
+            <h4 class="text-sm font-heading font-black text-slate-900 group-hover:text-cyan-800 transition line-clamp-1" data-en="Cua Tu Trekking" data-vi="Suối Cửa Tử">Suối Cửa Tử</h4>
+            <p class="text-[11px] text-slate-500 line-clamp-2 mt-1 font-light" data-en="7 pristine waterfalls &bull; Natural water slide into karst pools" data-vi="7 tầng thác mạo hiểm &bull; Trượt máng đá tự nhiên vào hố ngọc">7 tầng thác mạo hiểm &bull; Trượt máng đá tự nhiên vào hố ngọc</p>
+          </div>
+          <div class="mt-3 pt-2 border-t border-slate-100 flex items-center justify-between text-[10px] font-mono font-bold text-cyan-800">
+            <span data-en="View on Map" data-vi="Xem Bản Đồ">Xem Bản Đồ</span>
+            <span class="group-hover:translate-x-1 transition-transform">&rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ==================== CROWN JEWELS SPOTLIGHT (VISUAL ANCHOR) ==================== -->
   <section class="py-12 bg-slate-100/70 border-b border-slate-200">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -455,6 +606,33 @@
 
   <!-- ==================== MAIN CONTENT SECTIONS ==================== -->
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-24">
+
+    <!-- EDITORIAL SIGNATURE QUOTE / ĐIỂM NHẤN TRIẾT LÝ NON NƯỚC -->
+    <div class="editorial-quote-card my-12 p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-[#1c3321] via-[#152719] to-[#0c180f] text-white relative overflow-hidden border border-emerald-800/40 shadow-2xl">
+      <!-- Ambient Gold & Emerald Light Cones -->
+      <div class="absolute -top-24 -right-24 w-72 h-72 rounded-full bg-emerald-500/15 blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-amber-500/10 blur-3xl pointer-events-none"></div>
+
+      <div class="relative z-10 max-w-3xl mx-auto text-center space-y-4">
+        <span class="inline-flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-[0.24em] text-emerald-400">
+          <span>❖</span>
+          <span data-en="TERROIR &bull; ETHOS OF THAI NGUYEN" data-vi="HỒN THIÊNG NON NƯỚC &bull; KHÍ CHẤT ĐẤT DANH TRÀ">HỒN THIÊNG NON NƯỚC &bull; KHÍ CHẤT ĐẤT DANH TRÀ</span>
+          <span>❖</span>
+        </span>
+
+        <p class="font-display italic text-xl sm:text-2xl md:text-3xl text-emerald-50 font-normal leading-relaxed drop-shadow-sm"
+           data-en="&ldquo;Where karst limestone cliffs mirror in the tranquil jade expanse of Ba Be, and early morning mountain mists gently bestow their purest dewdrops onto the emerald tips of Tan Cuong.&rdquo;"
+           data-vi="&ldquo;Nơi vách đá vôi ngàn năm soi bóng xuống đáy ngọc Ba Bể phẳng lặng, và sương sớm non cao chắt chiu từng giọt ngọc tinh khiết nhất dâng tặng những búp chè Tân Cương đệ nhất.&rdquo;">
+          &ldquo;Nơi vách đá vôi ngàn năm soi bóng xuống đáy ngọc Ba Bể phẳng lặng, và sương sớm non cao chắt chiu từng giọt ngọc tinh khiết nhất dâng tặng những búp chè Tân Cương đệ nhất.&rdquo;
+        </p>
+
+        <div class="pt-2 flex items-center justify-center gap-3">
+          <div class="h-px w-10 bg-emerald-700/60"></div>
+          <span class="text-xs font-mono text-amber-300 font-semibold tracking-wider" data-en="Official Chronicle of Thai Nguyen Realm 2026" data-vi="Địa Chí Du Lịch &amp; Văn Hóa Tỉnh Thái Nguyên 2026">Địa Chí Du Lịch &amp; Văn Hóa Tỉnh Thái Nguyên 2026</span>
+          <div class="h-px w-10 bg-emerald-700/60"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- CHAPTER 06: 9 WONDER LANDSCAPES -->
     <section id="landscapes" class="scroll-mt-28">
@@ -1768,11 +1946,51 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
         
         <div class="md:col-span-2 space-y-4">
-          <div class="flex items-center gap-2.5">
-            <div class="w-9 h-9 rounded-xl bg-emerald-700 text-white font-heading font-black flex items-center justify-center text-sm shadow">
-              TN
+          <div class="flex items-center gap-3">
+            <!-- Footer Luxury Brand Crest -->
+          <div class="brand-logo-crest w-10 h-10 shrink-0">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="w-10 h-10 filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+              <defs>
+                <linearGradient id="tnBgGradF" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#1b3b22"/>
+                  <stop offset="50%" stop-color="#0f2615"/>
+                  <stop offset="100%" stop-color="#061208"/>
+                </linearGradient>
+                <linearGradient id="tnGoldGradF" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fef3c7"/>
+                  <stop offset="35%" stop-color="#d4af37"/>
+                  <stop offset="70%" stop-color="#e6ca65"/>
+                  <stop offset="100%" stop-color="#9a741e"/>
+                </linearGradient>
+                <linearGradient id="tnLeafGradF" x1="0%" y1="100%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#10b981"/>
+                  <stop offset="60%" stop-color="#34d399"/>
+                  <stop offset="100%" stop-color="#fef08a"/>
+                </linearGradient>
+                <linearGradient id="tnWaterGradF" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#38bdf8"/>
+                  <stop offset="50%" stop-color="#2dd4bf"/>
+                  <stop offset="100%" stop-color="#34d399"/>
+                </linearGradient>
+              </defs>
+              <rect x="2" y="2" width="44" height="44" rx="13" fill="url(#tnBgGradF)" stroke="url(#tnGoldGradF)" stroke-width="1.4"/>
+              <circle cx="24" cy="12.5" r="3.2" fill="url(#tnGoldGradF)"/>
+              <path d="M10 29.5 L18 17 L24.5 25" fill="none" stroke="#24532e" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M23.5 25 L29.5 18.5 L38 29.5" fill="none" stroke="#2e683b" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M24 26.5 C24 21.5 22 17 23.8 13 C25.8 17 26.8 21.5 24 26.5 Z" fill="url(#tnLeafGradF)"/>
+              <path d="M24.2 20.5 C25.8 18.5 28 18.3 29 16 C28 19.8 25.5 22 24.2 22.5 Z" fill="url(#tnLeafGradF)" opacity="0.92"/>
+              <path d="M11 33 C15.5 31.2 19.5 34.5 24 33 C28.5 31.5 32.5 34.5 37 33" fill="none" stroke="url(#tnWaterGradF)" stroke-width="1.8" stroke-linecap="round"/>
+              <path d="M14 36.5 C17.5 35.2 20.8 37.5 24 36.5 C27.2 35.5 30.5 37.5 34 36.5" fill="none" stroke="url(#tnWaterGradF)" stroke-width="1.3" stroke-linecap="round" opacity="0.8"/>
+            </svg>
+          </div>
+            <div class="flex flex-col">
+              <span class="font-heading font-black text-lg text-white tracking-tight leading-none">
+                THÁI NGUYÊN
+              </span>
+              <span class="text-[9.5px] font-mono tracking-[0.22em] uppercase text-emerald-400 font-bold mt-1 leading-none" data-en="OFFICIAL TOURISM &amp; HERITAGE PORTAL" data-vi="CỔNG THÔNG TIN DU LỊCH &amp; ĐỊA CHÍ">
+                CỔNG THÔNG TIN DU LỊCH &amp; ĐỊA CHÍ
+              </span>
             </div>
-            <span class="font-heading font-extrabold text-lg text-white">DU LỊCH &amp; ĐỊA CHÍ THÁI NGUYÊN</span>
           </div>
           <p class="text-slate-300 text-xs leading-relaxed max-w-md font-light" data-en="The official tourism and heritage portal showcasing the eco-wonders, ATK Dinh Hoa revolutionary sanctuaries, intangible cultural heritages, and premier tea terroir of the unified Thai Nguyen province (2025 – 2026)." data-vi="Cổng thông tin du lịch và địa chí chính thức tôn vinh cảnh quan sinh thái, di tích An toàn khu (ATK) Định Hóa, di sản văn hóa phi vật thể và danh trà đệ nhất của tỉnh Thái Nguyên mới (2025 – 2026).">
             Cổng thông tin du lịch và địa chí chính thức tôn vinh cảnh quan sinh thái, di tích An toàn khu (ATK) Định Hóa, di sản văn hóa phi vật thể và danh trà đệ nhất của tỉnh Thái Nguyên mới (2025 – 2026).
@@ -1815,11 +2033,21 @@
     </div>
   </footer>
 
+  <!-- FLOATING SUPPORT BUTTON (24/7 LUXURY BADGE) -->
+  <button id="btn-floating-support" onclick="openSupportModal()" class="fixed bottom-6 right-6 z-40 bg-[#1e3423] hover:bg-[#2b4c33] text-white border border-[#487351]/50 rounded-full pl-3.5 pr-4 py-2.5 shadow-2xl backdrop-blur-md flex items-center gap-2.5 transition-all duration-300 hover:scale-105 group cursor-pointer" title="Trung tâm hỗ trợ du khách 24/7" data-title-vi="Trung tâm hỗ trợ du khách 24/7" data-title-en="24/7 Visitor Support Center">
+    <span class="relative flex h-3 w-3">
+      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+      <span class="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
+    </span>
+    <svg class="w-4 h-4 text-emerald-300 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+    <span class="text-xs font-bold font-sans tracking-wide text-white" data-en="Support 24/7" data-vi="Hỗ Trợ 24/7">Hỗ Trợ 24/7</span>
+  </button>
+
   <!-- Leaflet.js Interactive Map & MarkerCluster (Cloudflare CDN) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 
   <!-- Main JavaScript App Logic -->
-  <script src="assets/js/app.js?v=2026110608"></script>
+  <script src="assets/js/app.js?v=2026110609"></script>
 </body>
 </html>
